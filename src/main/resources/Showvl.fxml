@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller=" alpharoc.pidev.controllers.gestionlocation.Showvl">
+   <children>
+      <Text fill="#0a2f55" layoutX="314.0" layoutY="76.0" strokeLineJoin="ROUND" strokeWidth="0.0" text="Liste des terrains" textAlignment="CENTER">
+         <font>
+            <Font name="Berlin Sans FB" size="48.0" />
+         </font>
+      </Text>
+      <TableView layoutX="181.0" layoutY="123.0" prefHeight="466.0" prefWidth="574.0">
+        <columns>
+          <TableColumn fx:id="tmarque" prefWidth="75.0" text="marque" />
+          <TableColumn fx:id="tmodele" prefWidth="75.0" text="modele" />
+            <TableColumn fx:id="tdesc" prefWidth="75.0" text="description" />
+            <TableColumn fx:id="tperio" prefWidth="75.0" text="periode_dispo" />
+            <TableColumn fx:id="ttype" prefWidth="75.0" text="type_carburant" />
+            <TableColumn fx:id="tcate" prefWidth="75.0" text="categorie_vehicule" />
+        </columns>
+      </TableView>
+   </children>
+
+
+</AnchorPane>

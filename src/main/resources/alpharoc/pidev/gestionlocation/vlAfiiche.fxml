@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="alpharoc.pidev.controllers.gestionlocation.vehiculeLouecontroller">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+<TableView fx:id="tableView">
+    <columns>
+        <TableColumn text="ID" prefWidth="50">
+            <cellValueFactory>
+                <PropertyValueFactory property="id"/>
+            </cellValueFactory>
+        </TableColumn>
+        <TableColumn text="Marque" prefWidth="100">
+            <cellValueFactory>
+                <PropertyValueFactory property="marque"/>
+            </cellValueFactory>
+        </TableColumn>
+        <TableColumn text="Modele" prefWidth="100">
+            <cellValueFactory>
+                <PropertyValueFactory property="modele"/>
+            </cellValueFactory>
+        </TableColumn>
+        <TableColumn text="Description" prefWidth="200">
+            <cellValueFactory>
+                <PropertyValueFactory property="description"/>
+            </cellValueFactory>
+        </TableColumn>
+        <TableColumn text="Période Dispo" prefWidth="100">
+            <cellValueFactory>
+                <PropertyValueFactory property="periode_dispo"/>
+            </cellValueFactory>
+        </TableColumn>
+        <TableColumn text="Type Carburant" prefWidth="100">
+            <cellValueFactory>
+                <PropertyValueFactory property="type_carburant"/>
+            </cellValueFactory>
+        </TableColumn>
+        <TableColumn text="Catégorie Véhicule" prefWidth="150">
+            <cellValueFactory>
+                <PropertyValueFactory property="categorie_vehicule"/>
+            </cellValueFactory>
+        </TableColumn>
+    </columns>
+</TableView>
+</VBox>
