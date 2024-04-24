@@ -1,0 +1,17 @@
+.root {
+    -fx-font-family: Arial;
+}
+
+#chatArea {
+    -fx-control-inner-background: #f0f0f0;
+    -fx-font-size: 14px;
+}
+
+#messageField {
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #a0a0a0;
+}
+
+#sendButton {
+    -fx-font-size: 14px;
+}
