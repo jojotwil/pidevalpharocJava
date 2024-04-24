@@ -12,7 +12,7 @@ public class HelloApplication extends Application {
     private static  Scene scene;
     @Override
     public void start(Stage stage) throws IOException {
-         scene = new Scene(loadFXML("fullcalander"),700,400);
+         scene = new Scene(loadFXML("testcalander"),700,400);
         stage.setScene(scene);
         stage.show();
        // scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());

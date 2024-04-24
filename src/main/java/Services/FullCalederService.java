@@ -15,6 +15,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class FullCalederService implements FullCallenderService<CalendarActivity> {
     // Méthode pour convertir une couleur en format hexadécimal
@@ -110,6 +111,13 @@ public class FullCalederService implements FullCallenderService<CalendarActivity
     @Override
     public List<CalendarActivity> getAlldates() {
         return null;
+    }
+    public Map<Integer, List<CalendarActivity>> getCalendarActivitiesMonth(LocalDate firstDayOfMonth, LocalDate lastDayOfMonth) {
+        // Implémentation de la méthode pour récupérer les activités du calendrier pour le mois donné
+        // Assurez-vous d'implémenter cette méthode pour interagir avec votre base de données ou tout autre mécanisme de stockage de données
+        // Cette méthode devrait retourner un Map<Integer, List<CalendarActivity>> où la clé est le jour du mois et la valeur est une liste d'activités pour ce jour
+        // Vous pouvez remplacer le corps de cette méthode par votre logique de récupération des données à partir de la base de données
+        return null; // temporaire, remplacez-le par votre implémentation réelle
     }
 
 
