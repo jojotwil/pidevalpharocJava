@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers_interfaces.ProfilePageController">
+   <children>
+      <Label fx:id="label_welcome" layoutX="284.0" layoutY="71.0" text="Welcome" />
+      <Label fx:id="label_email" layoutX="284.0" layoutY="100.0" />
+      <ImageView fx:id="profileImage" fitHeight="100" fitWidth="100" layoutX="259.0" layoutY="130.0" />
+      <Button fx:id="button_logout" layoutX="503.0" layoutY="33.0" mnemonicParsing="false" text="logout" />
+      <Button fx:id="updateprofileButton" layoutX="503.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleUpdateProfileButtonClick" text="update" />
+      <Button layoutX="473.0" layoutY="154.0" mnemonicParsing="false" onAction="#handleDeleteProfile" text="delete my account" />
+      <Button layoutX="481.0" layoutY="118.0" mnemonicParsing="false" onAction="#handleResetPasswordButtonClick" text="reset password" />
+      <Button fx:id="refreshbutton" layoutX="37.0" layoutY="33.0" mnemonicParsing="false" text="refresh" onAction="#handleRefreshButtonClick"/>
+   </children>
+</AnchorPane>
