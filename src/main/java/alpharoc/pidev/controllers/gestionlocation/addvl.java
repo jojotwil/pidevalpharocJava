@@ -4,17 +4,25 @@ import alpharoc.pidev.entities.VehiculeLouer;
 import alpharoc.pidev.services.VehiculeLouerServie;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 
+import java.net.URL;
 import java.time.chrono.Chronology;
 import java.util.Date;
+import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
-public class addvl {
+public class addvl implements Initializable {
 
+    @FXML
+    private ComboBox<String> tfcato1;
+    @FXML
+    private ComboBox<String> tftypecarb1;
+    @FXML
+    private final String[]choix1={"car","yacht","moto"};
+    @FXML
+    private final String[]choix2={"diesel","essence"};
     @FXML
     private Button btannuler;
 
@@ -68,14 +76,18 @@ public class addvl {
             showAlert(Alert.AlertType.ERROR, "Erreur de saisie", " Doit contenir que des lettres.");
             return;
         }
+        if(tfmarque.getText().isEmpty())
+        {
+
+        }
         String resmodele = tfmodele.getText();
         String resdescr= tfdescrp.getText();
       // Date resdate= tfdate.getDate();
         //nked fazet ta6ou date men form
         Date periode_dispo = new Date();
 
-        String restype = tftypecarb.getText();
-        String rescato = tfcato.getText();
+        String restype = tftypecarb1.getValue();
+        String rescato = tfcato1.getValue();
         VehiculeLouer p = new VehiculeLouer(resmarque,resmodele,resdescr,periode_dispo,restype,rescato);
         VehiculeLouerServie ps = new VehiculeLouerServie();
         ps.addEntity2(p);
@@ -88,8 +100,44 @@ public class addvl {
         tfmodele.setText("");
         tfdescrp.setText("");
         //tfdate.setText("");
-        tftypecarb.setText("");
-        tfcato.setText("");
+        //tftypecarb.setText("");
+        //tfcato.setText("");
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        tfcato1.getItems().addAll(choix1);
+        tftypecarb1.getItems().addAll(choix2);
+    }
+   /* private boolean isInputValid() {
+        String errorMessage = "";
+
+        if (titreField.getText() == null || titreField.getText().isEmpty()) {
+            errorMessage += "Le champ titre est vide !\n";
+        }
+
+        if (dateDebutPicker.getValue() == null) {
+            errorMessage += "Aucune date de début sélectionnée !\n";
+        }
+
+        if (dateFinPicker.getValue() == null) {
+            errorMessage += "Aucune date de fin sélectionnée !\n";
+        } else if (dateDebutPicker.getValue() != null && dateFinPicker.getValue().isBefore(dateDebutPicker.getValue())) {
+            errorMessage += "La date de fin ne peut pas être avant la date de début !\n";
+        }
+
+        if (themeField.getText() == null || themeField.getText().isEmpty()) {
+            errorMessage += "Le champ thème est vide !\n";
+        }
+
+        if (localisationField.getText() == null || localisationField.getText().isEmpty()) {
+            errorMessage += "Le champ localisation est vide !\n";
+        }
+
+        if (!errorMessage.isEmpty()) {
+            showAlertDialog(Alert.AlertType.ERROR, "Erreur de validation", "Veuillez corriger les erreurs suivantes", errorMessage);
+            return false;
+        }
+        return true;
+    }*/
 }
