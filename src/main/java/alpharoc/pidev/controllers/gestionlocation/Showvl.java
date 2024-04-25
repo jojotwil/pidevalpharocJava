@@ -122,7 +122,7 @@ ObservableList<VehiculeLouer>initialData(){
     @FXML
     void goAdd(MouseEvent event) {
 
-        try {
+       /* try {
             root = FXMLLoader.load(getClass().getResource("/Addvl.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
@@ -131,7 +131,7 @@ ObservableList<VehiculeLouer>initialData(){
         }catch (IOException e)
         {
             System.out.println(e.getMessage());
-        }
+        }*/
 
     }
 
