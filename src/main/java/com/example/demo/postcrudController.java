@@ -44,6 +44,8 @@ public class postcrudController implements Initializable {
     @FXML
     private AnchorPane paneslide;
     @FXML
+    private DatePicker annee;
+    @FXML
     void run1(MouseEvent event) {
         TranslateTransition slide =new TranslateTransition();
         slide.setDuration(Duration.seconds(0.4));
@@ -72,8 +74,7 @@ public class postcrudController implements Initializable {
         });
     }
 
-    @FXML
-    private TextField annee;
+
 
     @FXML
     private TextField matricule;
@@ -150,7 +151,7 @@ public class postcrudController implements Initializable {
         // Validation des données saisies
         if (kilometrage.getText().isEmpty() || description.getText().isEmpty() || localisation.getText().isEmpty() || image.getText().isEmpty() ||
                 mail.getText().isEmpty() || matricule.getText().isEmpty() || marque.getValue() == null || model.getValue() == null ||
-                typedecarburant.getValue() == null || typevehicule.getValue() == null || typedeboitevitesse.getValue() == null || annee.getText().isEmpty()) {
+                typedecarburant.getValue() == null || typevehicule.getValue() == null || typedeboitevitesse.getValue() == null || annee.getValue() == null) {
             // Afficher une alerte pour informer l'utilisateur des champs manquants
             showAlert(AlertType.ERROR, "Champs manquants", "Veuillez remplir tous les champs obligatoires.");
             return;
@@ -182,15 +183,13 @@ public class postcrudController implements Initializable {
 
         // Validation de l'année dans le passé
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-            java.util.Date date = sdf.parse(annee.getText());
+            LocalDate selectedDate = annee.getValue();
             LocalDate currentDate = LocalDate.now();
-            LocalDate dateAsLocalDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            if (!dateAsLocalDate.isBefore(currentDate)) {
+            if (!selectedDate.isBefore(currentDate)) {
                 showAlert(AlertType.ERROR, "Date invalide", "L'année doit être dans le passé.");
                 return;
             }
-        } catch (ParseException e) {
+        } catch (Exception e) {
             showAlert(AlertType.ERROR, "Format invalide", "Le format de la date de l'année est incorrect.");
             return;
         }
@@ -205,6 +204,7 @@ public class postcrudController implements Initializable {
         // Afficher une alerte pour informer l'utilisateur que l'opération a réussi
         showAlert(AlertType.INFORMATION, "Succès", "Le post a été ajouté avec succès.");
     }
+
 
     // Méthode utilitaire pour vérifier la validité du format du matricule
     private boolean isValidMatricule(String matricule) {
@@ -250,7 +250,9 @@ public class postcrudController implements Initializable {
             kilometrage.setText(""+postTroc.getKilometrage());
             description.setText(postTroc.getDescription());
             matricule.setText(postTroc.getMatricule());
-            annee.setText(""+postTroc.getAnnee());
+            LocalDate date = postTroc.getAnnee().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            // Utiliser setValue() pour afficher la date dans le DatePicker
+            annee.setValue(date);
             mail.setText(postTroc.getMail());
             image.setText(postTroc.getImage());
             localisation.setText(postTroc.getLocalisation());
@@ -271,7 +273,9 @@ public class postcrudController implements Initializable {
                 kilometrage.setText(""+postTroc.getKilometrage());
                 description.setText(postTroc.getDescription());
                 matricule.setText(postTroc.getMatricule());
-                annee.setText(""+postTroc.getAnnee());
+                LocalDate date = postTroc.getAnnee().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                // Utiliser setValue() pour afficher la date dans le DatePicker
+                annee.setValue(date);
                 mail.setText(postTroc.getMail());
                 image.setText(postTroc.getImage());
                 localisation.setText(postTroc.getLocalisation());

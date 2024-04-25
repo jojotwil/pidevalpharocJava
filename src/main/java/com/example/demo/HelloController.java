@@ -11,11 +11,12 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.animation.FadeTransition;
@@ -23,7 +24,6 @@ import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -40,6 +40,10 @@ public class HelloController implements Initializable {
 
     @FXML
     private Button para;
+    @FXML
+    private TextField search;
+    @FXML
+    private Button btnsearch;
 
     @FXML
     private AnchorPane paneslide;
@@ -53,6 +57,44 @@ public class HelloController implements Initializable {
     PostTrocService postTrocService=new PostTrocService();
     ObservableList<PostTroc> Liste=postTrocService.getAllpostes();
     ObservableList<PostTroc> ListeData= FXCollections.observableArrayList();
+    @FXML
+    void search(ActionEvent event) {
+        // Récupérer le texte de recherche
+        String searchText = search.getText();
+        search.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Effectuer la recherche en temps réel avec le nouveau texte saisi (newValue)
+            List<PostTroc> searchResults = searchByMarque(Liste, newValue);
+
+            // Effacer les éléments existants dans le GridPane
+            offre.getChildren().clear();
+
+            // Afficher les nouveaux résultats de la recherche
+            int row = 0;
+            int column = 0;
+            for (PostTroc result : searchResults) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("menu.fxml"));
+                try {
+                    AnchorPane pane = loader.load();
+                    MenuController menuController = loader.getController();
+                    menuController.postdata(result);
+                    offre.add(pane, column, row);
+
+                    // Mettre à jour les indices de ligne et de colonne
+                    column++;
+                    if (column == 5) {
+                        column = 0;
+                        row++;
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        }
+
+
+
 
     @FXML
     void run2(MouseEvent event) {
@@ -110,6 +152,15 @@ public class HelloController implements Initializable {
             close.setVisible(true);
 
         });
+    }
+    public static List<PostTroc> searchByMarque(List<PostTroc> postTrocs, String marque) {
+        List<PostTroc> results = new ArrayList<>();
+        for (PostTroc postTroc : postTrocs) {
+            if (postTroc.getMarque().equalsIgnoreCase(marque)) {
+                results.add(postTroc);
+            }
+        }
+        return results;
     }
     @FXML
     public void troc(ActionEvent event) {

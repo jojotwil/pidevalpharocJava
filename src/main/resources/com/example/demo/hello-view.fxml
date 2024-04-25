@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,10 +13,11 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HelloController">
 
 
 <children>
@@ -90,11 +92,11 @@
                               <Image url="@../../../../java/images/117641.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="para" contentDisplay="CENTER" ellipsisString="" mnemonicParsing="false" onMouseClicked="#run1" prefHeight="31.0" prefWidth="83.0" style="-fx-background-color: white;" text="para">
+                        <Button fx:id="para" contentDisplay="CENTER" ellipsisString="" mnemonicParsing="false" onMouseClicked="#run1" prefHeight="31.0" prefWidth="83.0" style="-fx-background-color: white;">
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../java/images/125115-200.png" />
+                                    <Image url="@images/125115-200.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -102,7 +104,7 @@
                               <Insets left="20.0" top="8.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="close" contentDisplay="CENTER" ellipsisString="" mnemonicParsing="false" onMouseClicked="#run2" prefHeight="31.0" prefWidth="63.0" style="-fx-background-color: white;" text="para">
+                        <Button fx:id="close" contentDisplay="CENTER" ellipsisString="" mnemonicParsing="false" onMouseClicked="#run2" prefHeight="31.0" prefWidth="63.0" style="-fx-background-color: white;">
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -171,17 +173,26 @@
             </AnchorPane>
          </right>
          <left>
-            <AnchorPane fx:id="menu_form" prefHeight="291.0" prefWidth="1200.0" style="-fx-background-radius: 10px; -fx-background-color: white;" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="menu_form" prefHeight="303.0" prefWidth="1200.0" style="-fx-background-radius: 10px; -fx-background-color: white;" BorderPane.alignment="CENTER">
                <children>
-                  <ScrollPane prefHeight="300.0" prefWidth="614.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="search" onAction="#search" prefHeight="31.0" prefWidth="442.0" promptText="Search..." AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="10.0" />
+                        <Label text="Serach" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="15.0" />
+                     </children>
+                  </AnchorPane>
+                  <ScrollPane prefHeight="299.0" prefWidth="498.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                      <content>
-                        <GridPane fx:id="offre" prefHeight="14.0" prefWidth="1200.0">
+                        <GridPane fx:id="offre" prefHeight="14.0" style="-fx-background-color: white;">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                            </columnConstraints>
                            <padding>
                               <Insets left="12.0" top="12.0" />
                            </padding>
+                           <rowConstraints>
+                              <RowConstraints />
+                           </rowConstraints>
                         </GridPane>
                      </content>
                   </ScrollPane>
