@@ -17,7 +17,7 @@
             <TableColumn fx:id="colcategorie" prefWidth="106.40008544921875" text="categorie" />
         </columns>
       </TableView>
-      <Button fx:id="btnajouter" layoutX="143.0" layoutY="562.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="180.0" text="Ajouter" />
+      <Button fx:id="btnajouter" layoutX="143.0" layoutY="562.0" mnemonicParsing="false" onMouseClicked="#goAdd" prefHeight="59.0" prefWidth="180.0" text="Ajouter" />
       <Button fx:id="btnsuprimer" layoutX="373.0" layoutY="562.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="190.0" text="suprimer" />
       <Button fx:id="btnmodifier" layoutX="612.0" layoutY="562.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="171.0" text="modifier" />
    </children>

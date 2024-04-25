@@ -128,6 +128,7 @@ public class VehiculeLouerServie implements IVL<VehiculeLouer> {
 
     public ObservableList<VehiculeLouer> getVl(){
         ObservableList<VehiculeLouer> Vl= FXCollections.observableArrayList();
+        //  con = ;
         String requete = "SELECT * FROM vehicule_loue";
         try {
             Statement st = MyConnexion.getInstance().getCnx().createStatement();
@@ -149,6 +150,5 @@ public class VehiculeLouerServie implements IVL<VehiculeLouer> {
         }
         return Vl;
     }
-
 
 }

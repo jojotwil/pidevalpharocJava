@@ -9,6 +9,7 @@ module alpharoc.pidev {
     requires net.synedra.validatorfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
+    opens alpharoc.pidev.entities to javafx.base;
 
     requires com.almasb.fxgl.all;
     requires java.sql;
