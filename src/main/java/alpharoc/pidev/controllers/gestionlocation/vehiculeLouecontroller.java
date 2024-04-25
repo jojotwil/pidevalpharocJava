@@ -49,5 +49,6 @@ public class vehiculeLouecontroller implements Initializable {
         VehiculeLouerServie ps = new VehiculeLouerServie();
         ObservableList<VehiculeLouer> data = FXCollections.observableArrayList(ps.getAllData());
         tableView.setItems(data);
+
     }
 }

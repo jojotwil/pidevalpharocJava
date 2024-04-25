@@ -10,22 +10,24 @@ import java.io.IOException;
 
 public class home extends Application {
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+
 
     @Override
     public void start(Stage primaryStage) {
 
 
      try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Addvl.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/Showvl.fxml"));
          Scene scene = new Scene(root);
          primaryStage.setScene(scene);
          primaryStage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+    }
+    public static void main(String[] args) {
+        launch();
 
     }
 }

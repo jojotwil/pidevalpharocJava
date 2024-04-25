@@ -1,29 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller=" alpharoc.pidev.controllers.gestionlocation.Showvl">
+<AnchorPane prefHeight="652.0" prefWidth="863.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alpharoc.pidev.controllers.gestionlocation.Showvl">
    <children>
-      <Text fill="#0a2f55" layoutX="314.0" layoutY="76.0" strokeLineJoin="ROUND" strokeWidth="0.0" text="Liste des terrains" textAlignment="CENTER">
-         <font>
-            <Font name="Berlin Sans FB" size="48.0" />
-         </font>
-      </Text>
-      <TableView layoutX="181.0" layoutY="123.0" prefHeight="466.0" prefWidth="574.0">
+      <TableView fx:id="table" layoutX="153.0" layoutY="67.0" prefHeight="476.0" prefWidth="631.0">
         <columns>
-          <TableColumn fx:id="tmarque" prefWidth="75.0" text="marque" />
-          <TableColumn fx:id="tmodele" prefWidth="75.0" text="modele" />
-            <TableColumn fx:id="tdesc" prefWidth="75.0" text="description" />
-            <TableColumn fx:id="tperio" prefWidth="75.0" text="periode_dispo" />
-            <TableColumn fx:id="ttype" prefWidth="75.0" text="type_carburant" />
-            <TableColumn fx:id="tcate" prefWidth="75.0" text="categorie_vehicule" />
+          <TableColumn fx:id="colmarque" prefWidth="75.0" text="marque" />
+          <TableColumn fx:id="colmodele" prefWidth="118.40003967285156" text="modele" />
+            <TableColumn fx:id="coldesc" prefWidth="113.5999755859375" text="description" />
+            <TableColumn fx:id="colperiode" prefWidth="120.0" text="periode desponible" />
+            <TableColumn fx:id="colctype" prefWidth="100.79998779296875" text="type carburant" />
+            <TableColumn fx:id="colcategorie" prefWidth="106.40008544921875" text="categorie" />
         </columns>
       </TableView>
+      <Button fx:id="btnajouter" layoutX="143.0" layoutY="562.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="180.0" text="Ajouter" />
+      <Button fx:id="btnsuprimer" layoutX="373.0" layoutY="562.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="190.0" text="suprimer" />
+      <Button fx:id="btnmodifier" layoutX="612.0" layoutY="562.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="171.0" text="modifier" />
    </children>
-
-
 </AnchorPane>

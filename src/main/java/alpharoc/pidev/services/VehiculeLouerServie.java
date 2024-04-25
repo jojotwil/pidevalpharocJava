@@ -82,7 +82,26 @@ public class VehiculeLouerServie implements IVL<VehiculeLouer> {
         }
 
     }
-
+    public boolean vehiculeLouerExists(int id) {
+        String query = "SELECT COUNT(*) FROM vehicule_loue WHERE id = ?";
+        try (PreparedStatement ps = MyConnexion.getInstance().getCnx().prepareStatement(query)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    int count = rs.getInt(1);
+                    if (count>0)
+                    {System.out.println("exist");}
+                    else
+                    {System.out.println("dosen t exist");}
+                    return count > 0;
+                }
+            }
+        } catch (SQLException e) {
+            // Handle the exception appropriately
+            e.printStackTrace();
+        }
+        return false;
+    }
     public List<VehiculeLouer> getAllData() {
         List<VehiculeLouer> data = new ArrayList<>();
         String requete = "SELECT * FROM vehicule_loue";
@@ -105,35 +124,15 @@ public class VehiculeLouerServie implements IVL<VehiculeLouer> {
         }
         return data;
     }
-    public boolean vehiculeLouerExists(int id) {
-        String query = "SELECT COUNT(*) FROM vehicule_loue WHERE id = ?";
-        try (PreparedStatement ps = MyConnexion.getInstance().getCnx().prepareStatement(query)) {
-            ps.setInt(1, id);
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    int count = rs.getInt(1);
-                    if (count>0)
-                    {System.out.println("exist");}
-                    else
-                    {System.out.println("dosen t exist");}
-                    return count > 0;
-                }
-            }
-        } catch (SQLException e) {
-            // Handle the exception appropriately
-            e.printStackTrace();
-        }
-        return false;
-    }
 
 
-    public ObservableList<VehiculeLouer> getAllData2() {
-        ObservableList<VehiculeLouer> data = FXCollections.observableArrayList();
+    public ObservableList<VehiculeLouer> getVl(){
+        ObservableList<VehiculeLouer> Vl= FXCollections.observableArrayList();
         String requete = "SELECT * FROM vehicule_loue";
         try {
             Statement st = MyConnexion.getInstance().getCnx().createStatement();
             ResultSet rs = st.executeQuery(requete);
-            while (rs.next()) {
+            while (rs.next()){
                 VehiculeLouer vehiculeLouer = new VehiculeLouer();
                 vehiculeLouer.setId(rs.getInt(1));
                 vehiculeLouer.setMarque(rs.getString("marque"));
@@ -142,12 +141,13 @@ public class VehiculeLouerServie implements IVL<VehiculeLouer> {
                 vehiculeLouer.setPeriode_dispo(rs.getDate("periode_dispo"));
                 vehiculeLouer.setType_carburant(rs.getString("type_carburant"));
                 vehiculeLouer.setCategorie_vehicule(rs.getString("categorie_vehicule"));
-                data.add(vehiculeLouer);
+                Vl.add(vehiculeLouer);
             }
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return data;
+        return Vl;
     }
 
 

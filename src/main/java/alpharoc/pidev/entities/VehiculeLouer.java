@@ -34,8 +34,8 @@ public class VehiculeLouer {
         this.categorie_vehicule = categorie_vehicule;
     }
 
-
-
+    public VehiculeLouer(String toyota, String corolla, String sedan, String petrol, String car) {
+    }
 
 
     public int getId() {
