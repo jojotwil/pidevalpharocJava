@@ -44,6 +44,43 @@ public class ProfilController implements Initializable {
     ObservableList<PostTroc> Liste=postTrocService.getAllpostes();
     ObservableList<PostTroc> ListeData= FXCollections.observableArrayList();
     @FXML
+    void calander(ActionEvent event) {
+        try {
+            // Charger la nouvelle interface dans un Node
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("testcalander.fxml"));
+            Parent newContent = loader.load();
+
+            // Accéder au contrôleur de la vue "posttroccrud.fxml"
+            testcalandercontroller controller = loader.getController();
+
+            // Créer une nouvelle scène avec le nouveau contenu
+            Scene scene = new Scene(newContent);
+
+            // Obtenir la fenêtre principale (stage)
+            Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Obtenir les dimensions de l'écran
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+            // Obtenez les dimensions de l'écran
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getBounds().getWidth();
+            double screenHeight = screen.getBounds().getHeight();
+
+// Définissez la taille de la fenêtre sur les dimensions de l'écran
+            mainStage.setWidth(screenWidth-1);
+            mainStage.setHeight(screenHeight);
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @FXML
     void runn2(MouseEvent event) {
         TranslateTransition slide =new TranslateTransition();
         slide.setDuration(Duration.seconds(0.4));

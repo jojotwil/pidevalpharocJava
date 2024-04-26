@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import Entities.DemandeTroc;
 import Entities.PostTroc;
 import Services.PostTrocService;
 import javafx.collections.ObservableList;
@@ -38,7 +39,7 @@ public class MenuController implements Initializable {
     @FXML
     private Button details;
     @FXML
-    private ImageView image;
+    private ImageView imageView;
     @FXML
     private AnchorPane menu;
 
@@ -50,8 +51,18 @@ public class MenuController implements Initializable {
         model.setText(postTroc.getModele());
         marque.setText(postTroc.getMarque());
         type.setText(postTroc.getCategorievehicule());
-        imagee = new Image("file:" + postTroc.getImage(),190,94,false,true);
-        image.setImage(imagee);
+        //image.setImage(postTroc.getImage());
+        try {
+            // Convertir la chaîne de caractères en objet Image
+            Image image = new Image(postTroc.getImage());
+
+            // Définir l'image sur l'ImageView
+            imageView.setImage(image);
+        } catch (Exception e) {
+            // Gérer l'erreur, par exemple afficher un message d'erreur ou une image par défaut
+            System.out.println("Erreur lors du chargement de l'image : " + e.getMessage());
+        }
+
 
 
     }

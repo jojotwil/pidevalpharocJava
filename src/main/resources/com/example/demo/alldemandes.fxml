@@ -172,9 +172,9 @@
             <center>
                 <AnchorPane prefHeight="335.0" prefWidth="799.0" BorderPane.alignment="CENTER">
                     <children>
-                        <AnchorPane layoutX="225.0" layoutY="20.0" prefHeight="331.0" prefWidth="483.0" style="-fx-background-color: white; -fx-background-radius: 30px;" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="116.0" AnchorPane.topAnchor="20.0">
+                        <AnchorPane layoutX="23.0" layoutY="14.0" prefHeight="331.0" prefWidth="483.0" style="-fx-background-color: white; -fx-background-radius: 30px;" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="118.0" AnchorPane.topAnchor="14.0">
                             <children>
-                                <ScrollPane layoutX="12.0" layoutY="21.0" prefHeight="229.0" prefWidth="462.0" style="-fx-background-radius: 10px;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="21.0">
+                                <ScrollPane layoutX="12.0" layoutY="37.0" prefHeight="213.0" prefWidth="462.0" style="-fx-background-radius: 10px;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="37.0">
                                     <content>
                                         <GridPane fx:id="offres" prefHeight="24.0" prefWidth="634.0" xmlns:fx="http://javafx.com/fxml">
                                             <columnConstraints>
@@ -186,6 +186,7 @@
                                         </GridPane>
                                     </content>
                                 </ScrollPane>
+                        <Button fx:id="profil" layoutX="29.0" layoutY="6.0" mnemonicParsing="false" onAction="#monprofil" prefHeight="9.0" prefWidth="71.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="back" textFill="#fffefe" />
                             </children>
                         </AnchorPane>
                     </children>

@@ -17,12 +17,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Time;
@@ -77,8 +81,7 @@ public class DemandeController implements Initializable {
 
         });
     }
-    @FXML
-    private TextField daterdv;
+
 
     @FXML
     private TextField heurerdv;
@@ -86,8 +89,7 @@ public class DemandeController implements Initializable {
     @FXML
     private TextField message;
 
-    @FXML
-    private TextField annee;
+
 
     @FXML
     private TextField matricule;
@@ -138,6 +140,16 @@ public class DemandeController implements Initializable {
     private Button btndelete;
     @FXML
     private Button show;
+    @FXML
+    private ImageView imageview;
+    @FXML
+    private DatePicker annee;
+
+    @FXML
+    private DatePicker daterdv;
+
+    @FXML
+    private Button btnimage;
 
     @FXML
     private TableView<PostTroc> tableView;
@@ -157,11 +169,33 @@ public class DemandeController implements Initializable {
 
     private TableColumn<PostTroc,Integer> kilometragestable;
     private PostTroc postTroc;
+    private String imagePath;
+
 
     @FXML
-    public void adddemande() throws ParseException {
-        System.out.println(postTroc + "  add");
+    private void browseImage(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choisir une image");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Fichiers images", "*.png", "*.jpg", "*.gif"),
+                new FileChooser.ExtensionFilter("Tous les fichiers", "*.*")
+        );
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+            Image image = new Image(selectedFile.toURI().toString());
+            imageview.setImage(image);
+            System.out.println(selectedFile.toURI().toString());
+            DemandeTroc demandeTroc=new DemandeTroc();
+            demandeTroc.setImage(selectedFile.toURI().toString());
+            imagePath=selectedFile.toURI().toString();
 
+
+        }
+    }
+
+
+    @FXML
+    public void adddemande(ActionEvent event) {
         // Vérifier si tous les champs sont remplis
         if (!areAllFieldsFilled()) {
             showAlert(AlertType.ERROR, "Champs vides", "Veuillez remplir tous les champs.");
@@ -177,7 +211,6 @@ public class DemandeController implements Initializable {
             return;
         }
         String descriptionValue = description.getText();
-        String imageValue = image.getText();
         String mailValue = mail.getText();
         String matriculeValue = matricule.getText();
         String marqueValue = marque.getValue();
@@ -186,25 +219,11 @@ public class DemandeController implements Initializable {
         String categorievehiculeValue = typevehicule.getValue();
         String typeboitevitesseValue = typedeboitevitesse.getValue();
 
-        // Obtenir la date actuelle
-        String datetext = daterdv.getText();
-        if (!isValidDateFormat(datetext)) {
-            showAlert(AlertType.ERROR, "Format invalide", "Le format de la date n'est pas valide.Exemple 12-12-2024");
-            return;
-        }
-        SimpleDateFormat sf = new SimpleDateFormat("dd-MM-yyyy");
-        java.util.Date dateRdv = sf.parse(datetext);
+        // Obtenir les valeurs des DatePicker
+        LocalDate date = annee.getValue();
+        LocalDate dateRdv = daterdv.getValue();
 
-        // Récupérer la date à partir du champ de texte "annee"
-        String anneetext = annee.getText();
-        if (!isValidDateFormat(anneetext)) {
-            showAlert(AlertType.ERROR, "Format invalide", "Le format de l'année n'est pas valide.Exemple 12-12-2024");
-            return;
-        }
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        java.util.Date date = sdf.parse(anneetext);
-
-        // Récupérer l'heure à partir du champ de texte "heurerdv"
+        // Obtenir la valeur de l'heure depuis le champ de texte "heurerdv"
         String heureText = heurerdv.getText();
         if (!isValidTimeFormat(heureText)) {
             showAlert(AlertType.ERROR, "Format invalide", "Le format de l'heure n'est pas valide.Exemple 12:12");
@@ -217,20 +236,15 @@ public class DemandeController implements Initializable {
             showAlert(AlertType.ERROR, "Heure invalide", "L'heure du rendez-vous doit être comprise entre 7:00h du matin à 23:00h.");
             return;
         }
-        // Convertir la Date en LocalDate
-        LocalDate dateAsLocalDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        LocalDate dateRdvAsLocalDate = dateRdv.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-        // Récupérer la date actuelle
-        // Vérification que l'année est dans le passé
+        // Validation de la date
         LocalDate currentDate = LocalDate.now();
-        if (dateAsLocalDate.isAfter(currentDate)) {
+        if (date.isAfter(currentDate)) {
             showAlert(AlertType.ERROR, "Date invalide", "La date de mise en circulation doit être dans le passé.");
             return;
         }
 
-// Vérification que la date de rendez-vous est dans le futur
-        if (dateRdvAsLocalDate.isBefore(currentDate)) {
+        if (dateRdv.isBefore(currentDate)) {
             showAlert(AlertType.ERROR, "Date invalide", "La date du rendez-vous doit être dans le futur.");
             return;
         }
@@ -246,20 +260,43 @@ public class DemandeController implements Initializable {
             showAlert(AlertType.ERROR, "Format invalide", "La matricule n'est pas valide.");
             return;
         }
+        // Convertir les LocalDate en java.sql.Date
+        java.sql.Date sqlDate = java.sql.Date.valueOf(date);
+        java.sql.Date sqlDateRdv = java.sql.Date.valueOf(dateRdv);
 
-        // Créer un objet DemandeTroc
-        DemandeTroc demandeTroc = new DemandeTroc(postTroc.getId(), new java.sql.Date(date.getTime()), new java.sql.Date(dateRdv.getTime()), heureRdv, kilometrageValue, descriptionValue, imageValue, mailValue, matriculeValue, marqueValue, modeleValue, typedecarburantValue, categorievehiculeValue, typeboitevitesseValue);
+// Créer un objet DemandeTroc
+        DemandeTroc demandeTroc = new DemandeTroc(postTroc.getId(), sqlDate, sqlDateRdv, heureRdv,
+                kilometrageValue, descriptionValue, imagePath, mailValue, matriculeValue, marqueValue, modeleValue,
+                typedecarburantValue, categorievehiculeValue, typeboitevitesseValue);
+
+
+
 
         // Ajouter la demande
         DemandetrocService demandetrocService = new DemnadeTrocService();
         demandetrocService.addDemande(demandeTroc);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+
+            // Obtenir la fenêtre principale (Stage)
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Définir la scène principale de la fenêtre
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        showAlert(AlertType.INFORMATION, "Succès", "Le post a été ajouté avec succès.");
+
+
     }
 
+
     // Méthode pour valider le format de la date
-    private boolean isValidDateFormat(String dateText) {
-        String dateRegex = "^\\d{2}-\\d{2}-\\d{4}$";
-        return dateText.matches(dateRegex);
-    }
+
 
     // Méthode pour valider le format de l'heure
     private boolean isValidTimeFormat(String timeText) {
@@ -292,7 +329,7 @@ public class DemandeController implements Initializable {
     private boolean areAllFieldsFilled() {
         return !kilometrage.getText().isEmpty() &&
                 !description.getText().isEmpty() &&
-                !image.getText().isEmpty() &&
+                !imagePath.isEmpty()&&
                 !mail.getText().isEmpty() &&
                 !matricule.getText().isEmpty() &&
                 marque.getValue() != null &&
@@ -300,13 +337,15 @@ public class DemandeController implements Initializable {
                 typedecarburant.getValue() != null &&
                 typevehicule.getValue() != null &&
                 typedeboitevitesse.getValue() != null &&
-                !daterdv.getText().isEmpty() &&
-                !annee.getText().isEmpty() &&
+               // daterdv.getValue()==null&&
+                //annee.getValue()==null &&
                 !heurerdv.getText().isEmpty();
     }
-
+private ActionEvent eventt;
     @FXML
     public void troc(ActionEvent event) {
+        eventt=event;
+        System.out.println(eventt);
         try {
             // Charger la nouvelle interface dans un Node
             FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
@@ -365,7 +404,15 @@ public class DemandeController implements Initializable {
             kilometrage.setText(""+postTroc.getKilometrage());
             description.setText(postTroc.getDescription());
             matricule.setText(postTroc.getMatricule());
-            annee.setText(""+postTroc.getAnnee());
+            // Convertir java.util.Date en java.sql.Date
+            java.util.Date dateUtil = postTroc.getAnnee();
+            java.sql.Date dateSql = new java.sql.Date(dateUtil.getTime());
+
+            // Convertir la date SQL en LocalDate
+            LocalDate anneeLocalDate = dateSql.toLocalDate();
+
+            // Définir la valeur du DatePicker
+            annee.setValue(anneeLocalDate);
             mail.setText(postTroc.getMail());
             image.setText(postTroc.getImage());
             localisation.setText(postTroc.getLocalisation());
@@ -386,7 +433,6 @@ public class DemandeController implements Initializable {
                 kilometrage.setText(""+postTroc.getKilometrage());
                 description.setText(postTroc.getDescription());
                 matricule.setText(postTroc.getMatricule());
-                annee.setText(""+postTroc.getAnnee());
                 mail.setText(postTroc.getMail());
                 image.setText(postTroc.getImage());
                 localisation.setText(postTroc.getLocalisation());
@@ -395,6 +441,15 @@ public class DemandeController implements Initializable {
                 typevehicule.setValue(postTroc.getCategorievehicule());
                 typedeboitevitesse.setValue(postTroc.getTypeboitevitesse());
                 typedecarburant.setValue(postTroc.getTypecarburant());
+                // Convertir java.util.Date en java.sql.Date
+                java.util.Date dateUtil = postTroc.getAnnee();
+                java.sql.Date dateSql = new java.sql.Date(dateUtil.getTime());
+
+                // Convertir la date SQL en LocalDate
+                LocalDate anneeLocalDate = dateSql.toLocalDate();
+
+                // Définir la valeur du DatePicker
+                annee.setValue(anneeLocalDate);
             }
         } catch (Exception ex) {
             ex.printStackTrace();

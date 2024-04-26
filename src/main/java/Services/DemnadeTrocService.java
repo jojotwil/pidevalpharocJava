@@ -14,7 +14,7 @@ public class DemnadeTrocService implements DemandetrocService <DemandeTroc> {
     @Override
     public void addDemande(DemandeTroc demande) {
         String requete = "INSERT INTO demandetroc (idposttroc_id, annee, daterdv, heurerdv, kilometrage, description, image, mail, matricule, marque, modele, typedecarburant, categorievehicule, typeboitevitesse,userdemande_id) \n" +
-                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);"; // Ajoutez une colonne pour le chemin d'accès de l'image
         try {
             PreparedStatement pst = MyConnection.getInstace().getCnx().prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
             pst.setInt(1, demande.getPostid()); // Assuming getId() returns the ID of the related PostTroc
@@ -31,7 +31,7 @@ public class DemnadeTrocService implements DemandetrocService <DemandeTroc> {
             pst.setString(12, demande.getTypedecarburant());
             pst.setString(13, demande.getCategorievehicule());
             pst.setString(14, demande.getTypeboitevitesse());
-            pst.setInt(15, 1);
+            pst.setInt(15, 1); // Remplacez ceci par l'ID de l'utilisateur connecté (si vous en avez un)
 
             pst.executeUpdate();
 

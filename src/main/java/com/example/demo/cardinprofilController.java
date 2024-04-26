@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 
 public class cardinprofilController implements Initializable {
     @FXML
-    private ImageView image;
+    private ImageView imageView;
 
 
     @FXML
@@ -64,8 +64,16 @@ public class cardinprofilController implements Initializable {
         carburant.setText(postTroc.getTypecarburant());
         boite.setText(postTroc.getTypeboitevitesse());
         description.setText(postTroc.getDescription());
-        imagee = new Image("file:" + postTroc.getImage(),190,94,false,true);
-        image.setImage(imagee);
+        try {
+            // Convertir la chaîne de caractères en objet Image
+            Image image = new Image(postTroc.getImage());
+
+            // Définir l'image sur l'ImageView
+            imageView.setImage(image);
+        } catch (Exception e) {
+            // Gérer l'erreur, par exemple afficher un message d'erreur ou une image par défaut
+            System.out.println("Erreur lors du chargement de l'image : " + e.getMessage());
+        }
     }
 
 

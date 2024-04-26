@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import Entities.DemandeTroc;
 import Entities.PostTroc;
 import Services.PostTrocService;
 import javafx.animation.TranslateTransition;
@@ -14,14 +15,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -144,12 +149,50 @@ public class postcrudController implements Initializable {
 
     private TableColumn<PostTroc,Integer> kilometragestable;
     private PostTroc postTroc;
+    private String imagePath;
+    @FXML
+    private ImageView imageview;
 
     @FXML
-    public void addposttroc() {
+    private Button btnimg;
+
+
+
+    @FXML
+    private void browseImage(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choisir une image");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Fichiers images", "*.png", "*.jpg", "*.gif"),
+                new FileChooser.ExtensionFilter("Tous les fichiers", "*.*")
+        );
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+            Image image = new Image(selectedFile.toURI().toString());
+            imageview.setImage(image);
+            System.out.println(selectedFile.toURI().toString());
+            PostTroc post=new PostTroc();
+            post.setImage(selectedFile.toURI().toString());
+            imagePath=selectedFile.toURI().toString();
+
+
+        }
+    }
+
+
+    @FXML
+    public void addposttroc(ActionEvent event)  {
+        if(annee.getValue()==null){
+            showAlert(AlertType.ERROR,"année vide","fait attetion");
+        }else {
+            System.out.println(annee.getValue());
+
+
+        }
+
         add();
         // Validation des données saisies
-        if (kilometrage.getText().isEmpty() || description.getText().isEmpty() || localisation.getText().isEmpty() || image.getText().isEmpty() ||
+        if (kilometrage.getText().isEmpty() || description.getText().isEmpty() || localisation.getText().isEmpty() || imagePath.isEmpty() ||
                 mail.getText().isEmpty() || matricule.getText().isEmpty() || marque.getValue() == null || model.getValue() == null ||
                 typedecarburant.getValue() == null || typevehicule.getValue() == null || typedeboitevitesse.getValue() == null || annee.getValue() == null) {
             // Afficher une alerte pour informer l'utilisateur des champs manquants
@@ -161,6 +204,9 @@ public class postcrudController implements Initializable {
         if (!isValidMatricule(matricule.getText())) {
             showAlert(AlertType.ERROR, "Matricule invalide", "Le format du matricule est incorrect. Exemple de format valide : 123TUN1234");
             return;
+        }
+        if(annee.getValue()==null){
+            showAlert(AlertType.ERROR,"année vide","fait attetion");
         }
 
         // Validation spécifique pour le champ de kilométrage (par exemple, s'assurer qu'il s'agit d'un nombre valide)
@@ -194,12 +240,29 @@ public class postcrudController implements Initializable {
             return;
         }
 
-        // Si toutes les validations sont réussies, créer et enregistrer le PostTroc
-        PostTroc postTroc = new PostTroc(new Date(), Integer.parseInt(kilometrage.getText()), description.getText(),
-                localisation.getText(), image.getText(), mail.getText(), matricule.getText(), marque.getValue(),
+        LocalDate dateValue = annee.getValue();
+        java.sql.Date sqlDate = java.sql.Date.valueOf(dateValue);
+
+        PostTroc postTroc = new PostTroc(sqlDate, Integer.parseInt(kilometrage.getText()), description.getText(),
+                localisation.getText(), imagePath, mail.getText(), matricule.getText(), marque.getValue(),
                 model.getValue(), typedecarburant.getValue(), typevehicule.getValue(), typedeboitevitesse.getValue());
+
         PostTrocService postTrocService = new PostTrocService();
         postTrocService.addPost(postTroc);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("profil.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+
+            // Obtenir la fenêtre principale (Stage)
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Définir la scène principale de la fenêtre
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         // Afficher une alerte pour informer l'utilisateur que l'opération a réussi
         showAlert(AlertType.INFORMATION, "Succès", "Le post a été ajouté avec succès.");
@@ -268,22 +331,30 @@ public class postcrudController implements Initializable {
     }
     public void mouseClicked(PostTroc troc) {
         try {
-            this.postTroc=troc;
+            this.postTroc = troc;
             if (postTroc != null) {
-                kilometrage.setText(""+postTroc.getKilometrage());
+                kilometrage.setText("" + postTroc.getKilometrage());
                 description.setText(postTroc.getDescription());
                 matricule.setText(postTroc.getMatricule());
-                LocalDate date = postTroc.getAnnee().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                // Utiliser setValue() pour afficher la date dans le DatePicker
-                annee.setValue(date);
                 mail.setText(postTroc.getMail());
-                image.setText(postTroc.getImage());
+                Image image = new Image(postTroc.getImage());
+                imageview.setImage(image);
                 localisation.setText(postTroc.getLocalisation());
                 marque.setValue(postTroc.getMarque());
                 model.setValue(postTroc.getModele());
                 typevehicule.setValue(postTroc.getCategorievehicule());
                 typedeboitevitesse.setValue(postTroc.getTypeboitevitesse());
                 typedecarburant.setValue(postTroc.getTypecarburant());
+
+                // Convertir java.util.Date en java.sql.Date
+                java.util.Date dateUtil = postTroc.getAnnee();
+                java.sql.Date dateSql = new java.sql.Date(dateUtil.getTime());
+
+                // Convertir la date SQL en LocalDate
+                LocalDate anneeLocalDate = dateSql.toLocalDate();
+
+                // Définir la valeur du DatePicker
+                annee.setValue(anneeLocalDate);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -292,11 +363,12 @@ public class postcrudController implements Initializable {
 
 
     @FXML
-    private void updatepost() {
+    private void updatepost(ActionEvent event) {
         // Validation des données saisies
-        if (kilometrage.getText().isEmpty() || description.getText().isEmpty() || localisation.getText().isEmpty() || image.getText().isEmpty() ||
-                mail.getText().isEmpty() || matricule.getText().isEmpty() || marque.getValue() == null || model.getValue() == null ||
-                typedecarburant.getValue() == null || typevehicule.getValue() == null || typedeboitevitesse.getValue() == null) {
+        if (kilometrage.getText().isEmpty() || description.getText().isEmpty() || localisation.getText().isEmpty() ||
+                mail.getText().isEmpty() || matricule.getText().isEmpty() || marque.getValue() == null ||
+                model.getValue() == null || typedecarburant.getValue() == null || typevehicule.getValue() == null ||
+                typedeboitevitesse.getValue() == null) {
             // Afficher une alerte pour informer l'utilisateur des champs manquants
             showAlert(AlertType.ERROR, "Champs manquants", "Veuillez remplir tous les champs obligatoires.");
             return;
@@ -328,17 +400,28 @@ public class postcrudController implements Initializable {
 
         try {
             PostTrocService postTrocService = new PostTrocService();
+            String updatedImagePath = imagePath;
+            // Vérifiez si l'image a été changée
+            if (updatedImagePath == null && this.postTroc != null) {
+                // Si l'image n'a pas été changée, récupérez l'ancien chemin d'accès à l'image
+                updatedImagePath = this.postTroc.getImage();
+            }
             PostTroc postTroc = new PostTroc(this.postTroc.getId(), new Date(), Integer.parseInt(kilometrage.getText()), description.getText(),
-                    localisation.getText(), image.getText(), mail.getText(), matricule.getText(), marque.getValue(),
+                    localisation.getText(), updatedImagePath, mail.getText(), matricule.getText(), marque.getValue(),
                     model.getValue(), typedecarburant.getValue(), typevehicule.getValue(), typedeboitevitesse.getValue());
             postTrocService.updatePost(postTroc);
             btnsave.setVisible(false);
             btndelete.setDisable(true);
             btnupdate.setDisable(true);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        showAlert(AlertType.INFORMATION, "Succès", "Le post a été MODIFIER avec succès.");
+
     }
+
     public void btnupp(){
         btnsave.setVisible(false);
     }
@@ -351,7 +434,7 @@ public class postcrudController implements Initializable {
 // Autres méthodes de validation et d'affichage d'alerte comme dans la méthode addposttroc()
 
     @FXML
-    private void deletepost(){
+    private void deletepost(ActionEvent event){
         try {
             // PostTroc postTrocid=tableView.getSelectionModel().getSelectedItem();
 
@@ -364,21 +447,7 @@ public class postcrudController implements Initializable {
                 double kilometrageValue = Double.parseDouble(kilometrageText);
 
                 // Créez l'objet PostTroc avec le kilométrage converti en double
-                PostTroc postTroc = new PostTroc(
-                        this.postTroc.getId(),
-                        new Date(),
-                        kilometrageValue, // Utilisez le kilométrage converti en double
-                        description.getText(),
-                        localisation.getText(),
-                        image.getText(),
-                        mail.getText(),
-                        matricule.getText(),
-                        marque.getValue(),
-                        model.getValue(),
-                        typedecarburant.getValue(),
-                        typevehicule.getValue(),
-                        typedeboitevitesse.getValue()
-                );
+
             } catch (NumberFormatException e) {
                 // Gérez l'exception si la chaîne n'est pas un nombre valide
                 System.out.println("La chaîne n'est pas un nombre valide.");
@@ -388,10 +457,14 @@ public class postcrudController implements Initializable {
             postTrocService.deletePost(this.postTroc);
             btndelete.setDisable(true);
             btnupdate.setDisable(true);
+
         }catch (Exception e){
             e.printStackTrace();
         }
+        showAlert(AlertType.INFORMATION, "Succès", "Le post a été supprimer avec succès.");
+
     }
+
     @FXML
     public void troc(ActionEvent event) {
         try {
@@ -401,6 +474,41 @@ public class postcrudController implements Initializable {
 
             // Accéder au contrôleur de la vue "posttroccrud.fxml"
             HelloController controller = loader.getController();
+
+            // Créer une nouvelle scène avec le nouveau contenu
+            Scene scene = new Scene(newContent);
+
+            // Obtenir la fenêtre principale (stage)
+            Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Obtenir les dimensions de l'écran
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+            // Obtenez les dimensions de l'écran
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getBounds().getWidth();
+            double screenHeight = screen.getBounds().getHeight();
+
+// Définissez la taille de la fenêtre sur les dimensions de l'écran
+            mainStage.setWidth(screenWidth-1);
+            mainStage.setHeight(screenHeight);
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void monprofil(ActionEvent event) {
+        try {
+            // Charger la nouvelle interface dans un Node
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("profil.fxml"));
+            Parent newContent = loader.load();
+
+            // Accéder au contrôleur de la vue "posttroccrud.fxml"
+            ProfilController controller = loader.getController();
 
             // Créer une nouvelle scène avec le nouveau contenu
             Scene scene = new Scene(newContent);

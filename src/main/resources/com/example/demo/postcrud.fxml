@@ -130,7 +130,7 @@
                     <children>
                         <VBox layoutX="38.0" layoutY="41.0" prefHeight="281.0" prefWidth="177.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="53.0">
                             <children>
-                                <Button mnemonicParsing="false" style="-fx-background-color: black;" text="Mon Profil" textFill="WHITE">
+                                <Button mnemonicParsing="false" onAction="#monprofil" style="-fx-background-color: black;" text="Mon Profil" textFill="WHITE">
                                     <VBox.margin>
                                         <Insets left="20.0" />
                                     </VBox.margin>
@@ -212,8 +212,13 @@
                                           <TextField fx:id="description" GridPane.rowIndex="3" />
                                           <TextField fx:id="mail" GridPane.rowIndex="5" />
                                           <TextField fx:id="kilometrage" GridPane.rowIndex="7" />
-                                          <TextField fx:id="image" GridPane.rowIndex="9" />
                                           <TextField fx:id="localisation" prefHeight="52.0" prefWidth="328.0" GridPane.rowIndex="11" />
+                                          <ImageView fx:id="imageview" fitHeight="46.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="9">
+                                             <image>
+                                                <Image url="@images/voituretroc3.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Button fx:id="btnimg" mnemonicParsing="false" onAction="#browseImage" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="add photo" textFill="#fffefe" GridPane.halignment="RIGHT" GridPane.rowIndex="9" />
                                        </children>
                                     </GridPane>
                                     <GridPane layoutX="269.0" layoutY="56.0" prefHeight="419.0" prefWidth="308.0" AnchorPane.leftAnchor="450.0">
@@ -246,7 +251,7 @@
                                           <Label text="Matricule" GridPane.halignment="LEFT" GridPane.rowIndex="6" />
                                           <Label text="Type de boite vitesse" GridPane.halignment="LEFT" GridPane.rowIndex="8" />
                                           <Label text="Type de Vehicule" GridPane.halignment="LEFT" GridPane.rowIndex="10" />
-                                          <DatePicker fx:id="ann" prefHeight="31.0" prefWidth="312.0" GridPane.rowIndex="5" />
+                                          <DatePicker fx:id="annee" prefHeight="31.0" prefWidth="312.0" GridPane.rowIndex="5" />
                                        </children>
                                     </GridPane>
                                     <Button fx:id="btnsave" layoutX="319.0" layoutY="495.0" mnemonicParsing="false" onAction="#addposttroc" prefHeight="33.0" prefWidth="172.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="save" textFill="#fffefe" />
@@ -257,6 +262,7 @@
                                        </font>
                                     </Label>
                                     <Button fx:id="btnupdate" layoutX="80.0" layoutY="495.0" mnemonicParsing="false" onAction="#updatepost" prefHeight="33.0" prefWidth="172.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="update" textFill="WHITE" />
+                                    <Button fx:id="profil" layoutX="16.0" layoutY="19.0" mnemonicParsing="false" onAction="#monprofil" prefHeight="20.0" prefWidth="82.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="back" textFill="#fffefe" />
                                  </children>
                                  <padding>
                                     <Insets top="30.0" />

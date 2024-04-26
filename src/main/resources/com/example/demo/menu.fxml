@@ -28,7 +28,7 @@
             </HBox>
             <AnchorPane prefHeight="109.0" prefWidth="230.0">
                <children>
-                  <ImageView fx:id="image" fitHeight="93.0" fitWidth="127.0" layoutX="8.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="66.0" AnchorPane.topAnchor="7.0">
+                  <ImageView fx:id="imageView" fitHeight="93.0" fitWidth="127.0" layoutX="8.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="66.0" AnchorPane.topAnchor="7.0">
                      <image>
                         <Image url="@images/voituretroc3.png" />
                      </image></ImageView>

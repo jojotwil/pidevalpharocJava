@@ -9,138 +9,141 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane fx:id="anchorpane" prefHeight="250.0" prefWidth="634.0" style="-fx-background-color: white; -fx-background-radius: 5px; -fx-effect: dropshadow(three-pass-box,rgba(0,0,0,0.5),5,0,0,0);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.cardinprofilController">
+<AnchorPane fx:id="anchorpane" prefHeight="266.0" prefWidth="695.0" style="-fx-background-color: white; -fx-background-radius: 5px; -fx-effect: dropshadow(three-pass-box,rgba(0,0,0,0.5),5,0,0,0);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.cardinprofilController">
    <children>
-      <HBox layoutX="28.0" layoutY="14.0" prefHeight="186.0" prefWidth="634.0" AnchorPane.bottomAnchor="-15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane prefHeight="250.0" prefWidth="706.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fx:id="image" fitHeight="269.0" fitWidth="189.0" pickOnBounds="true" preserveRatio="true">
-               <HBox.margin>
-                  <Insets left="20.0" top="25.0" />
-               </HBox.margin>
-               <image>
-                  <Image url="@images/voituretroc3.png" />
-               </image>
-            </ImageView>
-            <VBox prefHeight="169.0" prefWidth="443.0">
+            <HBox prefHeight="186.0" prefWidth="634.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <HBox prefHeight="13.0" prefWidth="425.0">
+                  <ImageView fx:id="imageView" fitHeight="159.0" fitWidth="189.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="20.0" top="25.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@images/voituretroc3.png" />
+                     </image>
+                  </ImageView>
+                  <VBox prefHeight="169.0" prefWidth="443.0">
                      <children>
-                        <Button fx:id="supprimer" mnemonicParsing="false" onAction="#deletepost" prefHeight="31.0" prefWidth="110.0" style="-fx-background-color: white;" text="Supprimer">
-                           <HBox.margin>
-                              <Insets left="310.0" top="5.0" />
-                           </HBox.margin>
-                           <graphic>
-                              <ImageView fitHeight="18.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@images/poubelle.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
+                        <HBox prefHeight="13.0" prefWidth="425.0">
+                           <children>
+                              <Button fx:id="supprimer" mnemonicParsing="false" onAction="#deletepost" prefHeight="31.0" prefWidth="110.0" style="-fx-background-color: white;" text="Supprimer">
+                                 <HBox.margin>
+                                    <Insets left="310.0" top="5.0" />
+                                 </HBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="18.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/poubelle.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="27.0" prefWidth="443.0">
+                           <children>
+                              <Label text="Marque: ">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="marque" text="Label">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="15.0" top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="36.0" prefHeight="27.0" prefWidth="443.0">
+                           <children>
+                              <Label text="Model: ">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="model" text="Label" />
+                           </children>
+                           <VBox.margin>
+                              <Insets left="15.0" top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="36.0" prefHeight="27.0" prefWidth="443.0">
+                           <children>
+                              <Label text="Type du carburant: ">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="carburant" text="Label">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="15.0" top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="90.0" prefHeight="27.0" prefWidth="443.0">
+                           <children>
+                              <Label text="Type du boite vitessse: ">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="boite" text="Label">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="15.0" top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="117.0" prefHeight="27.0" prefWidth="443.0">
+                           <children>
+                              <Label text="Description: ">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="description" text="Label">
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="15.0" top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="144.0" prefHeight="27.0" prefWidth="443.0">
+                           <children>
+                              <Button fx:id="demandes" mnemonicParsing="false" onAction="#demande" prefHeight="31.0" prefWidth="146.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Demandes">
+                                 <HBox.margin>
+                                    <Insets left="45.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="modifier" mnemonicParsing="false" onAction="#modifier" prefHeight="31.0" prefWidth="137.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Modifier">
+                                 <HBox.margin>
+                                    <Insets left="55.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </HBox>
                      </children>
-                  </HBox>
-                  <HBox prefHeight="27.0" prefWidth="443.0">
-                     <children>
-                        <Label text="Marque: ">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </Label>
-                        <Label fx:id="marque" text="Label">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                     <VBox.margin>
-                        <Insets left="15.0" top="5.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox layoutX="10.0" layoutY="36.0" prefHeight="27.0" prefWidth="443.0">
-                     <children>
-                        <Label text="Model: ">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </Label>
-                        <Label fx:id="model" text="Label" />
-                     </children>
-                     <VBox.margin>
-                        <Insets left="15.0" top="5.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox layoutX="10.0" layoutY="36.0" prefHeight="27.0" prefWidth="443.0">
-                     <children>
-                        <Label text="Type du carburant: ">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </Label>
-                        <Label fx:id="carburant" text="Label">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                     <VBox.margin>
-                        <Insets left="15.0" top="5.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox layoutX="10.0" layoutY="90.0" prefHeight="27.0" prefWidth="443.0">
-                     <children>
-                        <Label text="Type du boite vitessse: ">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </Label>
-                        <Label fx:id="boite" text="Label">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                     <VBox.margin>
-                        <Insets left="15.0" top="5.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox layoutX="10.0" layoutY="117.0" prefHeight="27.0" prefWidth="443.0">
-                     <children>
-                        <Label text="Description: ">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </Label>
-                        <Label fx:id="description" text="Label">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                     <VBox.margin>
-                        <Insets left="15.0" top="5.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox layoutX="10.0" layoutY="144.0" prefHeight="27.0" prefWidth="443.0">
-                     <children>
-                        <Button fx:id="demandes" mnemonicParsing="false" onAction="#demande" prefHeight="31.0" prefWidth="146.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Demandes">
-                           <HBox.margin>
-                              <Insets left="45.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button fx:id="modifier" mnemonicParsing="false" onAction="#modifier" prefHeight="31.0" prefWidth="137.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Modifier">
-                           <HBox.margin>
-                              <Insets left="55.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </HBox>
+                  </VBox>
                </children>
-            </VBox>
+            </HBox>
          </children>
-      </HBox>
+      </AnchorPane>
    </children>
 </AnchorPane>

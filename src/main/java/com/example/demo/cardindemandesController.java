@@ -78,8 +78,16 @@ public class cardindemandesController implements Initializable {
             carburant.setText(this.DemandeTroc.getTypedecarburant());
             boite.setText(this.DemandeTroc.getTypeboitevitesse());
             description.setText(this.DemandeTroc.getDescription());
-            imagee = new Image("file:" + this.DemandeTroc.getImage(), 190, 94, false, true);
-            image.setImage(imagee);
+
+            try {
+                imagee = new Image( this.DemandeTroc.getImage());
+                image.setImage(imagee);
+            } catch (Exception e) {
+                // Gérer l'erreur, par exemple afficher un message d'erreur ou une image par défaut
+                System.out.println("Erreur lors du chargement de l'image : " + e.getMessage());
+            }
+
+
         } else {
             // Gérer le cas où DemandeTroc est null
             System.out.println("DemandeTroc est null dans postdata()");
