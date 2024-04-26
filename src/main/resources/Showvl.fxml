@@ -28,7 +28,7 @@
       <Button fx:id="btnajouter" layoutX="263.0" layoutY="564.0" mnemonicParsing="false" onAction="#Ajout" prefHeight="51.0" prefWidth="162.0" text="Ajouter" />
       <Button fx:id="btnsuprimer" layoutX="452.0" layoutY="564.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="51.0" prefWidth="171.0" text="suprimer" />
       <Button fx:id="btnmodifier" layoutX="646.0" layoutY="565.0" mnemonicParsing="false" onAction="#modifier" prefHeight="51.0" prefWidth="162.0" text="modifier" />
-      <Button fx:id="btnclear" layoutX="826.0" layoutY="565.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="171.0" text="Clear" />
+      <Button fx:id="btnclear" layoutX="826.0" layoutY="565.0" mnemonicParsing="false" onAction="#louer" prefHeight="51.0" prefWidth="171.0" text="Louer" />
       <Button fx:id="btnsave" layoutX="74.0" layoutY="564.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="171.0" text="Save" />
       <VBox layoutX="33.0" layoutY="120.0" prefHeight="370.0" prefWidth="265.0" spacing="10.0">
          <children>

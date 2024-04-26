@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alpharoc.pidev.controllers.gestionlocation.Addloca">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="720.0" prefWidth="600.0">
+         <children>
+            <VBox layoutX="121.0" layoutY="126.0" prefHeight="383.0" prefWidth="358.0" spacing="10.0">
+               <children>
+                  <Label text="Description" />
+                  <TextField fx:id="tfdescrp" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="localisation" />
+                  <TextField fx:id="tfloca" />
+                  <Label text="Date de debut:" />
+                  <DatePicker fx:id="tfdatedebut" />
+                  <Label layoutX="10.0" layoutY="138.0" text="Date de fin:" />
+                  <DatePicker fx:id="tfdatefin" layoutX="10.0" layoutY="166.0" />
+               </children>
+            </VBox>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="206.0" layoutY="44.0" text="Ajout location" textAlignment="CENTER" textFill="#0a2f55" textOverrun="CLIP">
+               <font>
+                  <Font name="Berlin Sans FB" size="36.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </Label>
+            <ButtonBar layoutX="47.0" layoutY="526.0" prefHeight="91.0" prefWidth="532.0">
+               <buttons>
+                  <Button fx:id="btnsave" mnemonicParsing="false" onAction="#ajouter" prefHeight="41.0" prefWidth="100.0" text="Enregistrer" textFill="#10215e" />
+                  <Button fx:id="btannuler" mnemonicParsing="false" onAction="#annuler" prefHeight="34.0" prefWidth="346.0" text="Annuler" />
+               </buttons>
+            </ButtonBar>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

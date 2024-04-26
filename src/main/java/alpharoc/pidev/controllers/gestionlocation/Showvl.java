@@ -247,4 +247,44 @@ ObservableList<VehiculeLouer>initialData(){
         alert.showAndWait();
     }
 
+    @FXML
+    public void louer(ActionEvent actionEvent) {
+        // Get the selected ID from the TableView
+        int selectedId = getIdFromSelectedRow();
+
+        // Load the Addloca FXML file
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Addloca.fxml"));
+        Parent root;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        // Set the controller for the Addloca FXML file
+        Addloca controller = loader.getController();
+        controller.setSelectedId(selectedId);
+
+        // Create a new Scene and show it
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    private int getIdFromSelectedRow() {
+        // Get the selected item from the TableView
+        VehiculeLouer selectedObject = table.getSelectionModel().getSelectedItem();
+
+        // Assuming YourObject has a method getId() to get the ID
+        if (selectedObject != null) {
+            return selectedObject.getId();
+        } else {
+            // Handle case where no row is selected
+            return -1; // Or whatever default value you want to use
+        }
+    }
+
+
 }

@@ -59,6 +59,13 @@ public class addvl implements Initializable {
         }
         return false;
     }*/
+   private void showAlertDialog(Alert.AlertType type, String title, String header, String content) {
+       Alert alert = new Alert(type);
+       alert.setTitle(title);
+       alert.setHeaderText(header);
+       alert.setContentText(content);
+       alert.showAndWait();
+   }
    private void showAlert(Alert.AlertType alertType, String title, String message) {
        Alert alert = new Alert(alertType); // Crée une nouvelle boîte de dialogue de type alerte
        alert.setTitle(title); // Définit le titre de la boîte de dialogue
@@ -69,19 +76,52 @@ public class addvl implements Initializable {
    private boolean isValidmarque(String marque) {
        return marque.matches("[a-zA-Z]+");
    }
+
+    private boolean isInputValid() {
+        String errorMessage = "";
+
+        if ( tfmarque.getText() == null ||tfmarque.getText().isEmpty()) {
+            errorMessage += "Le champ de marque est vide !\n";
+        }
+
+        if (tfdate.getValue() == null) {
+            errorMessage += "Aucune date sélectionnée !\n";
+        }
+
+
+
+        if (tfmodele.getText() == null || tfmodele.getText().isEmpty()) {
+            errorMessage += "Le champ de modele est vide !\n";
+        }
+
+        if (tfdescrp.getText() == null || tfdescrp.getText().isEmpty()) {
+            errorMessage += "Le champ de descreption est vide !\n";
+        }
+
+        if (!errorMessage.isEmpty()) {
+            showAlertDialog(Alert.AlertType.ERROR, "Erreur de validation", "Veuillez corriger les erreurs suivantes", errorMessage);
+            return false;
+        }
+        return true;
+    }
     @FXML
     void addvl(ActionEvent event) {
+       if ((isInputValid())){
         String resmarque = tfmarque.getText();
         if (!isValidmarque(resmarque)) {
-            showAlert(Alert.AlertType.ERROR, "Erreur de saisie", " Doit contenir que des lettres.");
+            showAlert(Alert.AlertType.ERROR, "Erreur de saisie de marque", " Doit contenir que des lettres.");
             return;
         }
-        if(tfmarque.getText().isEmpty())
-        {
-
-        }
         String resmodele = tfmodele.getText();
+           if (!isValidmarque(resmodele)) {
+               showAlert(Alert.AlertType.ERROR, "Erreur de saisie de modele", " Doit contenir que des lettres.");
+               return;
+           }
         String resdescr= tfdescrp.getText();
+           if (!isValidmarque(resdescr)) {
+               showAlert(Alert.AlertType.ERROR, "Erreur de saisie de descreption", " Doit contenir que des lettres.");
+               return;
+           }
       // Date resdate= tfdate.getDate();
         //nked fazet ta6ou date men form
         Date periode_dispo = new Date();
@@ -91,9 +131,10 @@ public class addvl implements Initializable {
         VehiculeLouer p = new VehiculeLouer(resmarque,resmodele,resdescr,periode_dispo,restype,rescato);
         VehiculeLouerServie ps = new VehiculeLouerServie();
         ps.addEntity2(p);
-    }
+    }}
 
     @FXML
+
     void annuler(ActionEvent event) {
 
         tfmarque.setText(""); // Efface le contenu du champ
@@ -109,35 +150,6 @@ public class addvl implements Initializable {
         tfcato1.getItems().addAll(choix1);
         tftypecarb1.getItems().addAll(choix2);
     }
-   /* private boolean isInputValid() {
-        String errorMessage = "";
 
-        if (titreField.getText() == null || titreField.getText().isEmpty()) {
-            errorMessage += "Le champ titre est vide !\n";
-        }
 
-        if (dateDebutPicker.getValue() == null) {
-            errorMessage += "Aucune date de début sélectionnée !\n";
-        }
-
-        if (dateFinPicker.getValue() == null) {
-            errorMessage += "Aucune date de fin sélectionnée !\n";
-        } else if (dateDebutPicker.getValue() != null && dateFinPicker.getValue().isBefore(dateDebutPicker.getValue())) {
-            errorMessage += "La date de fin ne peut pas être avant la date de début !\n";
-        }
-
-        if (themeField.getText() == null || themeField.getText().isEmpty()) {
-            errorMessage += "Le champ thème est vide !\n";
-        }
-
-        if (localisationField.getText() == null || localisationField.getText().isEmpty()) {
-            errorMessage += "Le champ localisation est vide !\n";
-        }
-
-        if (!errorMessage.isEmpty()) {
-            showAlertDialog(Alert.AlertType.ERROR, "Erreur de validation", "Veuillez corriger les erreurs suivantes", errorMessage);
-            return false;
-        }
-        return true;
-    }*/
 }
