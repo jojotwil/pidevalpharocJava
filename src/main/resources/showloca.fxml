@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="200.0" prefWidth="400.0"  xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alpharoc.pidev.controllers.gestionlocation.Showloca">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="717.0" layoutX="-12.0" stroke="#0000000e" strokeType="INSIDE" width="208.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#415e79" />
+                  <Stop color="#163346" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <AnchorPane layoutX="2.0" layoutY="-10.0" prefHeight="700.0" prefWidth="300.0">
+         <children>
+            <Button fx:id="btnajouter" layoutX="20.0" layoutY="231.0" mnemonicParsing="false" onAction="#Ajout" prefHeight="51.0" prefWidth="162.0" text="Ajouter" />
+            <Button fx:id="btnsuprimer" layoutX="16.0" layoutY="312.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="51.0" prefWidth="171.0" text="suprimer" />
+            <Button fx:id="btnmodifier" layoutX="20.0" layoutY="395.0" mnemonicParsing="false" onAction="#modifier" prefHeight="51.0" prefWidth="162.0" text="modifier" />
+            <TableView fx:id="table" layoutX="592.0" layoutY="103.0" prefHeight="390.0" prefWidth="590.0">
+              <columns>
+                  <TableColumn fx:id="colid" prefWidth="75.0" text="id" />
+                  <TableColumn fx:id="colidvl" prefWidth="75.0" text="id vehicule" />
+                <TableColumn fx:id="coldes" prefWidth="75.0" text="Description" />
+                <TableColumn fx:id="colloca" prefWidth="132.79998779296875" text="localisation" />
+                  <TableColumn fx:id="colDaDebut" prefWidth="87.199951171875" text="Date de debut:" />
+                  <TableColumn fx:id="coldatefin" prefWidth="111.2000732421875" text="Date de fin:" />
+              </columns>
+            </TableView>
+            <VBox layoutX="236.0" layoutY="164.0" prefHeight="295.0" prefWidth="310.0" spacing="10.0">
+               <children>
+                  <Label text="Description" />
+                  <TextField fx:id="tfdescrp" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="localisation" />
+                  <TextField fx:id="tfloca" />
+                  <Label text="Date de debut:" />
+                  <DatePicker fx:id="tfdatedebut" />
+                  <Label layoutX="10.0" layoutY="138.0" text="Date de fin:" />
+                  <DatePicker fx:id="tfdatefin" layoutX="10.0" layoutY="166.0" />
+               </children>
+            </VBox>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="54.0" layoutX="-3.0" layoutY="1.0" stroke="#ffffff41" strokeType="INSIDE" width="1307.0">
+               <fill>
+                  <LinearGradient endX="0.1893203883495146" endY="0.21359223300970875" startX="0.18446601941747576" startY="0.6844660194174758">
+                     <stops>
+                        <Stop color="#275f90" />
+                        <Stop color="#073e65" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Label layoutX="437.0" layoutY="5.0" prefHeight="42.0" prefWidth="162.0" text="location" textFill="WHITE">
+               <font>
+                  <Font name="HoloLens MDL2 Assets" size="35.0" />
+               </font>
+            </Label>
+            <ProgressBar layoutY="55.0" prefHeight="25.0" prefWidth="101.0" style="-fx-border-color: #c2b8b8;" />
+            <ProgressBar layoutY="77.0" prefHeight="25.0" prefWidth="144.0" style="-fx-border-color: #c2b8b8;" />
+            <ProgressBar accessibleRole="CHECK_BOX" layoutY="99.0" prefHeight="25.0" prefWidth="175.0" style="-fx-border-color: #c2b8b8;" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -96,6 +97,16 @@ int id;
         showvehicule();
         Rescato.getItems().addAll(choix1);
         Restypecarb.getItems().addAll(choix2);
+        table.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                try {
+                    handleRowSelection(); // Pass the new selection to handleRowSelection
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
     }
 ObservableList<VehiculeLouer>initialData(){
         VehiculeLouerServie V = new VehiculeLouerServie();
@@ -249,28 +260,24 @@ ObservableList<VehiculeLouer>initialData(){
 
     @FXML
     public void louer(ActionEvent actionEvent) {
-        // Get the selected ID from the TableView
+
+    }
+
+    @FXML
+    private void handleRowSelection() throws IOException {
         int selectedId = getIdFromSelectedRow();
 
-        // Load the Addloca FXML file
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Addloca.fxml"));
-        Parent root;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
+        if (selectedId != -1) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/addloca.fxml"));
+            Parent root = loader.load();
+            Addloca l = loader.getController();
+
+            l.setSelectedId(selectedId);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
         }
-
-        // Set the controller for the Addloca FXML file
-        Addloca controller = loader.getController();
-        controller.setSelectedId(selectedId);
-
-        // Create a new Scene and show it
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
     }
 
     private int getIdFromSelectedRow() {
@@ -285,6 +292,9 @@ ObservableList<VehiculeLouer>initialData(){
             return -1; // Or whatever default value you want to use
         }
     }
+
+
+
 
 
 }

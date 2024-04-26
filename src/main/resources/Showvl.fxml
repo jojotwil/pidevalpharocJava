@@ -4,33 +4,47 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alpharoc.pidev.controllers.gestionlocation.Showvl">
+<AnchorPane prefHeight="300.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alpharoc.pidev.controllers.gestionlocation.Showvl">
    <children>
-      <TableView fx:id="table" layoutX="425.0" layoutY="38.0" onMouseClicked="#getData" prefHeight="476.0" prefWidth="788.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="700.0" layoutX="-22.0" layoutY="7.0" stroke="#0000000e" strokeType="INSIDE" width="208.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#415e79" />
+                  <Stop color="#163346" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <TableView fx:id="table" layoutX="492.0" layoutY="119.0" onMouseClicked="#getData" prefHeight="476.0" prefWidth="788.0">
         <columns>
             <TableColumn fx:id="colid" prefWidth="75.0" text="id" />
           <TableColumn fx:id="colmarque" prefWidth="75.0" text="marque" />
           <TableColumn fx:id="colmodele" prefWidth="118.40003967285156" text="modele" />
             <TableColumn fx:id="coldesc" prefWidth="113.5999755859375" text="description" />
             <TableColumn fx:id="colperiode" prefWidth="120.0" text="periode desponible" />
-            <TableColumn fx:id="colctype" prefWidth="100.79998779296875" text="type carburant" />
-            <TableColumn fx:id="colcategorie" prefWidth="106.40008544921875" text="categorie" />
-            <TableColumn fx:id="colmarque1" prefWidth="75.0" text="marque" />
+            <TableColumn fx:id="colctype" prefWidth="155.2000732421875" text="type carburant" />
+            <TableColumn fx:id="colcategorie" prefWidth="128.7999267578125" text="categorie" />
         </columns>
       </TableView>
-      <Button fx:id="btnajouter" layoutX="263.0" layoutY="564.0" mnemonicParsing="false" onAction="#Ajout" prefHeight="51.0" prefWidth="162.0" text="Ajouter" />
-      <Button fx:id="btnsuprimer" layoutX="452.0" layoutY="564.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="51.0" prefWidth="171.0" text="suprimer" />
-      <Button fx:id="btnmodifier" layoutX="646.0" layoutY="565.0" mnemonicParsing="false" onAction="#modifier" prefHeight="51.0" prefWidth="162.0" text="modifier" />
-      <Button fx:id="btnclear" layoutX="826.0" layoutY="565.0" mnemonicParsing="false" onAction="#louer" prefHeight="51.0" prefWidth="171.0" text="Louer" />
-      <Button fx:id="btnsave" layoutX="74.0" layoutY="564.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="171.0" text="Save" />
-      <VBox layoutX="33.0" layoutY="120.0" prefHeight="370.0" prefWidth="265.0" spacing="10.0">
+      <Button fx:id="btnajouter" layoutX="12.0" layoutY="252.0" mnemonicParsing="false" onAction="#Ajout" prefHeight="54.0" prefWidth="162.0" text="Ajouter" />
+      <Button fx:id="btnsuprimer" layoutX="9.0" layoutY="328.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="51.0" prefWidth="171.0" text="suprimer" />
+      <Button fx:id="btnmodifier" layoutX="11.0" layoutY="405.0" mnemonicParsing="false" onAction="#modifier" prefHeight="51.0" prefWidth="162.0" text="modifier" />
+      <Button fx:id="btnclear" layoutX="9.0" layoutY="476.0" mnemonicParsing="false" onAction="#louer" prefHeight="51.0" prefWidth="171.0" text="Louer" />
+      <Button fx:id="btnsave" layoutX="14.0" layoutY="190.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="162.0" text="Save" />
+      <VBox layoutX="199.0" layoutY="192.0" prefHeight="370.0" prefWidth="265.0" spacing="10.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Marque" />
             <TextField fx:id="Resmarque" onMouseClicked="#getData" />
@@ -46,5 +60,23 @@
             <ComboBox fx:id="Rescato" prefWidth="150.0" />
          </children>
       </VBox>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="54.0" layoutX="-11.0" stroke="#ffffff41" strokeType="INSIDE" width="1291.0">
+         <fill>
+            <LinearGradient endX="0.1893203883495146" endY="0.21359223300970875" startX="0.18446601941747576" startY="0.6844660194174758">
+               <stops>
+                  <Stop color="#275f90" />
+                  <Stop color="#073e65" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Label layoutX="357.0" layoutY="8.0" text="Vehicule a louer" textFill="WHITE">
+         <font>
+            <Font name="HoloLens MDL2 Assets" size="35.0" />
+         </font>
+      </Label>
+      <ProgressBar layoutY="54.0" prefHeight="25.0" prefWidth="101.0" style="-fx-border-color: #c2b8b8;" />
+      <ProgressBar layoutY="76.0" prefHeight="25.0" prefWidth="144.0" style="-fx-border-color: #c2b8b8;" />
+      <ProgressBar accessibleRole="CHECK_BOX" layoutY="98.0" prefHeight="25.0" prefWidth="175.0" style="-fx-border-color: #c2b8b8;" />
    </children>
 </AnchorPane>

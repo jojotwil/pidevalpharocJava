@@ -1,5 +1,6 @@
 package alpharoc.pidev.entities;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class loca {
@@ -28,6 +29,9 @@ public class loca {
         this.localisation = localisation;
         this.date_debut = date_debut;
         this.date_fin = date_fin;
+    }
+
+    public loca(int vehichuleLouerid, String descr, String locati, LocalDate datedeb, LocalDate datefin) {
     }
 
     public int getId() {

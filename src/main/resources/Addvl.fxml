@@ -14,7 +14,7 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alpharoc.pidev.controllers.gestionlocation.addvl">
    <children>
-      <VBox layoutX="133.0" layoutY="122.0" prefHeight="462.0" prefWidth="358.0" spacing="10.0">
+      <VBox layoutX="133.0" layoutY="122.0" prefHeight="383.0" prefWidth="358.0" spacing="10.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Marque" />
             <TextField fx:id="tfmarque" />
@@ -38,10 +38,10 @@
             <Glow />
          </effect>
       </Label>
-      <ButtonBar layoutX="47.0" layoutY="584.0" prefHeight="91.0" prefWidth="532.0">
+      <ButtonBar layoutX="47.0" layoutY="526.0" prefHeight="91.0" prefWidth="532.0">
          <buttons>
-            <Button fx:id="btnsave" mnemonicParsing="false" onAction="#addvl" prefHeight="100.0" prefWidth="100.0" text="Enregistrer" textFill="#10215e" />
             <Button fx:id="btannuler" mnemonicParsing="false" onAction="#annuler" prefHeight="34.0" prefWidth="346.0" text="Annuler" />
+            <Button fx:id="btnsave" mnemonicParsing="false" onAction="#addvl" prefHeight="41.0" prefWidth="100.0" text="Enregistrer" textFill="#10215e" />
          </buttons>
       </ButtonBar>
    </children>

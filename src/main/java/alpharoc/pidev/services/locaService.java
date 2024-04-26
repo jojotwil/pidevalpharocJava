@@ -3,6 +3,8 @@ package alpharoc.pidev.services;
 import alpharoc.pidev.entities.loca;
 import alpharoc.pidev.interfaces.Iloca;
 import alpharoc.pidev.tools.MyConnexion;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -63,6 +65,27 @@ public class locaService implements Iloca<loca> {
         }
     }
 
+
+    public boolean locaExists(int id) {
+        String query = "SELECT COUNT(*) FROM loca WHERE id = ?";
+        try (PreparedStatement ps = MyConnexion.getInstance().getCnx().prepareStatement(query)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    int count = rs.getInt(1);
+                    if (count > 0) {
+                        System.out.println("exist");
+                    } else {
+                        System.out.println("doesn't exist");
+                    }
+                    return count > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     @Override
     public List<loca> getAllData() {
         List<loca> data = new ArrayList<>();
@@ -86,24 +109,28 @@ public class locaService implements Iloca<loca> {
         return data;
     }
 
-    public boolean locaExists(int id) {
-        String query = "SELECT COUNT(*) FROM loca WHERE id = ?";
-        try (PreparedStatement ps = MyConnexion.getInstance().getCnx().prepareStatement(query)) {
-            ps.setInt(1, id);
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    int count = rs.getInt(1);
-                    if (count > 0) {
-                        System.out.println("exist");
-                    } else {
-                        System.out.println("doesn't exist");
-                    }
-                    return count > 0;
-                }
+    public ObservableList<loca> getloca(){
+        ObservableList<loca> data= FXCollections.observableArrayList();
+        //  con = ;
+        String requete = "SELECT * FROM loca";
+        try {
+            Statement st = MyConnexion.getInstance().getCnx().createStatement();
+            ResultSet rs = st.executeQuery(requete);
+            while (rs.next()){
+
+                loca loca = new loca();
+                loca.setId(rs.getInt(1));
+                loca.setVehichuleLouerid(rs.getInt("vehiculelouer_id"));
+                loca.setDescription(rs.getString("description"));
+                loca.setLocalisation(rs.getString("localisation"));
+                loca.setDate_debut(rs.getDate("date_debut"));
+                loca.setDate_fin(rs.getDate("date_fin"));
+                data.add(loca);
             }
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
-        return false;
+        return data;
     }
 }
