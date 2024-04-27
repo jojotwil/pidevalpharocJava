@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="284.0" prefWidth="363.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.listBoutiqueCardFrontController">
+    <children>
+        <Label fx:id="labelidBoutique" contentDisplay="CENTER" prefHeight="30.0" prefWidth="126.0" stylesheets="@style.css" text="Nom Boutique" textFill="#720000" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true"/>
+
+        <VBox alignment="CENTER" layoutY="6.0" prefHeight="271.0" prefWidth="363.0">
+            <children>
+                <HBox prefHeight="58.0" prefWidth="354.0">
+               <children>
+                        <ImageView fx:id="imgBoutique" fitHeight="111.0" fitWidth="353.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="28.0" prefWidth="84.0">
+                    <children>
+                        <Label fx:id="labelNomBoutique" contentDisplay="CENTER" prefHeight="30.0" prefWidth="126.0" styleClass="zina" stylesheets="@style.css" text="Nom Boutique" textFill="#720000" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
+                            <font>
+                                <Font name="Cambria Bold" size="32.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                            <padding>
+                                <Insets left="15.0" />
+                            </padding>
+                        </Label>
+                    </children>
+                    <opaqueInsets>
+                        <Insets left="20.0" right="20.0" />
+                    </opaqueInsets>
+                </HBox>
+
+
+
+            <Pane prefHeight="46.0" prefWidth="354.0">
+               <children>
+                   <Button fx:id="btnAjouterProduit" layoutX="207.0" layoutY="-1.0" onAction="#ajouterProduit" prefHeight="32.0" prefWidth="130.0" styleClass="btn" stylesheets="@style.css" text="Ajouter Produit" />
+                   <Button fx:id="btnDetailsBoutique" layoutX="56.0" onAction="#showDetails" prefHeight="32.0" prefWidth="126.0" styleClass="btn" stylesheets="@style.css" text="détails" />
+               </children>
+            </Pane>
+
+            </children>
+        </VBox>
+    </children>
+    <styleClass>
+        <String fx:value="cr" />
+        <String fx:value="ct" />
+    </styleClass>
+</AnchorPane>

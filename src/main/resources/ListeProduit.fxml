@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="574.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ListProduitController">
+    <children>
+        <Label layoutX="54.0" layoutY="29.0" prefHeight="50.0" prefWidth="292.0" text="| Liste Des Produits">
+            <font>
+                <Font name="Cambria Bold" size="26.0" />
+            </font>
+         <textFill>
+            <LinearGradient cycleMethod="REFLECT" endX="0.7357954545454545" endY="0.6250000009031007" startX="0.6212121496597927" startY="0.8181818326314291">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.9263157844543457" green="0.058323588222265244" blue="0.4778531491756439" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+        </Label>
+        <Label layoutX="55.0" layoutY="88.0" prefHeight="19.0" prefWidth="782.0" text="Id            Titre         Prix            Description                      Type                     Catégorie" textFill="#6e6e6e">
+            <font>
+                <Font name="Cambria Bold" size="16.0" />
+            </font>
+        </Label>
+        <VBox fx:id="vBox" layoutX="54.0" layoutY="116.0" prefHeight="426.0" prefWidth="633.0" />
+        <TextField fx:id="searchbar_id" layoutX="406.0" layoutY="25.0" prefHeight="40.0" prefWidth="170.0" stylesheets="@style.css">
+         <styleClass>
+            <String fx:value="text-field2" />
+            <String fx:value="text-field:hover" />
+         </styleClass></TextField>
+        <Button fx:id="search_id" layoutX="599.0" layoutY="25.0" mnemonicParsing="false" onAction="#SearchForProduit" prefHeight="40.0" prefWidth="118.0" styleClass="background" stylesheets="@style.css" text="Rechercher" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+
+    </children>
+</AnchorPane>

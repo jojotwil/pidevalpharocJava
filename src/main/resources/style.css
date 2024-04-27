@@ -1,0 +1,106 @@
+/* Style CSS */
+
+/* Style de la racine */
+
+.background{ -fx-background-color: linear-gradient(from 77.2727% 62.8788% to 100.0% 100.0%, reflect, #1e0111 0.0%, #fa007d 100.0%);
+    -fx-effect: dropshadow(three-pass-box,#AAAAAA, 3 , 0 , 0 , 3);
+
+}
+/* Style du bouton */
+.btn {
+    -fx-background-color: linear-gradient(to right ,#FF007F ,#FF69B4);
+      -fx-effect: dropshadow(three-pass-box,#AAAAAA, 3 , 0 , 0 , 3);
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-style: solid;
+    -fx-border-color:#C71585;
+    -fx-font-family: "Century Gothic";
+    -fx-font-size: 14px;
+}
+.btn:pressed, .btn:default:hover:pressed {
+    -fx-background-color: 	#FFB6C1;
+    -fx-text-fill: #1d1d1d;
+}
+
+
+.text1 {
+    -fx-font-family: "Century Gothic";
+    -fx-font-size: 14px; /* Adjust the font size as needed */
+}
+
+.bodyy{
+    -fx-border-color:#A9A9A9	;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+/* Style de l'image */
+.image-view {
+    /* Ajoutez des styles supplémentaires pour les images si nécessaire */
+}
+
+/* Style du label */
+.label {
+    -fx-font-size: 14px; /* Taille de la police */
+}
+/* Style CSS */
+.hyperlink {
+    -fx-text-fill: blue; /* Couleur du texte */
+    -fx-font-size: 12px; /* Taille de la police */
+    -fx-underline: true; /* Activer le soulignement du lien */
+}
+
+.hyperlink:hover {
+    -fx-text-fill: #0066FF; /* Couleur du texte au survol */
+}
+
+#AnchorPane {
+    -fx-background-color: #FFFFFF; /* Couleur de fond */
+}
+
+.Home_btn {
+    -fx-font-weight: bold;
+}
+
+.pane_top {
+    -fx-background-color: #2c234d; /* Couleur de fond */
+}
+
+.pane_navBar {
+    -fx-background-color: #720000; /* Couleur de fond */
+    -fx-text-fill: #FFFFFF; /* Couleur du texte */
+}
+
+.grid {
+    -fx-background-color: #FFFFFF; /* Couleur de fond */
+}
+
+.hbox {
+    -fx-background-color: #FFFFFF; /* Couleur de fond */
+}
+
+/* Ajoutez d'autres styles CSS selon vos besoins */
+
+.zina{
+    -fx-text-fill : linear-gradient(from 26.8939% 33.3333% to 28.7879% 48.8636%, reflect, #000000 0.0%, #ff00c3 100.0%);
+    -fx-effect: dropshadow(three-pass-box,#AAAAAA, 3 , 0 , 0 , 3);
+    -fx-font-size: 16px;
+}
+
+.text-field2 {
+    -fx-background-color: #f0f0f0; /* Couleur de fond */
+    -fx-border-color: #cccccc; /* Couleur de la bordure */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+    -fx-border-radius: 5px; /* Rayon des coins de la bordure */
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-padding: 5px; /* Espacement interne */
+}
+
+.text-field2:hover {
+    -fx-background-color: #e0e0e0; /* Couleur de fond au survol */
+}
+
+
+
+

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="itemProduitPane" prefHeight="460.0" prefWidth="1048.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ItemProduitController">
+    <children>
+        <HBox layoutX="-8.0" layoutY="12.0" prefHeight="52.0" prefWidth="880.0">
+            <children>
+                <Pane prefHeight="52.0" prefWidth="11.0" />
+                <Label fx:id="labelIdProduit" prefHeight="26.0" prefWidth="70.0" styleClass="btn_conf" stylesheets="@style.css" text="Id" >
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="11.0" />
+                <Label fx:id="labelTitreProduit" prefHeight="26.0" prefWidth="70.0" styleClass="btn_conf" stylesheets="@style.css" text="Titre" >
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="22.0" />
+                <Label fx:id="labelPrix" prefHeight="26.0" prefWidth="88.0" styleClass="btn_conf" stylesheets="@style.css" text="Prix">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="24.0" />
+                <Label fx:id="labelDescriptionProduit" prefHeight="26.0" prefWidth="135.0" styleClass="btn_conf" stylesheets="@style.css" text="Description">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="24.0" />
+                <Label fx:id="labelTypeProduit" prefHeight="26.0" prefWidth="135.0" styleClass="btn_conf" stylesheets="@style.css" text="Type">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="24.0" />
+                <Label fx:id="labelcategory" prefHeight="26.0" prefWidth="135.0" styleClass="btn_conf" stylesheets="@style.css" text="Catégorie">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+
+                <Pane prefHeight="52.0" prefWidth="16.0" />
+
+                <Pane prefHeight="52.0" prefWidth="16.0" />
+                <Pane prefHeight="9.0" prefWidth="61.0">
+
+                </Pane>
+
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>
+

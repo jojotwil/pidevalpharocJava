@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="515.0" prefWidth="929.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ajoutBoutiqueController">
+   <children>
+      <ImageView fitHeight="570.0" fitWidth="947.0" layoutX="-2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@boutiqueback.jpg" />
+         </image>
+      </ImageView>
+               
+                  <TextField fx:id="txtNomBoutique" layoutX="333.0" layoutY="48.0" prefHeight="31.0" prefWidth="299.0" promptText="Saisir le nom de votre boutique" styleClass="bodyy" stylesheets="@style.css" />
+                  <Label layoutX="167.0" layoutY="105.0" prefHeight="23.0" prefWidth="118.0" styleClass="text1" stylesheets="@style.css" text="DESCRIPTION">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="areaDescriptionBoutique" layoutX="333.0" layoutY="91.0" prefHeight="76.0" prefWidth="299.0" promptText="Saisir une brève description" styleClass="bodyy" stylesheets="@style.css" />
+                  <ImageView fx:id="imgBoutiqueInput" fitHeight="67.0" fitWidth="175.0" layoutX="363.0" layoutY="386.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="nomboutique" layoutX="167.0" layoutY="54.0" prefHeight="20.0" prefWidth="86.0" styleClass="text1" stylesheets="@style.css" text="NOM">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtNumTelBoutique" layoutX="333.0" layoutY="195.0" prefHeight="31.0" prefWidth="299.0" promptText="saisir le num de telephone" styleClass="bodyy" stylesheets="@style.css" />
+                  <TextField fx:id="txtgouvBoutique" layoutX="333.0" layoutY="259.0" prefHeight="31.0" prefWidth="299.0" promptText="taper dans quel gouvernerat se trouve votre boutique" styleClass="bodyy" stylesheets="@style.css" />
+                  <TextField fx:id="txtvilleBoutique" layoutX="333.0" layoutY="319.0" prefHeight="31.0" prefWidth="299.0" promptText="taper dans quelle ville se trouve votre boutique" styleClass="bodyy" stylesheets="@style.css" />
+                  <Label layoutX="167.0" layoutY="201.0" prefHeight="20.0" prefWidth="166.0" styleClass="text1" stylesheets="@style.css" text="NUMÉRO TELEPHONE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="167.0" layoutY="258.0" prefHeight="20.0" prefWidth="144.0" styleClass="text1" stylesheets="@style.css" text="GOUVERNORAT">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="167.0" layoutY="325.0" prefHeight="20.0" prefWidth="86.0" styleClass="text1" stylesheets="@style.css" text="VILLE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="167.0" layoutY="422.0" prefHeight="20.0" prefWidth="86.0" styleClass="text1" stylesheets="@style.css" text="IMAGE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="442.0" layoutY="405.0" mnemonicParsing="false" onAction="#ajouterImage" styleClass="bodyy" stylesheets="@style.css" />
+                  <Button fx:id="btnAddBoutique" layoutX="379.0" layoutY="478.0" mnemonicParsing="false" onAction="#AjoutBoutique" prefHeight="20.0" prefWidth="153.0" styleClass="btn" stylesheets="@style.css" text="Enregistrer" />
+                    <Text layoutX="260.0" layoutY="28.0" lineSpacing="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter une Boutique" textAlignment="CENTER" wrappingWidth="422.3210754394531">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+               <stroke>
+                  <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="1.0" startX="0.7727272582776619" startY="0.6287878932374897">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" blue="0.7666666507720947" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </stroke>
+               <fill>
+                  <LinearGradient cycleMethod="REFLECT" endX="0.2878788438710299" endY="0.4886363726673704" startX="0.26893939710024634" startY="0.3333333044341117">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.11764705926179886" green="0.003921568859368563" blue="0.06666667014360428" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.9789473414421082" blue="0.4894736707210541" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Text>
+       
+
+
+   </children>
+
+</AnchorPane>

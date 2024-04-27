@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="536.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjouterProduitController">
+
+    <children>
+        <ImageView fitHeight="570.0" fitWidth="947.0" layoutX="-2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@boutiqueback.jpg" />
+            </image>
+        </ImageView>
+        <Label layoutX="222.0" layoutY="86.0" prefHeight="26.0" prefWidth="44.0" styleClass="text1" stylesheets="@style.css" text="Titre :" />
+        <TextField fx:id="txtTitre" layoutX="316.0" layoutY="86.0" prefHeight="27.0" prefWidth="299.0" promptText="saisir le titre de votre produit" styleClass="bodyy" stylesheets="@style.css" />
+        <Label layoutX="222.0" layoutY="133.0" prefHeight="34.0" prefWidth="55.0" styleClass="text1" stylesheets="@style.css" text="Prix :">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+        <TextField fx:id="txtPrix" layoutX="316.0" layoutY="137.0" prefHeight="27.0" prefWidth="299.0" promptText="saisir le prix e votre produit" styleClass="bodyy" stylesheets="@style.css" />
+        <ImageView fx:id="imgProduitInput" fitHeight="67.0" fitWidth="175.0" layoutX="321.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true" />
+        <Label layoutX="208.0" layoutY="224.0" styleClass="text1" stylesheets="@style.css" text="Description :" />
+        <TextArea fx:id="areaDescriptionProduit" layoutX="321.0" layoutY="195.0" prefHeight="76.0" prefWidth="290.0" promptText="Saisir une brève description de votre produit" styleClass="bodyy" stylesheets="@style.css" />
+        <Label layoutX="211.0" layoutY="313.0" styleClass="text1" stylesheets="@style.css" text="Catégorie :" />
+        <TextField fx:id="txtCategorie" layoutX="324.0" layoutY="310.0" prefHeight="27.0" prefWidth="299.0" promptText="Voiture , Motos , Bateaux" styleClass="bodyy" stylesheets="@style.css" />
+        <Label layoutX="224.0" layoutY="362.0" styleClass="text1" stylesheets="@style.css" text="Type :" />
+        <TextField fx:id="txtType" layoutX="324.0" layoutY="358.0" prefHeight="27.0" prefWidth="299.0" promptText="Piéce , Accessoire , carrousserie" styleClass="bodyy" stylesheets="@style.css" />
+        <Button layoutX="399.0" layoutY="425.0" mnemonicParsing="false" onAction="#ajouterImage" styleClass="bodyy" stylesheets="@style.css" />
+
+        <Button fx:id="btnAjouter" layoutX="353.0" layoutY="489.0" mnemonicParsing="false" onAction="#ajouterProduit" prefHeight="31.0" prefWidth="130.0" styleClass="btn" stylesheets="@style.css" text="Enregistrer" />
+      <Label layoutX="320.0" layoutY="22.0" prefHeight="32.0" prefWidth="290.0" text="Ajouter Un Produit">
+         <textFill>
+            <LinearGradient cycleMethod="REFLECT" endX="0.6022727272727273" endY="0.0530302759372826" startX="0.7386363342855916" startY="0.13162878787878785">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.7052631378173828" green="0.07836257666349411" blue="0.43360623717308044" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+    </children>
+
+</AnchorPane>

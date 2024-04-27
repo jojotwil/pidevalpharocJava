@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="itemBoutiquePane" prefHeight="460.0" prefWidth="1048.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.itemBoutiqueController">
+    <children>
+        <HBox layoutX="-8.0" layoutY="12.0" prefHeight="52.0" prefWidth="880.0">
+            <children>
+                <Pane prefHeight="52.0" prefWidth="11.0" />
+                <Label fx:id="labelIdBoutique" prefHeight="26.0" prefWidth="70.0" styleClass="btn_conf" stylesheets="@style.css" text="Id" >
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="11.0" />
+                <Label fx:id="labelNomBoutique" prefHeight="26.0" prefWidth="70.0" styleClass="btn_conf" stylesheets="@style.css" text="Nom" >
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="22.0" />
+                <Label fx:id="labelNumeroTel" prefHeight="26.0" prefWidth="88.0" styleClass="btn_conf" stylesheets="@style.css" text="Numéro Tél">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="24.0" />
+                <Label fx:id="labelDescriptionBoutique" prefHeight="26.0" prefWidth="135.0" styleClass="btn_conf" stylesheets="@style.css" text="Description">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="24.0" />
+                <Label fx:id="labelGouvernoratBoutique" prefHeight="26.0" prefWidth="135.0" styleClass="btn_conf" stylesheets="@style.css" text="Gouvernorat">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="24.0" />
+                <Label fx:id="labelVilleBoutique" prefHeight="26.0" prefWidth="135.0" styleClass="btn_conf" stylesheets="@style.css" text="Ville">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="24.0">
+               <children>
+                  <ImageView fx:id="imageItem" fitHeight="36.0" fitWidth="44.0" layoutX="-19.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+                </Pane>
+
+            <Pane prefHeight="52.0" prefWidth="16.0" />
+
+            <Pane prefHeight="52.0" prefWidth="16.0" />
+            <Pane prefHeight="9.0" prefWidth="61.0">
+               <children>
+                  <Button fx:id="imprimer_pdf" layoutX="3.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#genererPDF" prefHeight="32.0" prefWidth="44.0" styleClass="btn-add-panier" stylesheets="@hello-view.css" />
+                  <ImageView fitHeight="26.0" fitWidth="44.0" layoutX="10.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@uploads/pdf.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>
