@@ -13,7 +13,11 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
         import javafx.scene.Parent;
         import javafx.scene.Scene;
-        import javafx.scene.layout.FlowPane;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
         import javafx.scene.layout.VBox;
@@ -127,6 +131,7 @@ public class testcalandercontroller implements Initializable {
         }
     }
 
+
     @FXML
     public void monprofil(ActionEvent event) {
         try {
@@ -162,15 +167,16 @@ public class testcalandercontroller implements Initializable {
             e.printStackTrace();
         }
     }
+
     @FXML
     public void newrdv(ActionEvent event) {
         try {
             // Charger la nouvelle interface dans un Node
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("test.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("crudcalander.fxml"));
             Parent newContent = loader.load();
 
             // Accéder au contrôleur de la vue "posttroccrud.fxml"
-            ProfilController controller = loader.getController();
+            //ProfilController controller = loader.getController();
 
             // Créer une nouvelle scène avec le nouveau contenu
             Scene scene = new Scene(newContent);
@@ -197,6 +203,47 @@ public class testcalandercontroller implements Initializable {
             e.printStackTrace();
         }
     }
+    private void showAlert(Alert.AlertType alertType, String title, String message, CalendarActivity activity,Text text) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+
+        // Ajout d'un bouton personnalisé
+        ButtonType buttonTypeCustom = new ButtonType("Update", ButtonBar.ButtonData.OK_DONE);
+        alert.getButtonTypes().add(buttonTypeCustom);
+
+        // Récupération du bouton personnalisé
+        Button customButton = (Button) alert.getDialogPane().lookupButton(buttonTypeCustom);
+        // Affichage de l'alerte et attente de la réponse de l'utilisateur
+        Optional<ButtonType> result = alert.showAndWait();
+
+// Vérifier si l'utilisateur a cliqué sur le bouton "Update"
+        if (result.isPresent() && result.get() == buttonTypeCustom) {
+            // L'utilisateur a cliqué sur le bouton "Update"
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("crudcalander.fxml"));
+                Parent newContent = loader.load();
+
+                crudcalanderController controller = loader.getController();
+                controller.mouseClicked(activity);
+                System.out.println(activity + "activity");
+
+                Scene scene = new Scene(newContent);
+                Stage mainStage = (Stage) text.getScene().getWindow();
+                mainStage.setScene(scene);
+                mainStage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        // Ajout d'un gestionnaire d'événements au clic sur le bouton personnalisé
+
+
+    }
+
     private void createCalendarActivity(List<CalendarActivity> calendarActivities, double rectangleHeight, double rectangleWidth, StackPane stackPane) {
         VBox calendarActivityBox = new VBox();
         for (int k = 0; k < calendarActivities.size(); k++) {
@@ -204,12 +251,22 @@ public class testcalandercontroller implements Initializable {
                 Text moreActivities = new Text("...");
                 calendarActivityBox.getChildren().add(moreActivities);
                 moreActivities.setOnMouseClicked(mouseEvent -> {
-                    // On ... click print all activities for given date
-                    System.out.println(calendarActivities);
+                    // Afficher toutes les activités dans une boîte de dialogue ou une vue séparée
+                    displayAllActivities(calendarActivities);
                 });
                 break;
             }
 
+            CalendarActivity activity = calendarActivities.get(k);
+            String activityDetails = getActivityDetails(activity);
+
+            Text text = new Text(activityDetails);
+            calendarActivityBox.getChildren().add(text);
+            // Utiliser les valeurs de couleur directement à partir de calendarActivities.get(k)
+            Color background_color = calendarActivities.get(k).getBackground_color();
+            Color border_color = calendarActivities.get(k).getBorder_color();
+            Color text_color = calendarActivities.get(k).getText_color();
+            CalendarActivity rdv = calendarActivities.get(k);
             ZonedDateTime dateTime = calendarActivities.get(k).getStart();
             LocalDate startDate = dateTime.toLocalDate(); // Convertir en LocalDate
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -219,29 +276,63 @@ public class testcalandercontroller implements Initializable {
             LocalDate endDate = dateTimeEnd.toLocalDate(); // Convertir en LocalDate
             String formattedDateEnd = endDate.format(formatter);
 
-            Text text = new Text(calendarActivities.get(k).getClientName() + "\n" + calendarActivities.get(k).getTitle() + "\n" + formattedDateStart + "\n" + formattedDateEnd);
-            calendarActivityBox.getChildren().add(text);
+            Text textalert = new Text(" Le nom du client est : " + calendarActivities.get(k).getClientName() + "\n Le titre est : " + calendarActivities.get(k).getTitle() + "\n Description : " + calendarActivities.get(k).getDescription() + "\n De " + formattedDateStart + " à " + formattedDateEnd);
 
-            // Utiliser les valeurs de couleur directement à partir de calendarActivities.get(k)
-            Color background_color = calendarActivities.get(k).getBackground_color();
-            Color border_color = calendarActivities.get(k).getBorder_color();
-            Color text_color = calendarActivities.get(k).getText_color();
-            FullCalederService service=new FullCalederService();
+            FullCalederService service = new FullCalederService();
 
             calendarActivityBox.setStyle("-fx-background-color:" + service.toHex(background_color) +
                     "; -fx-border-color:" + service.toHex(border_color) +
                     "; -fx-text-fill:" + service.toHex(text_color));
 
-            text.setOnMouseClicked(mouseEvent -> {
-                // On Text clicked
-                System.out.println(text.getText());
-            });
+            // Gestion des clics sur le texte
+            handleTextClick(text,activity);
+
         }
+
         calendarActivityBox.setTranslateY((rectangleHeight / 2) * 0.20);
         calendarActivityBox.setMaxWidth(rectangleWidth * 0.9);
         calendarActivityBox.setMaxHeight(rectangleHeight * 0.75);
         stackPane.getChildren().add(calendarActivityBox);
     }
+
+    private void displayAllActivities(List<CalendarActivity> activities) {
+        // Afficher toutes les activités dans une boîte de dialogue ou une vue séparée
+        System.out.println(activities);
+        // Vous pouvez implémenter la logique pour afficher les activités dans une boîte de dialogue ici
+    }
+
+    private String getActivityDetails(CalendarActivity activity) {
+
+
+
+        return  activity.getClientName() + "\n" + activity.getTitle();
+    }
+
+    private void handleTextClick(Text text,CalendarActivity activity) {
+        //System.out.println(activity);
+        //Tet text = new Text(getActivityDetails(activity));
+        ZonedDateTime startDateTime = activity.getStart();
+        ZonedDateTime endDateTime = activity.getEnd();
+        String clientName = activity.getClientName();
+        String title = activity.getTitle();
+        String description = activity.getDescription();
+
+        LocalDate startDate = startDateTime.toLocalDate();
+        LocalDate endDate = endDateTime.toLocalDate();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDateStart = startDate.format(formatter);
+        String formattedDateEnd = endDate.format(formatter);
+        text.setOnMouseClicked(mouseEvent -> {
+            Text textalert = new Text(" Le nom du client est : " + activity.getClientName() + "\n Le titre est : " + activity.getTitle() + "\n Description : " + activity.getDescription() + "\n De " + formattedDateStart + " à " + formattedDateEnd);
+
+            // Affichage de l'alerte au clic sur le texte
+            showAlert(Alert.AlertType.INFORMATION, "Détails du rendez-vous",  textalert.getText(), activity,text);
+
+
+        });
+    }
+
 
 
     private Map<Integer, List<CalendarActivity>> createCalendarMap(List<CalendarActivity> calendarActivities) {

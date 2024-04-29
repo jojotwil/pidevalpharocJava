@@ -363,7 +363,7 @@ public class postcrudController implements Initializable {
 
 
     @FXML
-    private void updatepost(ActionEvent event) {
+    private void updatepost() {
         // Validation des données saisies
         if (kilometrage.getText().isEmpty() || description.getText().isEmpty() || localisation.getText().isEmpty() ||
                 mail.getText().isEmpty() || matricule.getText().isEmpty() || marque.getValue() == null ||
@@ -418,7 +418,7 @@ public class postcrudController implements Initializable {
             e.printStackTrace();
         }
 
-        showAlert(AlertType.INFORMATION, "Succès", "Le post a été MODIFIER avec succès.");
+        showAlert(AlertType.INFORMATION, "Succès", "Le post a été modifié avec succès.");
 
     }
 
@@ -536,29 +536,7 @@ public class postcrudController implements Initializable {
         }
     }
 
-    @FXML
-    public void modifier(ActionEvent event) {
-        // Récupérer le post sélectionné
 
-        try {
-            // Charger la nouvelle interface dans un Node
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("posttroccrud.fxml"));
-            Parent newContent = loader.load();
-
-            // Accéder au contrôleur de la vue "posttroccrud.fxml"
-            PosttroccrudController controller = loader.getController();
-            //System.out.println(postTroc);
-
-            // Envoyer le post au contrôleur
-
-
-            // Remplacer le contenu actuel de la fenêtre par le nouveau contenu
-            AnchorPane root = (AnchorPane) ((Node) event.getSource()).getScene().getRoot();
-            root.getChildren().setAll(newContent);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     public void setPostTroc(PostTroc posttroc){
         //System.out.println(posttroc);
         this.postTroc=posttroc;

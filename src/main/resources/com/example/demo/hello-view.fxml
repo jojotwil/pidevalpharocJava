@@ -84,6 +84,21 @@
                               <Insets top="8.0" />
                            </HBox.margin>
                         </Button>
+                        <Button mnemonicParsing="false" onAction="#monprofil" style="-fx-background-color: white;">
+                           <font>
+                              <Font name="Symbol" size="14.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="31.0" onDragDetected="#monprofil" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/profil.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets top="8.0" />
+                           </HBox.margin>
+                        </Button>
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <HBox.margin>
                               <Insets left="100.0" top="15.0" />

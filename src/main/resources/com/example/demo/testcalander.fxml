@@ -45,7 +45,7 @@
                         <Insets right="9.0" />
                     </padding>
                 </HBox>
-               <Button fx:id="newrdv" layoutX="607.0" layoutY="20.0" mnemonicParsing="false" onAction="#monprofil" prefHeight="9.0" prefWidth="71.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="new" textFill="#fffefe" />
+               <Button fx:id="newrdv" layoutX="607.0" layoutY="20.0" mnemonicParsing="false" onAction="#newrdv" prefHeight="9.0" prefWidth="71.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="new" textFill="#fffefe" />
             </children>
          </AnchorPane>
       </content>

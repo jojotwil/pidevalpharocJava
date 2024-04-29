@@ -234,7 +234,7 @@
                                                     </children>
                                                 </GridPane>
                                                 <Button fx:id="btnsave" layoutX="321.0" layoutY="375.0" mnemonicParsing="false" onAction="#addrdv" prefHeight="33.0" prefWidth="172.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="save" textFill="#fffefe" />
-                                                <Button fx:id="btndelete" layoutX="548.0" layoutY="373.0" mnemonicParsing="false" onAction="#deleterdv" prefHeight="37.0" prefWidth="174.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Delete" />
+                                                <Button fx:id="btndelete" layoutX="548.0" layoutY="373.0" mnemonicParsing="false" onAction="#deleteCalendarActivity" prefHeight="37.0" prefWidth="174.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Delete" />
                                                 <Label layoutX="284.0" layoutY="14.0" prefHeight="49.0" prefWidth="278.0" text="Ajouter un rendez-vous" AnchorPane.leftAnchor="284.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="-20.0">
                                                     <font>
                                                         <Font name="System Bold" size="33.0" />
