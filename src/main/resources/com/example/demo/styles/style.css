@@ -1,17 +1,5 @@
-.root {
-    -fx-font-family: Arial;
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to bottom right, #098c53, #246861);
 }
 
-#chatArea {
-    -fx-control-inner-background: #f0f0f0;
-    -fx-font-size: 14px;
-}
-
-#messageField {
-    -fx-font-size: 14px;
-    -fx-prompt-text-fill: #a0a0a0;
-}
-
-#sendButton {
-    -fx-font-size: 14px;
-}

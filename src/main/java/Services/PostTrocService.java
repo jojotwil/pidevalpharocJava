@@ -70,8 +70,6 @@ public class PostTrocService implements PosttrocService <PostTroc> {
             System.out.println("PostTroc supprimé avec succès : " + postTroc.getId());
         } catch (SQLException e) {
             System.out.println("Erreur lors de la suppression du PostTroc : " + e.getMessage());
-        } finally {
-            MyConnection.closeconnection();
         }
     }
 
@@ -102,7 +100,6 @@ public class PostTrocService implements PosttrocService <PostTroc> {
 
             System.out.println("Mise à jour du PostTroc effectuée avec succès");
             pst.close();
-            MyConnection.closeconnection();
         } catch (SQLException e) {
             System.out.println("Erreur lors de la mise à jour du PostTroc : " + e.getMessage());
         }

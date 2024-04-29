@@ -75,6 +75,7 @@ public class crudcalanderController implements Initializable {
 
     @FXML
     private Button btnupdate;
+    private CalendarActivity rdv; // Garder une référence à l'objet CalendarActivity
 
 
 
@@ -140,7 +141,7 @@ public class crudcalanderController implements Initializable {
 
 
     @FXML
-    private void deleteCalendarActivity(CalendarActivity rdv) {
+    private void deleteCalendarActivity() {
         try {
             // Récupérer l'activité sélectionnée dans votre interface utilisateur
             // CalendarActivity selectedActivity = ; // Code pour récupérer l'activité sélectionnée dans votre interface utilisateur ;
@@ -180,55 +181,71 @@ public class crudcalanderController implements Initializable {
 
 
     @FXML
-    void updaterdv(ActionEvent event) {
-        // Récupérer les valeurs des champs du formulaire
-        LocalDate startDate = debut.getValue();
-        LocalDate endDate = fin.getValue();
-        String descriptionValue = description.getText();
-        String titreValue = titre.getText();
-        boolean isAllDay = allday.isSelected();
+    void mouseClicked(CalendarActivity rdv) {
+        try {
+            this.rdv = rdv;
+            if (rdv != null) {
+                debut.setValue(rdv.getStart().toLocalDate());
+                fin.setValue(rdv.getEnd().toLocalDate());
+                description.setText(rdv.getDescription());
+                titre.setText(rdv.getTitle());
+                allday.setSelected(rdv.isAllday());
+                text.setValue(rdv.getText_color());
+                border.setValue(rdv.getBorder_color());
+                // Assurez-vous d'ajouter la logique pour initialiser la couleur de fond si nécessaire
+                // backgroundColor.setValue(rdv.getBackground_color());
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
-        // Vérifier si les champs obligatoires sont vides
-        if (startDate == null || endDate == null || descriptionValue.isEmpty() || titreValue.isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, "Champs obligatoires", "Veuillez remplir tous les champs obligatoires.");
+    @FXML
+    private void updaterdv() {
+        // Validation des données saisies
+        if (debut.getValue() == null || fin.getValue() == null || description.getText().isEmpty() || titre.getText().isEmpty()) {
+            // Afficher une alerte pour informer l'utilisateur des champs manquants
+            showAlert(Alert.AlertType.ERROR, "Champs manquants", "Veuillez remplir tous les champs obligatoires.");
             return;
         }
 
         // Convertir les dates en ZonedDateTime
-        ZonedDateTime startDateTime = startDate.atStartOfDay(ZoneId.systemDefault());
-        ZonedDateTime endDateTime = endDate.atStartOfDay(ZoneId.systemDefault());
+        ZonedDateTime startDateTime = debut.getValue().atStartOfDay(ZoneId.systemDefault());
+        ZonedDateTime endDateTime = fin.getValue().atStartOfDay(ZoneId.systemDefault());
 
-        // Vérifier si les dates sont dans le futur
-        ZonedDateTime now = ZonedDateTime.now(ZoneId.systemDefault());
-        if (startDateTime.isBefore(now) || endDateTime.isBefore(now)) {
-            showAlert(Alert.AlertType.ERROR, "Erreur de date", "Les dates doivent être dans le futur.");
-            return;
-        }
+        // Validation spécifique pour les dates (par exemple, s'assurer qu'elles sont dans le futur)
+        // Vous pouvez ajouter votre propre logique de validation ici
 
-        // Vérifier si la date de fin est postérieure à la date de début
-        if (endDateTime.isBefore(startDateTime)) {
-            showAlert(Alert.AlertType.ERROR, "Erreur de date", "La date de fin doit être postérieure à la date de début.");
-            return;
-        }
-
-        // Vérifier si les couleurs sont sélectionnées
-        Color backgroundColor = back.getValue();
+        // Récupérer les autres valeurs des champs
+        String descriptionValue = description.getText();
+        String titreValue = titre.getText();
+        boolean isAllDay = allday.isSelected();
         Color textColor = text.getValue();
         Color borderColor = border.getValue();
-        if (backgroundColor == null || textColor == null || borderColor == null) {
-            showAlert(Alert.AlertType.ERROR, "Couleurs non sélectionnées", "Veuillez sélectionner toutes les couleurs.");
-            return;
-        }
+        // Assurez-vous d'ajouter la logique pour récupérer la couleur de fond si nécessaire
+        // Color backgroundColor = backgroundColor.getValue();
 
-        // Créer une instance de CalendarActivity en utilisant les valeurs récupérées
-        CalendarActivity calendar = new CalendarActivity(startDateTime, endDateTime, descriptionValue, titreValue, backgroundColor, textColor, borderColor, isAllDay);
-        System.out.println(calendar);
-        // Mettre à jour l'activité dans la base de données en utilisant le service approprié
-        // Supposons que vous avez un service appelé FullCalederService avec une méthode updateDate
+        // Mettre à jour les valeurs de rdv avec les nouvelles valeurs
+        rdv.setStart(startDateTime);
+        rdv.setEnd(endDateTime);
+        rdv.setDescription(descriptionValue);
+        rdv.setTitle(titreValue);
+        rdv.setAllday(isAllDay);
+        rdv.setText_color(textColor);
+        rdv.setBorder_color(borderColor);
+        // Assurez-vous d'ajouter la logique pour définir la couleur de fond si nécessaire
+        // rdv.setBackground_color(backgroundColor);
+
+        // Mettre à jour le rendez-vous dans la base de données en utilisant le service approprié
         FullCalederService service = new FullCalederService();
-        service.updatedate(calendar);
+        service.updatedate(rdv);
+        System.out.println(rdv);
+
         // Faites quelque chose avec l'objet calendar, comme l'enregistrement dans la base de données
+        showAlert(Alert.AlertType.INFORMATION, "Succès", "Le rendez-vous a été mis à jour avec succès.");
     }
+
+
 
 
 
