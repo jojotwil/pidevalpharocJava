@@ -4,6 +4,12 @@ module com.logindemo {
     requires java.sql;
     requires jbcrypt;
     requires java.mail;
+    requires restfb;
+    requires org.json;
+    requires javafx.web;
+    requires org.apache.poi.poi;
+    requires org.apache.poi.ooxml;
+    requires java.prefs;
 
 
     opens com.controllers_interfaces to javafx.fxml;

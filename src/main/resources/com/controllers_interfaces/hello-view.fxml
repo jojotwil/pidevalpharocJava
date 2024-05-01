@@ -42,22 +42,32 @@
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font></TextField>
-            <TextField fx:id="tf_password" layoutX="130.0" layoutY="198.0" prefHeight="35.0" prefWidth="200.0">
+            <PasswordField fx:id="tf_password" layoutX="130.0" layoutY="198.0" prefHeight="35.0" prefWidth="200.0">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
-            </TextField>
+            </PasswordField>
             <Button fx:id="button_login" layoutX="77.0" layoutY="278.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #F#D3D3D3ED700; -fx-cursor: hand;" text="LOGIN" textFill="#807d6e">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
             </Button>
-            <Label layoutX="104.0" layoutY="341.0" text="Not a user ?">
+            <Button fx:id="resetPasswordButton" layoutX="77.0" layoutY="320.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #F#D3D3D3ED700; -fx-cursor: hand;" text="Reset Password" textFill="#807d6e">
+            <font>
+               <Font name="Arial Rounded MT Bold" size="18.0" />
+            </font>
+            </Button>
+            <CheckBox fx:id="rememberMeCheckBox" layoutX="130.0" layoutY="240.0" mnemonicParsing="false" text="Remember Me" textFill="#807d6e">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </CheckBox>
+            <Label layoutX="101.0" layoutY="368.0" text="Not a user ?">
                <font>
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </Label>
-            <Button fx:id="button_signup" layoutX="180.0" layoutY="336.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand;" text="sign-up" textFill="#004dff" underline="true">
+            <Button fx:id="button_signup" layoutX="177.0" layoutY="363.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand;" text="sign-up" textFill="#004dff" underline="true">
                <font>
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>

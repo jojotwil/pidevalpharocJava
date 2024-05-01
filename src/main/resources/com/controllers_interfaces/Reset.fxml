@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ebf6ec;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers_interfaces.ResetController">
+    <VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" />
+     <TextField fx:id="emailField" layoutX="333.0" layoutY="106.0" prefHeight="44.0" prefWidth="187.0" promptText="Enter your email" />
+     <Button layoutX="377.0" layoutY="174.0" onAction="#resetPassword" style="-fx-background-radius: 10;" text="Reset Password" textFill="#ff0202" />
+
+    <Button layoutX="10.0" layoutY="10.0" onAction="#goBack">
+        <graphic>
+            <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
+                <Image url="@images/back_icon.png" />
+            </ImageView>
+        </graphic>
+    </Button>
+</AnchorPane>
