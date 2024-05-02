@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="504.0" prefWidth="1172.0" stylesheets="@styles/tableview.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ReadController">
+<AnchorPane prefHeight="504.0" prefWidth="1172.0" stylesheets="@styles/tableview.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ReadmineController">
 
     <children>
         <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -161,32 +161,28 @@
                                                 <Insets left="12.0" />
                                             </VBox.margin>
                                         </Label>
-                              <Label fx:id="sender" prefHeight="21.0" prefWidth="341.0" text="Le message est de la part de : " textFill="#8c8585">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="date" prefHeight="21.0" prefWidth="341.0" text="Le" textFill="#8c8585">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
+                                        <Label fx:id="sender" prefHeight="21.0" prefWidth="341.0" text="Le message est de la part de : " textFill="#8c8585">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="date" prefHeight="21.0" prefWidth="341.0" text="Le" textFill="#8c8585">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                        </Label>
                                         <ScrollPane prefHeight="151.0" prefWidth="370.0" style="-fx-background-color: white;">
                                             <content>
                                             </content>
-                                 <content>
-                                    <Label fx:id="message" alignment="TOP_LEFT" prefHeight="140.0" prefWidth="933.0" text="Label">
-                                       <padding>
-                                          <Insets left="9.0" top="9.0" />
-                                       </padding>
-                                    </Label>
-                                 </content>
+                                            <content>
+                                                <Label fx:id="message" alignment="TOP_LEFT" prefHeight="140.0" prefWidth="933.0" text="Label">
+                                                    <padding>
+                                                        <Insets left="9.0" top="9.0" />
+                                                    </padding>
+                                                </Label>
+                                            </content>
                                         </ScrollPane>
-                              <Button fx:id="répondre" mnemonicParsing="false" onAction="#répondre" prefHeight="33.0" prefWidth="172.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="Répondre" textFill="WHITE">
-                                 <VBox.margin>
-                                    <Insets left="15.0" top="20.0" />
-                                 </VBox.margin>
-                              </Button>
+
                                     </children>
                                 </VBox>
                             </children>

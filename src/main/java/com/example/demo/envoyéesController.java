@@ -193,10 +193,31 @@ public class envoyéesController implements Initializable {
             @FXML
             public void mouseClicked(MouseEvent e) {
                 try {
+                    // Récupérer le message sélectionné dans le TableView
                     Message message = tableView.getSelectionModel().getSelectedItem();
-                    System.out.println(message);
 
-                } catch (Exception ex) {
+                    // Charger la vue FXML du contrôleur ReadController
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("readmine.fxml"));
+                    Parent root = loader.load();
+
+                    // Accéder au contrôleur de la vue FXML chargée
+                    ReadmineController controller = loader.getController();
+                    controller.setMsg(message);
+
+                    // Appeler la méthode set du contrôleur pour afficher les données du message
+                    controller.set(message);
+
+                    //controller.répondre(e,message);
+
+                    // Créer une nouvelle scène avec la vue chargée
+                    Scene scene = new Scene(root);
+
+                    // Créer une nouvelle fenêtre pour afficher la scène
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.show();
+
+                } catch (IOException ex) {
                     ex.printStackTrace();
                 }
             }

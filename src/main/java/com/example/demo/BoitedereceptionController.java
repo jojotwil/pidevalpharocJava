@@ -110,6 +110,31 @@ public class BoitedereceptionController implements Initializable {
             e.printStackTrace();
         }
     }
+    @FXML
+    public void read(ActionEvent event) {
+        try {
+            // Charger la nouvelle interface dans un Node
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("read.fxml"));
+            Parent newContent = loader.load();
+
+            // Créer une nouvelle scène avec le nouveau contenu
+            Scene scene = new Scene(newContent);
+
+            // Obtenir la fenêtre principale (stage)
+            Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            mainStage.setScene(scene);
+
+            // Ouvrir la fenêtre en mode plein écran
+            mainStage.setFullScreen(true);
+
+            // Afficher la fenêtre
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     // Label sentLabel = new Label("Envoyés : " + (currentUser != null ? currentUser.getSentMessages().size() : 0));
@@ -216,13 +241,35 @@ public class BoitedereceptionController implements Initializable {
     @FXML
     public void mouseClicked(MouseEvent e){
         try {
-            Message message=tableView.getSelectionModel().getSelectedItem();
-            System.out.println(message);
+            // Récupérer le message sélectionné dans le TableView
+            Message message = tableView.getSelectionModel().getSelectedItem();
 
-        }catch (Exception ex){
+            // Charger la vue FXML du contrôleur ReadController
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("read.fxml"));
+            Parent root = loader.load();
+
+            // Accéder au contrôleur de la vue FXML chargée
+            ReadController controller = loader.getController();
+            controller.setMsg(message);
+
+            // Appeler la méthode set du contrôleur pour afficher les données du message
+            controller.set(message);
+
+            //controller.répondre(e,message);
+
+            // Créer une nouvelle scène avec la vue chargée
+            Scene scene = new Scene(root);
+
+            // Créer une nouvelle fenêtre pour afficher la scène
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

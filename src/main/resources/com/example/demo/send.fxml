@@ -3,7 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="504.0" prefWidth="1172.0" stylesheets="@styles/tableview.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ReadController">
+<AnchorPane prefHeight="504.0" prefWidth="1172.0" stylesheets="@styles/tableview.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.SendController">
 
     <children>
         <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -153,36 +154,30 @@
                                                 <Insets left="12.0" top="5.0" />
                                             </VBox.margin>
                                         </Label>
-                                        <Label fx:id="title" prefHeight="36.0" prefWidth="482.0" text="Titre">
+                                        <Label fx:id="sender" prefHeight="21.0" prefWidth="341.0" text="Le message est de la part de : " textFill="#8c8585">
                                             <font>
-                                                <Font size="27.0" />
+                                                <Font size="18.0" />
                                             </font>
-                                            <VBox.margin>
-                                                <Insets left="12.0" />
-                                            </VBox.margin>
                                         </Label>
-                              <Label fx:id="sender" prefHeight="21.0" prefWidth="341.0" text="Le message est de la part de : " textFill="#8c8585">
+                              <Label alignment="TOP_LEFT" prefHeight="36.0" prefWidth="933.0" text="Titre">
+                                 <padding>
+                                    <Insets left="9.0" top="9.0" />
+                                 </padding>
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="21.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="date" prefHeight="21.0" prefWidth="341.0" text="Le" textFill="#8c8585">
+                              <TextField fx:id="titre" />
+                              <Label alignment="TOP_LEFT" layoutX="10.0" layoutY="101.0" prefHeight="36.0" prefWidth="933.0" text="Message">
+                                 <padding>
+                                    <Insets left="9.0" top="9.0" />
+                                 </padding>
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="21.0" />
                                  </font>
                               </Label>
-                                        <ScrollPane prefHeight="151.0" prefWidth="370.0" style="-fx-background-color: white;">
-                                            <content>
-                                            </content>
-                                 <content>
-                                    <Label fx:id="message" alignment="TOP_LEFT" prefHeight="140.0" prefWidth="933.0" text="Label">
-                                       <padding>
-                                          <Insets left="9.0" top="9.0" />
-                                       </padding>
-                                    </Label>
-                                 </content>
-                                        </ScrollPane>
-                              <Button fx:id="répondre" mnemonicParsing="false" onAction="#répondre" prefHeight="33.0" prefWidth="172.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="Répondre" textFill="WHITE">
+                              <TextArea fx:id="message" prefHeight="68.0" prefWidth="942.0" />
+                              <Button fx:id="envoyer" mnemonicParsing="false" onAction="#sendmessage" prefHeight="33.0" prefWidth="172.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="Envoyer" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets left="15.0" top="20.0" />
                                  </VBox.margin>

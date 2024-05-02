@@ -10,17 +10,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-public class ReadController implements Initializable {
+public class ReadmineController implements Initializable {
     @FXML
     private Label title;
 
@@ -41,62 +39,6 @@ public class ReadController implements Initializable {
     public void setMsg(Message msg) {
         this.msg = msg;
     }
-
-    public void set(Message messagee){
-        this.msg=messagee;
-        System.out.println(getMsg()+"set methode");
-        if (title != null) {
-            title.setText(messagee.getTitle());
-        }
-        if (message != null) {
-            message.setText(messagee.getMessage());
-        }
-        if (date != null) {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            String formattedDate = messagee.getCreatedAt().format(formatter);
-            date.setText(formattedDate);
-        }
-        if (sender != null && messagee.getSender() != null) {
-            sender.setText("Le message est de la part de : "+messagee.getSender().getUsername());
-        }
-    }
-    @FXML
-    public void répondre(ActionEvent e) {
-        System.out.println(msg);
-        try {
-            // Charger la nouvelle interface dans un Node
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("send.fxml"));
-            Parent newContent = loader.load();
-
-            SendController controller = loader.getController();
-            //controller.sendmessage(msg);
-            controller.setRecipientuser(msg.getSender());
-            controller.setSenderuser(msg.getRecipient());
-            controller.setlable(msg);
-            // Créer une nouvelle scène avec le nouveau contenu
-            Scene scene = new Scene(newContent);
-
-            // Obtenir la fenêtre principale (stage)
-            Stage mainStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-
-            // Définir la nouvelle scène sur la fenêtre principale
-            mainStage.setScene(scene);
-
-            // Ouvrir la fenêtre en mode plein écran
-            mainStage.setFullScreen(true);
-
-            // Afficher la fenêtre
-            mainStage.show();
-        } catch (IOException ee) {
-            ee.printStackTrace();
-        }
-
-
-    }
-
-
-
-
 
     @FXML
     public void troc(ActionEvent event) {
@@ -183,10 +125,26 @@ public class ReadController implements Initializable {
             e.printStackTrace();
         }
     }
-
+    public void set(Message messagee){
+        this.msg=messagee;
+        System.out.println(getMsg()+"set methode");
+        if (title != null) {
+            title.setText(messagee.getTitle());
+        }
+        if (message != null) {
+            message.setText(messagee.getMessage());
+        }
+        if (date != null) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDate = messagee.getCreatedAt().format(formatter);
+            date.setText(formattedDate);
+        }
+        if (sender != null && messagee.getSender() != null) {
+            sender.setText("Le message à : "+messagee.getRecipient().getUsername());
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
 
     }
 }
