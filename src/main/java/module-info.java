@@ -23,4 +23,8 @@ module alpharoc.pidev {
     exports alpharoc.pidev.controllers.gestionlocation;
     opens alpharoc.pidev.controllers.gestionlocation to javafx.fxml;
     requires javafx.base;
+    requires twilio;
+    requires freetts;
+    requires org.apache.pdfbox;
+    requires java.desktop;
 }

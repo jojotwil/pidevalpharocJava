@@ -1,5 +1,11 @@
 package alpharoc.pidev.controllers.gestionlocation;
 
+import javafx.scene.paint.Color;
+import javafx.scene.chart.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import java.awt.Desktop;
+import java.io.File;
 import alpharoc.pidev.entities.VehiculeLouer;
 import alpharoc.pidev.services.VehiculeLouerServie;
 import alpharoc.pidev.tools.MyConnexion;
@@ -16,16 +22,34 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.*;
 import java.util.Date;
-import java.util.Optional;
-import java.util.ResourceBundle;
 
 public class Showvl implements Initializable {
 int id;
+    @FXML
+    private Button btngolist;
+
+    @FXML
+    private TextField search;
+
+    @FXML
+    private Button btnpdf;
+
+    @FXML
+    private PieChart pieChart;
+
+    @FXML
+    private Button btnstats;
     @FXML
     private final String[]choix1={"car","yacht","moto"};
     @FXML
@@ -86,29 +110,39 @@ int id;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-      /*  colid.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colmarque.setCellValueFactory(new PropertyValueFactory<VehiculeLouer,String>("marque"));
-        colmodele.setCellValueFactory(new PropertyValueFactory<VehiculeLouer,String>("modele"));
-        coldesc.setCellValueFactory(new PropertyValueFactory<VehiculeLouer,String>("description"));
-        colperiode.setCellValueFactory(new PropertyValueFactory<VehiculeLouer, Date>("periode_dispo"));
-        colctype.setCellValueFactory(new PropertyValueFactory<VehiculeLouer,String>("type_carburant"));
-        colcategorie.setCellValueFactory(new PropertyValueFactory<VehiculeLouer,String>("categorie_vehicule"));
-        table.setItems(initialData());*/
-        showvehicule();
+        colid.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colmarque.setCellValueFactory(new PropertyValueFactory<>("marque"));
+        colmodele.setCellValueFactory(new PropertyValueFactory<>("modele"));
+        coldesc.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colperiode.setCellValueFactory(new PropertyValueFactory<>("periode_dispo"));
+        colctype.setCellValueFactory(new PropertyValueFactory<>("type_carburant"));
+        colcategorie.setCellValueFactory(new PropertyValueFactory<>("categorie_vehicule"));
+
+        table.setItems(initialData());
         Rescato.getItems().addAll(choix1);
         Restypecarb.getItems().addAll(choix2);
-        table.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null) {
-                try {
-                    handleRowSelection(); // Pass the new selection to handleRowSelection
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+
+        // Add listener to search TextField
+        search.textProperty().addListener((observable, oldValue, newValue) -> {
+            filterTable(newValue);
+        });
+    }
+
+    private void filterTable(String keyword) {
+        if (keyword == null || keyword.isEmpty()) {
+            table.setItems(initialData());
+        } else {
+            ObservableList<VehiculeLouer> filteredList = FXCollections.observableArrayList();
+            for (VehiculeLouer vehicule : table.getItems()) {
+                if (vehicule.getMarque().toLowerCase().contains(keyword.toLowerCase())) {
+                    filteredList.add(vehicule);
                 }
             }
-        });
-
+            table.setItems(filteredList);
+        }
     }
-ObservableList<VehiculeLouer>initialData(){
+
+    ObservableList<VehiculeLouer>initialData(){
         VehiculeLouerServie V = new VehiculeLouerServie();
         return  FXCollections.observableArrayList(V.getVl());
 }
@@ -208,6 +242,9 @@ ObservableList<VehiculeLouer>initialData(){
                 System.out.println("OK!");
                 VehiculeLouer f = table.getItems().remove(ligne);
                 rs.delete(f.getId());
+                smsAPI.init();
+                smsAPI.sendSMS("+21625281990", "+16598370014", "Bonjour le véhicule a été supprimé !");
+
                 System.out.println("supprime avec succes " + f);
             }else if(result.get() == ButtonType.CANCEL){
                 System.out.println("Never!");
@@ -294,7 +331,143 @@ ObservableList<VehiculeLouer>initialData(){
     }
 
 
+    public void golist(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/showloca.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Ajout Vehicule");
+        stage.setScene(new Scene(root));
+        stage.show();
+        ((Button) actionEvent.getSource()).getScene().getWindow().hide();
+    }
+
+    public void generatepdf(ActionEvent actionEvent) {
+        VehiculeLouer selectedRow = table.getSelectionModel().getSelectedItem();
+        if (selectedRow != null) {
+            try (PDDocument document = new PDDocument()) {
+                PDPage page = new PDPage();
+                document.addPage(page);
+
+                PDFont font = PDType1Font.HELVETICA;
+                try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
+                    float margin = 50;
+                    float yStart = page.getMediaBox().getHeight() - margin;
+                    float tableWidth = page.getMediaBox().getWidth() - 2 * margin;
+                    float yPosition = yStart;
+                    float rowHeight = 20;
+                    float tableMargin = 10;
+
+                    String[][] content = {
+                            {"ID", String.valueOf(selectedRow.getId())},
+                            {"Marque", selectedRow.getMarque()},
+                            {"Modele", selectedRow.getModele()},
+                            {"Description", selectedRow.getDescription()},
+                            {"Periode Dispo", String.valueOf(selectedRow.getPeriode_dispo())},
+                            {"Type Carburant", selectedRow.getType_carburant()},
+                            {"Categorie Vehicule", selectedRow.getCategorie_vehicule()}
+                    };
+
+                    drawTable(page, contentStream, yStart, tableWidth, tableMargin, content, font, rowHeight);
+
+                    contentStream.setFont(font, 12);
+                    contentStream.beginText();
+                    contentStream.newLineAtOffset(margin, yPosition);
+                    contentStream.endText();
+                }
+
+                File file = new File("selectedRow.pdf");
+                document.save(file);
+
+                showAlert(Alert.AlertType.INFORMATION, "PDF Generated", "PDF file generated successfully.");
+
+                // Open the PDF file using the default PDF viewer
+                Desktop.getDesktop().open(file);
+            } catch (IOException e) {
+                e.printStackTrace();
+                showAlert(Alert.AlertType.ERROR, "Error", "An error occurred while generating the PDF.");
+            }
+        } else {
+            showAlert(Alert.AlertType.WARNING, "No Selection", "Please select a row from the table.");
+        }
+    }
+
+    private void drawTable(PDPage page, PDPageContentStream contentStream, float y, float width, float margin, String[][] content, PDFont font, float rowHeight) throws IOException {
+        final int rows = content.length;
+        final int cols = content[0].length;
+        final float tableHeight = rowHeight * rows;
+        final float cellMargin = 2f;
+
+        //draw the rows
+        float nexty = y;
+        for (int i = 0; i <= rows; i++) {
+            contentStream.moveTo(margin, nexty);
+            contentStream.lineTo(margin + width, nexty);
+            contentStream.stroke();
+            nexty -= rowHeight;
+        }
+
+        //draw the columns
+        float yStart = y;
+        float yEnd = y - tableHeight;
+        float nextx = margin;
+        for (int i = 0; i <= cols; i++) {
+            contentStream.moveTo(nextx, yStart);
+            contentStream.lineTo(nextx, yEnd);
+            contentStream.stroke();
+            nextx += width / cols;
+        }
+
+        // now add the text
+        contentStream.setFont(font, 12);
+        float textx = margin + cellMargin;
+        float texty = y - 15; // y - cellMargin; // y - 15; // y - cellMargin; // y - 15; // y - 15; // y - cellMargin - rowHeight;
+        for (String[] aContent : content) {
+            for (String column : aContent) {
+                contentStream.beginText();
+                contentStream.newLineAtOffset(textx, texty);
+                contentStream.showText(column);
+                contentStream.endText();
+                textx += width / cols;
+            }
+            texty -= rowHeight;
+            textx = margin + cellMargin;
+        }
+    }
 
 
+
+
+    public void calculateStatistics(ActionEvent actionEvent) {
+
+            ObservableList<VehiculeLouer> data = table.getItems();
+            Map<String, Integer> stats = new HashMap<>();
+
+            for (VehiculeLouer vehicule : data) {
+                String category = vehicule.getCategorie_vehicule();
+                stats.put(category, stats.getOrDefault(category, 0) + 1);
+            }
+
+            // Create a BarChart
+            CategoryAxis xAxis = new CategoryAxis();
+            NumberAxis yAxis = new NumberAxis();
+            BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
+            barChart.setTitle("Vehicle Category Statistics");
+            xAxis.setLabel("Category");
+            yAxis.setLabel("Count");
+
+            // Add data to the chart
+            XYChart.Series<String, Number> series = new XYChart.Series<>();
+            for (Map.Entry<String, Integer> entry : stats.entrySet()) {
+                series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
+            }
+            barChart.getData().add(series);
+
+            // Show the chart in a new window
+            Scene scene = new Scene(barChart, 800, 600);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Vehicle Category Statistics");
+            stage.show();
+    }
 
 }

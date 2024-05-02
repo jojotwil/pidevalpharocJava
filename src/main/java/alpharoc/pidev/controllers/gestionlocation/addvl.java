@@ -1,20 +1,36 @@
 package alpharoc.pidev.controllers.gestionlocation;
 
+import javafx.event.EventHandler;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import org.controlsfx.control.textfield.AutoCompletionBinding;
+import org.controlsfx.control.textfield.TextFields;
 import alpharoc.pidev.entities.VehiculeLouer;
 import alpharoc.pidev.services.VehiculeLouerServie;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import org.controlsfx.control.textfield.TextFields;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.chrono.Chronology;
-import java.util.Date;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class addvl implements Initializable {
 
+    @FXML
+    private Button Btnback;
     @FXML
     private ComboBox<String> tfcato1;
     @FXML
@@ -47,18 +63,17 @@ public class addvl implements Initializable {
     @FXML
     private TextField tftypecarb;
 
-   /* private boolean validmarque() {
-        String nomText =tfmarque.getText();
 
-        if (Pattern.matches("^[a-zA-Z0-9]+$", nomText)) {
-            errorLabel3.setVisible(false);
-            return true;
-        } else {
-            errorLabel3.setVisible(true);
 
-        }
-        return false;
-    }*/
+      @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        tfcato1.getItems().addAll(choix1);
+        tftypecarb1.getItems().addAll(choix2);
+
+
+    }
+
+
    private void showAlertDialog(Alert.AlertType type, String title, String header, String content) {
        Alert alert = new Alert(type);
        alert.setTitle(title);
@@ -104,8 +119,40 @@ public class addvl implements Initializable {
         }
         return true;
     }
+    private boolean containsBadWord(String description) {
+        // Define the bad words
+        String[] badWords = {"fuck", "twat", "cunt"};
+
+        // Check if any of the bad words are present in the description
+        for (String word : badWords) {
+            if (description.toLowerCase().contains(word)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
     @FXML
     void addvl(ActionEvent event) {
+
+
+
+
+        String resdescr= tfdescrp.getText();
+        if (!isValidmarque(resdescr)) {
+            showAlert(Alert.AlertType.ERROR, "Erreur de saisie de descreption", " Doit contenir que des lettres.");
+            return;
+        }
+        if (containsBadWord(resdescr)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Description contains a bad word.");
+            alert.showAndWait();
+            return;
+        }
        if ((isInputValid())){
         String resmarque = tfmarque.getText();
         if (!isValidmarque(resmarque)) {
@@ -117,12 +164,12 @@ public class addvl implements Initializable {
                showAlert(Alert.AlertType.ERROR, "Erreur de saisie de modele", " Doit contenir que des lettres.");
                return;
            }
-        String resdescr= tfdescrp.getText();
-           if (!isValidmarque(resdescr)) {
-               showAlert(Alert.AlertType.ERROR, "Erreur de saisie de descreption", " Doit contenir que des lettres.");
-               return;
-           }
-      // Date resdate= tfdate.getDate();
+
+
+
+
+
+           // Date resdate= tfdate.getDate();
         //nked fazet ta6ou date men form
         Date periode_dispo = new Date();
 
@@ -131,7 +178,10 @@ public class addvl implements Initializable {
         VehiculeLouer p = new VehiculeLouer(resmarque,resmodele,resdescr,periode_dispo,restype,rescato);
         VehiculeLouerServie ps = new VehiculeLouerServie();
         ps.addEntity2(p);
-    }}
+           smsAPI.init();
+        smsAPI.sendSMS("+21625281990", "+16598370014", "Salut le véhicule a été ajouté!");
+
+       }}
 
     @FXML
 
@@ -145,11 +195,16 @@ public class addvl implements Initializable {
         //tfcato.setText("");
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        tfcato1.getItems().addAll(choix1);
-        tftypecarb1.getItems().addAll(choix2);
-    }
 
+
+    public void goback(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Showvl.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Ajout Vehicule");
+        stage.setScene(new Scene(root));
+        stage.show();
+        ((Button) actionEvent.getSource()).getScene().getWindow().hide();
+    }
 
 }

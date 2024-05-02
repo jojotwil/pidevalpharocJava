@@ -9,10 +9,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,6 +27,9 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class Showloca implements Initializable {
+
+    @FXML
+    private Button btngolist;
 
     @FXML
     private TableColumn<loca, Integer> colid;
@@ -161,4 +169,14 @@ public class Showloca implements Initializable {
     }
 
 
+    public void golistvl(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Showvl.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Ajout Vehicule");
+        stage.setScene(new Scene(root));
+        stage.show();
+        ((Button) actionEvent.getSource()).getScene().getWindow().hide();
+
+    }
 }
