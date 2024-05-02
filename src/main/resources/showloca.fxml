@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="200.0" prefWidth="400.0"  xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alpharoc.pidev.controllers.gestionlocation.Showloca">
+<AnchorPane prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alpharoc.pidev.controllers.gestionlocation.Showloca">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="717.0" layoutX="-12.0" stroke="#0000000e" strokeType="INSIDE" width="208.0">
          <fill>
@@ -29,9 +29,9 @@
       </Rectangle>
       <AnchorPane layoutX="2.0" layoutY="-10.0" prefHeight="700.0" prefWidth="300.0">
          <children>
-            <Button fx:id="btnajouter" layoutX="20.0" layoutY="231.0" mnemonicParsing="false" onAction="#Ajout" prefHeight="51.0" prefWidth="162.0" text="Ajouter" />
-            <Button fx:id="btnsuprimer" layoutX="16.0" layoutY="312.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="51.0" prefWidth="171.0" text="suprimer" />
-            <Button fx:id="btnmodifier" layoutX="20.0" layoutY="395.0" mnemonicParsing="false" onAction="#modifier" prefHeight="51.0" prefWidth="162.0" text="modifier" />
+            <Button fx:id="btnajouter" layoutX="20.0" layoutY="231.0" mnemonicParsing="false" onAction="#Ajout" prefHeight="51.0" prefWidth="162.0" style="-fx-background-color: #033e6a; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8;" text="Ajouter" textFill="WHITE" />
+            <Button fx:id="btnsuprimer" layoutX="16.0" layoutY="312.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="51.0" prefWidth="171.0" style="-fx-background-color: #033e6a; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8;" text="suprimer" textFill="WHITE" />
+            <Button fx:id="btnmodifier" layoutX="20.0" layoutY="395.0" mnemonicParsing="false" onAction="#modifier" prefHeight="51.0" prefWidth="162.0" style="-fx-background-color: #033e6a; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8;" text="modifier" textFill="WHITE" />
             <TableView fx:id="table" layoutX="592.0" layoutY="103.0" prefHeight="390.0" prefWidth="590.0">
               <columns>
                   <TableColumn fx:id="colid" prefWidth="75.0" text="id" />
@@ -72,6 +72,7 @@
             <ProgressBar layoutY="55.0" prefHeight="25.0" prefWidth="101.0" style="-fx-border-color: #c2b8b8;" />
             <ProgressBar layoutY="77.0" prefHeight="25.0" prefWidth="144.0" style="-fx-border-color: #c2b8b8;" />
             <ProgressBar accessibleRole="CHECK_BOX" layoutY="99.0" prefHeight="25.0" prefWidth="175.0" style="-fx-border-color: #c2b8b8;" />
+            <Button fx:id="btngolist" layoutX="20.0" layoutY="478.0" mnemonicParsing="false" onAction="#golistvl" prefHeight="51.0" prefWidth="162.0" style="-fx-background-color: #033e6a; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8;" text="liste des vehicules" textFill="WHITE" />
          </children>
       </AnchorPane>
    </children>

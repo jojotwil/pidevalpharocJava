@@ -12,10 +12,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="720.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alpharoc.pidev.controllers.gestionlocation.addvl">
+<AnchorPane prefHeight="720.0" prefWidth="600.0" stylesheets="@as.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alpharoc.pidev.controllers.gestionlocation.addvl">
+
    <children>
       <VBox layoutX="133.0" layoutY="122.0" prefHeight="383.0" prefWidth="358.0" spacing="10.0">
          <children>
+
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Marque" />
             <TextField fx:id="tfmarque" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modele" />
@@ -40,9 +42,23 @@
       </Label>
       <ButtonBar layoutX="47.0" layoutY="526.0" prefHeight="91.0" prefWidth="532.0">
          <buttons>
-            <Button fx:id="btannuler" mnemonicParsing="false" onAction="#annuler" prefHeight="34.0" prefWidth="346.0" text="Annuler" />
-            <Button fx:id="btnsave" mnemonicParsing="false" onAction="#addvl" prefHeight="41.0" prefWidth="100.0" text="Enregistrer" textFill="#10215e" />
+            <Button fx:id="btannuler" mnemonicParsing="false" onAction="#annuler" prefHeight="34.0" prefWidth="346.0" style="-fx-background-color: #033e6a; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8;" text="Annuler" textFill="WHITE" />
+            <Button fx:id="btnsave" mnemonicParsing="false" onAction="#addvl" prefHeight="41.0" prefWidth="100.0" style="-fx-background-color: #033e6a; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8;" text="Enregistrer" textFill="WHITE" />
          </buttons>
       </ButtonBar>
+      <AnchorPane layoutY="-13.0" prefHeight="114.0" prefWidth="602.0" style="-fx-background-color: #C4CCD1; -fx-background-radius: 20 20 0 0;">
+         <children>
+            <Text fill="#033e6a" layoutX="141.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Ajout d une vehicule" textAlignment="CENTER">
+               <font>
+                  <Font name="Roboto Bold" size="35.0" />
+               </font>
+            </Text>
+            <Button fx:id="Btnback" layoutX="32.0" layoutY="36.0" mnemonicParsing="false" onAction="#goback" prefHeight="42.0" prefWidth="46.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 1; -fx-padding: 1; -fx-font-weight: bold;" text="&lt;&lt;" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

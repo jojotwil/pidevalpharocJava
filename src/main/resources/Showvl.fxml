@@ -18,7 +18,8 @@
 
 <AnchorPane prefHeight="300.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alpharoc.pidev.controllers.gestionlocation.Showvl">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="700.0" layoutX="-22.0" layoutY="7.0" stroke="#0000000e" strokeType="INSIDE" width="208.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="670.0" layoutX="192.0" layoutY="42.0" stroke="BLACK" strokeType="INSIDE" style="-fx-background-color: #ebf6ec;" width="1095.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="700.0" layoutX="-16.0" layoutY="27.0" stroke="#0000000e" strokeType="INSIDE" width="208.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -28,7 +29,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <TableView fx:id="table" layoutX="492.0" layoutY="119.0" onMouseClicked="#getData" prefHeight="476.0" prefWidth="788.0">
+      <TableView fx:id="table" layoutX="494.0" layoutY="126.0" onMouseClicked="#getData" prefHeight="476.0" prefWidth="788.0">
         <columns>
             <TableColumn fx:id="colid" prefWidth="75.0" text="id" />
           <TableColumn fx:id="colmarque" prefWidth="75.0" text="marque" />
@@ -39,12 +40,12 @@
             <TableColumn fx:id="colcategorie" prefWidth="128.7999267578125" text="categorie" />
         </columns>
       </TableView>
-      <Button fx:id="btnajouter" layoutX="12.0" layoutY="252.0" mnemonicParsing="false" onAction="#Ajout" prefHeight="54.0" prefWidth="162.0" text="Ajouter" />
-      <Button fx:id="btnsuprimer" layoutX="9.0" layoutY="328.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="51.0" prefWidth="171.0" text="suprimer" />
-      <Button fx:id="btnmodifier" layoutX="11.0" layoutY="405.0" mnemonicParsing="false" onAction="#modifier" prefHeight="51.0" prefWidth="162.0" text="modifier" />
-      <Button fx:id="btnclear" layoutX="9.0" layoutY="476.0" mnemonicParsing="false" onAction="#louer" prefHeight="51.0" prefWidth="171.0" text="Louer" />
-      <Button fx:id="btnsave" layoutX="14.0" layoutY="190.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="162.0" text="Save" />
-      <VBox layoutX="199.0" layoutY="192.0" prefHeight="370.0" prefWidth="265.0" spacing="10.0">
+      <Button fx:id="btnajouter" layoutX="13.0" layoutY="228.0" mnemonicParsing="false" onAction="#Ajout" prefHeight="54.0" prefWidth="162.0" style="-fx-background-color: #033e6a; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8;" text="Ajouter" textFill="WHITE" />
+      <Button fx:id="btnsuprimer" layoutX="9.0" layoutY="305.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="51.0" prefWidth="171.0" style="-fx-background-color: #033e6a; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8;" text="suprimer" textFill="WHITE" />
+      <Button fx:id="btnmodifier" layoutX="13.0" layoutY="377.0" mnemonicParsing="false" onAction="#modifier" prefHeight="51.0" prefWidth="162.0" style="-fx-background-color: #033e6a; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8;" text="modifier" textFill="WHITE" />
+      <Button fx:id="btnclear" layoutX="9.0" layoutY="450.0" mnemonicParsing="false" onAction="#louer" prefHeight="51.0" prefWidth="171.0" style="-fx-background-color: #033e6a; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8;" text="Louer" textFill="WHITE" />
+      <Button fx:id="btnsave" layoutX="10.0" layoutY="166.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="162.0" style="-fx-background-color: #033e6a; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8;" text="Save" textFill="WHITE" />
+      <VBox layoutX="213.0" layoutY="120.0" prefHeight="370.0" prefWidth="265.0" spacing="10.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Marque" />
             <TextField fx:id="Resmarque" onMouseClicked="#getData" />
@@ -75,8 +76,13 @@
             <Font name="HoloLens MDL2 Assets" size="35.0" />
          </font>
       </Label>
+
       <ProgressBar layoutY="54.0" prefHeight="25.0" prefWidth="101.0" style="-fx-border-color: #c2b8b8;" />
       <ProgressBar layoutY="76.0" prefHeight="25.0" prefWidth="144.0" style="-fx-border-color: #c2b8b8;" />
       <ProgressBar accessibleRole="CHECK_BOX" layoutY="98.0" prefHeight="25.0" prefWidth="175.0" style="-fx-border-color: #c2b8b8;" />
+      <Button fx:id="btngolist" layoutX="8.0" layoutY="517.0" mnemonicParsing="false" onAction="#golist" prefHeight="51.0" prefWidth="171.0" style="-fx-background-color: #033e6a; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8;" text="Liste location" textFill="WHITE" />
+      <Button fx:id="btnpdf" layoutX="9.0" layoutY="578.0" mnemonicParsing="false" onAction="#generatepdf" prefHeight="51.0" prefWidth="171.0" style="-fx-background-color: #033e6a; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8;" text="PDF" textFill="WHITE" />
+      <Button fx:id="btnstats" layoutX="8.0" layoutY="638.0" mnemonicParsing="false" onAction="#calculateStatistics" prefHeight="51.0" prefWidth="171.0" style="-fx-background-color: #033e6a; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8;" text="Statistique" textFill="WHITE" />
+      <TextField fx:id="search" layoutX="997.0" layoutY="86.0" prefHeight="26.0" prefWidth="221.0" />
    </children>
 </AnchorPane>

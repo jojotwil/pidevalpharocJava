@@ -1,0 +1,64 @@
+.root {
+    -fx-background-color: #f4f4f4;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+}
+
+#Btnback {
+    -fx-background-color: transparent;
+    -fx-border-color: #033e6a;
+    -fx-border-width: 1;
+    -fx-padding: 5;
+    -fx-font-weight: bold;
+    -fx-text-fill: #033e6a;
+    -fx-cursor: hand;
+}
+
+#Btnback:hover {
+    -fx-background-color: #033e6a;
+    -fx-text-fill: white;
+}
+
+.text-field {
+    -fx-background-color: #ffffff;
+    -fx-background-insets: 0;
+    -fx-padding: 5 10;
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 3;
+}
+
+.text-field:focused {
+    -fx-border-color: #033e6a;
+}
+
+.combo-box {
+    -fx-background-color: #ffffff;
+    -fx-padding: 5 30 5 10;
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 3;
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: #ffffff;
+}
+
+.combo-box:focused {
+    -fx-border-color: #033e6a;
+}
+
+#btannuler,
+#btnsave {
+    -fx-background-color: #033e6a;
+    -fx-font-weight: bold;
+    -fx-background-radius: 3;
+    -fx-padding: 8 16;
+    -fx-text-fill: white;
+}
+
+#btannuler:hover,
+#btnsave:hover {
+    -fx-background-color: #0a2f55;
+}
