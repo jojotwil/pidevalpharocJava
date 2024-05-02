@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -15,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="395.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ProfilController">
+<AnchorPane prefHeight="417.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ProfilController">
 
     <children>
         <BorderPane layoutX="51.0" prefHeight="395.0" prefWidth="777.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -89,99 +91,41 @@
                                         <Image url="@images/117641.png" />
                                     </image>
                                 </ImageView>
-                                <Button fx:id="para" contentDisplay="CENTER" ellipsisString="" mnemonicParsing="false" onMouseClicked="#runn1" prefHeight="31.0" prefWidth="83.0" style="-fx-background-color: white;" text="para">
-                                    <graphic>
-                                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../../../../java/images/125115-200.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                    <HBox.margin>
-                                        <Insets left="10.0" top="8.0" />
-                                    </HBox.margin>
-                                </Button>
-                                <Button fx:id="close" contentDisplay="CENTER" ellipsisString="" mnemonicParsing="false" onMouseClicked="#runn2" prefHeight="31.0" prefWidth="63.0" style="-fx-background-color: white;" text="para">
-                                    <graphic>
-                                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@images/flech.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                    <HBox.margin>
-                                        <Insets left="-85.0" top="8.0" />
-                                    </HBox.margin>
-                                    <opaqueInsets>
-                                        <Insets />
-                                    </opaqueInsets>
-                                </Button>
+                        <MenuButton fx:id="menu" mnemonicParsing="false" prefHeight="10.0" prefWidth="35.0" style="-fx-background-color: white;">
+                          <items>
+                            <MenuItem fx:id="monprofil" mnemonicParsing="false" onAction="#monprofil1" text="Mon Profil" />
+                            <MenuItem mnemonicParsing="false" text="Login" />
+                              <MenuItem mnemonicParsing="false" text="LogOut" />
+                              <MenuItem mnemonicParsing="false" text="Registrer" />
+                          </items>
+                           <HBox.margin>
+                              <Insets left="8.0" top="8.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="17.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/125115-200.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </MenuButton>
                             </children>
                         </HBox>
                     </children></AnchorPane>
             </top>
-            <right>
-                <AnchorPane fx:id="paneslide" prefHeight="316.0" prefWidth="176.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
-                    <children>
-                        <VBox layoutX="38.0" layoutY="41.0" prefHeight="281.0" prefWidth="176.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0">
-                            <children>
-                                <Button mnemonicParsing="false" style="-fx-background-color: black;" text="Mon Profil" textFill="WHITE">
-                                    <VBox.margin>
-                                        <Insets left="20.0" />
-                                    </VBox.margin>
-                                    <font>
-                                        <Font name="Symbol" size="15.0" />
-                                    </font>
-                                </Button>
-                                <Button mnemonicParsing="false" style="-fx-background-color: black;" text="Logout" textFill="WHITE">
-                                    <font>
-                                        <Font name="Symbol" size="16.0" />
-                                    </font>
-                                    <VBox.margin>
-                                        <Insets left="20.0" />
-                                    </VBox.margin>
-                                </Button>
-                                <Button mnemonicParsing="false" style="-fx-background-color: black;" text="Loguin" textFill="#fcfafa">
-                                    <font>
-                                        <Font name="Symbol" size="15.0" />
-                                    </font>
-                                    <VBox.margin>
-                                        <Insets left="20.0" />
-                                    </VBox.margin>
-                                </Button>
-                                <Button mnemonicParsing="false" style="-fx-background-color: black;" text="Register" textFill="WHITE">
-                                    <font>
-                                        <Font name="Symbol" size="15.0" />
-                                    </font>
-                                    <VBox.margin>
-                                        <Insets left="20.0" />
-                                    </VBox.margin>
-                                </Button>
-                            </children></VBox>
-                        <Label layoutX="14.0" layoutY="14.0" text="Paramétre" textFill="#afc6dd">
-                            <font>
-                                <Font size="29.0" />
-                            </font>
-                        </Label>
-                    </children>
-                    <BorderPane.margin>
-                        <Insets left="-100.0" />
-                    </BorderPane.margin>
-                </AnchorPane>
-            </right>
          <center>
             <AnchorPane prefHeight="335.0" prefWidth="799.0" BorderPane.alignment="CENTER">
                <children>
                   <AnchorPane layoutX="-3.0" layoutY="1.0" prefHeight="330.0" prefWidth="215.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <VBox layoutX="38.0" layoutY="20.0" prefHeight="332.0" prefWidth="173.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                        <VBox layoutX="38.0" layoutY="20.0" prefHeight="331.0" prefWidth="216.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="20.0">
                            <children>
                               <ImageView fitHeight="85.0" fitWidth="129.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@images/IMG_8930.JPG" />
                                  </image>
                                  <VBox.margin>
-                                    <Insets left="55.0" />
+                                    <Insets left="70.0" />
                                  </VBox.margin>
                               </ImageView>
                               <Label text="Mouna Ben Rebah" textFill="WHITE">
@@ -189,39 +133,39 @@
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                                  <VBox.margin>
-                                    <Insets left="20.0" top="5.0" />
+                                    <Insets left="40.0" top="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <Button mnemonicParsing="false" onAction="#calander" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Ma calendrier" textFill="WHITE">
+                              <Button mnemonicParsing="false" onAction="#calander" prefHeight="35.0" prefWidth="215.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Ma calendrier" textFill="WHITE">
                                  <font>
                                     <Font name="Symbol" size="16.0" />
                                  </font>
                                  <VBox.margin>
-                                    <Insets left="7.0" top="11.0" />
+                                    <Insets top="11.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button fx:id="addtroc" layoutX="30.0" layoutY="238.0" mnemonicParsing="false" onAction="#addposttroc" prefHeight="32.0" prefWidth="180.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Ajouter un troc" textFill="#fcfafa">
+                              <Button fx:id="addtroc" layoutX="30.0" layoutY="238.0" mnemonicParsing="false" onAction="#addposttroc" prefHeight="32.0" prefWidth="215.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Ajouter un troc" textFill="#fcfafa">
                                  <font>
                                     <Font name="Symbol" size="15.0" />
                                  </font>
                                  <VBox.margin>
-                                    <Insets left="7.0" top="11.0" />
+                                    <Insets top="11.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button layoutX="10.0" layoutY="193.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Boite Messagerie" textFill="WHITE">
+                              <Button layoutX="10.0" layoutY="193.0" mnemonicParsing="false" onAction="#amoi" prefHeight="35.0" prefWidth="215.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Boite Messagerie" textFill="WHITE">
                                  <font>
                                     <Font name="Symbol" size="16.0" />
                                  </font>
                                  <VBox.margin>
-                                    <Insets left="7.0" top="11.0" />
+                                    <Insets top="11.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button layoutX="10.0" layoutY="193.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Edit Profil" textFill="WHITE">
+                              <Button layoutX="10.0" layoutY="193.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="216.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Edit Profil" textFill="WHITE">
                                  <font>
                                     <Font name="Symbol" size="16.0" />
                                  </font>
                                  <VBox.margin>
-                                    <Insets left="7.0" top="11.0" />
+                                    <Insets top="11.0" />
                                  </VBox.margin>
                               </Button>
                            </children>

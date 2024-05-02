@@ -31,17 +31,9 @@ public class crudcalanderController implements Initializable {
     @FXML
     private Button troc;
 
-    @FXML
-    private Button para;
 
-    @FXML
-    private Button close;
 
-    @FXML
-    private AnchorPane paneslide;
 
-    @FXML
-    private AnchorPane menu_form;
 
     @FXML
     private ColorPicker back;
@@ -214,12 +206,34 @@ public class crudcalanderController implements Initializable {
         ZonedDateTime endDateTime = fin.getValue().atStartOfDay(ZoneId.systemDefault());
 
         // Validation spécifique pour les dates (par exemple, s'assurer qu'elles sont dans le futur)
-        // Vous pouvez ajouter votre propre logique de validation ici
 
         // Récupérer les autres valeurs des champs
         String descriptionValue = description.getText();
         String titreValue = titre.getText();
         boolean isAllDay = allday.isSelected();
+
+        // Vérifier si les champs obligatoires sont vides
+        if (debut.getValue() == null || fin.getValue() == null || descriptionValue.isEmpty() || titreValue.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Champs obligatoires", "Veuillez remplir tous les champs obligatoires.");
+            return;
+        }
+
+
+        // Vérifier si les dates sont dans le futur
+        ZonedDateTime now = ZonedDateTime.now(ZoneId.systemDefault());
+        if (startDateTime.isBefore(now) || endDateTime.isBefore(now)) {
+            showAlert(Alert.AlertType.ERROR, "Erreur de date", "Les dates doivent être dans le futur.");
+            return;
+        }
+
+        // Vérifier si la date de fin est postérieure à la date de début
+        if (endDateTime.isBefore(startDateTime)) {
+            showAlert(Alert.AlertType.ERROR, "Erreur de date", "La date de fin doit être postérieure à la date de début.");
+            return;
+        }
+
+        // Vérifier si les couleurs sont sélectionnées
+        Color backgroundColor = back.getValue();
         Color textColor = text.getValue();
         Color borderColor = border.getValue();
         // Assurez-vous d'ajouter la logique pour récupérer la couleur de fond si nécessaire
@@ -241,6 +255,8 @@ public class crudcalanderController implements Initializable {
         service.updatedate(rdv);
         System.out.println(rdv);
 
+        service.updatedate(rdv);
+
         // Faites quelque chose avec l'objet calendar, comme l'enregistrement dans la base de données
         showAlert(Alert.AlertType.INFORMATION, "Succès", "Le rendez-vous a été mis à jour avec succès.");
     }
@@ -250,34 +266,6 @@ public class crudcalanderController implements Initializable {
 
 
 
-    @FXML
-    void run1(javafx.scene.input.MouseEvent event) {
-        TranslateTransition slide =new TranslateTransition();
-        slide.setDuration(Duration.seconds(0.4));
-        slide.setNode(paneslide);
-        slide.setToX(0);
-        slide.play();
-        paneslide.setTranslateX(+200);
-        slide.setOnFinished((ActionEvent e) -> {
-            para.setVisible(false);
-            close.setVisible(true);
-
-        });
-    }
-    @FXML
-    void run2(MouseEvent event) {
-        TranslateTransition slide =new TranslateTransition();
-        slide.setDuration(Duration.seconds(0.4));
-        slide.setNode(paneslide);
-        slide.setToX(+200);
-        slide.play();
-        paneslide.setTranslateX(0);
-        slide.setOnFinished((ActionEvent e) -> {
-            para.setVisible(true);
-            close.setVisible(false);
-
-        });
-    }
 
     @FXML
     public void troc(ActionEvent event) {
@@ -317,12 +305,39 @@ public class crudcalanderController implements Initializable {
 
 
 
+    @FXML
+    public void monprofil1(ActionEvent event) {
+        try {
+            // Charger la nouvelle interface dans un Node
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("profil.fxml"));
+            Parent newContent = loader.load();
 
+            // Accéder au contrôleur de la vue "profil.fxml"
+            ProfilController controller = loader.getController();
+
+            // Créer une nouvelle scène avec le nouveau contenu
+            Scene scene = new Scene(newContent);
+
+            // Obtenir la fenêtre principale (stage)
+            Stage mainStage = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
+
+            // Obtenir les dimensions de l'écran
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+            // Définir la taille de la fenêtre sur les dimensions de l'écran
+            mainStage.setWidth(screenBounds.getWidth());
+            mainStage.setHeight(screenBounds.getHeight());
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        paneslide.setTranslateX(+200);
-        close.setVisible(false);
-        para.setVisible(true);
+
     }
 }

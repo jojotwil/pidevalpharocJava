@@ -17,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -33,14 +34,7 @@ public class AlldemandesController implements Initializable {
 
     private static PostTroc postTroc;
 
-    @FXML
-    private Button para;
 
-    @FXML
-    private Button close;
-
-    @FXML
-    private AnchorPane paneslide;
 
     @FXML
     private GridPane offres;
@@ -50,20 +44,7 @@ public class AlldemandesController implements Initializable {
 
     ObservableList<DemandeTroc> ListeData= FXCollections.observableArrayList();
 
-    @FXML
-    void runn2(MouseEvent event) {
-        TranslateTransition slide =new TranslateTransition();
-        slide.setDuration(Duration.seconds(0.4));
-        slide.setNode(paneslide);
-        slide.setToX(+200);
-        slide.play();
-        paneslide.setTranslateX(0);
-        slide.setOnFinished((ActionEvent e) -> {
-            para.setVisible(true);
-            close.setVisible(false);
 
-        });
-    }
     @FXML
     public void troc(ActionEvent event) {
         try {
@@ -135,7 +116,36 @@ public class AlldemandesController implements Initializable {
             e.printStackTrace();
         }
     }
+    @FXML
+    public void monprofil1(ActionEvent event) {
+        try {
+            // Charger la nouvelle interface dans un Node
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("profil.fxml"));
+            Parent newContent = loader.load();
 
+            // Accéder au contrôleur de la vue "profil.fxml"
+            ProfilController controller = loader.getController();
+
+            // Créer une nouvelle scène avec le nouveau contenu
+            Scene scene = new Scene(newContent);
+
+            // Obtenir la fenêtre principale (stage)
+            Stage mainStage = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
+
+            // Obtenir les dimensions de l'écran
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+            // Définir la taille de la fenêtre sur les dimensions de l'écran
+            mainStage.setWidth(screenBounds.getWidth());
+            mainStage.setHeight(screenBounds.getHeight());
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public void menuDisplay(PostTroc postTroc) {
@@ -172,20 +182,7 @@ public class AlldemandesController implements Initializable {
         }
     }
 
-    @FXML
-    void runn1(MouseEvent event) {
-        TranslateTransition slide =new TranslateTransition();
-        slide.setDuration(Duration.seconds(0.4));
-        slide.setNode(paneslide);
-        slide.setToX(0);
-        slide.play();
-        paneslide.setTranslateX(+200);
-        slide.setOnFinished((ActionEvent e) -> {
-            para.setVisible(false);
-            close.setVisible(true);
 
-        });
-    }
 
 
     public void setPostTroc(PostTroc posttroc) {
@@ -202,9 +199,7 @@ public class AlldemandesController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        paneslide.setTranslateX(+200);
-        close.setVisible(false);
-        para.setVisible(true);
+
        //System.out.println(getPostTroc());
         menuDisplay(postTroc);
         System.out.println(offres+"m");

@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -108,6 +110,24 @@
                               <Insets />
                            </opaqueInsets>
                         </Button>
+                        <MenuButton fx:id="menu" mnemonicParsing="false" onAction="#monprofil1" prefHeight="10.0" prefWidth="35.0" style="-fx-background-color: white;">
+                           <items>
+                              <MenuItem fx:id="monprofil1" mnemonicParsing="false" onAction="#monprofil" text="Mon Profil" />
+                              <MenuItem mnemonicParsing="false" text="Login" />
+                              <MenuItem mnemonicParsing="false" text="LogOut" />
+                              <MenuItem mnemonicParsing="false" text="Registrer" />
+                           </items>
+                           <graphic>
+                              <ImageView fitHeight="17.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/125115-200.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets top="8.0" />
+                           </HBox.margin>
+                        </MenuButton>
                      </children>
                   </HBox>
                </children>
@@ -131,6 +151,14 @@
                                  </font>
                               </Button>
                               <Button fx:id="demoi" layoutX="10.0" layoutY="109.0" mnemonicParsing="false" onAction="#demoi" prefHeight="37.0" prefWidth="206.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5)); -fx-text-fill: #fff; -fx-cursor: hand;" text="Eléments envoyés" textFill="WHITE">
+                                 <font>
+                                    <Font name="Candara Bold" size="15.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="9.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="monprofil" mnemonicParsing="false" onAction="#monprofil" prefHeight="37.0" prefWidth="206.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5)); -fx-text-fill: #fff; -fx-cursor: hand;" text="Mon Profil" textFill="WHITE">
                                  <font>
                                     <Font name="Candara Bold" size="15.0" />
                                  </font>

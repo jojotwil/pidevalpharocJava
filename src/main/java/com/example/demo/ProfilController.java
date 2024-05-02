@@ -14,6 +14,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -27,17 +29,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ProfilController implements Initializable {
-    @FXML
-    private Button close;
 
     @FXML
-    private Button para;
-
+    private MenuItem monprofil;
     @FXML
-    private AnchorPane paneslide;
-    @FXML
-    private ScrollPane menu;
-
+    private MenuButton menu;
     @FXML
     private GridPane offre;
     PostTrocService postTrocService=new PostTrocService();
@@ -81,18 +77,69 @@ public class ProfilController implements Initializable {
     }
 
     @FXML
-    void runn2(MouseEvent event) {
-        TranslateTransition slide =new TranslateTransition();
-        slide.setDuration(Duration.seconds(0.4));
-        slide.setNode(paneslide);
-        slide.setToX(+200);
-        slide.play();
-        paneslide.setTranslateX(0);
-        slide.setOnFinished((ActionEvent e) -> {
-            para.setVisible(true);
-            close.setVisible(false);
+    public void monprofil(ActionEvent event) {
+        try {
+            // Charger la nouvelle interface dans un Node
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("profil.fxml"));
+            Parent newContent = loader.load();
 
-        });
+            // Accéder au contrôleur de la vue "posttroccrud.fxml"
+            ProfilController controller = loader.getController();
+
+            // Créer une nouvelle scène avec le nouveau contenu
+            Scene scene = new Scene(newContent);
+
+            // Obtenir la fenêtre principale (stage)
+            Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Obtenir les dimensions de l'écran
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+            // Obtenez les dimensions de l'écran
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getBounds().getWidth();
+            double screenHeight = screen.getBounds().getHeight();
+
+// Définissez la taille de la fenêtre sur les dimensions de l'écran
+            mainStage.setWidth(screenWidth-1);
+            mainStage.setHeight(screenHeight);
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void monprofil1(ActionEvent event) {
+        try {
+            // Charger la nouvelle interface dans un Node
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("profil.fxml"));
+            Parent newContent = loader.load();
+
+            // Accéder au contrôleur de la vue "profil.fxml"
+            ProfilController controller = loader.getController();
+
+            // Créer une nouvelle scène avec le nouveau contenu
+            Scene scene = new Scene(newContent);
+
+            // Obtenir la fenêtre principale (stage)
+            Stage mainStage = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
+
+            // Obtenir les dimensions de l'écran
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+            // Définir la taille de la fenêtre sur les dimensions de l'écran
+            mainStage.setWidth(screenBounds.getWidth());
+            mainStage.setHeight(screenBounds.getHeight());
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -131,7 +178,31 @@ public class ProfilController implements Initializable {
         }
     }
 
+    @FXML
+    public void amoi(ActionEvent event) {
+        try {
+            // Charger la nouvelle interface dans un Node
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("boitedereception.fxml"));
+            Parent newContent = loader.load();
 
+            // Créer une nouvelle scène avec le nouveau contenu
+            Scene scene = new Scene(newContent);
+
+            // Obtenir la fenêtre principale (stage)
+            Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            mainStage.setScene(scene);
+
+            // Ouvrir la fenêtre en mode plein écran
+            mainStage.setFullScreen(true);
+
+            // Afficher la fenêtre
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     @FXML
@@ -203,26 +274,11 @@ public class ProfilController implements Initializable {
         }
 
     }
-    @FXML
-    void runn1(MouseEvent event) {
-        TranslateTransition slide =new TranslateTransition();
-        slide.setDuration(Duration.seconds(0.4));
-        slide.setNode(paneslide);
-        slide.setToX(0);
-        slide.play();
-        paneslide.setTranslateX(+200);
-        slide.setOnFinished((ActionEvent e) -> {
-            para.setVisible(false);
-            close.setVisible(true);
 
-        });
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        paneslide.setTranslateX(+200);
-        close.setVisible(false);
-        para.setVisible(true);
+
         menuDisplay();
     }
 }
