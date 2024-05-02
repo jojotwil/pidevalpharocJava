@@ -214,12 +214,34 @@ public class crudcalanderController implements Initializable {
         ZonedDateTime endDateTime = fin.getValue().atStartOfDay(ZoneId.systemDefault());
 
         // Validation spécifique pour les dates (par exemple, s'assurer qu'elles sont dans le futur)
-        // Vous pouvez ajouter votre propre logique de validation ici
 
         // Récupérer les autres valeurs des champs
         String descriptionValue = description.getText();
         String titreValue = titre.getText();
         boolean isAllDay = allday.isSelected();
+
+        // Vérifier si les champs obligatoires sont vides
+        if (debut.getValue() == null || fin.getValue() == null || descriptionValue.isEmpty() || titreValue.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Champs obligatoires", "Veuillez remplir tous les champs obligatoires.");
+            return;
+        }
+
+
+        // Vérifier si les dates sont dans le futur
+        ZonedDateTime now = ZonedDateTime.now(ZoneId.systemDefault());
+        if (startDateTime.isBefore(now) || endDateTime.isBefore(now)) {
+            showAlert(Alert.AlertType.ERROR, "Erreur de date", "Les dates doivent être dans le futur.");
+            return;
+        }
+
+        // Vérifier si la date de fin est postérieure à la date de début
+        if (endDateTime.isBefore(startDateTime)) {
+            showAlert(Alert.AlertType.ERROR, "Erreur de date", "La date de fin doit être postérieure à la date de début.");
+            return;
+        }
+
+        // Vérifier si les couleurs sont sélectionnées
+        Color backgroundColor = back.getValue();
         Color textColor = text.getValue();
         Color borderColor = border.getValue();
         // Assurez-vous d'ajouter la logique pour récupérer la couleur de fond si nécessaire
@@ -240,6 +262,8 @@ public class crudcalanderController implements Initializable {
         FullCalederService service = new FullCalederService();
         service.updatedate(rdv);
         System.out.println(rdv);
+
+        service.updatedate(rdv);
 
         // Faites quelque chose avec l'objet calendar, comme l'enregistrement dans la base de données
         showAlert(Alert.AlertType.INFORMATION, "Succès", "Le rendez-vous a été mis à jour avec succès.");
