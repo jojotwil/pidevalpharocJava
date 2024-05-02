@@ -2,10 +2,12 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -14,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="634.0" prefWidth="1597.0" style="-fx-background-color: #ebf6ec;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Chartjscontroller">
+<AnchorPane id="AnchorPane" prefHeight="634.0" prefWidth="1597.0" style="-fx-background-color: #ebf6ec;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.DemandebackController">
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" height="600.0" layoutX="6.0" stroke="#0000000e" strokeType="INSIDE" width="208.0">
             <fill>
@@ -67,19 +69,35 @@
                                 <Insets left="12.0" />
                             </VBox.margin>
                         </Label>
-                  <PieChart fx:id="pieChart" />
                         <HBox prefHeight="41.0" prefWidth="484.0" />
+                        <ScrollPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: white;">
+                            <content>
+                                <TableView fx:id="tableView" maxHeight="500.0" maxWidth="1389.0" onContextMenuRequested="#mouseClicked" prefHeight="425.0" prefWidth="1329.0" style="-fx-fixed-cell-size: 40px;">
+                                    <columns>
+                                        <TableColumn fx:id="marque" prefWidth="123.0" text="Marque" />
+                                        <TableColumn fx:id="model" prefWidth="114.0" text="Model" />
+                                        <TableColumn fx:id="typecarburant" prefWidth="140.0" text="Type de carburant" />
+                                        <TableColumn fx:id="categorievehicule" prefWidth="152.0" text="Type de vehicule" />
+                                        <TableColumn fx:id="annee" prefWidth="211.0" text="Date de mise en circulation" />
+                                        <TableColumn fx:id="kilometrage" prefWidth="124.0" text="Kilometrage" />
+                                        <TableColumn fx:id="typeboitevitesse" prefWidth="172.0" text="Type de boite vitesse" />
+                                        <TableColumn fx:id="description" prefWidth="172.0" text="Description" />
+                                        <TableColumn fx:id="rdv" prefWidth="120.0" text="rdv" />
+                                    </columns>
+                                </TableView>
+                            </content>
+                        </ScrollPane>
                     </children>
                 </VBox>
             </children>
         </AnchorPane>
-        <VBox layoutX="5.0" layoutY="204.0" prefHeight="338.0" prefWidth="208.0">
-            <children>
-                <Button fx:id="amoi" mnemonicParsing="false" onAction="#trocs" prefHeight="37.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));; -fx-text-fill: #fff; -fx-cursor: hand;" text="Liste des trocs">
-                    <font>
-                        <Font name="Candara Bold" size="15.0" />
-                    </font>
-                </Button>
+      <VBox layoutX="5.0" layoutY="199.0" prefHeight="321.0" prefWidth="208.0">
+         <children>
+            <Button fx:id="amoi" mnemonicParsing="false" onAction="#trocs" prefHeight="43.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));; -fx-text-fill: #fff; -fx-cursor: hand;" text="Liste des trocs">
+               <font>
+                  <Font name="Candara Bold" size="15.0" />
+               </font>
+            </Button>
             <Button mnemonicParsing="false" onAction="#chart" prefHeight="37.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));; -fx-text-fill: #fff; -fx-cursor: hand;" text="chart graphique trocs">
                <font>
                   <Font name="Candara Bold" size="15.0" />
@@ -88,8 +106,8 @@
                   <Insets top="9.0" />
                </VBox.margin>
             </Button>
-            </children>
-        </VBox>
+         </children>
+      </VBox>
     </children>
     <stylesheets>
 

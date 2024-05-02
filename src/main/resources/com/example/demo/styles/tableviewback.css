@@ -5,7 +5,6 @@
 
 /* Style pour la TableView */
 .table-view {
-
     -fx-background-radius: 14 14 0 0;
 
 }
@@ -17,7 +16,7 @@
 
 /* Style pour le fond de la barre d'en-tête des colonnes */
 .table-view .column-header-background {
-    -fx-background-color:  linear-gradient(to bottom right, #098c53, #246861);
+-fx-background-color: linear-gradient(to bottom right, #073e65, #66a3ff);
     -fx-background-radius: 14;
     -fx-background-insets: 0 0 10 0;
 }

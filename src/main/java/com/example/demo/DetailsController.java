@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class DetailsController implements Initializable {
@@ -51,6 +52,9 @@ public class DetailsController implements Initializable {
     @FXML
     private ImageView imageView;
     private PostTroc postTroc;
+    @FXML
+    private Label agelabel;
+
 
     @FXML
     public void demande(ActionEvent event) {
@@ -91,7 +95,31 @@ public class DetailsController implements Initializable {
             e.printStackTrace();
         }
     }
+    public int agebymonth;
+    public int age;
+    public int agebydays;
+
     public void setdetails(PostTroc postTroc){
+
+        int currentYear = LocalDate.now().getYear();
+        int date=postTroc.getAnnee().getYear();
+        age=currentYear-date;
+        if(age==0){
+            int currentmonth=LocalDate.now().getMonthValue();
+            int datemonth=postTroc.getAnnee().getMonth();
+            agebymonth=currentmonth-datemonth;
+            agelabel.setText("Age de la vehicule : "+agebymonth+"mois");
+        } else if (agebymonth==0) {
+            int currentday=LocalDate.now().getDayOfMonth();
+           int agebydaysanne=postTroc.getAnnee().getDay();
+           agebydays=currentday-agebydaysanne;
+            agelabel.setText("Age de la vehicule : "+agebydays+"jours");
+
+        }else
+        {
+            agelabel.setText("Age de la vehicule : "+age+"année");
+        }
+
         this.postTroc=postTroc;
 
         marque.setText("Marque : "+postTroc.getModele());

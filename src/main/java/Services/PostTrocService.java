@@ -108,7 +108,37 @@ public class PostTrocService implements PosttrocService <PostTroc> {
 
 
     @Override
-    public ObservableList<PostTroc> getAllpostes() {
+    public  ObservableList<PostTroc> getAllpostes() {
+        ObservableList<PostTroc> Data = FXCollections.observableArrayList();
+        String requete ="SELECT * FROM vehiculetroc ";
+        try {
+            Statement st = MyConnection.getInstace().getCnx().createStatement();
+            ResultSet rs = st.executeQuery(requete);
+            while (rs.next()){
+                PostTroc p = new PostTroc();
+                p.setId(rs.getInt("id"));
+                p.setAnnee(rs.getDate("annee"));
+                p.setKilometrage(rs.getDouble("kilometrage"));
+                p.setDescription(rs.getString("description"));
+                p.setLocalisation(rs.getString("localisation"));
+                p.setImage(rs.getString("image"));
+                p.setMail(rs.getString("mail"));
+                p.setMatricule(rs.getString("matricule"));
+                p.setMarque(rs.getString("marque"));
+                p.setModele(rs.getString("modele"));
+                p.setTypecarburant(rs.getString("typecarburant"));
+                p.setCategorievehicule(rs.getString("categorievehicule"));
+                p.setTypeboitevitesse(rs.getString("typeboitevitesse"));
+                Data.add(p);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Data;
+    }
+
+
+    public static ObservableList<PostTroc> getAllposte() {
         ObservableList<PostTroc> Data = FXCollections.observableArrayList();
         String requete ="SELECT * FROM vehiculetroc ";
         try {

@@ -12,7 +12,7 @@ public class HelloApplication extends Application {
     private static  Scene scene;
     @Override
     public void start(Stage stage) throws IOException {
-         scene = new Scene(loadFXML("hello-view"));
+         scene = new Scene(loadFXML("chartjs"));
         stage.setScene(scene);
         stage.setFullScreen(true); // Ouvre la fenêtre en mode plein écran
 
