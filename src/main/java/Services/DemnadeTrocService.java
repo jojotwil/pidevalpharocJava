@@ -55,8 +55,7 @@ public class DemnadeTrocService implements DemandetrocService <DemandeTroc> {
         try (PreparedStatement pst = MyConnection.getInstace().getCnx().prepareStatement(requete, Statement.RETURN_GENERATED_KEYS)) {
             pst.setInt(1, demandeTroc.getId());
             pst.execute();
-            pst.close();
-            MyConnection.closeconnection();
+
             System.out.println("DemandeTroc supprimé avec succès : " + demandeTroc.getId());
         } catch (SQLException e) {
             System.out.println("Erreur lors de la suppression du Demande Troc : " + e.getMessage());
@@ -117,6 +116,7 @@ public class DemnadeTrocService implements DemandetrocService <DemandeTroc> {
                 demande.setTypedecarburant(rs.getString("typedecarburant"));
                 demande.setCategorievehicule(rs.getString("categorievehicule"));
                 demande.setTypeboitevitesse(rs.getString("typeboitevitesse"));
+                demande.setPostid(rs.getInt("idposttroc_id"));
                 data.add(demande);
             }
         } catch (SQLException e) {
@@ -164,25 +164,12 @@ public class DemnadeTrocService implements DemandetrocService <DemandeTroc> {
                 demande.setTypedecarburant(resultSet.getString("typedecarburant"));
                 demande.setCategorievehicule(resultSet.getString("categorievehicule"));
                 demande.setTypeboitevitesse(resultSet.getString("typeboitevitesse"));
+                demande.setPostid(resultSet.getInt("idposttroc_id"));
             }
         } catch (SQLException e) {
             System.out.println("Erreur lors de la récupération de la demande de troc : " + e.getMessage());
-        } finally {
-            // Fermer les ressources JDBC dans le bloc finally
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                System.out.println("Erreur lors de la fermeture des ressources JDBC : " + e.getMessage());
-            }
         }
+
 
         return demande;
     }
@@ -210,6 +197,7 @@ public class DemnadeTrocService implements DemandetrocService <DemandeTroc> {
                     demande.setTypedecarburant(rs.getString("typedecarburant"));
                     demande.setCategorievehicule(rs.getString("categorievehicule"));
                     demande.setTypeboitevitesse(rs.getString("typeboitevitesse"));
+                    demande.setPostid(rs.getInt("idposttroc_id"));
                     data.add(demande);
                 }
             }
@@ -242,6 +230,7 @@ public class DemnadeTrocService implements DemandetrocService <DemandeTroc> {
                     demande.setTypedecarburant(rs.getString("typedecarburant"));
                     demande.setCategorievehicule(rs.getString("categorievehicule"));
                     demande.setTypeboitevitesse(rs.getString("typeboitevitesse"));
+                    demande.setPostid(rs.getInt("idposttroc_id"));
                 }
             }
         } catch (SQLException e) {

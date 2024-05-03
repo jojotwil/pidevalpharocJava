@@ -97,7 +97,7 @@
                                     </image>
                                 </ImageView>
 
-                        <MenuButton fx:id="menu" mnemonicParsing="false"  prefHeight="10.0" prefWidth="35.0" style="-fx-background-color: white;">
+                        <MenuButton fx:id="menu" mnemonicParsing="false" prefHeight="10.0" prefWidth="35.0" style="-fx-background-color: white;">
                            <items>
                               <MenuItem fx:id="monprofil" mnemonicParsing="false" onAction="#monprofil1" text="Mon Profil" />
                               <MenuItem mnemonicParsing="false" text="Login" />
@@ -143,9 +143,9 @@
                                                         <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="61.0" vgrow="SOMETIMES" />
                                                     </rowConstraints>
                                                     <children>
-                                                        <Label text="Back color" GridPane.halignment="LEFT" />
-                                                        <Label text="Text color" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
-                                                        <Label text="Border colorail" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
+                                                        <Label text="Couleur de background" GridPane.halignment="LEFT" />
+                                                        <Label prefHeight="21.0" prefWidth="141.0" text="couleur de texte" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
+                                                        <Label text="couleur de la bordure" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
                                           <ColorPicker fx:id="back" prefHeight="31.0" prefWidth="344.0" GridPane.rowIndex="1" />
                                           <ColorPicker fx:id="text" prefHeight="31.0" prefWidth="350.0" GridPane.rowIndex="3" />
                                           <ColorPicker fx:id="border" prefHeight="49.0" prefWidth="347.0" GridPane.rowIndex="5" />
@@ -177,14 +177,14 @@
                                           <DatePicker fx:id="fin" prefHeight="31.0" prefWidth="316.0" GridPane.rowIndex="7" />
                                                     </children>
                                                 </GridPane>
-                                                <Button fx:id="btnsave" layoutX="321.0" layoutY="375.0" mnemonicParsing="false" onAction="#addrdv" prefHeight="33.0" prefWidth="172.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="save" textFill="#fffefe" />
-                                                <Button fx:id="btndelete" layoutX="548.0" layoutY="373.0" mnemonicParsing="false" onAction="#deleteCalendarActivity" prefHeight="37.0" prefWidth="174.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Delete" />
+                                                <Button fx:id="btnsave" layoutX="321.0" layoutY="375.0" mnemonicParsing="false" onAction="#addrdv" prefHeight="33.0" prefWidth="172.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="Enregistrer" textFill="#fffefe" />
+                                                <Button fx:id="btndelete" layoutX="548.0" layoutY="373.0" mnemonicParsing="false" onAction="#deleteCalendarActivity" prefHeight="37.0" prefWidth="174.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Supprimer" />
                                                 <Label layoutX="284.0" layoutY="14.0" prefHeight="49.0" prefWidth="278.0" text="Ajouter un rendez-vous" AnchorPane.leftAnchor="284.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="-20.0">
                                                     <font>
                                                         <Font name="System Bold" size="33.0" />
                                                     </font>
                                                 </Label>
-                                                <Button fx:id="btnupdate" layoutX="75.0" layoutY="375.0" mnemonicParsing="false" onAction="#updaterdv" prefHeight="33.0" prefWidth="172.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="update" textFill="WHITE" />
+                                                <Button fx:id="btnupdate" layoutX="75.0" layoutY="375.0" mnemonicParsing="false" onAction="#updaterdv" prefHeight="33.0" prefWidth="172.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="Mettre à jour" textFill="WHITE" />
                                             </children>
                                             <padding>
                                                 <Insets top="30.0" />

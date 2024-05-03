@@ -129,7 +129,7 @@
                                         </GridPane>
                                     </content>
                                 </ScrollPane>
-                        <Button fx:id="profil" layoutX="29.0" layoutY="6.0" mnemonicParsing="false" onAction="#monprofil" prefHeight="9.0" prefWidth="71.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="back" textFill="#fffefe" />
+                        <Button fx:id="profil" layoutX="29.0" layoutY="6.0" mnemonicParsing="false" onAction="#monprofil" prefHeight="31.0" prefWidth="103.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="retourner" textFill="#fffefe" />
                             </children>
                         </AnchorPane>
                     </children>

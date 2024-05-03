@@ -203,23 +203,19 @@ public class DemandeTroc {
 
     @Override
     public String toString() {
-        return "DemandeTroc{" +
-                "id=" + id +
-                ", userdemande_id=" + userdemande_id +
-                ", idposttroc_id=" + idposttroc_id +
-                ", annee=" + annee +
-                ", daterdv=" + daterdv +
-                ", heurerdv=" + heurerdv +
-                ", kilometrage=" + kilometrage +
-                ", description='" + description + '\'' +
-                ", image='" + image + '\'' +
-                ", mail='" + mail + '\'' +
-                ", matricule='" + matricule + '\'' +
-                ", marque=" + marque +
-                ", modele=" + modele +
-                ", typedecarburant=" + typedecarburant +
-                ", categorievehicule=" + categorievehicule +
-                ", typeboitevitesse=" + typeboitevitesse +
-                '}';
+        return
+                "  annee=" + annee +
+                ",\n daterdv=" + daterdv +
+                ",\n heurerdv=" + heurerdv +
+                ", \n kilometrage=" + kilometrage +
+                ",\n description='" + description + '\'' +
+                ", \n mail='" + mail + '\'' +
+                ", \n matricule='" + matricule + '\'' +
+                ", \n marque=" + marque +
+                ", \n modele=" + modele +
+                ", \n typedecarburant=" + typedecarburant +
+                ", \n categorievehicule=" + categorievehicule +
+                ", \n typeboitevitesse=" + typeboitevitesse
+                ;
     }
 }

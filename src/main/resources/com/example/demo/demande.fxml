@@ -96,7 +96,7 @@
                                     </image>
                                 </ImageView>
 
-                        <MenuButton fx:id="menu" mnemonicParsing="false"  prefHeight="10.0" prefWidth="35.0" style="-fx-background-color: white;">
+                        <MenuButton fx:id="menu" mnemonicParsing="false" prefHeight="10.0" prefWidth="35.0" style="-fx-background-color: white;">
                            <items>
                               <MenuItem fx:id="monprofil" mnemonicParsing="false" onAction="#monprofil1" text="Mon Profil" />
                               <MenuItem mnemonicParsing="false" text="Login" />
@@ -166,7 +166,7 @@
                                                 <Image url="@images/voituretroc3.png" />
                                              </image>
                                           </ImageView>
-                                          <Button fx:id="btnimage" mnemonicParsing="false" onAction="#browseImage" prefHeight="33.0" prefWidth="112.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="add photo" textFill="#f2eeee" GridPane.halignment="RIGHT" GridPane.rowIndex="9" />
+                                          <Button fx:id="btnimage" mnemonicParsing="false" onAction="#browseImage" prefHeight="33.0" prefWidth="112.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="+ photo" textFill="#f2eeee" GridPane.halignment="RIGHT" GridPane.rowIndex="9" />
                                                   </children>
                                               </GridPane>
                                               <GridPane layoutX="270.0" layoutY="77.0" prefHeight="459.0" prefWidth="333.0" AnchorPane.leftAnchor="420.0">
@@ -206,7 +206,7 @@
                                           <DatePicker fx:id="daterdv" prefHeight="31.0" prefWidth="339.0" GridPane.rowIndex="13" />
                                                   </children>
                                               </GridPane>
-                                              <Button fx:id="btnsave" layoutX="316.0" layoutY="561.0" mnemonicParsing="false" onAction="#adddemande" prefHeight="51.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="save" textFill="#f2eeee" />
+                                              <Button fx:id="btnsave" layoutX="316.0" layoutY="561.0" mnemonicParsing="false" onAction="#adddemande" prefHeight="51.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="Envoyer" textFill="#f2eeee" />
                                               <Label layoutX="222.0" layoutY="27.0" prefHeight="49.0" prefWidth="397.0" text="    Demande un troc" AnchorPane.bottomAnchor="570.0" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="165.0" AnchorPane.topAnchor="0.0">
                                                   <font>
                                                       <Font name="System Bold" size="33.0" />

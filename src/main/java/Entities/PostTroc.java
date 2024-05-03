@@ -173,20 +173,18 @@ public class PostTroc {
 
         @Override
         public String toString() {
-            return "PostTroc{" +
-                    "id=" + id +
-                    ", annee=" + annee +
-                    ", kilometrage=" + kilometrage +
-                    ", description='" + description + '\'' +
-                    ", localisation='" + localisation + '\'' +
-                    ", image='" + image + '\'' +
-                    ", mail='" + mail + '\'' +
-                    ", matricule='" + matricule + '\'' +
-                    ", marque=" + marque +
-                    ", modele=" + modele +
-                    ", typecarburant=" + typecarburant +
-                    ", categorievehicule=" + categorievehicule +
-                    ", typeboitevitesse=" + typeboitevitesse +
-                    '}';
+            return
+                    " annee=" + annee +
+                    "\n kilometrage=" + kilometrage +
+                    ",\n description='" + description + '\'' +
+                    ", \n localisation='" + localisation + '\'' +
+                    ", \n mail='" + mail + '\'' +
+                    ", \n matricule='" + matricule + '\'' +
+                    ", \n marque=" + marque +
+                    ", \n modele=" + modele +
+                    ", \n typecarburant=" + typecarburant +
+                    ", \n categorievehicule=" + categorievehicule +
+                    ", \n typeboitevitesse=" + typeboitevitesse
+                    ;
         }
 }

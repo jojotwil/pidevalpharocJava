@@ -4,6 +4,7 @@ module com.example.demo {
     requires java.sql;
     requires java.net.http;
     requires org.knowm.xchart;
+    requires java.mail;
 
     opens com.example.demo to javafx.fxml;
     exports com.example.demo;

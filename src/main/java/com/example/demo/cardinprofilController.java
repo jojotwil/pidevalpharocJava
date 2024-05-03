@@ -145,7 +145,7 @@ public class cardinprofilController implements Initializable {
        // System.out.println(postTroc);
         AlldemandesController controllerr = new AlldemandesController();
         controllerr.setPostTroc(postTroc);
-        controllerr.menuDisplay(postTroc);
+        //controllerr.menuDisplay(postTroc);
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("alldemandes.fxml"));
             Parent newContent = loader.load();

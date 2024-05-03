@@ -51,7 +51,7 @@
             <children>
                 <VBox layoutX="6.0" layoutY="-7.0" prefHeight="528.0" prefWidth="1366.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="-32.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="-689.0" AnchorPane.topAnchor="-7.0">
                     <children>
-                        <Label prefHeight="55.0" prefWidth="484.0" text="Liste des trocs">
+                        <Label prefHeight="59.0" prefWidth="810.0" text="chart graphique sur le type de vehécules ">
                             <font>
                                 <Font size="41.0" />
                             </font>
