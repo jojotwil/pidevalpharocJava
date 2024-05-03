@@ -360,7 +360,7 @@ public class DBUtils {
                         } else {
                             loggedInUserEmail = email;
 
-                            if (userRole.equals("admine")) {
+                            if (userRole.equals("[\"ROLE_ADMIN\"]")) {
                                 loadAdminDashboard(event);
                             } else {
                                 changeScence(event, "logged-In.fxml", "Welcome", email, "");

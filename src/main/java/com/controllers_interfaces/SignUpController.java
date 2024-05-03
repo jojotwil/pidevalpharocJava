@@ -46,7 +46,12 @@ public class SignUpController implements Initializable {
         button_register.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                String note = ((RadioButton) toggleGroup.getSelectedToggle()).getText();
+                String note;
+                if(rb_note1.isSelected()) {
+                    note = "[\"ROLE_CLIENT\"]";
+                } else {
+                    note = "[\"ROLE_EMPLOYEE\"]";
+                }
                 if(!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty()){
                     DBUtils.signupUser(event,tf_username.getText(), tf_password.getText(),note , tf_nom.getText(),tf_prenom.getText(),tf_image.getText());
                 } else {
