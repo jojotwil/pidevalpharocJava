@@ -5,7 +5,6 @@ import Services.PostTrocService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.*;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
@@ -19,22 +18,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import javafx.animation.FadeTransition;
-import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-public class HelloController implements Initializable {
+public class HelloControllertroc implements Initializable {
 
     @FXML
     private TextField search;
@@ -169,11 +160,11 @@ public class HelloController implements Initializable {
 
         try {
             // Charger la nouvelle interface dans un Node
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-viewtroc.fxml"));
             Parent newContent = loader.load();
 
             // Accéder au contrôleur de la vue "posttroccrud.fxml"
-            HelloController controller = loader.getController();
+            HelloControllertroc controller = loader.getController();
             //System.out.println(postTroc);
 
             Scene scene = new Scene(newContent);

@@ -12,17 +12,19 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class SendController implements Initializable {
     @FXML
     private Button demoi;
+    @FXML
+    private Label nbmot;
 
     @FXML
     private Label sender;
@@ -40,11 +42,11 @@ public class SendController implements Initializable {
     public void troc(ActionEvent event) {
         try {
             // Charger la nouvelle interface dans un Node
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-viewtroc.fxml"));
             Parent newContent = loader.load();
 
             // Accéder au contrôleur de la vue "posttroccrud.fxml"
-            HelloController controller = loader.getController();
+            HelloControllertroc controller = loader.getController();
 
             // Créer une nouvelle scène avec le nouveau contenu
             Scene scene = new Scene(newContent);
@@ -143,21 +145,81 @@ public class SendController implements Initializable {
     }
 
     @FXML
-    public void sendmessage(){
-        //this.msg=mesg;
-        Message messg=new Message(titre.getText(),message.getText(),recipientuser,senderuser);
+    public void sendmessage(ActionEvent event){
+        if (validateFields()) {
+            Message messg=new Message(titre.getText(),message.getText(),recipientuser,senderuser);
         MessageinService service=new MessageinService();
         service.envoyermsg(messg);
-
+            // Affichage d'un message de succès
+            showAlert("Message envoyé avec succès !", event);
+        }
     }
+
+
+    private boolean validateFields() {
+        boolean isValid = true;
+        StringBuilder errorMessage = new StringBuilder();
+
+        // Validation du champ titre
+        if (titre.getText().isEmpty()) {
+            isValid = false;
+            errorMessage.append("Le champ 'Titre' ne peut pas être vide.\n");
+        }
+
+        // Validation du champ message
+        if (message.getText().isEmpty()) {
+            isValid = false;
+            errorMessage.append("Le champ 'Message' ne peut pas être vide.\n");
+        }
+
+        // Retourner le message d'erreur
+        if (!isValid) {
+            showErrorAlert(errorMessage.toString());
+        }
+
+        return isValid;
+    }
+
+    private void showErrorAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur de saisie");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+
+
     @FXML
-    public void sendmessagefromdetails(){
-        //this.msg=mesg;
-        Message messg=new Message(titre.getText(),message.getText(),senderuser,recipientuser);
-        MessageinService service=new MessageinService();
-        service.envoyermsg(messg);
+    public void sendmessagefromdetails(ActionEvent event) {
+        // Validation des champs titre et message
+        if (validateFields()) {
+            // Envoi du message
+            Message messg = new Message(titre.getText(), message.getText(), senderuser, recipientuser);
+            MessageinService service = new MessageinService();
+            service.envoyermsg(messg);
 
+            // Affichage d'un message de succès
+            showAlert("Message envoyé avec succès !", event);
+        }
     }
+
+    private void showAlert(String message, ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+
+        // Ajouter un événement handler pour le bouton "OK"
+        alert.setOnCloseRequest(e -> {
+            // Naviguer vers la page "trocback"
+            demoi(event);
+        });
+
+        alert.showAndWait();
+    }
+
+
     public void setlable(Message messagee){
         this.msg=messagee;
 
@@ -236,8 +298,50 @@ public class SendController implements Initializable {
             e.printStackTrace();
         }
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setlablefromdetails();
+        //nbrmots();
+        start();
+
     }
+    public void start() {
+        // Création d'un TextArea
+        TextArea textArea = new TextArea();
+
+        // Création d'une étiquette pour afficher le nombre de mots
+        Label wordCountLabel = new Label("[0]");
+
+        // Ajout d'un écouteur sur le texte du TextArea pour mettre à jour le compteur de mots
+        message.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Compter les mots dans le nouveau texte
+            int wordCount = countWords(newValue);
+            // Mettre à jour l'étiquette avec le nombre de mots
+            nbmot.setText("[" + wordCount+"]");
+        });
+
+        // Création de la mise en page
+        VBox root = new VBox(textArea, wordCountLabel);
+
+        // Création de la scène
+        Scene scene = new Scene(root, 400, 300);
+
+        // Configuration de la scène et affichage de la fenêtre
+
+    }
+
+    // Méthode pour compter les mots dans une chaîne de texte
+    private int countWords(String text) {
+
+            // Supprimer les espaces en début et fin de la chaîne
+            text = text.trim();
+            // Diviser la chaîne en mots en utilisant l'espace comme délimiteur
+            String[] words = text.split("\\s+");
+            // Retourner le nombre de mots
+            return words.length;
+
+
+    }
+
 }

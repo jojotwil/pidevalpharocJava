@@ -1,9 +1,7 @@
 package com.example.demo;
 
-import Entities.DemandeTroc;
 import Entities.PostTroc;
 import Services.PostTrocService;
-import javafx.animation.TranslateTransition;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,20 +16,15 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 import java.io.File;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 
 
 import java.io.IOException;
@@ -434,11 +427,11 @@ public class postcrudController implements Initializable {
     public void troc(ActionEvent event) {
         try {
             // Charger la nouvelle interface dans un Node
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-viewtroc.fxml"));
             Parent newContent = loader.load();
 
             // Accéder au contrôleur de la vue "posttroccrud.fxml"
-            HelloController controller = loader.getController();
+            HelloControllertroc controller = loader.getController();
 
             // Créer une nouvelle scène avec le nouveau contenu
             Scene scene = new Scene(newContent);

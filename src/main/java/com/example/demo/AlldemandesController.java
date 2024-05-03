@@ -4,8 +4,6 @@ import Entities.DemandeTroc;
 import Entities.PostTroc;
 import Interfaces.DemandetrocService;
 import Services.DemnadeTrocService;
-import Services.PostTrocService;
-import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,15 +14,11 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -49,11 +43,11 @@ public class AlldemandesController implements Initializable {
     public void troc(ActionEvent event) {
         try {
             // Charger la nouvelle interface dans un Node
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-viewtroc.fxml"));
             Parent newContent = loader.load();
 
             // Accéder au contrôleur de la vue "posttroccrud.fxml"
-            HelloController controller = loader.getController();
+            HelloControllertroc controller = loader.getController();
 
             // Créer une nouvelle scène avec le nouveau contenu
             Scene scene = new Scene(newContent);

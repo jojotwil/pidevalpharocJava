@@ -51,6 +51,7 @@ public class cardindemandesController implements Initializable {
     private Image imagee;
     private DemandeTroc DemandeTroc;
 
+
     public void setDemandeTroc(Entities.DemandeTroc demandeTroc) {
         if (demandeTroc != null) {
             DemandeTroc = demandeTroc;

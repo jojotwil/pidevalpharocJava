@@ -1,9 +1,6 @@
 package com.example.demo;
 
-import Entities.DemandeTroc;
 import Entities.PostTroc;
-import Services.PostTrocService;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -152,11 +148,11 @@ public class MenuController implements Initializable {
 
         try {
             // Charger la nouvelle interface dans un Node
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-viewtroc.fxml"));
             Parent newContent = loader.load();
 
             // Accéder au contrôleur de la vue "posttroccrud.fxml"
-           HelloController controller = loader.getController();
+           HelloControllertroc controller = loader.getController();
             Scene scene = new Scene(newContent);
 
             // Obtenir la fenêtre principale (stage)

@@ -45,11 +45,11 @@ public class ReadmineController implements Initializable {
     public void troc(ActionEvent event) {
         try {
             // Charger la nouvelle interface dans un Node
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-viewtroc.fxml"));
             Parent newContent = loader.load();
 
             // Accéder au contrôleur de la vue "posttroccrud.fxml"
-            HelloController controller = loader.getController();
+            HelloControllertroc controller = loader.getController();
 
             // Créer une nouvelle scène avec le nouveau contenu
             Scene scene = new Scene(newContent);

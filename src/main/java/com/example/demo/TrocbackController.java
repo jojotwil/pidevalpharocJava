@@ -66,7 +66,7 @@ public class TrocbackController implements Initializable {
     @FXML
     public void showtrocs() {
 
-        PostTrocService service=new PostTrocService();
+        PostTrocService service = new PostTrocService();
         List<PostTroc> Liste = service.getAllpostes();
         ObservableList<PostTroc> observableList = FXCollections.observableList(Liste);
 
@@ -91,56 +91,49 @@ public class TrocbackController implements Initializable {
                 demandeButton.setOnAction(event -> {
                     PostTroc post = getTableView().getItems().get(getIndex());
                     DemnadeTrocService servicepost = new DemnadeTrocService();
-                    List<DemandeTroc> liste = servicepost.getDemandesByPostid(post.getId()); //  l'ID de post actuel
-                    int numberOfMessages = liste.size();
-                    System.out.println(numberOfMessages);
+                    List<DemandeTroc> liste = servicepost.getDemandesByPostid(post.getId()); // l'ID de post actuel
 
+                    // Ajoutez ici la logique pour afficher la demande
+                    // ...
 
-                    // Ajoutez ici la logique pour supprimer le message
-                    //messageinService.deletemsg(message);
+                    // Affichez la demande uniquement si la liste n'est pas vide
+                    if (!liste.isEmpty()) {
+                        try {
+                            // Charger la nouvelle interface dans un Node
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("demandeback.fxml"));
+                            Parent newContent = loader.load();
 
-                    try {
-                        // Charger la nouvelle interface dans un Node
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("demandeback.fxml"));
-                        Parent newContent = loader.load();
+                            // Accéder au contrôleur de la vue "posttroccrud.fxml"
+                            DemandebackController controller = loader.getController();
+                            controller.showtrocs(liste);
 
-                        // Accéder au contrôleur de la vue "posttroccrud.fxml"
-                        DemandebackController controller = loader.getController();
-                        System.out.println(liste);
+                            // Créer une nouvelle scène avec le nouveau contenu
+                            Scene scene = new Scene(newContent);
 
-                        //DemandebackController controller =new DemandebackController();
-                        controller.showtrocs(liste);
+                            // Obtenir la fenêtre principale (stage)
+                            Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-                        // Créer une nouvelle scène avec le nouveau contenu
-                        Scene scene = new Scene(newContent);
+                            // Obtenir les dimensions de l'écran
+                            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
 
-                        // Obtenir la fenêtre principale (stage)
-                        Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                            // Obtenez les dimensions de l'écran
+                            Screen screen = Screen.getPrimary();
+                            double screenWidth = screen.getBounds().getWidth();
+                            double screenHeight = screen.getBounds().getHeight();
 
-                        // Obtenir les dimensions de l'écran
-                        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+                            // Définissez la taille de la fenêtre sur les dimensions de l'écran
+                            mainStage.setWidth(screenWidth);
+                            mainStage.setHeight(screenHeight);
 
-                        // Obtenez les dimensions de l'écran
-                        Screen screen = Screen.getPrimary();
-                        double screenWidth = screen.getBounds().getWidth();
-                        double screenHeight = screen.getBounds().getHeight();
-
-// Définissez la taille de la fenêtre sur les dimensions de l'écran
-                        mainStage.setWidth(screenWidth-1);
-                        mainStage.setHeight(screenHeight);
-
-                        // Définir la nouvelle scène sur la fenêtre principale
-                        mainStage.setScene(scene);
-                        mainStage.show();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                            // Définir la nouvelle scène sur la fenêtre principale
+                            mainStage.setScene(scene);
+                            mainStage.show();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
-
-
-
                 });
             }
-
 
             @Override
             protected void updateItem(Void item, boolean empty) {
@@ -148,11 +141,18 @@ public class TrocbackController implements Initializable {
                 if (empty) {
                     setGraphic(null);
                 } else {
+                    // Si la liste est vide, désactivez le bouton
+                    PostTroc post = getTableView().getItems().get(getIndex());
+                    DemnadeTrocService servicepost = new DemnadeTrocService();
+                    List<DemandeTroc> liste = servicepost.getDemandesByPostid(post.getId()); // l'ID de post actuel
+                    demandeButton.setDisable(liste.isEmpty());
+
                     setGraphic(demandeButton);
                 }
             }
         });
     }
+
     @FXML
     public void chart(ActionEvent event){
         try {
@@ -160,8 +160,6 @@ public class TrocbackController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("chartjs.fxml"));
             Parent newContent = loader.load();
 
-            // Accéder au contrôleur de la vue "posttroccrud.fxml"
-
             // Créer une nouvelle scène avec le nouveau contenu
             Scene scene = new Scene(newContent);
 
@@ -176,7 +174,7 @@ public class TrocbackController implements Initializable {
             double screenWidth = screen.getBounds().getWidth();
             double screenHeight = screen.getBounds().getHeight();
 
-// Définissez la taille de la fenêtre sur les dimensions de l'écran
+            // Définissez la taille de la fenêtre sur les dimensions de l'écran
             mainStage.setWidth(screenWidth);
             mainStage.setHeight(screenHeight);
 
@@ -188,6 +186,7 @@ public class TrocbackController implements Initializable {
         }
 
     }
+
     @FXML
     public void trocs(ActionEvent event){
         try {
@@ -195,8 +194,6 @@ public class TrocbackController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("trocback.fxml"));
             Parent newContent = loader.load();
 
-            // Accéder au contrôleur de la vue "posttroccrud.fxml"
-
             // Créer une nouvelle scène avec le nouveau contenu
             Scene scene = new Scene(newContent);
 
@@ -211,7 +208,7 @@ public class TrocbackController implements Initializable {
             double screenWidth = screen.getBounds().getWidth();
             double screenHeight = screen.getBounds().getHeight();
 
-// Définissez la taille de la fenêtre sur les dimensions de l'écran
+            // Définissez la taille de la fenêtre sur les dimensions de l'écran
             mainStage.setWidth(screenWidth);
             mainStage.setHeight(screenHeight);
 
@@ -223,6 +220,7 @@ public class TrocbackController implements Initializable {
         }
 
     }
+
     @FXML
     void mouseClicked(ContextMenuEvent event) {
 

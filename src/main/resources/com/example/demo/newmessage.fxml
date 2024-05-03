@@ -205,6 +205,11 @@
                                             </font>
                                         </Label>
                                         <TextArea fx:id="message" prefHeight="68.0" prefWidth="942.0" />
+                              <Label fx:id="nbmot" text="[0]" textFill="#7c7676" VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Label>
                                         <Button fx:id="envoyer" mnemonicParsing="false" onAction="#sendmessagefromdetails" prefHeight="33.0" prefWidth="172.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="Envoyer" textFill="WHITE">
                                             <VBox.margin>
                                                 <Insets left="15.0" top="20.0" />

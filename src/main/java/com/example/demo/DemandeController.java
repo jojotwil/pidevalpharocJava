@@ -5,7 +5,6 @@ import Entities.PostTroc;
 import Interfaces.DemandetrocService;
 import Services.DemnadeTrocService;
 import Services.PostTrocService;
-import javafx.animation.TranslateTransition;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,25 +23,17 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
-import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 public class DemandeController implements Initializable {
 
@@ -243,7 +234,7 @@ public class DemandeController implements Initializable {
         DemandetrocService demandetrocService = new DemnadeTrocService();
         demandetrocService.addDemande(demandeTroc);
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-viewtroc.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
 
@@ -315,11 +306,11 @@ private ActionEvent eventt;
         System.out.println(eventt);
         try {
             // Charger la nouvelle interface dans un Node
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-viewtroc.fxml"));
             Parent newContent = loader.load();
 
             // Accéder au contrôleur de la vue "posttroccrud.fxml"
-            HelloController controller = loader.getController();
+            HelloControllertroc controller = loader.getController();
 
             // Créer une nouvelle scène avec le nouveau contenu
             Scene scene = new Scene(newContent);
