@@ -105,9 +105,7 @@
                         <MenuButton fx:id="menu" mnemonicParsing="false" prefHeight="10.0" prefWidth="35.0" style="-fx-background-color: white;">
                            <items>
                               <MenuItem fx:id="monprofil" mnemonicParsing="false" onAction="#monprofil1" text="Mon Profil" />
-                              <MenuItem mnemonicParsing="false" text="Login" />
                               <MenuItem fx:id="button_logout" mnemonicParsing="false" text="LogOut" />
-                              <MenuItem mnemonicParsing="false" text="Registrer" />
                            </items>
                            <graphic>
                               <ImageView fitHeight="17.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
