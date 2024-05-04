@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers_interfaces.UpdateProfileController">
+
+    <VBox alignment="CENTER" prefWidth="224.0" spacing="10">
+        <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Update Profile" />
+
+        <HBox spacing="10">
+            <Label text="Name: " />
+            <TextField fx:id="tfName" />
+        </HBox>
+
+        <HBox spacing="10">
+            <Label text="Email:  " />
+            <TextField fx:id="tfEmail" prefHeight="26.0" prefWidth="148.0" />
+        </HBox>
+      <HBox prefHeight="24.0" prefWidth="224.0">
+         <children>
+            <Label text="Prenom :" />
+            <TextField fx:id="tf_prenom" prefHeight="26.0" prefWidth="147.0" />
+         </children>
+      </HBox>
+      <HBox prefHeight="28.0" prefWidth="224.0">
+         <children>
+            <Label text="Image :   " />
+            <TextField fx:id="tf_image" prefHeight="26.0" prefWidth="85.0" />
+            <Button fx:id="button_browse" mnemonicParsing="false" onAction="#browseImage" text="browse" translateX="30.0" />
+         </children>
+      </HBox>
+
+
+
+        <Button onAction="#handleUpdateButtonClick" text="Update" />
+    </VBox>
+
+</AnchorPane>

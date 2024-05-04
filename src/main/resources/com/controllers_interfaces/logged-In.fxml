@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="552.0" prefWidth="883.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers_interfaces.LoggedInController">
+<children>
+   <BorderPane fx:id="borderPane" layoutX="114.0" layoutY="54.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <top>
+         <AnchorPane prefHeight="65.0" prefWidth="200.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
+            <children>
+               <Pane layoutX="-24.0" layoutY="-30.0" prefHeight="56.0" prefWidth="724.0" style="-fx-background-color: #032d4d;" AnchorPane.leftAnchor="-24.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-30.0">
+                  <children>
+                     <ImageView fx:id="Exit" fitHeight="22.0" fitWidth="22.0" layoutX="678.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@images/exit.png" />
+                        </image>
+                     </ImageView>
+                  </children>
+               </Pane>
+               <HBox layoutX="239.0" layoutY="1.0" prefHeight="43.0" prefWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                  <children>
+                     <JFXButton prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="home">
+                        <graphic>
+                           <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@images/dash1.png" />
+                              </image>
+                           </ImageView>
+                        </graphic>
+                     </JFXButton>
+                     <JFXButton prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="ADD">
+                        <graphic>
+                           <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@images/add1.png" />
+                              </image>
+                           </ImageView>
+                        </graphic>
+                     </JFXButton>
+                  </children>
+               </HBox>
+               <Label fx:id="Menu" layoutX="14.0" layoutY="36.0" prefHeight="22.0" prefWidth="92.0" text="MENU" textFill="#b7b7b7" AnchorPane.bottomAnchor="7.007998687500045" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="618.063980710938" AnchorPane.topAnchor="36.0">
+                  <graphic>
+                     <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@images/menu1.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+               <Label fx:id="MenuClose" layoutX="14.0" layoutY="36.0" prefHeight="22.0" prefWidth="92.0" text="MENU" textFill="#b7b7b7" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="594.0" AnchorPane.topAnchor="36.0">
+                  <graphic>
+                     <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@images/menu1.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Label>
+            </children>
+         </AnchorPane>
+      </top>
+      <left>
+         <AnchorPane fx:id="slider" prefHeight="362.0" prefWidth="176.0" style="-fx-background-color: #0A4969;" BorderPane.alignment="CENTER">
+            <children>
+               <VBox layoutX="14.0" layoutY="35.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0">
+                  <children>
+                     <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="home" textFill="WHITE">
+                        <font>
+                           <Font name="System Bold" size="15.0" />
+                        </font>
+                        <graphic>
+                           <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@images/dash.png" />
+                              </image>
+                           </ImageView>
+                        </graphic>
+                     </JFXButton>
+                     <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="ADD" textFill="WHITE">
+                        <font>
+                           <Font name="System Bold" size="15.0" />
+                        </font>
+                        <graphic>
+                           <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@images/add.png" />
+                              </image>
+                           </ImageView>
+                        </graphic>
+                     </JFXButton>
+                     <JFXButton fx:id="profileButton" alignment="BASELINE_LEFT" onAction="#handleProfileButtonClick" prefHeight="38.0" prefWidth="176.0" styleClass="sidebarItem" text="profile" textFill="WHITE">
+                        <font>
+                           <Font name="System Bold" size="15.0" />
+                        </font>
+                        <graphic>
+                           <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@images/user.png" />
+                              </image>
+                           </ImageView>
+                        </graphic>
+                     </JFXButton>
+                  </children>
+               </VBox>
+            </children>
+         </AnchorPane>
+      </left>
+   </BorderPane>
+</children>
+</AnchorPane>
