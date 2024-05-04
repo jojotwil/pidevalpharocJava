@@ -3,6 +3,7 @@ package Services;
 import Entities.*;
 import Interfaces.PosttrocService;
 import Tools.MyConnection;
+import com.example.demo.DBUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -14,6 +15,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 public class PostTrocService implements PosttrocService <PostTroc> {
+    String loggedInUserEmail = DBUtils.getLoggedInUserEmail();
+    UserService serviceuser=new UserService();
+    User user= serviceuser.getuserfromemail(loggedInUserEmail);
 
     @Override
     public void addPost(PostTroc post) {
@@ -32,7 +36,7 @@ public class PostTrocService implements PosttrocService <PostTroc> {
             pst.setString(10, post.getTypecarburant() );
             pst.setString(11, post.getCategorievehicule());
             pst.setString(12, post.getTypeboitevitesse());
-            pst.setString(13, "1");
+            pst.setInt(13, user.getId());
 
 
 
@@ -41,8 +45,8 @@ public class PostTrocService implements PosttrocService <PostTroc> {
             // Récupérer l'identifiant auto-incrémenté généré par la base de données
             ResultSet rs = pst.getGeneratedKeys();
             if (rs.next()) {
-                int usertroc_id = rs.getInt(1);
-                System.out.println("L'identifiant de l'utilisateur connecté est : " + usertroc_id);
+                int usertroc_id = rs.getInt(user.getId());
+                System.out.println("L'identifiant de l'utilisateur connecté est : " +user.getId() );
             }
 
             System.out.println("PostTroc ajouté avec succès");
@@ -129,6 +133,7 @@ public class PostTrocService implements PosttrocService <PostTroc> {
                 p.setTypecarburant(rs.getString("typecarburant"));
                 p.setCategorievehicule(rs.getString("categorievehicule"));
                 p.setTypeboitevitesse(rs.getString("typeboitevitesse"));
+                p.setUser(rs.getInt("usertroc_id"));
                 Data.add(p);
             }
         } catch (SQLException e) {
@@ -165,6 +170,44 @@ public class PostTrocService implements PosttrocService <PostTroc> {
             e.printStackTrace();
         }
         return Data;
+    }
+    public static ObservableList<PostTroc> getAllPostByIdUser(int userId) {
+        ObservableList<PostTroc> data = FXCollections.observableArrayList();
+        String query = "SELECT * FROM vehiculetroc WHERE usertroc_id = ?";
+
+        try {
+            Connection connection = MyConnection.getInstace().getCnx();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                PostTroc post = new PostTroc();
+                post.setId(resultSet.getInt("id"));
+                post.setAnnee(resultSet.getDate("annee"));
+                post.setKilometrage(resultSet.getDouble("kilometrage"));
+                post.setDescription(resultSet.getString("description"));
+                post.setLocalisation(resultSet.getString("localisation"));
+                post.setImage(resultSet.getString("image"));
+                post.setMail(resultSet.getString("mail"));
+                post.setMatricule(resultSet.getString("matricule"));
+                post.setMarque(resultSet.getString("marque"));
+                post.setModele(resultSet.getString("modele"));
+                post.setTypecarburant(resultSet.getString("typecarburant"));
+                post.setCategorievehicule(resultSet.getString("categorievehicule"));
+                post.setTypeboitevitesse(resultSet.getString("typeboitevitesse"));
+                post.setUser(resultSet.getInt("usertroc_id"));
+                data.add(post);
+            }
+
+            // Fermer les ressources
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return data;
     }
 
     @Override
@@ -205,6 +248,7 @@ public class PostTrocService implements PosttrocService <PostTroc> {
                 postTroc.setTypecarburant(resultSet.getString("typecarburant"));
                 postTroc.setCategorievehicule(resultSet.getString("categorievehicule"));
                 postTroc.setTypeboitevitesse(resultSet.getString("typeboitevitesse"));
+                postTroc.setUser(resultSet.getInt("usertroc_id"));
             }
         } catch (SQLException e) {
             System.out.println("Erreur lors de la récupération du PostTroc : " + e.getMessage());

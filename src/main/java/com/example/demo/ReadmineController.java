@@ -141,7 +141,7 @@ public class ReadmineController implements Initializable {
             date.setText(formattedDate);
         }
         if (sender != null && messagee.getSender() != null) {
-            sender.setText("Le message à : "+messagee.getRecipient().getUsername());
+            sender.setText("Le message à : "+messagee.getRecipient().getNom()+" "+messagee.getRecipient().getPrenom());
         }
     }
     @FXML

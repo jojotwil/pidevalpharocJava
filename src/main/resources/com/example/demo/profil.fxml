@@ -120,15 +120,15 @@
                      <children>
                         <VBox layoutX="38.0" layoutY="20.0" prefHeight="331.0" prefWidth="216.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="20.0">
                            <children>
-                              <ImageView fitHeight="85.0" fitWidth="129.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="image" fitHeight="85.0" fitWidth="129.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@images/IMG_8930.JPG" />
                                  </image>
                                  <VBox.margin>
-                                    <Insets left="70.0" />
+                                    <Insets left="50.0" />
                                  </VBox.margin>
                               </ImageView>
-                              <Label text="Mouna Ben Rebah" textFill="WHITE">
+                              <Label fx:id="usernam" text="Mouna Ben Rebah" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>

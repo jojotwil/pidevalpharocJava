@@ -170,6 +170,15 @@ public class PostTroc {
 
         //tostring
 
+    private int userid;
+
+    public int getUser() {
+        return userid;
+    }
+
+    public void setUser(int user) {
+        this.userid = user;
+    }
 
         @Override
         public String toString() {

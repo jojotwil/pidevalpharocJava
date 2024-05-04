@@ -230,7 +230,7 @@ public class envoyéesController implements Initializable {
 
                     int unreadCount = 0;
                     for (Message message : receivedMessages) {
-                        à.setText(message.getSender().getUsername());
+                        à.setText(message.getSender().getNom()+" "+message.getSender().getPrenom());
                         sujet.setText(message.getTitle());
                         action.setText("Supprimer");
                         if (!message.isRead()) {

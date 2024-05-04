@@ -224,7 +224,7 @@ public class SendController implements Initializable {
         this.msg=messagee;
 
         if (sender != null && messagee.getSender() != null) {
-            sender.setText("Le message à : "+messagee.getSender().getUsername());
+            sender.setText("Le message à : "+messagee.getSender().getNom()+" "+messagee.getSender().getPrenom());
         }
     }
     public void setlablefromdetails(){

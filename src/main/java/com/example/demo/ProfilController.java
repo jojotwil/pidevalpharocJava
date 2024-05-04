@@ -1,7 +1,9 @@
 package com.example.demo;
 
 import Entities.PostTroc;
+import Entities.User;
 import Services.PostTrocService;
+import Services.UserService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,8 +14,11 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Screen;
@@ -30,7 +35,14 @@ public class ProfilController implements Initializable {
     @FXML
     private MenuButton menu;
     @FXML
+    private ImageView image;
+
+    @FXML
+    private Label usernam;
+    @FXML
     private GridPane offre;
+    String loggedInUserEmail = DBUtils.getLoggedInUserEmail();
+
     PostTrocService postTrocService=new PostTrocService();
     ObservableList<PostTroc> Liste=postTrocService.getAllpostes();
     ObservableList<PostTroc> ListeData= FXCollections.observableArrayList();
@@ -243,7 +255,7 @@ public class ProfilController implements Initializable {
     public void menuDisplay(){
         System.out.println(offre+"menu");
         ListeData.clear();
-        ListeData.addAll(postTrocService.getAllpostes());
+        ListeData.addAll(postTrocService.getAllPostByIdUser(user.getId()));
         int row=0;
         int column=0;
         offre.getRowConstraints().clear();
@@ -269,10 +281,22 @@ public class ProfilController implements Initializable {
         }
 
     }
-
-
+    UserService serviceuser=new UserService();
+    User user= serviceuser.getuserfromemail(loggedInUserEmail);
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println(loggedInUserEmail+" email user cnt");
+
+
+        System.out.println(user);
+        usernam.setText(user.getPrenom()+" "+user.getNom());
+        try {
+           Image imagee = new Image( user.getImage());
+            image.setImage(imagee);
+        } catch (Exception e) {
+            // Gérer l'erreur, par exemple afficher un message d'erreur ou une image par défaut
+            System.out.println("Erreur lors du chargement de l'image : " + e.getMessage());
+        }
 
         menuDisplay();
     }

@@ -90,7 +90,7 @@ public class ReadController implements Initializable {
             date.setText(formattedDate);
         }
         if (sender != null && messagee.getSender() != null) {
-            sender.setText("Le message est de la part de : "+messagee.getSender().getUsername());
+            sender.setText("Le message est de la part de : "+messagee.getSender().getNom()+" "+messagee.getSender().getPrenom());
         }
     }
     @FXML
