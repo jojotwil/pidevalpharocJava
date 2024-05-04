@@ -73,6 +73,11 @@
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </Button>
+            <ImageView layoutX="272.0" layoutY="315.0" fitHeight="42.0" fitWidth="42.0" onMouseClicked="#signupWithGoogle">
+               <image>
+                  <Image url="@images/google_icon.png" /> <!-- Replace with the path to your Google icon -->
+               </image>
+            </ImageView>
             <TextField fx:id="tf_nom" layoutX="152.0" layoutY="174.0" prefHeight="30.0" prefWidth="186.0">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />

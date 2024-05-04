@@ -5,9 +5,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.Node;
@@ -32,6 +34,8 @@ public class SignUpController implements Initializable {
     private TextField tf_prenom;
     @FXML
     private TextField tf_image;
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ToggleGroup toggleGroup = new ToggleGroup();
@@ -42,7 +46,12 @@ public class SignUpController implements Initializable {
         button_register.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                String note = ((RadioButton) toggleGroup.getSelectedToggle()).getText();
+                String note;
+                if(rb_note1.isSelected()) {
+                    note = "[\"ROLE_CLIENT\"]";
+                } else {
+                    note = "[\"ROLE_EMPLOYEE\"]";
+                }
                 if(!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty()){
                     DBUtils.signupUser(event,tf_username.getText(), tf_password.getText(),note , tf_nom.getText(),tf_prenom.getText(),tf_image.getText());
                 } else {
@@ -81,5 +90,15 @@ public class SignUpController implements Initializable {
         if (selectedFile != null) {
             tf_image.setText(selectedFile.getAbsolutePath());
         }
+    }
+
+    public void signupWithGoogle(MouseEvent mouseEvent) throws IOException {
+        OAuthGoogleAuthenticator googleAuthenticator = new OAuthGoogleAuthenticator(
+                "608781898479-vi1qo5fmfvobhltv6g55f77e5lqf92ql.apps.googleusercontent.com",
+                "http://localhost/dashboard",
+                "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",
+                "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email"
+        );
+        googleAuthenticator.startLogin();
     }
 }

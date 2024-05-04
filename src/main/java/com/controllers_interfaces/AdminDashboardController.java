@@ -1,5 +1,16 @@
 package com.controllers_interfaces;
 
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.UnaryOperator;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -7,19 +18,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Pagination;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.sql.*;
-import java.util.HashMap;
 public class AdminDashboardController {
 
     @FXML
@@ -48,18 +53,22 @@ public class AdminDashboardController {
 
     @FXML
     private TableColumn<HashMap<String, Object>, Boolean> isblocked;
+
     @FXML
     private Pagination pagination;
+
     @FXML
     private TextField searchField;
 
-
     private final int rowsPerPage = 10;
-    private ObservableList<HashMap<String, Object>> data = FXCollections.observableArrayList();
+    private ObservableList<HashMap<String, Object>> data;
+    private int totalUsersCount;
+    private int currentPage = 1;
+    @FXML
+    private Button exportButton;
     // Method to initialize the controller
     @FXML
     public void initialize() {
-        // Initialize the columns with corresponding properties
         // Initialize the columns with corresponding properties
         id.setCellValueFactory(cellData -> new SimpleIntegerProperty((Integer) cellData.getValue().get("id")).asObject());
         email.setCellValueFactory(cellData -> new SimpleStringProperty((String) cellData.getValue().get("email")));
@@ -70,13 +79,15 @@ public class AdminDashboardController {
         is_verified.setCellValueFactory(cellData -> new SimpleBooleanProperty((Boolean) cellData.getValue().get("is_verified")));
         isblocked.setCellValueFactory(cellData -> new SimpleBooleanProperty((Boolean) cellData.getValue().get("isblocked")));
 
-
-        // Call a method to populate the table
-        populateTable();
+        // Set up pagination
+        pagination.setPageFactory(this::createPage);
+        //exportButton.setOnAction(this::exportToExcel);
+        // Call a method to populate the table with the first page of data
+        populateTable(currentPage);
     }
 
-    // Method to populate the table with user data
-    private void populateTable() {
+    // Method to populate the table with user data for a specific page
+    private void populateTable(int page) {
         // Clear existing items in the table
         tableView_user.getItems().clear();
 
@@ -85,14 +96,26 @@ public class AdminDashboardController {
         String username = "root";
         String password = "";
 
-        try {
-            // Establish connection to the database
-            Connection connection = DriverManager.getConnection(url, username, password);
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            // Count total users
+            String countQuery = "SELECT COUNT(*) FROM user WHERE roles != 'admine'";
+            Statement countStatement = connection.createStatement();
+            ResultSet countResult = countStatement.executeQuery(countQuery);
+            if (countResult.next()) {
+                totalUsersCount = countResult.getInt(1);
+            }
 
-            // SQL query to select users excluding admins
-            String query = "SELECT * FROM user WHERE roles != 'admine'";
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
+            // Calculate number of pages
+            int totalPages = (int) Math.ceil((double) totalUsersCount / rowsPerPage);
+            pagination.setPageCount(totalPages);
+
+            // Prepare SQL query to select users for the current page
+            String query = "SELECT * FROM user WHERE roles != 'admine' LIMIT ?, ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            int offset = (page - 1) * rowsPerPage;
+            statement.setInt(1, offset);
+            statement.setInt(2, rowsPerPage);
+                    ResultSet resultSet = statement.executeQuery();
 
             // Iterate through the result set and add users to the table
             while (resultSet.next()) {
@@ -113,11 +136,19 @@ public class AdminDashboardController {
             // Close the connections
             resultSet.close();
             statement.close();
-            connection.close();
+            countResult.close();
+            countStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
+    // Method to create a page for the pagination
+    private Pagination createPage(int pageIndex) {
+        populateTable(pageIndex + 1); // Populate table with the requested page
+        return null; // Pagination itself doesn't need to be returned
+    }
+
 
     public void logout(ActionEvent actionEvent) {
         try {
@@ -152,7 +183,7 @@ public class AdminDashboardController {
             updateStatus(userId, true); // Update status to blocked
 
             // Refresh the table view to reflect the changes
-            populateTable();
+            populateTable(currentPage);
         } else {
             // Inform the user to select a user from the table
             // You can show an alert or a message in the UI
@@ -170,7 +201,7 @@ public class AdminDashboardController {
             updateStatus(userId, false); // Update status to unblocked
 
             // Refresh the table view to reflect the changes
-            populateTable();
+            populateTable(currentPage);
         } else {
             // Inform the user to select a user from the table
             // You can show an alert or a message in the UI
@@ -237,7 +268,62 @@ public class AdminDashboardController {
             }
         } else {
             // If search term is empty, repopulate the table with all users
-            populateTable();
+            populateTable(currentPage);
+        }
+    }
+    @FXML
+    public void exportToExcel(ActionEvent actionEvent) {
+        // Create a Workbook
+        Workbook workbook = new XSSFWorkbook();
+
+        // Create a Sheet
+        Sheet sheet = workbook.createSheet("User Data");
+
+        // Create a header row
+        Row headerRow = sheet.createRow(0);
+        String[] headers = {"ID", "Email", "Roles", "Nom", "Prenom", "Image", "Is Verified", "Is Blocked"};
+        for (int i = 0; i < headers.length; i++) {
+            Cell cell = headerRow.createCell(i);
+            cell.setCellValue(headers[i]);
+        }
+
+        // Iterate over table data and populate the sheet
+        ObservableList<HashMap<String, Object>> tableData = tableView_user.getItems();
+        int rowNum = 1;
+        for (HashMap<String, Object> rowData : tableData) {
+            Row row = sheet.createRow(rowNum++);
+            int colNum = 0;
+            for (Map.Entry<String, Object> entry : rowData.entrySet()) {
+                Cell cell = row.createCell(colNum++);
+                Object value = entry.getValue();
+                if (value instanceof String) {
+                    cell.setCellValue((String) value);
+                } else if (value instanceof Integer) {
+                    cell.setCellValue((Integer) value);
+                } else if (value instanceof Boolean) {
+                    cell.setCellValue((Boolean) value);
+                }
+            }
+        }
+
+        // Auto-size columns
+        for (int i = 0; i < headers.length; i++) {
+            sheet.autoSizeColumn(i);
+        }
+
+        // Write the workbook to a file
+        try (FileOutputStream fileOut = new FileOutputStream("userData.xlsx")) {
+            workbook.write(fileOut);
+            System.out.println("Excel file has been generated successfully!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            // Close the workbook
+            try {
+                workbook.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

@@ -1,0 +1,38 @@
+/* Style the AnchorPane */
+.reset-pane {
+    -fx-background-color: #f0f0f0;  /* Light gray background */
+    -fx-padding: 20px;              /* Padding around the content */
+}
+
+/* Style the VBox */
+.reset-vbox {
+    -fx-border-radius: 5px;         /* Rounded corners for the box */
+    -fx-background-color: #fff;     /* White background */
+    -fx-border-color: #ddd;        /* Light gray border */
+    -fx-border-width: 1px;          /* Border thickness */
+}
+
+/* Style the TextField */
+.reset-textfield {
+    -fx-font-size: 16px;            /* Text size */
+    -fx-padding: 10px;              /* Padding around the text */
+    -fx-border-radius: 5px;         /* Rounded corners for the text field */
+    -fx-border-color: #ccc;        /* Gray border for the text field */
+    -fx-border-width: 1px;          /* Border thickness */
+}
+
+/* Style the Button */
+.reset-button {
+    -fx-font-size: 14px;            /* Text size */
+    -fx-padding: 10px 20px;         /* Padding around the button text */
+    -fx-background-color: #337ab7;   /* Blue background */
+    -fx-text-fill: #fff;            /* White text color */
+    -fx-border-radius: 5px;         /* Rounded corners for the button */
+    -fx-border-color: #2e6da4;      /* Slightly darker blue border */
+    -fx-border-width: 1px;          /* Border thickness */
+}
+
+/* Apply hover effect to the button */
+.reset-button:hover {
+    -fx-background-color: #286090;  /* Darker blue on hover */
+}

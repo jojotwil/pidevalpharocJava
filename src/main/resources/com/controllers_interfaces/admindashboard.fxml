@@ -2,6 +2,7 @@
 
 <?import java.net.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
@@ -60,6 +61,16 @@
 
         </TableView>
         <Pagination fx:id="pagination" layoutX="222.0" layoutY="430.0" prefWidth="719.0" />
+        <!-- Export to Excel button -->
+        <Button layoutX="841.0" layoutY="490.0" onAction="#exportToExcel" text="Export to Excel">
+            <graphic>
+                <ImageView fitHeight="42.0" fitWidth="42.0">
+                    <image>
+                        <Image url="@images/xl.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
         <Button layoutX="44.0" layoutY="550.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-radius: 10;" text="Deconnection" textFill="#ff0202">
             <font>
                 <Font name="Apple Symbols" size="16.0" />
