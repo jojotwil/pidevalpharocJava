@@ -3,6 +3,8 @@ package com.example.demo;
 import Entities.Message;
 import Entities.User;
 import Services.MessageinService;
+import Services.UserService;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -48,6 +50,9 @@ public class BoitedereceptionController implements Initializable {
     @FXML
     private Label nbrmsgs ;
     private Message message;
+    String loggedInUserEmail = DBUtils.getLoggedInUserEmail();
+    UserService serviceuser=new UserService();
+    User user= serviceuser.getuserfromemail(loggedInUserEmail);
     @FXML
     public void troc(ActionEvent event) {
         try {
@@ -139,7 +144,7 @@ public class BoitedereceptionController implements Initializable {
     @FXML
     public void setn() {
         MessageinService messageinService = new MessageinService();
-        List<Message> liste = messageinService.getAllreceptmsg(2); // Remplacez 2 par l'ID de l'utilisateur actuel
+        List<Message> liste = messageinService.getAllreceptmsg(user.getId()); // Remplacez 2 par l'ID de l'utilisateur actuel
         int numberOfMessages = liste.size();
         System.out.println(numberOfMessages);
 
@@ -193,10 +198,22 @@ public class BoitedereceptionController implements Initializable {
     @FXML
     public void showlesmsgs() {
         MessageinService messageinService = new MessageinService();
-        List<Message> Liste = messageinService.getAllreceptmsg(2);
+        List<Message> Liste = messageinService.getAllreceptmsg(user.getId());
         ObservableList<Message> observableList = FXCollections.observableList(Liste);
+        //String sendername=service.getUserById(new PropertyValueFactory<Message,String>("sender_id"))
 
-        de.setCellValueFactory(new PropertyValueFactory<Message,String>("id"));
+// Définir une cellule personnalisée pour la colonne "De"
+        de.setCellValueFactory(cellData -> {
+            Message message = cellData.getValue();
+            int senderId = message.getSender();
+            User sender = service.getUserById(senderId);
+            if (sender != null) {
+                String nomPrenom = sender.getNom() + " " + sender.getPrenom();
+                return new SimpleStringProperty(nomPrenom);
+            } else {
+                return new SimpleStringProperty("Expéditeur inconnu");
+            }
+        });
         sujet.setCellValueFactory(new PropertyValueFactory<Message,String>("title"));
 
         // Ajouter les données à la table
@@ -210,7 +227,7 @@ public class BoitedereceptionController implements Initializable {
                 deleteButton.setOnAction(event -> {
                     Message message = getTableView().getItems().get(getIndex());
                     MessageinService messageinService = new MessageinService();
-                    List<Message> liste = messageinService.getAllreceptmsg(2); // Remplacez 2 par l'ID de l'utilisateur actuel
+                    List<Message> liste = messageinService.getAllreceptmsg(user.getId()); // Remplacez 2 par l'ID de l'utilisateur actuel
                     int numberOfMessages = liste.size();
                     System.out.println(numberOfMessages);
 
@@ -236,6 +253,7 @@ public class BoitedereceptionController implements Initializable {
             }
         });
     }
+    UserService service=new UserService();
     @FXML
     public void mouseClicked(MouseEvent e){
         try {
@@ -249,9 +267,12 @@ public class BoitedereceptionController implements Initializable {
             // Accéder au contrôleur de la vue FXML chargée
             ReadController controller = loader.getController();
             controller.setMsg(message);
+            //controller.setReceptionuser(service.getUserById(message.getRecipient()));
 
             // Appeler la méthode set du contrôleur pour afficher les données du message
             controller.set(message);
+            System.out.println(message);
+            System.out.println(message.getRecipient());
 
             //controller.répondre(e,message);
 

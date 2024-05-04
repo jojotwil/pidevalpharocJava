@@ -2,6 +2,8 @@ package com.example.demo;
 
 import Entities.PostTroc;
 import Entities.User;
+import Services.MessageinService;
+import Services.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,6 +56,12 @@ public class DetailsController implements Initializable {
     private PostTroc postTroc;
     @FXML
     private Label agelabel;
+    public int agebymonth;
+    public int age;
+    public int agebydays;
+    String loggedInUserEmail = DBUtils.getLoggedInUserEmail();
+    UserService serviceuser=new UserService();
+    User user= serviceuser.getuserfromemail(loggedInUserEmail);
 
 
     @FXML
@@ -95,9 +103,7 @@ public class DetailsController implements Initializable {
             e.printStackTrace();
         }
     }
-    public int agebymonth;
-    public int age;
-    public int agebydays;
+
 
     public void setdetails(PostTroc postTroc){
 
@@ -222,8 +228,13 @@ public class DetailsController implements Initializable {
 
             // Accéder au contrôleur de la vue "profil.fxml"
             SendController controller = loader.getController();
-            User user=new User("mouna");
-            controller.setSenderuser(user);
+            controller.setSenderuser(user.getId());
+            controller.setRecipientuser(postTroc.getUser());
+            controller.setlablefromdetails(postTroc);
+            MessageinService messageinService=new MessageinService();
+            messageinService.setPost(postTroc);
+            System.out.println(postTroc);
+
 
             // Créer une nouvelle scène avec le nouveau contenu
             Scene scene = new Scene(newContent);

@@ -1,8 +1,12 @@
 package Services;
 
 import Entities.Message;
+import Entities.PostTroc;
 import Entities.User;
 import Tools.MyConnection;
+import com.example.demo.DBUtils;
+import com.example.demo.DetailsController;
+import com.example.demo.SendController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -16,13 +20,52 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 public class MessageinService implements Interfaces.MessageService<Message> {
+    String loggedInUserEmail = DBUtils.getLoggedInUserEmail();
+    UserService serviceuser=new UserService();
+    SendController controller=new SendController();
+    int receptient = controller.getRecipientuser() ;
+    User user= serviceuser.getuserfromemail(loggedInUserEmail);
+    DetailsController controllerdetails=new DetailsController();
+    public static PostTroc  post=new PostTroc();
+
+    public void setPost(PostTroc post) {
+        this.post = post;
+    }
+
     @Override
     public void envoyermsg(Message message) {
         String requete = "INSERT INTO messages (sender_id, recipient_id, title, message, created_at, is_read) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement pst = MyConnection.getInstace().getCnx().prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
-            pst.setInt(1, 1);
-            pst.setInt(2, 2);
+            pst.setInt(1, user.getId());
+            pst.setInt(2, receptient);
+            //System.out.println(receptient+"from service");
+            pst.setString(3,  message.getTitle());
+            pst.setString(4,  message.getMessage());
+            pst.setObject(5,  java.sql.Date.valueOf(message.getCreatedAt().toLocalDate()));
+            pst.setBoolean(6, message.isRead());
+            pst.executeUpdate();
+
+            // Récupérer l'identifiant auto-incrémenté généré par la base de données
+            ResultSet rs = pst.getGeneratedKeys();
+            if (rs.next()) {
+                int usertroc_id = user.getId();
+                System.out.println("L'identifiant de l'utilisateur connecté est : " + user.getId());
+            }
+
+            System.out.println("Message envoyé avec succès");
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de l'ajout du PostTroc : " + e.getMessage());
+        }
+    }
+
+    public void envoyermsgfromdetails(Message message) {
+        String requete = "INSERT INTO messages (sender_id, recipient_id, title, message, created_at, is_read) VALUES (?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement pst = MyConnection.getInstace().getCnx().prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
+            pst.setInt(1, user.getId());
+            pst.setInt(2, post.getUser());
+            System.out.println(post+"from service");
             pst.setString(3,  message.getTitle());
             pst.setString(4,  message.getMessage());
             pst.setObject(5,  java.sql.Date.valueOf(message.getCreatedAt().toLocalDate()));
@@ -75,8 +118,8 @@ public class MessageinService implements Interfaces.MessageService<Message> {
                 // Supposons que vous avez un constructeur dans la classe User pour créer un utilisateur à partir de son identifiant
                 User sender = new User(rs.getString("sender_id"));
                 User recipient = new User(rs.getString("recipient_id"));
-                message.setSender(sender);
-                message.setRecipient(recipient);
+                //message.setSender(sender);
+                //message.setRecipient(recipient);
 
                 data.add(message);
             }
@@ -103,10 +146,10 @@ public class MessageinService implements Interfaces.MessageService<Message> {
                     message.setCreatedAt(zonedDateTime);
                     message.setTitle(rs.getString("title"));
                     // Supposons que vous avez un constructeur dans la classe User pour créer un utilisateur à partir de son identifiant
-                    User sender = new User(rs.getString("sender_id"));
-                    User recipient = new User(rs.getString("recipient_id"));
-                    message.setSender(sender);
-                    message.setRecipient(recipient);
+                    //User sender = new User(rs.getString("sender_id"));
+                    //User recipient = new User(rs.getString("recipient_id"));
+                    message.setSender(rs.getInt("sender_id"));
+                    message.setRecipient(rs.getInt("recipient_id"));
 
                     data.add(message);
                 }
@@ -134,11 +177,8 @@ public class MessageinService implements Interfaces.MessageService<Message> {
                     message.setCreatedAt(zonedDateTime);
                     message.setTitle(rs.getString("title"));
                     // Supposons que vous avez un constructeur dans la classe User pour créer un utilisateur à partir de son identifiant
-                    User sender = new User(rs.getString("sender_id"));
-                    User recipient = new User(rs.getString("recipient_id"));
-                    message.setSender(sender);
-                    message.setRecipient(recipient);
-
+                    message.setSender(rs.getInt("sender_id"));
+                    message.setRecipient(rs.getInt("recipient_id"));
                     data.add(message);
                 }
             }
@@ -165,10 +205,8 @@ public class MessageinService implements Interfaces.MessageService<Message> {
                     messages.setCreatedAt(zonedDateTime);
                     messages.setTitle(rs.getString("title"));
                     // Supposons que vous avez un constructeur dans la classe User pour créer un utilisateur à partir de son identifiant
-                    User sender = new User(rs.getString("sender_id"));
-                    User recipient = new User(rs.getString("recipient_id"));
-                    messages.setSender(sender);
-                    messages.setRecipient(recipient);
+                    message.setSender(rs.getInt("sender_id"));
+                    message.setRecipient(rs.getInt("recipient_id"));
                 }
             }
         } catch (SQLException e) {

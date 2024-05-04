@@ -3,6 +3,8 @@ package com.example.demo;
 import Entities.Message;
 import Entities.User;
 import Services.MessageinService;
+import Services.UserService;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -44,6 +46,9 @@ public class envoyéesController implements Initializable {
     @FXML
     private TableColumn<Message, Void> action;
     private User currentUser; // Supposez que currentUser contient l'utilisateur actuellement connecté
+    String loggedInUserEmail = DBUtils.getLoggedInUserEmail();
+    UserService serviceuser=new UserService();
+    User user= serviceuser.getuserfromemail(loggedInUserEmail);
     @FXML
     private Label nbrmsgs ;
     @FXML
@@ -147,11 +152,21 @@ public class envoyéesController implements Initializable {
     @FXML
     public void showlesmsgs(){
         MessageinService messageinService = new MessageinService();
-        List<Message> Liste = messageinService.getsentmsg(2);
+        List<Message> Liste = messageinService.getsentmsg(user.getId());
         System.out.println(Liste);
         ObservableList<Message> observableList = FXCollections.observableList(Liste);
         //User delapart=;
-        à.setCellValueFactory(new PropertyValueFactory<Message,String>("id"));
+           à.setCellValueFactory(cellData -> {
+            Message message = cellData.getValue();
+            int senderId = message.getRecipient();
+            User recipient = serviceuser.getUserById(senderId);
+            if (recipient != null) {
+                String nomPrenom = recipient.getNom() + " " + recipient.getPrenom();
+                return new SimpleStringProperty(nomPrenom);
+            } else {
+                return new SimpleStringProperty("Expéditeur inconnu");
+            }
+        });
         sujet.setCellValueFactory(new PropertyValueFactory<Message,String>("title"));
         tableView.setItems(observableList);
 
@@ -163,7 +178,7 @@ public class envoyéesController implements Initializable {
                 deleteButton.setOnAction(event -> {
                     Message message = getTableView().getItems().get(getIndex());
                     MessageinService messageinService = new MessageinService();
-                    List<Message> liste = messageinService.getAllreceptmsg(2); // Remplacez 2 par l'ID de l'utilisateur actuel
+                    List<Message> liste = messageinService.getAllreceptmsg(user.getId()); // Remplacez 2 par l'ID de l'utilisateur actuel
                     int numberOfMessages = liste.size();
                     System.out.println(numberOfMessages);
 
@@ -230,7 +245,7 @@ public class envoyéesController implements Initializable {
 
                     int unreadCount = 0;
                     for (Message message : receivedMessages) {
-                        à.setText(message.getSender().getNom()+" "+message.getSender().getPrenom());
+                        à.setText(serviceuser.getUserById(message.getSender()).getNom()+" "+serviceuser.getUserById(message.getSender()).getPrenom());
                         sujet.setText(message.getTitle());
                         action.setText("Supprimer");
                         if (!message.isRead()) {

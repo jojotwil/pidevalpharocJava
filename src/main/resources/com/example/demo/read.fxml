@@ -189,7 +189,7 @@
                                                 <Insets left="12.0" />
                                             </VBox.margin>
                                         </Label>
-                              <Label fx:id="sender" prefHeight="21.0" prefWidth="341.0" text="Le message est de la part de : " textFill="#8c8585">
+                              <Label fx:id="sender" prefHeight="27.0" prefWidth="1246.0" text="Le message est de la part de : " textFill="#8c8585">
                                  <font>
                                     <Font size="18.0" />
                                  </font>

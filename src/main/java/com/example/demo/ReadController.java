@@ -1,6 +1,8 @@
 package com.example.demo;
 
 import Entities.Message;
+import Entities.User;
+import Services.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,6 +34,24 @@ public class ReadController implements Initializable {
     @FXML
     private Label message;
     private Message msg;
+    private User senderuser;
+    private User receptionuser;
+
+    public User getSenderuser() {
+        return senderuser;
+    }
+
+    public User getReceptionuser() {
+        return receptionuser;
+    }
+
+    public void setSenderuser(User senderuser) {
+        this.senderuser = senderuser;
+    }
+
+    public void setReceptionuser(User receptionuser) {
+        this.receptionuser = receptionuser;
+    }
 
     public Message getMsg() {
         return msg;
@@ -75,22 +95,23 @@ public class ReadController implements Initializable {
             e.printStackTrace();
         }
     }
+    UserService service=new UserService();
     public void set(Message messagee){
         this.msg=messagee;
-        System.out.println(getMsg()+"set methode");
+        System.out.println(messagee+"set methode");
         if (title != null) {
-            title.setText(messagee.getTitle());
+            title.setText(msg.getTitle());
         }
         if (message != null) {
-            message.setText(messagee.getMessage());
+            message.setText(msg.getMessage());
         }
         if (date != null) {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            String formattedDate = messagee.getCreatedAt().format(formatter);
+            String formattedDate = msg.getCreatedAt().format(formatter);
             date.setText(formattedDate);
         }
-        if (sender != null && messagee.getSender() != null) {
-            sender.setText("Le message est de la part de : "+messagee.getSender().getNom()+" "+messagee.getSender().getPrenom());
+        if (sender != null && messagee.getSender() != 0) {
+            sender.setText("Le message est de la part de : "+service.getUserById(messagee.getSender()).getNom()+" "+service.getUserById(messagee.getSender()).getPrenom());
         }
     }
     @FXML
@@ -104,7 +125,7 @@ public class ReadController implements Initializable {
             SendController controller = loader.getController();
             //controller.sendmessage(msg);
             controller.setRecipientuser(msg.getSender());
-            controller.setSenderuser(msg.getRecipient());
+            controller.setSenderuser(msg.getId());
             controller.setlable(msg);
             // Créer une nouvelle scène avec le nouveau contenu
             Scene scene = new Scene(newContent);

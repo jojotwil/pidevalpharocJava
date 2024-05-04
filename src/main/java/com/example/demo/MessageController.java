@@ -33,7 +33,7 @@ public class MessageController {
         // Créer l'objet utilisateur et le message
         User sender = new User("Sender"); // Remplacez "Sender" par le nom de l'utilisateur actuel
         User recipientUser = new User(recipient);
-        Message message = new Message(title, content, sender, recipientUser);
+        Message message = new Message(title, content, sender.getId(), recipientUser.getId());
 
         // Ajouter le message à la liste des messages
         messageListView.getItems().add(message);

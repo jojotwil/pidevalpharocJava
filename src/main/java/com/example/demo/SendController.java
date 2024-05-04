@@ -1,8 +1,10 @@
 package com.example.demo;
 
 import Entities.Message;
+import Entities.PostTroc;
 import Entities.User;
 import Services.MessageinService;
+import Services.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -123,31 +125,35 @@ public class SendController implements Initializable {
             e.printStackTrace();
         }
     }
-    private User senderuser;
-    private User recipientuser;
+    private int senderuser;
+    private int recipientuser;
+    String loggedInUserEmail = DBUtils.getLoggedInUserEmail();
+    UserService serviceuser=new UserService();
+    User user= serviceuser.getuserfromemail(loggedInUserEmail);
 
 
-    public User getSenderuser() {
+
+    public int getSenderuser() {
         return senderuser;
     }
 
-    public User getRecipientuser() {
+    public int getRecipientuser() {
         return recipientuser;
     }
 
-    public void setSenderuser(User senderuser) {
+    public void setSenderuser(int senderuser) {
         this.senderuser = senderuser;
     }
 
 
-    public void setRecipientuser(User recipientuser) {
+    public void setRecipientuser(int recipientuser) {
         this.recipientuser = recipientuser;
     }
 
     @FXML
     public void sendmessage(ActionEvent event){
         if (validateFields()) {
-            Message messg=new Message(titre.getText(),message.getText(),recipientuser,senderuser);
+            Message messg=new Message(titre.getText(),message.getText(),recipientuser,user.getId());
         MessageinService service=new MessageinService();
         service.envoyermsg(messg);
             // Affichage d'un message de succès
@@ -194,10 +200,11 @@ public class SendController implements Initializable {
     public void sendmessagefromdetails(ActionEvent event) {
         // Validation des champs titre et message
         if (validateFields()) {
+
             // Envoi du message
-            Message messg = new Message(titre.getText(), message.getText(), senderuser, recipientuser);
+            Message messg = new Message(titre.getText(), message.getText(), user.getId(), recipientuser);
             MessageinService service = new MessageinService();
-            service.envoyermsg(messg);
+            service.envoyermsgfromdetails(messg);
 
             // Affichage d'un message de succès
             showAlert("Message envoyé avec succès !", event);
@@ -218,19 +225,20 @@ public class SendController implements Initializable {
 
         alert.showAndWait();
     }
-
+    UserService service=new UserService();
 
     public void setlable(Message messagee){
         this.msg=messagee;
 
-        if (sender != null && messagee.getSender() != null) {
-            sender.setText("Le message à : "+messagee.getSender().getNom()+" "+messagee.getSender().getPrenom());
+        if (sender != null && messagee.getRecipient() != 0) {
+            sender.setText("Le message à : "+service.getUserById(messagee.getRecipient()).getNom()+" "+service.getUserById(messagee.getRecipient()).getPrenom());
         }
     }
-    public void setlablefromdetails(){
 
-            sender.setText("Le message à : "+recipientuser);
-            System.out.println("Le message à : "+recipientuser);
+    public void setlablefromdetails(PostTroc postTroc){
+
+            sender.setText("Le message à : "+service.getUserById(postTroc.getUser()).getNom()+" "+service.getUserById(postTroc.getUser()).getPrenom());
+            System.out.println("Le message à : "+service.getUserById(postTroc.getUser()).getNom()+" "+service.getUserById(postTroc.getUser()).getPrenom());
 
     }
     @FXML
@@ -301,7 +309,7 @@ public class SendController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setlablefromdetails();
+        //setlablefromdetails();
         //nbrmots();
         start();
 

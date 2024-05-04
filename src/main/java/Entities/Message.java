@@ -11,10 +11,10 @@ public class Message {
     private String title;
     private String message;
     private boolean isRead;
-    private User sender;
-    private User recipient;
+    private int sender;
+    private int recipient;
 
-    public Message(String title, String message, User sender, User recipient) {
+    public Message(String title, String message, int sender, int recipient) {
         this.createdAt = ZonedDateTime.now();
         this.title = title;
         this.message = message;
@@ -68,19 +68,19 @@ public class Message {
         isRead = read;
     }
 
-    public User getSender() {
+    public int getSender() {
         return sender;
     }
 
-    public void setSender(User sender) {
+    public void setSender(int sender) {
         this.sender = sender;
     }
 
-    public User getRecipient() {
+    public int getRecipient() {
         return recipient;
     }
 
-    public void setRecipient(User recipient) {
+    public void setRecipient(int recipient) {
         this.recipient = recipient;
     }
 

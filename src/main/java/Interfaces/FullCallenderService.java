@@ -11,5 +11,5 @@ public interface FullCallenderService <T>{
     public void updatedate(T t);
     public List<T> getAlldates();
     public T getdateById(int id);
-    public List<T> getAlldates(LocalDate startDate, LocalDate endDate);
+    public List<T> getAlluserdates(LocalDate startDate, LocalDate endDate,int id);
 }

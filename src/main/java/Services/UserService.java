@@ -89,19 +89,7 @@ public class UserService implements UserServiceInterface<User> {
             System.out.println("Erreur lors de la récupération du PostTroc : " + e.getMessage());
         } finally {
             // Fermer les ressources JDBC dans le bloc finally
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                System.out.println("Erreur lors de la fermeture des ressources JDBC : " + e.getMessage());
-            }
+
         }
 
         return user;

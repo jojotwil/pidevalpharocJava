@@ -1,7 +1,9 @@
 package com.example.demo;
 
 import Entities.CalendarActivity;
+import Entities.User;
 import Services.FullCalederService;
+import Services.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,6 +19,9 @@ import java.time.ZonedDateTime;
 import java.util.*;
 
 public class CalendarController implements Initializable {
+    String loggedInUserEmail = DBUtils.getLoggedInUserEmail();
+    UserService serviceuser=new UserService();
+    User user= serviceuser.getuserfromemail(loggedInUserEmail);
     ZonedDateTime dateFocus;
     ZonedDateTime today;
 
@@ -77,7 +82,7 @@ public class CalendarController implements Initializable {
     }
 
     private Map<Integer, List<CalendarActivity>> getCalendarActivitiesMonth(LocalDate firstDayOfMonth, LocalDate lastDayOfMonth) {
-        List<CalendarActivity> calendarActivities = calendarService.getAlldates(firstDayOfMonth, lastDayOfMonth);
+        List<CalendarActivity> calendarActivities = calendarService.getAlluserdates(firstDayOfMonth, lastDayOfMonth,user.getId());
         System.out.println(calendarActivities);
         Map<Integer, List<CalendarActivity>> calendarActivityMap = new HashMap<>();
 

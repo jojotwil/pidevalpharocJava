@@ -42,6 +42,8 @@ public class ProfilController implements Initializable {
     @FXML
     private GridPane offre;
     String loggedInUserEmail = DBUtils.getLoggedInUserEmail();
+    UserService serviceuser=new UserService();
+    User user= serviceuser.getuserfromemail(loggedInUserEmail);
 
     PostTrocService postTrocService=new PostTrocService();
     ObservableList<PostTroc> Liste=postTrocService.getAllpostes();
@@ -281,8 +283,7 @@ public class ProfilController implements Initializable {
         }
 
     }
-    UserService serviceuser=new UserService();
-    User user= serviceuser.getuserfromemail(loggedInUserEmail);
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println(loggedInUserEmail+" email user cnt");

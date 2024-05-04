@@ -1,8 +1,10 @@
 package Services;
 
 import Entities.CalendarActivity;
+import Entities.User;
 import Interfaces.FullCallenderService;
 import Tools.MyConnection;
+import com.example.demo.DBUtils;
 import javafx.scene.paint.Color;
 
 import java.sql.PreparedStatement;
@@ -18,6 +20,9 @@ import java.util.List;
 import java.util.Map;
 
 public class FullCalederService implements FullCallenderService<CalendarActivity> {
+    String loggedInUserEmail = DBUtils.getLoggedInUserEmail();
+    UserService serviceuser=new UserService();
+    User user= serviceuser.getuserfromemail(loggedInUserEmail);
     // Méthode pour convertir une couleur en format hexadécimal
     public static String toHex(Color color) {
         int r = (int) (color.getRed() * 255);
@@ -30,7 +35,7 @@ public class FullCalederService implements FullCallenderService<CalendarActivity
         String requete = "INSERT INTO calendar (calendaruser_id, title, start, end, description, background_color, border_color, text_color,all_day) VALUES (?,?,?,?,?,?,?,?,?);";
         try {
             PreparedStatement pst = MyConnection.getInstace().getCnx().prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
-            pst.setInt(1, 1); // Supposons que getId() retourne l'ID du PostTroc associé
+            pst.setInt(1, user.getId()); // Supposons que getId() retourne l'ID du PostTroc associé
             pst.setString(2, calendarActivity.getTitle());
 
             // Conversion de ZonedDateTime en LocalDateTime
@@ -122,9 +127,9 @@ public class FullCalederService implements FullCallenderService<CalendarActivity
 
 
     @Override
-    public List<CalendarActivity> getAlldates(LocalDate startDate, LocalDate endDate) {
+    public List<CalendarActivity> getAlluserdates(LocalDate startDate, LocalDate endDate,int id) {
         List<CalendarActivity> calendarActivities = new ArrayList<>();
-        String requete = "SELECT * FROM calendar WHERE start >= ? AND end <= ?";
+        String requete = "SELECT * FROM calendar WHERE start >= ? AND end <= ? AND calendaruser_id=?";
         try {
             PreparedStatement pst = MyConnection.getInstace().getCnx().prepareStatement(requete);
 
@@ -138,6 +143,7 @@ public class FullCalederService implements FullCallenderService<CalendarActivity
 
             pst.setTimestamp(1, startTimestamp);
             pst.setTimestamp(2, endTimestamp);
+            pst.setInt(3,id);
 
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {

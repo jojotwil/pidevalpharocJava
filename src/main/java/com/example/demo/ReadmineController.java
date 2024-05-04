@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import Entities.Message;
+import Services.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -101,6 +102,7 @@ public class ReadmineController implements Initializable {
             e.printStackTrace();
         }
     }
+    UserService service=new UserService();
     @FXML
     public void demoi(ActionEvent event) {
         try {
@@ -140,8 +142,8 @@ public class ReadmineController implements Initializable {
             String formattedDate = messagee.getCreatedAt().format(formatter);
             date.setText(formattedDate);
         }
-        if (sender != null && messagee.getSender() != null) {
-            sender.setText("Le message à : "+messagee.getRecipient().getNom()+" "+messagee.getRecipient().getPrenom());
+        if (sender != null && messagee.getSender() != 0) {
+            sender.setText("Le message à : "+service.getUserById(messagee.getRecipient()).getNom()+" "+service.getUserById(messagee.getRecipient()).getPrenom());
         }
     }
     @FXML

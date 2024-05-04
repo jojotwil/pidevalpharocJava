@@ -2,8 +2,10 @@ package Services;
 
 import Entities.DemandeTroc;
 import Entities.PostTroc;
+import Entities.User;
 import Interfaces.DemandetrocService;
 import Tools.MyConnection;
+import com.example.demo.DBUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -11,6 +13,9 @@ import java.sql.*;
 import java.util.List;
 
 public class DemnadeTrocService implements DemandetrocService <DemandeTroc> {
+    String loggedInUserEmail = DBUtils.getLoggedInUserEmail();
+    UserService serviceuser=new UserService();
+    User user= serviceuser.getuserfromemail(loggedInUserEmail);
     @Override
     public void addDemande(DemandeTroc demande) {
         String requete = "INSERT INTO demandetroc (idposttroc_id, annee, daterdv, heurerdv, kilometrage, description, image, mail, matricule, marque, modele, typedecarburant, categorievehicule, typeboitevitesse,userdemande_id) \n" +
@@ -31,7 +36,7 @@ public class DemnadeTrocService implements DemandetrocService <DemandeTroc> {
             pst.setString(12, demande.getTypedecarburant());
             pst.setString(13, demande.getCategorievehicule());
             pst.setString(14, demande.getTypeboitevitesse());
-            pst.setInt(15, 1); // Remplacez ceci par l'ID de l'utilisateur connecté (si vous en avez un)
+            pst.setInt(15, user.getId()); // Remplacez ceci par l'ID de l'utilisateur connecté (si vous en avez un)
 
             pst.executeUpdate();
 
@@ -117,6 +122,7 @@ public class DemnadeTrocService implements DemandetrocService <DemandeTroc> {
                 demande.setCategorievehicule(rs.getString("categorievehicule"));
                 demande.setTypeboitevitesse(rs.getString("typeboitevitesse"));
                 demande.setPostid(rs.getInt("idposttroc_id"));
+                demande.setUserdemande_id(rs.getInt("userdemande_id"));
                 data.add(demande);
             }
         } catch (SQLException e) {
@@ -165,6 +171,8 @@ public class DemnadeTrocService implements DemandetrocService <DemandeTroc> {
                 demande.setCategorievehicule(resultSet.getString("categorievehicule"));
                 demande.setTypeboitevitesse(resultSet.getString("typeboitevitesse"));
                 demande.setPostid(resultSet.getInt("idposttroc_id"));
+                demande.setUserdemande_id(resultSet.getInt("userdemande_id"));
+
             }
         } catch (SQLException e) {
             System.out.println("Erreur lors de la récupération de la demande de troc : " + e.getMessage());
@@ -198,6 +206,8 @@ public class DemnadeTrocService implements DemandetrocService <DemandeTroc> {
                     demande.setCategorievehicule(rs.getString("categorievehicule"));
                     demande.setTypeboitevitesse(rs.getString("typeboitevitesse"));
                     demande.setPostid(rs.getInt("idposttroc_id"));
+                    demande.setUserdemande_id(rs.getInt("userdemande_id"));
+
                     data.add(demande);
                 }
             }
@@ -231,6 +241,8 @@ public class DemnadeTrocService implements DemandetrocService <DemandeTroc> {
                     demande.setCategorievehicule(rs.getString("categorievehicule"));
                     demande.setTypeboitevitesse(rs.getString("typeboitevitesse"));
                     demande.setPostid(rs.getInt("idposttroc_id"));
+                    demande.setUserdemande_id(rs.getInt("userdemande_id"));
+
                 }
             }
         } catch (SQLException e) {

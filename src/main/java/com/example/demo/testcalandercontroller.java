@@ -2,7 +2,9 @@ package com.example.demo;
 
 
 import Entities.CalendarActivity;
+import Entities.User;
 import Services.FullCalederService;
+import Services.UserService;
 import javafx.event.ActionEvent;
         import javafx.fxml.FXML;
         import javafx.fxml.FXMLLoader;
@@ -405,6 +407,9 @@ public class testcalandercontroller implements Initializable {
         }
         return  calendarActivityMap;
     }
+    String loggedInUserEmail = DBUtils.getLoggedInUserEmail();
+    UserService serviceuser=new UserService();
+    User user= serviceuser.getuserfromemail(loggedInUserEmail);
 
     private Map<Integer, List<CalendarActivity>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) {
         List<CalendarActivity> calendarActivities = new ArrayList<>();
@@ -416,7 +421,7 @@ public class testcalandercontroller implements Initializable {
         LocalDate lastDayOfMonth = firstDayOfMonth.plusMonths(1).minusDays(1);
         FullCalederService service=new FullCalederService();
         // Récupérer les activités à partir de la base de données pour le mois donné
-        List<CalendarActivity> activitiesFromDB = service.getAlldates(firstDayOfMonth, lastDayOfMonth);
+        List<CalendarActivity> activitiesFromDB = service.getAlluserdates(firstDayOfMonth, lastDayOfMonth,user.getId());
 
         // Ajouter les activités récupérées de la base de données à la liste calendarActivities
         calendarActivities.addAll(activitiesFromDB);
