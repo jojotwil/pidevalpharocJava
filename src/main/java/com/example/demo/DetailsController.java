@@ -13,6 +13,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
@@ -26,6 +27,8 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class DetailsController implements Initializable {
+    @FXML
+    private Button sendamsg;
     @FXML
     private Label marque;
 
@@ -152,6 +155,10 @@ public class DetailsController implements Initializable {
         } catch (Exception e) {
             // Gérer l'erreur, par exemple afficher un message d'erreur ou une image par défaut
             System.out.println("Erreur lors du chargement de l'image : " + e.getMessage());
+        }
+        if (postTroc.getUser()== user.getId()){
+            sendamsg.setVisible(false);
+
         }
 
 

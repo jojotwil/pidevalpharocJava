@@ -1,6 +1,8 @@
 package com.example.demo;
 
 import Entities.PostTroc;
+import Entities.User;
+import Services.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,6 +43,9 @@ public class MenuController implements Initializable {
 
     private Image imagee;
     private PostTroc postTroc;
+    String loggedInUserEmail = DBUtils.getLoggedInUserEmail();
+    UserService serviceuser=new UserService();
+    User user= serviceuser.getuserfromemail(loggedInUserEmail);
     public void postdata(PostTroc postTroc){
 
         this.postTroc=postTroc;
@@ -57,6 +62,10 @@ public class MenuController implements Initializable {
         } catch (Exception e) {
             // Gérer l'erreur, par exemple afficher un message d'erreur ou une image par défaut
             System.out.println("Erreur lors du chargement de l'image : " + e.getMessage());
+        }
+        if (postTroc.getUser()== user.getId()){
+            demande.setVisible(false);
+
         }
 
 

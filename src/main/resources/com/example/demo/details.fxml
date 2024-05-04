@@ -149,7 +149,7 @@
                                                       <Insets left="30.0" top="5.0" />
                                                    </HBox.margin>
                                                 </Button>
-                                                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#envoyermsg" prefHeight="39.0" prefWidth="175.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="envoyser un message" textFill="WHITE">
+                                                <Button fx:id="sendamsg" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#envoyermsg" prefHeight="39.0" prefWidth="175.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="envoyser un message" textFill="WHITE">
                                                    <HBox.margin>
                                                       <Insets left="60.0" top="5.0" />
                                                    </HBox.margin>
