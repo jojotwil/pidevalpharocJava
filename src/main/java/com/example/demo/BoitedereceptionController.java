@@ -8,6 +8,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -29,6 +30,8 @@ import java.util.ResourceBundle;
 public class BoitedereceptionController implements Initializable {
     @FXML
     private Button amoi;
+    @FXML
+    private MenuItem button_logout;
 
     @FXML
     private Button demoi;
@@ -373,7 +376,12 @@ public class BoitedereceptionController implements Initializable {
         showlesmsgs();
         setn();
         tableView.setOnMouseClicked(this::mouseClicked);
-
+        button_logout.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                DBUtils.changeScence(actionEvent, "authentifier.fxml", "Log In", null, null,button_logout);
+            }
+        });
 
     }
 }

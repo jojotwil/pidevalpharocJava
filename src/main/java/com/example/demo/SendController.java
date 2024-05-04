@@ -6,6 +6,7 @@ import Entities.User;
 import Services.MessageinService;
 import Services.UserService;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -32,6 +33,8 @@ public class SendController implements Initializable {
 
     @FXML
     private TextField titre;
+    @FXML
+    private MenuItem button_logout;
 
     @FXML
     private TextArea message;
@@ -168,6 +171,7 @@ public class SendController implements Initializable {
             Message messg=new Message(titre.getText(),message.getText(),recipientuser,user.getId());
         MessageinService service=new MessageinService();
         service.envoyermsg(messg);
+            demoi(event);
             // Affichage d'un message de succès
             showAlert("Message envoyé avec succès !", event);
         }
@@ -217,7 +221,7 @@ public class SendController implements Initializable {
             Message messg = new Message(titre.getText(), message.getText(), user.getId(), recipientuser);
             MessageinService service = new MessageinService();
             service.envoyermsgfromdetails(messg);
-
+            troc(event);
             // Affichage d'un message de succès
             showAlert("Message envoyé avec succès !", event);
         }
@@ -324,6 +328,12 @@ public class SendController implements Initializable {
         //setlablefromdetails();
         //nbrmots();
         start();
+        button_logout.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                DBUtils.changeScence(actionEvent, "authentifier.fxml", "Log In", null, null,button_logout);
+            }
+        });
 
     }
     public void start() {

@@ -5,6 +5,7 @@ import Entities.User;
 import Services.MessageinService;
 import Services.UserService;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -39,6 +40,8 @@ public class DetailsController implements Initializable {
 
     @FXML
     private Label typecarburant;
+    @FXML
+    private MenuItem button_logout;
 
     @FXML
     private Label kilometrage;
@@ -265,6 +268,11 @@ public class DetailsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        button_logout.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                DBUtils.changeScence(actionEvent, "authentifier.fxml", "Log In", null, null,button_logout);
+            }
+        });
     }
 }

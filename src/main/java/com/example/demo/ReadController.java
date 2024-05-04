@@ -4,6 +4,7 @@ import Entities.Message;
 import Entities.User;
 import Services.UserService;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -36,6 +37,8 @@ public class ReadController implements Initializable {
     private Message msg;
     private User senderuser;
     private User receptionuser;
+    @FXML
+    private MenuItem button_logout;
 
     public User getSenderuser() {
         return senderuser;
@@ -287,7 +290,12 @@ public class ReadController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        button_logout.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                DBUtils.changeScence(actionEvent, "authentifier.fxml", "Log In", null, null,button_logout);
+            }
+        });
 
     }
 }

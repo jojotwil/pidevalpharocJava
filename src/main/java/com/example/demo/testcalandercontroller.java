@@ -6,7 +6,8 @@ import Entities.User;
 import Services.FullCalederService;
 import Services.UserService;
 import javafx.event.ActionEvent;
-        import javafx.fxml.FXML;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
         import javafx.fxml.FXMLLoader;
         import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -35,6 +36,8 @@ import java.util.*;
 public class testcalandercontroller implements Initializable {
 
     ZonedDateTime dateFocus;
+    @FXML
+    private MenuItem button_logout;
     ZonedDateTime today;
 
     @FXML
@@ -51,6 +54,12 @@ public class testcalandercontroller implements Initializable {
         dateFocus = ZonedDateTime.now();
         today = ZonedDateTime.now();
         drawCalendar();
+        button_logout.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                DBUtils.changeScence(actionEvent, "authentifier.fxml", "Log In", null, null,button_logout);
+            }
+        });
     }
 
     @FXML

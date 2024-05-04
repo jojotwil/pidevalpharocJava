@@ -101,7 +101,7 @@
                            <items>
                               <MenuItem fx:id="monprofil" mnemonicParsing="false" onAction="#monprofil1" text="Mon Profil" />
                               <MenuItem mnemonicParsing="false" text="Login" />
-                              <MenuItem mnemonicParsing="false" text="LogOut" />
+                              <MenuItem fx:id="button_logout" mnemonicParsing="false" text="LogOut" />
                               <MenuItem mnemonicParsing="false" text="Registrer" />
                            </items>
                            <graphic>

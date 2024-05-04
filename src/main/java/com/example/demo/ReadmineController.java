@@ -3,6 +3,7 @@ package com.example.demo;
 import Entities.Message;
 import Services.UserService;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,6 +24,8 @@ import java.util.ResourceBundle;
 public class ReadmineController implements Initializable {
     @FXML
     private Label title;
+    @FXML
+    private MenuItem button_logout;
 
     @FXML
     private Label sender;
@@ -225,6 +228,11 @@ public class ReadmineController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        button_logout.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                DBUtils.changeScence(actionEvent, "authentifier.fxml", "Log In", null, null,button_logout);
+            }
+        });
     }
 }

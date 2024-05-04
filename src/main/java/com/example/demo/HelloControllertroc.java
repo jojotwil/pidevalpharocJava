@@ -5,6 +5,7 @@ import Services.PostTrocService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.*;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
@@ -31,7 +32,8 @@ public class HelloControllertroc implements Initializable {
     private TextField search;
     @FXML
     private Button btnsearch;
-
+    @FXML
+    private MenuItem button_logout;
 
 
     @FXML
@@ -229,5 +231,11 @@ public class HelloControllertroc implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         menuDisplay();
+        button_logout.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                DBUtils.changeScence(actionEvent, "authentifier.fxml", "Log In", null, null,button_logout);
+            }
+        });
     }
 }

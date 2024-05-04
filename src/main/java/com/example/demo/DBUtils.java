@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -237,6 +238,33 @@ public class DBUtils {
             e.printStackTrace();
         }
     }
+    public static void changeScence(ActionEvent event, String fxmlFile, String title, String username, String note, MenuItem button_logout) {
+        Parent root = null;
+        if (username != null && note != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+                root = loader.load();
+
+                //LoggedInController loggedInController = loader.getController();
+                // loggedInController.setUserInformation(username,note);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                root = FXMLLoader.load(DBUtils.class.getResource(fxmlFile));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // Get the stage from the MenuItem's parent PopupMenu
+        Stage stage = (Stage) button_logout.getParentPopup().getOwnerWindow();
+        stage.setTitle(title);
+        stage.setScene(new Scene(root, 1000, 600));
+        stage.show();
+    }
+
 
     public static void changeScence(ActionEvent event, String fxmlFile, String title, String username, String note) {
         Parent root = null;
@@ -263,5 +291,102 @@ public class DBUtils {
         stage.show();
 
     }
+    public static void deleteUserProfile(ActionEvent event, String email) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/alphatroc", "root", "");
+            preparedStatement = connection.prepareStatement("DELETE FROM user WHERE email = ?");
+            preparedStatement.setString(1, email);
+            int rowsDeleted = preparedStatement.executeUpdate();
+
+            if (rowsDeleted > 0) {
+                System.out.println("User profile deleted successfully.");
+                changeScence(event, "hello-view.fxml", "Login", null, null);
+                ;
+            } else {
+                System.out.println("No user profile found with the provided email.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (preparedStatement != null) preparedStatement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    public static boolean updateUserPassword(String email, String newPassword) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        try {
+            // Get a connection to the database
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/alphatroc", "root", "");
+
+            // SQL statement to update the user's password
+            String sql = "UPDATE user SET password = ? WHERE email = ?";
+
+            // Create a prepared statement
+            statement = connection.prepareStatement(sql);
+
+            // Set parameters for the query
+            statement.setString(1, newPassword);
+            statement.setString(2, email);
+
+            // Execute the update statement
+            int rowsUpdated = statement.executeUpdate();
+
+            // Check if the update was successful
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            // Close the connection and statement
+            try {
+                if (statement != null)
+                    statement.close();
+                if (connection != null)
+                    connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    public static String getUserPassword(String userEmail) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String password = null;
+
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/alphatroc", "root", "");
+            preparedStatement = connection.prepareStatement("SELECT password FROM user WHERE email = ?");
+            preparedStatement.setString(1, userEmail);
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                password = resultSet.getString("password");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            try {
+                if (resultSet != null) resultSet.close();
+                if (preparedStatement != null) preparedStatement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return password;
+    }
+
 
 }

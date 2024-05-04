@@ -7,6 +7,7 @@ import Services.DemnadeTrocService;
 import Services.PostTrocService;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -87,6 +88,8 @@ public class DemandeController implements Initializable {
     private TextField localisation;
     @FXML
     private Button btnnew;
+    @FXML
+    private MenuItem button_logout;
 
     @FXML
     private Button btnsave;
@@ -543,5 +546,11 @@ private ActionEvent eventt;
         typevehicule.getItems().addAll(typesdevehicule);
         //System.out.println(postTroc);
         mouseClicked(this.postTroc);
+        button_logout.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                DBUtils.changeScence(actionEvent, "authentifier.fxml", "Log In", null, null,button_logout);
+            }
+        });
     }
 }

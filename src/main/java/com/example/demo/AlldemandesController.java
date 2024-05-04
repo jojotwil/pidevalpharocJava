@@ -7,6 +7,7 @@ import Services.DemnadeTrocService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -190,13 +191,19 @@ public class AlldemandesController implements Initializable {
 
         return postTroc;
     }
-
+    @FXML
+    private MenuItem button_logout;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
        //System.out.println(getPostTroc());
         menuDisplay(postTroc);
         System.out.println(offres+"m");
-
+        button_logout.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                DBUtils.changeScence(actionEvent, "authentifier.fxml", "Log In", null, null,button_logout);
+            }
+        });
     }
 }
