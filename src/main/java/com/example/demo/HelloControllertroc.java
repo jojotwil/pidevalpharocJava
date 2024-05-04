@@ -100,7 +100,7 @@ public class HelloControllertroc implements Initializable {
             double screenHeight = screen.getBounds().getHeight();
 
 // Définissez la taille de la fenêtre sur les dimensions de l'écran
-            mainStage.setWidth(screenWidth-1);
+            mainStage.setWidth(screenWidth);
             mainStage.setHeight(screenHeight);
 
             // Définir la nouvelle scène sur la fenêtre principale
@@ -181,7 +181,7 @@ public class HelloControllertroc implements Initializable {
             double screenHeight = screen.getBounds().getHeight();
 
 // Définissez la taille de la fenêtre sur les dimensions de l'écran
-            mainStage.setWidth(screenWidth-1);
+            mainStage.setWidth(screenWidth);
 
             mainStage.setHeight(screenHeight);
 

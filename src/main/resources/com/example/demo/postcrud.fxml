@@ -162,7 +162,7 @@
                                                 <Image url="@images/voituretroc3.png" />
                                              </image>
                                           </ImageView>
-                                          <Button fx:id="btnimg" mnemonicParsing="false" onAction="#browseImage" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="add photo" textFill="#fffefe" GridPane.halignment="RIGHT" GridPane.rowIndex="9" />
+                                          <Button fx:id="btnimg" mnemonicParsing="false" onAction="#browseImage" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="+photo" textFill="#fffefe" GridPane.halignment="RIGHT" GridPane.rowIndex="9" />
                                        </children>
                                     </GridPane>
                                     <GridPane layoutX="269.0" layoutY="56.0" prefHeight="419.0" prefWidth="308.0" AnchorPane.leftAnchor="450.0">
@@ -198,15 +198,15 @@
                                           <DatePicker fx:id="annee" prefHeight="31.0" prefWidth="312.0" GridPane.rowIndex="5" />
                                        </children>
                                     </GridPane>
-                                    <Button fx:id="btnsave" layoutX="319.0" layoutY="495.0" mnemonicParsing="false" onAction="#addposttroc" prefHeight="33.0" prefWidth="172.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="save" textFill="#fffefe" />
-                                    <Button fx:id="btndelete" layoutX="553.0" layoutY="493.0" mnemonicParsing="false" onAction="#deletepost" prefHeight="37.0" prefWidth="174.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Delete" />
+                                    <Button fx:id="btnsave" layoutX="319.0" layoutY="495.0" mnemonicParsing="false" onAction="#addposttroc" prefHeight="33.0" prefWidth="172.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="Enregistrer" textFill="#fffefe" />
+                                    <Button fx:id="btndelete" layoutX="553.0" layoutY="493.0" mnemonicParsing="false" onAction="#deletepost" prefHeight="37.0" prefWidth="174.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Supprimer" />
                                     <Label layoutX="284.0" layoutY="14.0" prefHeight="49.0" prefWidth="278.0" text="Poster un troc" AnchorPane.leftAnchor="284.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="-20.0">
                                        <font>
                                           <Font name="System Bold" size="33.0" />
                                        </font>
                                     </Label>
-                                    <Button fx:id="btnupdate" layoutX="80.0" layoutY="495.0" mnemonicParsing="false" onAction="#updatepost" prefHeight="33.0" prefWidth="172.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="update" textFill="WHITE" />
-                                    <Button fx:id="profil" layoutX="16.0" layoutY="19.0" mnemonicParsing="false" onAction="#monprofil" prefHeight="20.0" prefWidth="82.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="back" textFill="#fffefe" />
+                                    <Button fx:id="btnupdate" layoutX="80.0" layoutY="495.0" mnemonicParsing="false" onAction="#updatepost" prefHeight="33.0" prefWidth="172.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="Mettre à jour" textFill="WHITE" />
+                                    <Button fx:id="profil" layoutX="16.0" layoutY="19.0" mnemonicParsing="false" onAction="#monprofil" prefHeight="31.0" prefWidth="110.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="retourner" textFill="#fffefe" />
                                  </children>
                                  <padding>
                                     <Insets top="30.0" />

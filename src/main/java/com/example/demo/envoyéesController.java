@@ -76,7 +76,7 @@ public class envoyéesController implements Initializable {
             double screenHeight = screen.getBounds().getHeight();
 
 // Définissez la taille de la fenêtre sur les dimensions de l'écran
-            mainStage.setWidth(screenWidth-1);
+            mainStage.setWidth(screenWidth);
             mainStage.setHeight(screenHeight);
 
             // Définir la nouvelle scène sur la fenêtre principale
@@ -99,11 +99,20 @@ public class envoyéesController implements Initializable {
             // Obtenir la fenêtre principale (stage)
             Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
+            // Obtenir les dimensions de l'écran
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+            // Obtenez les dimensions de l'écran
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getBounds().getWidth();
+            double screenHeight = screen.getBounds().getHeight();
+
+// Définissez la taille de la fenêtre sur les dimensions de l'écran
+            mainStage.setWidth(screenWidth);
+            mainStage.setHeight(screenHeight);
+
             // Définir la nouvelle scène sur la fenêtre principale
             mainStage.setScene(scene);
-
-            // Ouvrir la fenêtre en mode plein écran
-            mainStage.setFullScreen(true);
 
             // Afficher la fenêtre
             mainStage.show();
@@ -120,15 +129,23 @@ public class envoyéesController implements Initializable {
 
             // Créer une nouvelle scène avec le nouveau contenu
             Scene scene = new Scene(newContent);
-
             // Obtenir la fenêtre principale (stage)
             Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
+            // Obtenir les dimensions de l'écran
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+            // Obtenez les dimensions de l'écran
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getBounds().getWidth();
+            double screenHeight = screen.getBounds().getHeight();
+
+// Définissez la taille de la fenêtre sur les dimensions de l'écran
+            mainStage.setWidth(screenWidth);
+            mainStage.setHeight(screenHeight);
+
             // Définir la nouvelle scène sur la fenêtre principale
             mainStage.setScene(scene);
-
-            // Ouvrir la fenêtre en mode plein écran
-            mainStage.setFullScreen(true);
 
             // Afficher la fenêtre
             mainStage.show();
@@ -283,7 +300,7 @@ public class envoyéesController implements Initializable {
             double screenHeight = screen.getBounds().getHeight();
 
 // Définissez la taille de la fenêtre sur les dimensions de l'écran
-            mainStage.setWidth(screenWidth-1);
+            mainStage.setWidth(screenWidth);
             mainStage.setHeight(screenHeight);
 
             // Définir la nouvelle scène sur la fenêtre principale
