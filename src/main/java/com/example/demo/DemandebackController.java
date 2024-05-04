@@ -61,8 +61,22 @@ public class DemandebackController implements Initializable {
     private TableColumn<DemandeTroc, String> rdv;
 
     public void logout(ActionEvent actionEvent) {
-    }
-    @FXML
+        try {
+            FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource("authentifier.fxml"));
+            Parent root = loader.load();
+            TrocbackController adminDashboardController = loader.getController();
+
+            // Set any necessary data or parameters for the controller
+
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            stage.setTitle("Admin Dashboard");
+            stage.setScene(new Scene(root, 1000, 600));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }    @FXML
     public void trocs(ActionEvent event){
         try {
             // Charger la nouvelle interface dans un Node
@@ -169,5 +183,21 @@ public class DemandebackController implements Initializable {
 
         //tableView.setOnMouseClicked(this::mouseClicked);
 
+    }
+    public void user(ActionEvent event){
+        try {
+            FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource("admindashboard.fxml"));
+            Parent root = loader.load();
+            TrocbackController adminDashboardController = loader.getController();
+
+            // Set any necessary data or parameters for the controller
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("Admin Dashboard");
+            stage.setScene(new Scene(root, 1000, 600));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

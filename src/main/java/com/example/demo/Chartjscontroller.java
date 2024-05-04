@@ -74,6 +74,22 @@ public class Chartjscontroller implements Initializable {
         // Ajouter le panneau de graphique à votre interface utilisateur
         chartContainer.getChildren().add(chartPanel);
     }*/
+    public void user(ActionEvent event){
+        try {
+            FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource("admindashboard.fxml"));
+            Parent root = loader.load();
+            TrocbackController adminDashboardController = loader.getController();
+
+            // Set any necessary data or parameters for the controller
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("Admin Dashboard");
+            stage.setScene(new Scene(root, 1000, 600));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @FXML
     public void calculateStatistics() {
         ObservableList<PostTroc> data = PostTrocService.getAllposte();
@@ -160,9 +176,6 @@ public class Chartjscontroller implements Initializable {
         }
 
     }
-
-    public void logout(ActionEvent event) {
-    }
     @FXML
     public void chart(ActionEvent event){
         try {
@@ -198,6 +211,26 @@ public class Chartjscontroller implements Initializable {
         }
 
     }
+
+
+        public void logout(ActionEvent actionEvent) {
+            try {
+                FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource("authentifier.fxml"));
+                Parent root = loader.load();
+                TrocbackController adminDashboardController = loader.getController();
+
+                // Set any necessary data or parameters for the controller
+
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                stage.setTitle("Admin Dashboard");
+                stage.setScene(new Scene(root, 1000, 600));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

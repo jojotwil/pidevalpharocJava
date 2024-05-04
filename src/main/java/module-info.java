@@ -7,6 +7,8 @@ module com.example.demo {
     requires java.mail;
     requires java.prefs;
     requires jbcrypt;
+    requires org.apache.poi.poi;
+    requires org.apache.poi.ooxml;
 
     opens com.example.demo to javafx.fxml;
     exports com.example.demo;

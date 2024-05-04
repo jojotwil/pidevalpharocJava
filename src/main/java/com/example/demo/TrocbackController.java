@@ -62,6 +62,20 @@ public class TrocbackController implements Initializable {
     private TableColumn<PostTroc, Void> action;
 
     public void logout(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource("authentifier.fxml"));
+            Parent root = loader.load();
+            TrocbackController adminDashboardController = loader.getController();
+
+            // Set any necessary data or parameters for the controller
+
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            stage.setTitle("Admin Dashboard");
+            stage.setScene(new Scene(root, 1000, 600));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     @FXML
     public void showtrocs() {
@@ -185,6 +199,22 @@ public class TrocbackController implements Initializable {
             e.printStackTrace();
         }
 
+    }
+    public void user(ActionEvent event){
+        try {
+            FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource("admindashboard.fxml"));
+            Parent root = loader.load();
+            TrocbackController adminDashboardController = loader.getController();
+
+            // Set any necessary data or parameters for the controller
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("Admin Dashboard");
+            stage.setScene(new Scene(root, 1000, 600));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

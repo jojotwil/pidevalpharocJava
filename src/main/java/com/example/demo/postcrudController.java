@@ -552,6 +552,8 @@ public class postcrudController implements Initializable {
         typevehicule.getItems().addAll(typesdevehicule);
         //System.out.println(postTroc);
         mouseClicked(this.postTroc);
+        String loggedInUserEmail = DBUtils.getLoggedInUserEmail();
+        mail.setText(loggedInUserEmail);
         button_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {

@@ -106,6 +106,14 @@
                   <Insets top="9.0" />
                </VBox.margin>
             </Button>
+            <Button layoutX="10.0" layoutY="56.0" mnemonicParsing="false" onAction="#user" prefHeight="37.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));; -fx-text-fill: #fff; -fx-cursor: hand;" text="Liste des users">
+               <font>
+                  <Font name="Candara Bold" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="9.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
     </children>
