@@ -113,6 +113,7 @@ public class crudcalanderController implements Initializable {
         System.out.println(calendar);
         FullCalederService service = new FullCalederService();
         service.adddate(calendar);
+        calander(event);
         // Faites quelque chose avec l'objet calendar, comme l'enregistrement dans la base de données
     }
 
@@ -129,7 +130,7 @@ public class crudcalanderController implements Initializable {
 
 
     @FXML
-    private void deleteCalendarActivity() {
+    private void deleteCalendarActivity(ActionEvent event) {
         try {
             // Récupérer l'activité sélectionnée dans votre interface utilisateur
             // CalendarActivity selectedActivity = ; // Code pour récupérer l'activité sélectionnée dans votre interface utilisateur ;
@@ -153,6 +154,7 @@ public class crudcalanderController implements Initializable {
                 // Appelez votre service pour supprimer l'activité de la base de données
                 FullCalederService service = new FullCalederService();
                 service.deletedate(rdv);
+                calander(event);
 
                 // Afficher un message de succès
                 showAlert(Alert.AlertType.INFORMATION, "Suppression réussie", "L'activité a été supprimée avec succès.");
@@ -189,7 +191,7 @@ public class crudcalanderController implements Initializable {
     }
 
     @FXML
-    private void updaterdv() {
+    private void updaterdv(ActionEvent event) {
         // Validation des données saisies
         if (debut.getValue() == null || fin.getValue() == null || description.getText().isEmpty() || titre.getText().isEmpty()) {
             // Afficher une alerte pour informer l'utilisateur des champs manquants
@@ -251,8 +253,7 @@ public class crudcalanderController implements Initializable {
         service.updatedate(rdv);
         System.out.println(rdv);
 
-        service.updatedate(rdv);
-
+        calander(event);
         // Faites quelque chose avec l'objet calendar, comme l'enregistrement dans la base de données
         showAlert(Alert.AlertType.INFORMATION, "Succès", "Le rendez-vous a été mis à jour avec succès.");
     }
@@ -306,6 +307,36 @@ public class crudcalanderController implements Initializable {
         try {
             // Charger la nouvelle interface dans un Node
             FXMLLoader loader = new FXMLLoader(getClass().getResource("profil.fxml"));
+            Parent newContent = loader.load();
+
+            // Accéder au contrôleur de la vue "profil.fxml"
+            ProfilController controller = loader.getController();
+
+            // Créer une nouvelle scène avec le nouveau contenu
+            Scene scene = new Scene(newContent);
+
+            // Obtenir la fenêtre principale (stage)
+            Stage mainStage = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
+
+            // Obtenir les dimensions de l'écran
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+            // Définir la taille de la fenêtre sur les dimensions de l'écran
+            mainStage.setWidth(screenBounds.getWidth());
+            mainStage.setHeight(screenBounds.getHeight());
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void calander(ActionEvent event) {
+        try {
+            // Charger la nouvelle interface dans un Node
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("testcalander.fxml"));
             Parent newContent = loader.load();
 
             // Accéder au contrôleur de la vue "profil.fxml"

@@ -321,7 +321,7 @@ public class postcrudController implements Initializable {
 
 
     @FXML
-    private void updatepost() {
+    private void updatepost(ActionEvent event) {
         // Validation des données saisies
         if (kilometrage.getText().isEmpty() || description.getText().isEmpty() || localisation.getText().isEmpty() ||
                 mail.getText().isEmpty() || matricule.getText().isEmpty() || marque.getValue() == null ||
@@ -371,6 +371,7 @@ public class postcrudController implements Initializable {
             btnsave.setVisible(false);
             btndelete.setDisable(true);
             btnupdate.setDisable(true);
+            monprofil(event);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -415,6 +416,7 @@ public class postcrudController implements Initializable {
             postTrocService.deletePost(this.postTroc);
             btndelete.setDisable(true);
             btnupdate.setDisable(true);
+            monprofil(event);
 
         }catch (Exception e){
             e.printStackTrace();

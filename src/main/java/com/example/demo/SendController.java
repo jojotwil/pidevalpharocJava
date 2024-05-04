@@ -168,6 +168,7 @@ public class SendController implements Initializable {
             Message messg=new Message(titre.getText(),message.getText(),recipientuser,user.getId());
         MessageinService service=new MessageinService();
         service.envoyermsg(messg);
+            demoi(event);
             // Affichage d'un message de succès
             showAlert("Message envoyé avec succès !", event);
         }
@@ -217,7 +218,7 @@ public class SendController implements Initializable {
             Message messg = new Message(titre.getText(), message.getText(), user.getId(), recipientuser);
             MessageinService service = new MessageinService();
             service.envoyermsgfromdetails(messg);
-
+            troc(event);
             // Affichage d'un message de succès
             showAlert("Message envoyé avec succès !", event);
         }
