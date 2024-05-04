@@ -157,6 +157,7 @@ public class DemandeController implements Initializable {
 
     @FXML
     public void adddemande(ActionEvent event) {
+
         // Vérifier si tous les champs sont remplis
         if (!areAllFieldsFilled()) {
             showAlert(AlertType.ERROR, "Champs vides", "Veuillez remplir tous les champs.");
@@ -546,6 +547,9 @@ private ActionEvent eventt;
         typevehicule.getItems().addAll(typesdevehicule);
         //System.out.println(postTroc);
         mouseClicked(this.postTroc);
+        String loggedInUserEmail = DBUtils.getLoggedInUserEmail();
+        mail.setText(loggedInUserEmail);
+
         button_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
