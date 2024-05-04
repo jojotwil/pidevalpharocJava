@@ -12,7 +12,7 @@ public class HelloApplication extends Application {
     private static  Scene scene;
     @Override
     public void start(Stage stage) throws IOException {
-         scene = new Scene(loadFXML("authentifier"));
+         scene = new Scene(loadFXML("startfxml"));
         stage.setScene(scene);
         stage.setFullScreen(true); // Ouvre la fenêtre en mode plein écran
 
