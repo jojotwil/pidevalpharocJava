@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.SignUpController">
+    <children>
+        <AnchorPane prefHeight="384.0" prefWidth="231.0" style="-fx-background-color: black;">
+            <children>
+                <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="22.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="137.5" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="150.0">
+                    <image>
+                        <Image url="@images/wp8159044.jpg" />
+                    </image>
+                </ImageView>
+                <Label layoutX="70.0" layoutY="67.0" text="Welcome " textFill="#807d6e" AnchorPane.bottomAnchor="311.0">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="41.0" layoutY="371.0" prefHeight="15.0" prefWidth="129.0" text="alphatroc@gmail.com" textFill="#807d6e" AnchorPane.bottomAnchor="14.0">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="12.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="400.0" prefWidth="382.0">
+            <children>
+                <Label layoutX="33.0" layoutY="27.0" text="email" textFill="#3b5e0a">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="33.0" layoutY="69.0" text="password">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="tf_username" layoutX="152.0" layoutY="20.0" prefHeight="30.0" prefWidth="186.0">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                    </font>
+                </TextField>
+                <Label layoutX="34.0" layoutY="113.0" text="roles">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                    </font>
+                </Label>
+                <RadioButton fx:id="rb_note1" layoutX="109.0" layoutY="114.0" mnemonicParsing="false" text="CLINET">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="14.0" />
+                    </font>
+                </RadioButton>
+                <RadioButton fx:id="rb_note2" layoutX="108.0" layoutY="143.0" mnemonicParsing="false" text="EMPLOIYEE">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="14.0" />
+                    </font>
+                </RadioButton>
+                <Button fx:id="button_register" layoutX="102.0" layoutY="315.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="160.0" style="-fx-background-color: #D3D3D3; -fx-cursor: hand;" text="Register" textFill="#807d6e">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                    </font>
+                </Button>
+                <Label layoutX="87.0" layoutY="363.0" text="Already a member ? ">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Button fx:id="button_login" layoutX="236.0" layoutY="367.0" mnemonicParsing="false" style="-fx-background-color:  linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="login" textFill="#003bff" underline="true">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="14.0" />
+                    </font>
+                </Button>
+                <TextField fx:id="tf_nom" layoutX="152.0" layoutY="174.0" prefHeight="30.0" prefWidth="186.0">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                    </font>
+                </TextField>
+                <TextField fx:id="tf_prenom" layoutX="152.0" layoutY="218.0" prefHeight="30.0" prefWidth="186.0">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                    </font>
+                </TextField>
+                <Label layoutX="33.0" layoutY="180.0" text="nom">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="34.0" layoutY="224.0" text="prenom">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="tf_image" layoutX="152.0" layoutY="263.0" prefHeight="35.0" prefWidth="98.0">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                    </font>
+                </TextField>
+                <Label layoutX="37.0" layoutY="269.0" text="image">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="18.0" />
+                    </font>
+                </Label>
+                <PasswordField fx:id="tf_password" layoutX="152.0" layoutY="62.0" prefHeight="35.0" prefWidth="186.0" />
+                <Button fx:id="button_browse" layoutX="262.0" layoutY="265.0" mnemonicParsing="false" onAction="#browseImage" prefHeight="30.0" prefWidth="80.0" text="Browse">
+                </Button>
+            </children></AnchorPane>
+    </children>
+</HBox>

@@ -1,9 +1,12 @@
-module com.logindemo {
+module com.example.demo {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
-    requires jbcrypt;
+    requires java.net.http;
+    requires org.knowm.xchart;
     requires java.mail;
+
+=======
     requires restfb;
     requires org.json;
     requires javafx.web;
@@ -12,6 +15,8 @@ module com.logindemo {
     requires java.prefs;
 
 
-    opens com.controllers_interfaces to javafx.fxml;
-    exports com.controllers_interfaces;
+    opens com.example.demo to javafx.fxml;
+    exports com.example.demo;
+    exports Entities;
+    opens Entities to javafx.base, javafx.fxml;
 }

@@ -1,0 +1,35 @@
+/* Style pour le bouton lorsqu'il est survolé */
+.btn:hover {
+    -fx-cursor: hand;
+}
+
+/* Style pour la TableView */
+.table-view {
+
+    -fx-background-radius: 14 14 0 0;
+
+}
+/* Style pour le texte dans les cellules */
+.table-cell {
+    -fx-font-size: 14px; /* Modifiez la taille de la police selon vos besoins */
+    -fx-padding: 5px; /* Ajoutez un espacement supplémentaire autour du contenu de la cellule */
+}
+
+/* Style pour le fond de la barre d'en-tête des colonnes */
+.table-view .column-header-background {
+    -fx-background-color:  linear-gradient(to bottom right, #098c53, #246861);
+    -fx-background-radius: 14;
+    -fx-background-insets: 0 0 10 0;
+}
+
+/* Style pour les en-têtes de colonnes et les fillers */
+.table-view .column-header, .table-view .filler {
+    -fx-size: 50px;
+    -fx-border-width: 0 0 10 0;
+    -fx-background-color: transparent;
+}
+
+/* Style pour le texte des en-têtes de colonnes */
+.table-view .column-header .label {
+    -fx-text-fill: white;
+}
