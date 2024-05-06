@@ -16,6 +16,10 @@ public class User {
     // Constructors
     public User() {
     }
+    public User(int id, String email) {
+        this.id = id;
+        email = email;
+    }
 
     public User(String email, String password, String nom, String prenom, String image) {
         this.email = email;
