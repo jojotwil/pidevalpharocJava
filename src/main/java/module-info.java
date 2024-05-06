@@ -1,11 +1,22 @@
-module com.logindemo {
+module com.example.demo {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
-    requires jbcrypt;
+    requires java.net.http;
+    requires org.knowm.xchart;
     requires java.mail;
+<<<<<<< Updated upstream
+=======
+    requires java.prefs;
+    requires jbcrypt;
+    requires org.apache.poi.poi;
+    requires org.apache.poi.ooxml;
+    requires javafx.web;
+    requires org.json;
+>>>>>>> Stashed changes
 
-
-    opens com.controllers_interfaces to javafx.fxml;
-    exports com.controllers_interfaces;
+    opens com.example.demo to javafx.fxml;
+    exports com.example.demo;
+    exports Entities;
+    opens Entities to javafx.base, javafx.fxml;
 }
