@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="964.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.FrontIndexEvenementController">
+
+
+    <children>
+        <BorderPane layoutX="51.0" layoutY="52.0" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <AnchorPane prefHeight="65.0" prefWidth="841.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+                    <children>
+                        <Pane layoutX="-69.0" layoutY="-76.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <HBox layoutX="26.0" layoutY="-17.0" prefHeight="40.0" prefWidth="797.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                            <children>
+                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets left="15.0" top="10.0" />
+                                    </HBox.margin>
+
+                                </ImageView>
+                                <Button mnemonicParsing="false" style="-fx-background-color: white;" text="Accueil">
+                                    <HBox.margin>
+                                        <Insets left="15.0" top="8.0" />
+                                    </HBox.margin>
+                                    <font>
+                                        <Font name="Symbol" size="14.0" />
+                                    </font>
+                                </Button>
+                                <Button layoutX="25.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Services">
+                                    <font>
+                                        <Font name="Symbol" size="14.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets top="8.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Button layoutX="88.0" layoutY="20.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Boutique">
+                                    <font>
+                                        <Font name="Symbol" size="14.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets top="8.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Button fx:id="troc" layoutX="158.0" layoutY="20.0" mnemonicParsing="false" onAction="#troc" style="-fx-background-color: white;" text="Troc">
+                                    <font>
+                                        <Font name="Symbol" size="14.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets top="8.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Button layoutX="232.0" layoutY="20.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Event">
+                                    <font>
+                                        <Font name="Symbol" size="14.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets top="8.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <Button layoutX="280.0" layoutY="20.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Location">
+                                    <font>
+                                        <Font name="Symbol" size="14.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets top="8.0" />
+                                    </HBox.margin>
+                                </Button>
+                                <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets left="100.0" top="15.0" />
+                                    </HBox.margin>
+                                    <image>
+                                        <Image url="@images/117641.png" />
+                                    </image>
+                                </ImageView>
+
+                                <MenuButton fx:id="menu" mnemonicParsing="false" prefHeight="10.0" prefWidth="35.0" style="-fx-background-color: white;">
+                                    <items>
+                                        <MenuItem fx:id="monprofil" mnemonicParsing="false" onAction="#monprofil1" text="Mon Profil" />
+                                        <MenuItem fx:id="button_logout" mnemonicParsing="false" text="LogOut" />
+                                    </items>
+                                    <graphic>
+                                        <ImageView fitHeight="17.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@images/125115-200.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <HBox.margin>
+                                        <Insets top="9.0" />
+                                    </HBox.margin>
+                                </MenuButton>
+                            </children>
+                        </HBox>
+                    </children></AnchorPane>
+            </top>
+            <center>
+                <AnchorPane prefHeight="570.0" prefWidth="1264.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <ScrollPane layoutX="-140.0" layoutY="7.0" prefHeight="575.0" prefWidth="1593.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="-140.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="7.0" />
+                        <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="608.0" prefWidth="953.0">
+                            <children>
+                                <SplitPane dividerPositions="0.07861425716189206, 0.18687541638907393" orientation="VERTICAL" prefHeight="602.0" prefWidth="758.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <items>
+                                        <HBox alignment="CENTER" prefHeight="38.0" prefWidth="758.0">
+                                            <opaqueInsets>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                            </opaqueInsets>
+                                            <children>
+                                                <BorderPane style="-fx-background-color: #f0f0f0; -fx-border-color: #ccc; -fx-border-width: 1px; -fx-border-radius: 5px; -fx-padding: 10px;">
+                                                    <center>
+                                                        <Label fx:id="meilleurevenement" alignment="CENTER" prefHeight="131.0" prefWidth="834.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #FF0000; -fx-font-family: 'Arial', sans-serif;" text="Label" />
+                                                    </center>
+                                                </BorderPane>
+                                            </children>
+                                        </HBox>
+                                        <VBox>
+                                            <children>
+                                                <HBox alignment="CENTER" prefHeight="59.0" prefWidth="710.0">
+                                                    <children>
+                                                        <Label style="-fx-text-fill: #3498db; -fx-font-size: 16px; -fx-font-weight: bold;" text="Rechercher par nom :" />
+                                                        <TextField fx:id="searchField" onKeyReleased="#searchByName" prefHeight="26.0" prefWidth="156.0" />
+                                                        <Button alignment="CENTER" onAction="#searchByName" prefHeight="46.0" prefWidth="194.0" text="Rechercher" textAlignment="CENTER" />
+                                                        <Button mnemonicParsing="false" onAction="#launchAddTicketForm" prefHeight="46.0" prefWidth="222.0" styleClass="button" text="Réserver un événement" />
+                                                    </children>
+                                                </HBox>
+                                                <Button onAction="#exportToExcel" text="Exporter vers Excel la liste" />
+                                            </children>
+                                        </VBox>
+                                        <AnchorPane prefHeight="491.0" prefWidth="763.0" styleClass="card-view-container" >
+                                            <children>
+                                                <ScrollPane fx:id="cardViewScrollPane" fitToWidth="true" hbarPolicy="NEVER" layoutX="4.0" layoutY="1.0" prefHeight="486.0" prefWidth="748.0" styleClass="card-view-scroll-pane" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="1.0">
+                                                    <content>
+                                                        <VBox fx:id="cardViewContainer" alignment="TOP_CENTER" prefWidth="744.0" spacing="10" style="&#10;                                        -fx-background-color: #f4f4f4; /* Couleur de fond de secours */&#10;                                    " />
+                                                    </content>
+                                                </ScrollPane>
+                                            </children>
+                                        </AnchorPane>
+                                    </items>
+                                </SplitPane>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </AnchorPane>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>

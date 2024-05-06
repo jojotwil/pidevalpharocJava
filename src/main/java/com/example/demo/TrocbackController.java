@@ -31,6 +31,41 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class TrocbackController implements Initializable {
+    public void event(ActionEvent event){
+        try {
+            // Charger la nouvelle interface dans un Node
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("index-evenement.fxml"));
+            Parent newContent = loader.load();
+
+            // Accéder au contrôleur de la vue "posttroccrud.fxml"
+
+            // Créer une nouvelle scène avec le nouveau contenu
+            Scene scene = new Scene(newContent);
+
+            // Obtenir la fenêtre principale (stage)
+            Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Obtenir les dimensions de l'écran
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+            // Obtenez les dimensions de l'écran
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getBounds().getWidth();
+            double screenHeight = screen.getBounds().getHeight();
+
+// Définissez la taille de la fenêtre sur les dimensions de l'écran
+            mainStage.setWidth(screenWidth);
+            mainStage.setHeight(screenHeight);
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     @FXML
     private TableView<PostTroc> tableView;
 
@@ -65,7 +100,7 @@ public class TrocbackController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource("authentifier.fxml"));
             Parent root = loader.load();
-            TrocbackController adminDashboardController = loader.getController();
+            //TrocbackController adminDashboardController = loader.getController();
 
             // Set any necessary data or parameters for the controller
 

@@ -1,0 +1,98 @@
+/* Importation des polices */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+/* Style général de l'AnchorPane */
+.anchor-pane {
+    -fx-background-color: #f4f4f4; /* Couleur de fond de secours */
+}
+
+/* Style de l'image de fond */
+.anchor-pane {
+    -fx-background-image: url("path/to/your/background-image.jpg");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+/* Style de la carte d'événement */
+.card-view {
+    -fx-background-color: linear-gradient(to bottom, #FFFFFF, #D6EAF8); /* Dégradé de blanc légèrement plus clair à noir */
+    -fx-background-radius: 15px; /* Coins arrondis */
+    -fx-border-radius: 15px; /* Coins arrondis pour la bordure */
+    -fx-border-color: #dddddd; /* Couleur de la bordure */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+    -fx-padding: 20px; /* Espacement intérieur */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2); /* Ombre légère */
+    -fx-font-family: "Montserrat", sans-serif; /* Police de caractères */
+    -fx-font-size: 16px; /* Taille de la police */
+    -fx-cursor: hand; /* Curseur de la souris */
+    -fx-transition: all 0.3s; /* Animation de transition */
+}
+
+.card-view:hover {
+    -fx-background-color: linear-gradient(to bottom, #E8DAEF, #A9CCE3); /* Dégradé de blanc légèrement plus clair à noir au survol */
+    -fx-translate-y: -5px; /* Légère translation vers le haut au survol */
+}
+
+
+/* Style du titre de l'événement */
+.card-view .label.title {
+    -fx-font-family: "Montserrat", sans-serif; /* Police de caractères */
+    -fx-font-size: 18px; /* Taille de la police */
+    -fx-font-weight: bold; /* Gras */
+    -fx-text-fill: #333333; /* Couleur du texte */
+    -fx-padding-bottom: 5px; /* Espacement en bas */
+}
+
+/* Style du détail de l'événement */
+.detail-pane {
+    -fx-background-color: linear-gradient(to bottom, #E8DAEF, #A9CCE3); /* Couleur de fond noir */
+    -fx-padding: 20px;
+}
+
+/* Style des labels dans le GridPane */
+.detail-pane .label {
+    -fx-font-family: "Montserrat", sans-serif;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF; /* Texte blanc */
+}
+
+/* Style du ButtonBar */
+.button-bar {
+    -fx-background-color: transparent;
+}
+
+/* Style des boutons */
+.button {
+    -fx-background-color: #6A5ACD; /* Couleur bleu violet */
+    -fx-text-fill: white;
+    -fx-font-family: "Lato", sans-serif;
+    -fx-font-size: 16px;
+    -fx-background-radius: 20px;
+    -fx-padding: 10px 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);
+}
+
+.button:hover {
+    -fx-background-color: #483D8B; /* Couleur violet au survol */
+}
+
+/* Style du bouton "Réserver un événement" */
+.add-button {
+    -fx-background-color: #4682B4; /* Couleur bleu acier */
+}
+
+.add-button:hover {
+    -fx-background-color: #4169E1; /* Couleur bleu royal au survol */
+}
+
+/* Style du bouton "Refresh" */
+.refresh-button {
+    -fx-background-color: #20B2AA; /* Couleur turquoise */
+}
+
+.refresh-button:hover {
+    -fx-background-color: #008B8B; /* Couleur cyan foncé au survol */
+}

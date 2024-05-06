@@ -65,7 +65,7 @@
                                         <Insets top="8.0" />
                                     </HBox.margin>
                                 </Button>
-                                <Button layoutX="232.0" layoutY="20.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Event">
+                                <Button layoutX="232.0" layoutY="20.0" mnemonicParsing="false" onAction="#event" style="-fx-background-color: white;" text="Event">
                                     <font>
                                         <Font name="Symbol" size="14.0" />
                                     </font>
