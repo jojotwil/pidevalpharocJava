@@ -1,0 +1,6 @@
+.root {
+    -fx-background-color: #202020; /* Dark background color */
+    -fx-text-fill: #000000; /* Light text color */
+}
+
+/* Customize other UI elements as needed */

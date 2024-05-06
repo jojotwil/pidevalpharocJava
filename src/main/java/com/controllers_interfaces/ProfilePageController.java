@@ -21,7 +21,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ProfilePageController implements Initializable {
-
+    private boolean isDarkTheme = false; // Track the current theme
     @FXML
     private Label label_welcome;
     @FXML
@@ -104,4 +104,5 @@ public class ProfilePageController implements Initializable {
     public void handleRefreshButtonClick(ActionEvent actionEvent) {
         refreshDisplayedEmail();
     }
+
 }

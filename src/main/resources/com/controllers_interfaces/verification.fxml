@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane fx:id="verificationPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers_interfaces.VerificationController"> <children>
+    <Label fx:id="verificationMessage" layoutX="142.0" layoutY="185.0" prefHeight="27.0" prefWidth="315.0" textAlignment="CENTER" wrapText="true">
+        <font>
+
+        </font>
+    </Label>
+</children>
+</AnchorPane>

@@ -5,15 +5,15 @@ module com.example.demo {
     requires java.net.http;
     requires org.knowm.xchart;
     requires java.mail;
-<<<<<<< Updated upstream
+
 =======
-    requires java.prefs;
-    requires jbcrypt;
+    requires restfb;
+    requires org.json;
+    requires javafx.web;
     requires org.apache.poi.poi;
     requires org.apache.poi.ooxml;
-    requires javafx.web;
-    requires org.json;
->>>>>>> Stashed changes
+    requires java.prefs;
+
 
     opens com.example.demo to javafx.fxml;
     exports com.example.demo;

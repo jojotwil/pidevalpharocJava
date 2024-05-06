@@ -14,10 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 import static com.controllers_interfaces.DBUtils.changeScence;
 
@@ -34,6 +31,10 @@ public class UpdateProfileController  {
     private TextField tf_image;
     private Runnable onProfileUpdatedListener;
     String loggedInUserEmail = DBUtils.getLoggedInUserEmail();
+    public void initialize() {
+
+        fetchUserInfo(loggedInUserEmail);
+    }
     private static Stage currentStage;
 
     public static void setCurrentStage(Stage stage) {
@@ -175,6 +176,32 @@ public class UpdateProfileController  {
         alert.setHeaderText(header);
         alert.setContentText(content);
         alert.showAndWait();
+    }
+    private void fetchUserInfo(String email) {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/alphatroc", "root", "");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT nom, email, prenom, image FROM user WHERE email = ?");
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                String nom = resultSet.getString("nom");
+                String emailResult = resultSet.getString("email");
+                String prenom = resultSet.getString("prenom");
+                String image = resultSet.getString("image");
+
+                tfName.setText(nom);
+                tfEmail.setText(emailResult);
+                tf_prenom.setText(prenom);
+                tf_image.setText(image);
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 
