@@ -3,63 +3,42 @@ package View;
 import Entities.Ticket;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 
-
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.fxml.FXML;
 import javafx.scene.image.Image;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
+import javafx.scene.image.ImageView;
+import net.glxn.qrgen.QRCode;
+import net.glxn.qrgen.image.ImageType;
 
-
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 public class QRCodeGenerator {
-    public void event(ActionEvent event){
+    public ImageView qrCodeImageView;
+
+
+
+
+    @FXML
+    void generateQRCode(String text, int width, int height) {
         try {
-            // Charger la nouvelle interface dans un Node
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("index-evenement.fxml"));
-            Parent newContent = loader.load();
+            // Générer le code QR
+            ByteArrayOutputStream byteArrayOutputStream = QRCode.from(text).withSize(width, height).to(ImageType.PNG).stream();
 
-            // Accéder au contrôleur de la vue "posttroccrud.fxml"
+            // Convertir le flux d'octets en image JavaFX
+            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
+            Image qrCodeImage = new Image(byteArrayInputStream);
 
-            // Créer une nouvelle scène avec le nouveau contenu
-            Scene scene = new Scene(newContent);
-
-            // Obtenir la fenêtre principale (stage)
-            Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            // Obtenir les dimensions de l'écran
-            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-
-            // Obtenez les dimensions de l'écran
-            Screen screen = Screen.getPrimary();
-            double screenWidth = screen.getBounds().getWidth();
-            double screenHeight = screen.getBounds().getHeight();
-
-// Définissez la taille de la fenêtre sur les dimensions de l'écran
-            mainStage.setWidth(screenWidth);
-            mainStage.setHeight(screenHeight);
-
-            // Définir la nouvelle scène sur la fenêtre principale
-            mainStage.setScene(scene);
-            mainStage.show();
-        } catch (IOException e) {
+            // Afficher l'image dans votre application JavaFX
+            qrCodeImageView.setImage(qrCodeImage); // Assurez-vous d'avoir un ImageView nommé qrCodeImageView dans votre FXML
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
+
 
 }

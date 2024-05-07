@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import Entities.PostTroc;
+import Services.BadWordAPIService;
 import Services.PostTrocService;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -34,6 +35,75 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class postcrudController implements Initializable {
+    public void boutique(ActionEvent event){
+        try {
+            // Charger la nouvelle interface dans un Node
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("listBoutiqueFront.fxml"));
+            Parent newContent = loader.load();
+
+            // Accéder au contrôleur de la vue "posttroccrud.fxml"
+
+
+            // Créer une nouvelle scène avec le nouveau contenu
+            Scene scene = new Scene(newContent);
+
+            // Obtenir la fenêtre principale (stage)
+            Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Obtenir les dimensions de l'écran
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+            // Obtenez les dimensions de l'écran
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getBounds().getWidth();
+            double screenHeight = screen.getBounds().getHeight();
+
+// Définissez la taille de la fenêtre sur les dimensions de l'écran
+            mainStage.setWidth(screenWidth);
+            mainStage.setHeight(screenHeight);
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public void location(ActionEvent event) {
+        try {
+            // Charger la nouvelle interface dans un Node
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/frontvl.fxml"));
+            Parent newContent = loader.load();
+
+
+
+            // Créer une nouvelle scène avec le nouveau contenu
+            Scene scene = new Scene(newContent);
+
+            // Obtenir la fenêtre principale (stage)
+            Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Obtenir les dimensions de l'écran
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+            // Obtenez les dimensions de l'écran
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getBounds().getWidth();
+            double screenHeight = screen.getBounds().getHeight();
+
+// Définissez la taille de la fenêtre sur les dimensions de l'écran
+            mainStage.setWidth(screenWidth);
+            mainStage.setHeight(screenHeight);
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @FXML
     private DatePicker annee;
@@ -116,6 +186,7 @@ public class postcrudController implements Initializable {
 
     @FXML
     private Button btnimg;
+    private BadWordAPIService badWordAPIService = new BadWordAPIService();
 
 
 
@@ -135,8 +206,6 @@ public class postcrudController implements Initializable {
             PostTroc post=new PostTroc();
             post.setImage(selectedFile.toURI().toString());
             imagePath=selectedFile.toURI().toString();
-
-
         }
     }
 

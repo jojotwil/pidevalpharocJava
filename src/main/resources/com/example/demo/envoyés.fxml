@@ -50,7 +50,7 @@
                                         <Insets top="8.0" />
                                     </HBox.margin>
                                 </Button>
-                                <Button layoutX="88.0" layoutY="20.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Boutique">
+                                <Button layoutX="88.0" layoutY="20.0" mnemonicParsing="false" onAction="#boutique" style="-fx-background-color: white;" text="Boutique">
                                     <font>
                                         <Font name="Symbol" size="14.0" />
                                     </font>
@@ -198,7 +198,7 @@
                                         </HBox>
                                         <ScrollPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: white;">
                                             <content>
-                                                <TableView fx:id="tableView" maxHeight="500.0" maxWidth="935.0" onMouseClicked="#mouseClicked" prefHeight="497.0" prefWidth="923.0" style="-fx-fixed-cell-size: 40px;">
+                                                <TableView fx:id="tableView" maxHeight="500.0" maxWidth="935.0" onMouseClicked="#mouseClicked" prefHeight="497.0" prefWidth="923.0" style="-fx-fixed-cell-size: 40px;" stylesheets="@CSS/styleHayfa.css">
                                                     <columns>
                                                         <TableColumn fx:id="à" prefWidth="236.0" text="À" />
                                                         <TableColumn fx:id="sujet" prefWidth="411.0" text="Sujet" />

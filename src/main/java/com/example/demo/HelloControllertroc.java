@@ -27,6 +27,75 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class HelloControllertroc implements Initializable {
+    public void boutique(ActionEvent event){
+        try {
+            // Charger la nouvelle interface dans un Node
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("listBoutiqueFront.fxml"));
+            Parent newContent = loader.load();
+
+            // Accéder au contrôleur de la vue "posttroccrud.fxml"
+
+
+            // Créer une nouvelle scène avec le nouveau contenu
+            Scene scene = new Scene(newContent);
+
+            // Obtenir la fenêtre principale (stage)
+            Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Obtenir les dimensions de l'écran
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+            // Obtenez les dimensions de l'écran
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getBounds().getWidth();
+            double screenHeight = screen.getBounds().getHeight();
+
+// Définissez la taille de la fenêtre sur les dimensions de l'écran
+            mainStage.setWidth(screenWidth);
+            mainStage.setHeight(screenHeight);
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public void location(ActionEvent event) {
+        try {
+            // Charger la nouvelle interface dans un Node
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/frontvl.fxml"));
+            Parent newContent = loader.load();
+
+
+
+            // Créer une nouvelle scène avec le nouveau contenu
+            Scene scene = new Scene(newContent);
+
+            // Obtenir la fenêtre principale (stage)
+            Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Obtenir les dimensions de l'écran
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+            // Obtenez les dimensions de l'écran
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getBounds().getWidth();
+            double screenHeight = screen.getBounds().getHeight();
+
+// Définissez la taille de la fenêtre sur les dimensions de l'écran
+            mainStage.setWidth(screenWidth);
+            mainStage.setHeight(screenHeight);
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void event(ActionEvent event) {
         try {
             // Charger la nouvelle interface dans un Node
@@ -76,41 +145,53 @@ public class HelloControllertroc implements Initializable {
     PostTrocService postTrocService=new PostTrocService();
     ObservableList<PostTroc> Liste=postTrocService.getAllpostes();
     ObservableList<PostTroc> ListeData= FXCollections.observableArrayList();
+
     @FXML
     void search(ActionEvent event) {
         // Récupérer le texte de recherche
         String searchText = search.getText();
-        search.textProperty().addListener((observable, oldValue, newValue) -> {
-            // Effectuer la recherche en temps réel avec le nouveau texte saisi (newValue)
-            List<PostTroc> searchResults = searchByMarque(Liste, newValue);
+        List<PostTroc> searchResults = searchByMarque(Liste, searchText);
 
-            // Effacer les éléments existants dans le GridPane
-            offre.getChildren().clear();
+        // Effacer les éléments existants dans le GridPane
+        offre.getChildren().clear();
 
-            // Afficher les nouveaux résultats de la recherche
-            int row = 0;
-            int column = 0;
-            for (PostTroc result : searchResults) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("menu.fxml"));
-                try {
-                    AnchorPane pane = loader.load();
-                    MenuController menuController = loader.getController();
-                    menuController.postdata(result);
-                    offre.add(pane, column, row);
+        // Afficher les nouveaux résultats de la recherche
+        int row = 0;
+        int column = 0;
+        for (PostTroc result : searchResults) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("menu.fxml"));
+            try {
+                AnchorPane pane = loader.load();
+                MenuController menuController = loader.getController();
+                menuController.postdata(result);
+                offre.add(pane, column, row);
 
-                    // Mettre à jour les indices de ligne et de colonne
-                    column++;
-                    if (column == 5) {
-                        column = 0;
-                        row++;
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
+                // Mettre à jour les indices de ligne et de colonne
+                column++;
+                if (column == 5) {
+                    column = 0;
+                    row++;
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        });
-
         }
+    }
+
+    private List<PostTroc> searchByMarque(List<PostTroc> Liste, String searchText) {
+        List<PostTroc> searchResults = new ArrayList<>();
+
+        for (PostTroc postTroc : Liste) {
+            // Vérifier si le nom du post contient le texte de recherche (ignorer la casse)
+            if (postTroc.getMarque().toLowerCase().contains(searchText.toLowerCase())) {
+                searchResults.add(postTroc);
+            }
+        }
+
+        return searchResults;
+    }
+
+
     @FXML
     public void monprofil(ActionEvent event) {
         try {
@@ -181,15 +262,7 @@ public class HelloControllertroc implements Initializable {
 
     }
 
-    public static List<PostTroc> searchByMarque(List<PostTroc> postTrocs, String marque) {
-        List<PostTroc> results = new ArrayList<>();
-        for (PostTroc postTroc : postTrocs) {
-            if (postTroc.getMarque().equalsIgnoreCase(marque)) {
-                results.add(postTroc);
-            }
-        }
-        return results;
-    }
+
     @FXML
     public void troc(ActionEvent event) {
         // Récupérer le post sélectionné
@@ -269,6 +342,36 @@ public class HelloControllertroc implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 DBUtils.changeScence(actionEvent, "authentifier.fxml", "Log In", null, null,button_logout);
+            }
+        });
+        // Ajouter un ChangeListener au TextField pour détecter les changements de texte en temps réel
+        search.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Effectuer la recherche avec le nouveau texte saisi
+            List<PostTroc> searchResults = searchByMarque(Liste, newValue);
+
+            // Effacer les éléments existants dans le GridPane
+            offre.getChildren().clear();
+
+            // Afficher les nouveaux résultats de la recherche
+            int row = 0;
+            int column = 0;
+            for (PostTroc result : searchResults) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("menu.fxml"));
+                try {
+                    AnchorPane pane = loader.load();
+                    MenuController menuController = loader.getController();
+                    menuController.postdata(result);
+                    offre.add(pane, column, row);
+
+                    // Mettre à jour les indices de ligne et de colonne
+                    column++;
+                    if (column == 5) {
+                        column = 0;
+                        row++;
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

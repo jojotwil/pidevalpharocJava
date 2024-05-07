@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class EvenementService implements IService<Evenement> {
+public class EvenementService implements IServices<Evenement> {
     private Connection conn;
 
     public EvenementService() {

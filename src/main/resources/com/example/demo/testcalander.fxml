@@ -47,7 +47,7 @@
                                     <Insets top="8.0" />
                                 </HBox.margin>
                             </Button>
-                            <Button layoutX="88.0" layoutY="20.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Boutique">
+                            <Button layoutX="88.0" layoutY="20.0" mnemonicParsing="false" onAction="#boutique" style="-fx-background-color: white;" text="Boutique">
                                 <font>
                                     <Font name="Symbol" size="14.0" />
                                 </font>
@@ -144,8 +144,8 @@
                                     <Insets right="9.0" />
                                 </padding>
                             </HBox>
-                            <Button fx:id="newrdv" layoutX="607.0" layoutY="20.0" mnemonicParsing="false" onAction="#newrdv" prefHeight="31.0" prefWidth="93.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="nouveau " textFill="#fffefe" />
-                            <Button fx:id="profil" layoutX="52.0" layoutY="26.0" mnemonicParsing="false" onAction="#monprofil" prefHeight="31.0" prefWidth="94.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="retourner" textFill="#fffefe" />
+                            <Button fx:id="newrdv" layoutX="607.0" layoutY="20.0" mnemonicParsing="false" onAction="#newrdv" prefHeight="31.0" prefWidth="93.0" style="-fx-background-color: linear-gradient(to bottom right, #2b6eda, #5599ff); -fx-cursor: hand;" text="nouveau " textFill="#fffefe" />
+                            <Button fx:id="profil" layoutX="52.0" layoutY="26.0" mnemonicParsing="false" onAction="#monprofil" prefHeight="31.0" prefWidth="94.0" style="-fx-background-color: linear-gradient(to bottom right, #2b6eda, #5599ff); -fx-cursor: hand;" text="retourner" textFill="#fffefe" />
                         </children>
                     </AnchorPane>
                 </content>

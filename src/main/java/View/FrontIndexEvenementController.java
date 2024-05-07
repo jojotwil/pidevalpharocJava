@@ -5,44 +5,33 @@ import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 
 import Entities.PostTroc;
-import Services.PostTrocService;
 import com.example.demo.DBUtils;
-import com.example.demo.HelloControllertroc;
-import com.example.demo.ProfilController;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
 import java.awt.*;
 import java.net.URL;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import Entities.Avis;
 import Entities.Evenement;
 import Services.AvisService;
 import Services.EvenementService;
-import Services.IService;
+import Services.IServices;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -61,15 +50,47 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 
 import java.util.*;
 import java.util.List;
 
 
 public class FrontIndexEvenementController implements Initializable {
+    public void boutique(ActionEvent event){
+        try {
+            // Charger la nouvelle interface dans un Node
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("listBoutiqueFront.fxml"));
+            Parent newContent = loader.load();
+
+            // Accéder au contrôleur de la vue "posttroccrud.fxml"
+
+
+            // Créer une nouvelle scène avec le nouveau contenu
+            Scene scene = new Scene(newContent);
+
+            // Obtenir la fenêtre principale (stage)
+            Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Obtenir les dimensions de l'écran
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+            // Obtenez les dimensions de l'écran
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getBounds().getWidth();
+            double screenHeight = screen.getBounds().getHeight();
+
+// Définissez la taille de la fenêtre sur les dimensions de l'écran
+            mainStage.setWidth(screenWidth);
+            mainStage.setHeight(screenHeight);
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     @FXML
     private MenuItem button_logout;
@@ -280,7 +301,7 @@ public class FrontIndexEvenementController implements Initializable {
     @FXML
     private Label meilleurevenement;
     private ObservableList<Evenement> evenements = FXCollections.observableArrayList();
-    private IService<Evenement> evenementService = new EvenementService();
+    private IServices<Evenement> evenementService = new EvenementService();
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private Label[] starLabels = new Label[5];

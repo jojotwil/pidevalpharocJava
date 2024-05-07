@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<AnchorPane prefHeight="634.0" prefWidth="1597.0" stylesheets="@styles/tableviewback.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.itemBoutiqueController">
+                    <children>
+                        <HBox layoutX="-8.0" layoutY="12.0" prefHeight="52.0" prefWidth="880.0">
+                            <children>
+                                <Pane prefHeight="52.0" prefWidth="11.0" />
+                                <Label fx:id="labelIdBoutique" prefHeight="26.0" prefWidth="70.0" styleClass="btn_conf" stylesheets="@CSS/styleHayfa.css" text="Id">
+                                    <font>
+                                        <Font name="Cambria" size="18.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets top="15.0" />
+                                    </HBox.margin>
+                                </Label>
+                                <Pane prefHeight="52.0" prefWidth="11.0" />
+                                <Label fx:id="labelNomBoutique" prefHeight="26.0" prefWidth="70.0" styleClass="btn_conf" stylesheets="@CSS/styleHayfa.css" text="Nom">
+                                    <font>
+                                        <Font name="Cambria" size="18.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets top="15.0" />
+                                    </HBox.margin>
+                                </Label>
+                                <Pane prefHeight="52.0" prefWidth="22.0" />
+                                <Label fx:id="labelNumeroTel" prefHeight="26.0" prefWidth="88.0" styleClass="btn_conf" stylesheets="@CSS/styleHayfa.css" text="Numéro Tél">
+                                    <font>
+                                        <Font name="Cambria" size="18.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets top="15.0" />
+                                    </HBox.margin>
+                                </Label>
+                                <Pane prefHeight="52.0" prefWidth="24.0" />
+                                <Label fx:id="labelDescriptionBoutique" prefHeight="26.0" prefWidth="135.0" styleClass="btn_conf" stylesheets="@CSS/styleHayfa.css" text="Description">
+                                    <font>
+                                        <Font name="Cambria" size="18.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets top="15.0" />
+                                    </HBox.margin>
+                                </Label>
+                                <Pane prefHeight="52.0" prefWidth="24.0" />
+                                <Label fx:id="labelGouvernoratBoutique" prefHeight="26.0" prefWidth="135.0" styleClass="btn_conf" stylesheets="@CSS/styleHayfa.css" text="Gouvernorat">
+                                    <font>
+                                        <Font name="Cambria" size="18.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets top="15.0" />
+                                    </HBox.margin>
+                                </Label>
+                                <Pane prefHeight="52.0" prefWidth="24.0" />
+                                <Label fx:id="labelVilleBoutique" prefHeight="26.0" prefWidth="135.0" styleClass="btn_conf" stylesheets="@CSS/styleHayfa.css" text="Ville">
+                                    <font>
+                                        <Font name="Cambria" size="18.0" />
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets top="15.0" />
+                                    </HBox.margin>
+                                </Label>
+                                <Pane prefHeight="52.0" prefWidth="24.0">
+                                    <children>
+                                        <ImageView fx:id="imageItem" fitHeight="36.0" fitWidth="44.0" layoutX="-19.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
+                                    </children>
+                                </Pane>
+
+                                <Pane prefHeight="52.0" prefWidth="16.0" />
+
+                                <Pane prefHeight="52.0" prefWidth="16.0" />
+                                <Pane prefHeight="9.0" prefWidth="61.0">
+                                    <children>
+                                        <JFXButton fx:id="imprimer_pdf" layoutX="-5.0" layoutY="-3.0" mnemonicParsing="false" onMouseClicked="#genererPDF" prefHeight="52.0" prefWidth="72.0" stylesheets="@CSS/hello-view.css">
+                                            <graphic>
+                                                <ImageView fitHeight="26.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@images/pdf.png" />
+                                                    </image>
+                                                </ImageView>
+                                            </graphic></JFXButton>
+                                    </children>
+                                </Pane>
+
+                            </children>
+                        </HBox>
+
+                    </children>
+                </AnchorPane>

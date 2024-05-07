@@ -50,7 +50,7 @@
                                         <Insets top="8.0" />
                                     </HBox.margin>
                                 </Button>
-                                <Button layoutX="88.0" layoutY="20.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Boutique">
+                                <Button layoutX="88.0" layoutY="20.0" mnemonicParsing="false" onAction="#boutique" style="-fx-background-color: white;" text="Boutique">
                                     <font>
                                         <Font name="Symbol" size="14.0" />
                                     </font>
@@ -135,16 +135,25 @@
                                             <children>
                                                 <HBox alignment="CENTER" prefHeight="59.0" prefWidth="710.0">
                                                     <children>
-                                                        <Label style="-fx-text-fill: #3498db; -fx-font-size: 16px; -fx-font-weight: bold;" text="Rechercher par nom :" />
-                                                        <TextField fx:id="searchField" onKeyReleased="#searchByName" prefHeight="26.0" prefWidth="156.0" />
-                                                        <Button alignment="CENTER" onAction="#searchByName" prefHeight="46.0" prefWidth="194.0" text="Rechercher" textAlignment="CENTER" />
+                                                        <Label style="-fx-text-fill: #3498db; -fx-font-size: 16px; -fx-font-weight: bold;" text="Rechercher par nom :">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin></Label>
+                                                        <TextField fx:id="searchField" onKeyReleased="#searchByName" prefHeight="31.0" prefWidth="205.0">
+                                             <HBox.margin>
+                                                <Insets right="20.0" />
+                                             </HBox.margin></TextField>
+                                                        <Button alignment="CENTER" onAction="#searchByName" prefHeight="31.0" prefWidth="112.0" style="-fx-background-color: linear-gradient(to bottom right, #2b6eda, #5599ff);" text="Rechercher" textAlignment="CENTER">
+                                             <HBox.margin>
+                                                <Insets right="50.0" />
+                                             </HBox.margin></Button>
                                                         <Button mnemonicParsing="false" onAction="#launchAddTicketForm" prefHeight="46.0" prefWidth="222.0" styleClass="button" text="Réserver un événement" />
                                                     </children>
                                                 </HBox>
                                                 <Button onAction="#exportToExcel" text="Exporter vers Excel la liste" />
                                             </children>
                                         </VBox>
-                                        <AnchorPane prefHeight="491.0" prefWidth="763.0" styleClass="card-view-container" >
+                                        <AnchorPane prefHeight="491.0" prefWidth="763.0" styleClass="card-view-container">
                                             <children>
                                                 <ScrollPane fx:id="cardViewScrollPane" fitToWidth="true" hbarPolicy="NEVER" layoutX="4.0" layoutY="1.0" prefHeight="486.0" prefWidth="748.0" styleClass="card-view-scroll-pane" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="1.0">
                                                     <content>

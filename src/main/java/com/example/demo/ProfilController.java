@@ -56,15 +56,17 @@ public class ProfilController implements Initializable {
     private Label usernam;
     @FXML
     private GridPane offre;
+    private Button servicerepp;
+
     String loggedInUserEmail = DBUtils.getLoggedInUserEmail();
     UserService serviceuser=new UserService();
     User user= serviceuser.getuserfromemail(loggedInUserEmail);
+    String role=user.getRole();
+    
 
     PostTrocService postTrocService=new PostTrocService();
     ObservableList<PostTroc> Liste=postTrocService.getAllpostes();
     ObservableList<PostTroc> ListeData= FXCollections.observableArrayList();
-    @FXML
-    private MenuItem button_logout;
 
     @FXML
     void calander(ActionEvent event) {
@@ -102,6 +104,8 @@ public class ProfilController implements Initializable {
         }
 
     }
+    @FXML
+    private MenuItem button_logout;
 
     @FXML
     public void monprofil(ActionEvent event) {
@@ -112,6 +116,40 @@ public class ProfilController implements Initializable {
 
             // Accéder au contrôleur de la vue "posttroccrud.fxml"
             ProfilController controller = loader.getController();
+
+            // Créer une nouvelle scène avec le nouveau contenu
+            Scene scene = new Scene(newContent);
+
+            // Obtenir la fenêtre principale (stage)
+            Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Obtenir les dimensions de l'écran
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+            // Obtenez les dimensions de l'écran
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getBounds().getWidth();
+            double screenHeight = screen.getBounds().getHeight();
+
+// Définissez la taille de la fenêtre sur les dimensions de l'écran
+            mainStage.setWidth(screenWidth);
+            mainStage.setHeight(screenHeight);
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void location(ActionEvent event) {
+        try {
+            // Charger la nouvelle interface dans un Node
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/frontvl.fxml"));
+            Parent newContent = loader.load();
+
+
 
             // Créer une nouvelle scène avec le nouveau contenu
             Scene scene = new Scene(newContent);
@@ -209,6 +247,111 @@ public class ProfilController implements Initializable {
         try {
             // Charger la nouvelle interface dans un Node
             FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-viewtroc.fxml"));
+            Parent newContent = loader.load();
+
+            // Accéder au contrôleur de la vue "posttroccrud.fxml"
+            HelloControllertroc controller = loader.getController();
+
+            // Créer une nouvelle scène avec le nouveau contenu
+            Scene scene = new Scene(newContent);
+
+            // Obtenir la fenêtre principale (stage)
+            Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Obtenir les dimensions de l'écran
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+            // Obtenez les dimensions de l'écran
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getBounds().getWidth();
+            double screenHeight = screen.getBounds().getHeight();
+
+// Définissez la taille de la fenêtre sur les dimensions de l'écran
+            mainStage.setWidth(screenWidth);
+            mainStage.setHeight(screenHeight);
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void service(ActionEvent event) {
+        try {
+            // Charger la nouvelle interface dans un Node
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("listefront.fxml"));
+            Parent newContent = loader.load();
+
+            // Accéder au contrôleur de la vue "posttroccrud.fxml"
+
+            // Créer une nouvelle scène avec le nouveau contenu
+            Scene scene = new Scene(newContent);
+
+            // Obtenir la fenêtre principale (stage)
+            Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Obtenir les dimensions de l'écran
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+            // Obtenez les dimensions de l'écran
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getBounds().getWidth();
+            double screenHeight = screen.getBounds().getHeight();
+
+// Définissez la taille de la fenêtre sur les dimensions de l'écran
+            mainStage.setWidth(screenWidth);
+            mainStage.setHeight(screenHeight);
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void boutique(ActionEvent event){
+        try {
+            // Charger la nouvelle interface dans un Node
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("listBoutiqueFront.fxml"));
+            Parent newContent = loader.load();
+
+            // Accéder au contrôleur de la vue "posttroccrud.fxml"
+
+
+            // Créer une nouvelle scène avec le nouveau contenu
+            Scene scene = new Scene(newContent);
+
+            // Obtenir la fenêtre principale (stage)
+            Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Obtenir les dimensions de l'écran
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+            // Obtenez les dimensions de l'écran
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getBounds().getWidth();
+            double screenHeight = screen.getBounds().getHeight();
+
+// Définissez la taille de la fenêtre sur les dimensions de l'écran
+            mainStage.setWidth(screenWidth);
+            mainStage.setHeight(screenHeight);
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @FXML
+    public void addservice(ActionEvent event) {
+        try {
+            // Charger la nouvelle interface dans un Node
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("addservice.fxml"));
             Parent newContent = loader.load();
 
             // Accéder au contrôleur de la vue "posttroccrud.fxml"
@@ -362,6 +505,41 @@ public class ProfilController implements Initializable {
     }
 
 
+    public void addserviceinprofil(ActionEvent event){
+        try {
+            // Charger la nouvelle interface dans un Node
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("addservice.fxml"));
+            Parent newContent = loader.load();
+
+            // Accéder au contrôleur de la vue "posttroccrud.fxml"
+
+
+            // Créer une nouvelle scène avec le nouveau contenu
+            Scene scene = new Scene(newContent);
+
+            // Obtenir la fenêtre principale (stage)
+            Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Obtenir les dimensions de l'écran
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+            // Obtenez les dimensions de l'écran
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getBounds().getWidth();
+            double screenHeight = screen.getBounds().getHeight();
+
+// Définissez la taille de la fenêtre sur les dimensions de l'écran
+            mainStage.setWidth(screenWidth);
+            mainStage.setHeight(screenHeight);
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     public void menuDisplay(){
         System.out.println(offre+"menu");

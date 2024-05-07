@@ -56,7 +56,7 @@
                                         <Insets top="8.0" />
                                     </HBox.margin>
                                 </Button>
-                                <Button layoutX="88.0" layoutY="20.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Boutique">
+                                <Button layoutX="88.0" layoutY="20.0" mnemonicParsing="false" onAction="#boutique" style="-fx-background-color: white;" text="Boutique">
                                     <font>
                                         <Font name="Symbol" size="14.0" />
                                     </font>
@@ -124,7 +124,7 @@
                             <content>
                                 <AnchorPane fx:id="menu_form" prefHeight="567.0" prefWidth="1594.0" style="-fx-background-radius: 10px; -fx-background-color: white;">
                                     <children>
-                                        <AnchorPane layoutX="89.0" layoutY="14.0" prefHeight="687.0" prefWidth="1169.0" style="-fx-background-color: white; -fx-background-radius: 30px;" AnchorPane.leftAnchor="89.0" AnchorPane.topAnchor="14.0">
+                                        <AnchorPane layoutX="436.0" layoutY="14.0" prefHeight="571.0" prefWidth="1148.0" style="-fx-background-color: white; -fx-background-radius: 30px;" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="14.0">
                                             <children>
                                                 <GridPane layoutX="57.0" layoutY="65.0" prefHeight="296.0" prefWidth="364.0">
                                                     <columnConstraints>
@@ -175,14 +175,14 @@
                                           <DatePicker fx:id="fin" prefHeight="31.0" prefWidth="316.0" GridPane.rowIndex="7" />
                                                     </children>
                                                 </GridPane>
-                                                <Button fx:id="btnsave" layoutX="321.0" layoutY="375.0" mnemonicParsing="false" onAction="#addrdv" prefHeight="33.0" prefWidth="172.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="Enregistrer" textFill="#fffefe" />
-                                                <Button fx:id="btndelete" layoutX="548.0" layoutY="373.0" mnemonicParsing="false" onAction="#deleteCalendarActivity" prefHeight="37.0" prefWidth="174.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Supprimer" />
+                                                <Button fx:id="btnsave" layoutX="321.0" layoutY="375.0" mnemonicParsing="false" onAction="#addrdv" prefHeight="33.0" prefWidth="172.0" style="-fx-background-color: linear-gradient(to bottom right, #2b6eda, #5599ff); -fx-cursor: hand;" text="Enregistrer" textFill="#fffefe" />
+                                                <Button fx:id="btndelete" layoutX="548.0" layoutY="373.0" mnemonicParsing="false" onAction="#deleteCalendarActivity" prefHeight="37.0" prefWidth="174.0" style="-fx-background-color: linear-gradient(to bottom right, #2b6eda, #5599ff); -fx-text-fill: #fff; -fx-cursor: hand;" text="Supprimer" />
                                                 <Label layoutX="284.0" layoutY="14.0" prefHeight="49.0" prefWidth="278.0" text="Ajouter un rendez-vous" AnchorPane.leftAnchor="284.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="-20.0">
                                                     <font>
                                                         <Font name="System Bold" size="33.0" />
                                                     </font>
                                                 </Label>
-                                                <Button fx:id="btnupdate" layoutX="75.0" layoutY="375.0" mnemonicParsing="false" onAction="#updaterdv" prefHeight="33.0" prefWidth="172.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="Mettre à jour" textFill="WHITE" />
+                                                <Button fx:id="btnupdate" layoutX="75.0" layoutY="375.0" mnemonicParsing="false" onAction="#updaterdv" prefHeight="33.0" prefWidth="172.0" style="-fx-background-color: linear-gradient(to bottom right, #2b6eda, #5599ff); -fx-cursor: hand;" text="Mettre à jour" textFill="WHITE" />
                                             </children>
                                             <padding>
                                                 <Insets top="30.0" />

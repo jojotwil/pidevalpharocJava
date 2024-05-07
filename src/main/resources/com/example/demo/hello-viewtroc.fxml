@@ -53,7 +53,7 @@
                               <Insets top="8.0" />
                            </HBox.margin>
                         </Button>
-                        <Button layoutX="88.0" layoutY="20.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Boutique">
+                        <Button layoutX="88.0" layoutY="20.0" mnemonicParsing="false" onAction="#boutique" style="-fx-background-color: white;" text="Boutique">
                            <font>
                               <Font name="Symbol" size="14.0" />
                            </font>
@@ -123,7 +123,7 @@
                </children></AnchorPane>
          </top>
          <left>
-            <AnchorPane fx:id="menu_form" prefHeight="303.0" prefWidth="1200.0" style="-fx-background-radius: 10px; -fx-background-color: white;" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="menu_form" prefHeight="300.0" prefWidth="1464.0" style="-fx-background-radius: 10px; -fx-background-color: white;" BorderPane.alignment="CENTER">
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
@@ -131,7 +131,7 @@
                         <Label text="chercher" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="15.0" />
                      </children>
                   </AnchorPane>
-                  <ScrollPane prefHeight="299.0" prefWidth="498.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                  <ScrollPane prefHeight="299.0" prefWidth="498.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                      <content>
                         <GridPane fx:id="offre" prefHeight="14.0" style="-fx-background-color: white;">
                            <columnConstraints>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="634.0" prefWidth="1597.0" stylesheets="@styles/tableviewback.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.listBoutiqueController">
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="648.0" layoutX="-16.0" layoutY="27.0" stroke="#0000000e" strokeType="INSIDE" width="236.0">
+            <fill>
+                <LinearGradient endX="1.0" endY="1.0">
+                    <stops>
+                        <Stop color="#415e79" />
+                        <Stop color="#163346" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="45.0" layoutX="-11.0" stroke="#ffffff41" strokeType="INSIDE" width="1614.0">
+            <fill>
+                <LinearGradient endX="0.1893203883495146" endY="0.21359223300970875" startX="0.18446601941747576" startY="0.6844660194174758">
+                    <stops>
+                        <Stop color="#275f90" />
+                        <Stop color="#073e65" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
+        <Label layoutX="621.0" text="Admin Dashbord" textFill="WHITE">
+            <font>
+                <Font name="HoloLens MDL2 Assets" size="26.0" />
+            </font>
+        </Label>
+
+        <ProgressBar layoutY="54.0" prefHeight="25.0" prefWidth="101.0" style="-fx-border-color: #c2b8b8;" />
+        <ProgressBar layoutY="76.0" prefHeight="25.0" prefWidth="144.0" style="-fx-border-color: #c2b8b8;" />
+        <ProgressBar accessibleRole="CHECK_BOX" layoutY="98.0" prefHeight="25.0" prefWidth="175.0" style="-fx-border-color: #c2b8b8;" />
+        <VBox layoutY="131.0" prefHeight="454.0" prefWidth="208.0">
+            <children>
+                <Button fx:id="amoi" mnemonicParsing="false" onAction="#trocs" prefHeight="37.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));; -fx-text-fill: #fff; -fx-cursor: hand;" text="Liste des trocs">
+                    <font>
+                        <Font name="Candara Bold" size="15.0" />
+                    </font>
+                </Button>
+                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#chart" prefHeight="37.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));; -fx-text-fill: #fff; -fx-cursor: hand;" text="chart graphique trocs">
+                    <font>
+                        <Font name="Candara Bold" size="15.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="9.0" />
+                    </VBox.margin>
+                </Button>
+                <Button layoutX="10.0" layoutY="56.0" mnemonicParsing="false" onAction="#user" prefHeight="37.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));; -fx-text-fill: #fff; -fx-cursor: hand;" text="Liste des users">
+                    <font>
+                        <Font name="Candara Bold" size="15.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="9.0" />
+                    </VBox.margin>
+                </Button>
+                <Button layoutX="10.0" layoutY="102.0" mnemonicParsing="false" onAction="#event" prefHeight="37.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));; -fx-text-fill: #fff; -fx-cursor: hand;" text="Event">
+                    <font>
+                        <Font name="Candara Bold" size="15.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="9.0" />
+                    </VBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#location" prefHeight="37.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));; -fx-text-fill: #fff; -fx-cursor: hand;" text="Vehicule à louer">
+                    <font>
+                        <Font name="Candara Bold" size="15.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="9.0" />
+                    </VBox.margin>
+                </Button>
+                <Button layoutX="10.0" layoutY="194.0" mnemonicParsing="false" onAction="#servicerep" prefHeight="37.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));; -fx-text-fill: #fff; -fx-cursor: hand;" text="Service reparation">
+                    <font>
+                        <Font name="Candara Bold" size="15.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="9.0" />
+                    </VBox.margin>
+                </Button>
+                <Button layoutX="10.0" layoutY="231.0" mnemonicParsing="false" onAction="#demandeserv" prefHeight="37.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));; -fx-text-fill: #fff; -fx-cursor: hand;" text="Demande de service ">
+                    <font>
+                        <Font name="Candara Bold" size="15.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="9.0" />
+                    </VBox.margin>
+                </Button>
+                <Button layoutX="10.0" layoutY="288.0" mnemonicParsing="false" onAction="#adminboutique" prefHeight="37.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));; -fx-text-fill: #fff; -fx-cursor: hand;" text="Boutiques" translateY="8.0">
+                    <font>
+                        <Font name="Candara Bold" size="15.0" />
+                    </font>
+                </Button>
+                <Button layoutX="10.0" layoutY="326.0" mnemonicParsing="false" onAction="#adminproduits" prefHeight="37.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));; -fx-text-fill: #fff; -fx-cursor: hand;" text="Produits" translateY="16.0">
+                    <font>
+                        <Font name="Candara Bold" size="15.0" />
+                    </font>
+                </Button>
+                <Button layoutX="10.0" layoutY="364.0" mnemonicParsing="false" onAction="#admincommandes" prefHeight="38.0" prefWidth="233.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));; -fx-text-fill: #fff; -fx-cursor: hand;" text="Commandes" translateY="26.0">
+                    <font>
+                        <Font name="Candara Bold" size="15.0" />
+                    </font>
+                </Button>
+            </children>
+        </VBox>
+        <AnchorPane layoutX="217.0" layoutY="47.0" prefHeight="625.0" prefWidth="1170.0">
+            <children>
+                <Label layoutX="19.0" layoutY="12.0" prefHeight="58.0" prefWidth="313.0" styleClass="textme" stylesheets="@CSS/styleHayfa.css" text="| Liste Des Boutiques">
+                    <font>
+                        <Font name="Cambria Bold" size="26.0" />
+                    </font>
+                    <textFill>
+                        <LinearGradient cycleMethod="REFLECT" endX="0.5075757575757576" endY="0.3787878065398246" startX="0.4280302741310813" startY="0.4962120995377049">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="0.7052631378173828" green="0.07313840091228485" blue="0.4313424229621887" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </LinearGradient>
+                    </textFill>
+                </Label>
+                <Label layoutX="10.0" layoutY="88.0" prefHeight="19.0" prefWidth="881.0" text="Id                  Nom                Téléphone            Description               Gouvernorat                      Ville                             Image              Pdf" textFill="#6e6e6e">
+                    <font>
+                        <Font name="Cambria Bold" size="16.0" />
+                    </font>
+                </Label>
+                <VBox fx:id="vBox" layoutX="5.0" layoutY="122.0" prefHeight="426.0" prefWidth="894.0" />
+                <TextField fx:id="searchbar_id" layoutX="406.0" layoutY="29.0" stylesheets="@CSS/styleHayfa.css">
+                    <styleClass>
+                        <String fx:value="text-field:hover" />
+                        <String fx:value="text-field2" />
+                    </styleClass></TextField>
+                <Button fx:id="search_id" layoutX="591.0" layoutY="28.0" mnemonicParsing="false" onAction="#SearchForBoutique" prefHeight="33.0" prefWidth="130.0" styleClass="background" stylesheets="@CSS/styleHayfa.css" text="Rechercher" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font></Button>
+                <Button fx:id="btnstat" layoutX="738.0" layoutY="28.0" mnemonicParsing="false" onAction="#voirStat" prefHeight="33.0" prefWidth="139.0" styleClass="background" stylesheets="@CSS/styleHayfa.css" text="  Statistiques" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/téléchargement.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+
+            </children>
+        </AnchorPane>
+        <Button layoutX="44.0" layoutY="626.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-radius: 10;" text="Deconnection" textFill="#ff0202">
+            <font>
+                <Font name="Apple Symbols" size="16.0" />
+            </font>
+        </Button>
+    </children>
+</AnchorPane>

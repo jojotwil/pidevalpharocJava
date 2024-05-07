@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="634.0" prefWidth="1597.0" stylesheets="@styles/tableviewback.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ItemCommandeController">
+    <AnchorPane layoutX="217.0" layoutY="47.0" prefHeight="625.0" prefWidth="1170.0">
+        <children>
+            <AnchorPane prefHeight="626.0" prefWidth="1174.0">
+                <children>
+                    <HBox layoutX="-8.0" layoutY="12.0" prefHeight="52.0" prefWidth="880.0">
+            <children>
+                <Pane prefHeight="52.0" prefWidth="11.0" />
+                <Label fx:id="labelIdCommande" prefHeight="26.0" prefWidth="102.0" styleClass="btn_conf" stylesheets="@CSS/styleHayfa.css" text="Commande_id">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+
+
+
+
+                <Pane prefHeight="52.0" prefWidth="16.0" />
+
+                <Pane prefHeight="52.0" prefWidth="16.0" />
+                <Pane prefHeight="9.0" prefWidth="61.0">
+
+                </Pane>
+
+            </children>
+        </HBox>
+            
+
+        </children>
+    </AnchorPane>
+</children>
+        </AnchorPane>
+        </AnchorPane>
