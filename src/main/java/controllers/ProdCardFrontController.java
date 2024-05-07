@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import services.ProduitService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,6 +21,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -29,6 +29,8 @@ public class ProdCardFrontController implements Initializable {
 
     @FXML
     private Label labelTitreProd;
+    @FXML
+    private Label labelTitrePrixRemise;
 
     @FXML
     private Button btnAjouterCommande;
@@ -59,37 +61,73 @@ public class ProdCardFrontController implements Initializable {
 
         labelTitreProd.setText(produit.getTitre());
         labelPrixProd.setText(String.valueOf(produit.getPrix()));
+
         if (produit.getImage() != null) {
             InputStream imageStream = getClass().getResourceAsStream("/uploads/" + produit.getImage());
             if (imageStream != null) {
                 imgProd.setImage(new Image(imageStream));
             }
         }
+
+    }
+    // Méthode pour traduire le titre du produit
+
+
+
+    private List<Commande> commandes;
+
+    public List<Commande> getCommandes() {
+        return this.commandes;
     }
 
+Commande commande;
 
 
+    @FXML
     public void ajouterACommande(ActionEvent event) {
-        Produit p = new Produit();
-        Commande c = new Commande(6);
+        // Créez une nouvelle instance de Commande sans spécifier l'ID
+        Commande c = new Commande();
 
-        String requete = "INSERT INTO commande (id) VALUES (?)"; // Remplacez "champs" par les champs appropriés
+        Produit produit = prod;
+
+        // Affichez le titre et le prix juste après leur définition pour vérifier les valeurs
+        System.out.println("Titre du produit : " + produit.getTitre());
+        System.out.println("Prix du produit : " + produit.getPrix());
+        c.addProduit(produit);
+
+        // Maintenant, vous pouvez récupérer le titre et le prix du produit
+        String titreProduit = produit.getTitre();
+        float prixProduit = produit.getPrix();
+
+
+        // Affichez à nouveau le titre et le prix pour vérifier s'ils ont été correctement récupérés
+        System.out.println("Titre du produit récupéré : " + titreProduit);
+        System.out.println("Prix du produit récupéré : " + prixProduit);
+
+        // Ici, vous insérez une nouvelle commande sans spécifier de détails de produit
+        String requete = "INSERT INTO commande () VALUES ()";
         try {
             PreparedStatement pst = MyConnexion.getInstance().getCnx().prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
 
-            // Remplacez les ? par les valeurs appropriées
-            pst.setInt(1, c.getCommande_id());
-
             pst.executeUpdate();
+
             ResultSet rs = pst.getGeneratedKeys();
             if (rs.next()) {
-                c.setCommande_id(rs.getInt(1));
+                int generatedId = rs.getInt(1);
+                c.setCommande_id(generatedId);
+
+                // Ouvrir une nouvelle fenêtre et afficher les détails de la commande
+                CommandeDetailsWindow detailsWindow = new CommandeDetailsWindow();
+                detailsWindow.display(c);
             }
-            System.out.println("Commande added");
+            System.out.println("Commande ajoutée");
+
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Erreur lors de l'ajout de la commande : " + e.getMessage());
         }
     }
+
+
     @FXML
     void showDetails(ActionEvent event) {
         try {

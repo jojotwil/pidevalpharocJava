@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Pagination?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,96 +11,55 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="1097.0" styleClass="Pane_112" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.listeProduitFrontController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="971.0" styleClass="Pane_112" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.listeProduitFrontController">
 
     <children>
 
-        <BorderPane prefHeight="651.0" prefWidth="980.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-110.0" AnchorPane.topAnchor="0.0">
+        <BorderPane prefHeight="583.0" prefWidth="927.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
                 <AnchorPane prefHeight="65.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                     <children>
-                        <Pane prefHeight="34.0" prefWidth="931.0" styleClass="background" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <HBox layoutX="211.0" layoutY="-8.0" prefHeight="43.0" prefWidth="730.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                        <Pane prefHeight="34.0" prefWidth="931.0" styleClass="background" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+
+                        <JFXButton fx:id="idprevious" layoutY="1.0" onAction="#previous" prefHeight="35.0" prefWidth="87.0" text="">
+                           <graphic>
+                              <ImageView fitHeight="19.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@prev.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                          <JFXButton fx:id="refreshButton" ellipsisString="" graphicTextGap="0.0" layoutX="901.0" layoutY="-1.0" onAction="#refreshData" prefHeight="37.0" prefWidth="70.0" stylesheets="@style.css" text="" textFill="BLACK" wrapText="true">
+                              <font>
+                                  <Font name="System Bold" size="15.0" />
+                              </font>
+                              <graphic>
+                                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                      <image>
+                                          <Image url="@refresh.png" />
+                                      </image>
+                                  </ImageView>
+                              </graphic>
+                  
+                                            </JFXButton>
+                     </children></Pane>
+                        <HBox layoutX="211.0" layoutY="-8.0" prefHeight="41.0" prefWidth="971.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
                             <children>
                                 <Pane prefHeight="6.0" prefWidth="319.0" styleClass="Pane_11" stylesheets="@style.css" />
                             </children>
                         </HBox>
-                        <Label fx:id="Menu" layoutX="53.0" layoutY="38.0" prefHeight="26.0" prefWidth="146.0" text="Menu">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                            <graphic>
-                                <ImageView fitHeight="31.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@uploads/menu.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </Label>
-                        <Label fx:id="MenuClose" layoutX="53.0" layoutY="38.0" prefHeight="26.0" prefWidth="146.0" text="Menu">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                            <graphic>
-                                <ImageView fitHeight="31.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@uploads/menu.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </Label>
                     </children>
                 </AnchorPane>
             </top>
-            <left>
-                <AnchorPane fx:id="slider" prefHeight="200.0" prefWidth="200.0" styleClass="background" stylesheets="@style.css" BorderPane.alignment="CENTER">
-                    <children>
-                        <VBox layoutX="43.0" layoutY="41.0" prefHeight="253.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0">
-                            <children>
-                                <JFXButton prefHeight="39.0" prefWidth="201.0" text="  Boutiques" textFill="WHITE" translateY="50.0">
-                                    <font>
-                                        <Font name="System Bold" size="15.0" />
-                                    </font>
-                                    <graphic>
-                                        <ImageView fitHeight="24.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true" translateX="6.0">
-                                            <image>
-                                                <Image url="@uploads/bout.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </JFXButton>
-                            </children>
-                        </VBox>
-                        <JFXButton prefHeight="39.0" prefWidth="201.0" text="      Produits" textFill="WHITE" translateY="147.0">
-                            <font>
-                                <Font name="System Bold" size="15.0" />
-                            </font>
-                        </JFXButton>
-                        <JFXButton prefHeight="39.0" prefWidth="201.0" text="           Commande" textFill="WHITE" translateY="190.0">
-                            <font>
-                                <Font name="System Bold" size="15.0" />
-                            </font>
-                        </JFXButton>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="55.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@uploads/prod.png" />
-                            </image>
-                        </ImageView>
-                        <ImageView fitHeight="25.0" fitWidth="28.0" layoutX="54.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@uploads/panier.png" />
-                            </image>
-                        </ImageView>
-                    </children>
-                </AnchorPane>
-            </left>
             <center>
-                <Pane prefHeight="486.0" prefWidth="878.0" style="-fx-background-color: white;" styleClass="image-view" stylesheets="@style.css" BorderPane.alignment="CENTER">
+                <Pane prefHeight="470.0" prefWidth="900.0" style="-fx-background-color: white;" styleClass="image-view" stylesheets="@style.css" BorderPane.alignment="CENTER">
                     <children>
-                        <HBox fx:id="hbox" layoutX="66.0" layoutY="93.0" prefHeight="395.0" prefWidth="891.0" styleClass="hbox" stylesheets="@style.css">
+                        <HBox fx:id="hbox" layoutX="92.0" layoutY="53.0" prefHeight="435.0" prefWidth="810.0" styleClass="hbox" stylesheets="@style.css">
                             <children>
                                 <HBox fx:id="vbox" prefHeight="290.0" prefWidth="598.0">
                                     <children>
@@ -110,7 +68,7 @@
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" />
                                             </rowConstraints>
                                         </GridPane>
-                                        <Pagination fx:id="pag" maxPageIndicatorCount="3" prefHeight="395.0" prefWidth="594.0" style="-fx-color: #720000;">
+                                        <Pagination fx:id="pag" maxPageIndicatorCount="3" prefHeight="435.0" prefWidth="582.0" style="-fx-color: #720000;">
                                             <HBox.margin>
                                                 <Insets />
                                             </HBox.margin>
@@ -122,8 +80,13 @@
                                 </HBox>
                             </children>
                         </HBox>
+                  <Text layoutX="330.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="~  Les Boutiques   ~" translateX="60.0" wrappingWidth="234.70816040039062">
+                     <font>
+                        <Font name="Garamond" size="24.0" />
+                     </font>
+                  </Text>
 
-                    </children>
+                                      </children>
                 </Pane>
             </center>
         </BorderPane>

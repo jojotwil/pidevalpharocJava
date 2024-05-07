@@ -68,6 +68,11 @@
                         <Insets top="15.0" />
                     </HBox.margin>
                 </Label>
+                <Pane prefHeight="52.0" prefWidth="24.0">
+                    <children>
+                        <ImageView fx:id="imageItem" fitHeight="36.0" fitWidth="44.0" layoutX="-19.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
+                    </children>
+                </Pane>
 
                 <Pane prefHeight="52.0" prefWidth="16.0" />
 

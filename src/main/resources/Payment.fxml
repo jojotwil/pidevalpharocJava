@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PaymentController">
+    <children>
+        <Label alignment="CENTER" layoutX="256.0" layoutY="34.0" prefHeight="46.0" prefWidth="271.0" style="-fx-font-size: 30;" text="Payment " AnchorPane.leftAnchor="256.0" AnchorPane.rightAnchor="273.0" />
+        <Pane layoutX="76.0" layoutY="105.0" prefHeight="409.0" prefWidth="677.0" style="-fx-background-radius: 20;" styleClass="background" stylesheets="@style.css" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="47.0">
+            <children>
+                <Button fx:id="pay_btn" layoutX="510.0" layoutY="343.0" mnemonicParsing="false" onAction="#processPayment" prefHeight="38.0" prefWidth="102.0" text="Pay now" />
+                <GridPane hgap="5.0" layoutX="50.0" layoutY="25.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label prefHeight="20.0" prefWidth="51.0" style="-fx-text-fill: white;" text="Name :" />
+                        <TextField fx:id="client_name" prefHeight="38.0" prefWidth="315.0" promptText="Your name" GridPane.columnIndex="1" />
+                    </children>
+                </GridPane>
+            </children>
+        </Pane>
+        <GridPane hgap="5.0" layoutX="127.0" layoutY="174.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label prefHeight="18.0" prefWidth="50.0" style="-fx-text-fill: white;" text="Email :">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+                <TextField fx:id="email" prefHeight="38.0" prefWidth="314.0" promptText="example@gmail.com" GridPane.columnIndex="1" />
+            </children>
+        </GridPane>
+        <Label layoutX="127.0" layoutY="233.0" style="-fx-text-fill: white;" text="Card information :" />
+        <TextField fx:id="num_card" layoutX="127.0" layoutY="282.0" prefHeight="37.0" prefWidth="311.0" promptText="1234 1234 1234 1234" />
+        <ImageView fitHeight="38.0" fitWidth="115.0" layoutX="336.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
+
+        </ImageView>
+        <GridPane hgap="5.0" layoutX="127.0" layoutY="335.0" prefHeight="37.0" prefWidth="300.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <TextField fx:id="MM" editable="true" prefHeight="37.0" prefWidth="102.0" GridPane.columnIndex="1" />
+                <TextField fx:id="YY" editable="true" prefHeight="37.0" prefWidth="102.0" GridPane.columnIndex="3" />
+                <Label style="-fx-text-fill: white;" text="MM :" />
+                <Label style="-fx-text-fill: white;" text="YY :" GridPane.columnIndex="2" />
+            </children>
+        </GridPane>
+        <GridPane hgap="5.0" layoutX="127.0" layoutY="388.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label style="-fx-text-fill: white;" text="CVC  :" />
+                <TextField fx:id="cvc" editable="true" prefHeight="37.0" prefWidth="102.0" GridPane.columnIndex="1" />
+            </children>
+        </GridPane>
+
+
+    </children>
+</AnchorPane>

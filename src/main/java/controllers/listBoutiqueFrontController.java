@@ -49,6 +49,8 @@ public class listBoutiqueFrontController implements Initializable {
     @FXML
     private Button btnAjouterBoutique;
     @FXML
+    private JFXButton refreshData;
+    @FXML
     private AnchorPane listProduitFront;
 
 
@@ -135,6 +137,38 @@ private List<Boutique>boutiques;
         }
     }
     @FXML
+    private void refreshData() {
+        try {
+            BoutiqueService bs = new BoutiqueService();
+            boutiques = bs.getAllData();
+            pag.setPageCount((int) Math.ceil(boutiques.size() / 2.0)); // Nombre total de pages nécessaire pour afficher toutes les cartes
+            pag.setPageFactory(pageIndex -> {
+                GridPane grid = new GridPane(); // Utilisez GridPane au lieu de HBox
+                grid.setAlignment(Pos.CENTER);
+                grid.setHgap(10);
+                grid.setVgap(10);
+                int itemsPerPage = 2; // Nombre des produits à afficher par page
+                int page = pageIndex * itemsPerPage;
+                for (int i = page; i < Math.min(page + itemsPerPage, boutiques.size()); i++) {
+                    try {
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/listBoutiqueCardFront.fxml"));
+                        AnchorPane anchorPane = fxmlLoader.load();
+                        anchorPane.getStyleClass().add("ct");
+                        listBoutiqueCardFrontController itemController = fxmlLoader.getController();
+                        itemController.setData(boutiques.get(i), null); // Remplacer myListener par null car non utilisé ici
+                        grid.add(anchorPane, (i - page) % itemsPerPage, (i - page) / itemsPerPage); // Ajoutez à GridPane
+                    } catch (IOException ex) {
+                        Logger.getLogger(listBoutiqueCardFrontController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                return grid; // Retourne GridPane
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     private void ouvrirAjouterBoutique(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ajouterBoutique.fxml"));
         Parent root = loader.load();
@@ -172,10 +206,20 @@ private List<Boutique>boutiques;
 
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
-        stage.setTitle("Liste des Boutiques");
+        stage.setTitle("Liste des Produits");
         stage.show();
     }
 
+    public void ouvrirAdminCommande(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ListCommande.fxml"));
+        // 'this' faisant référence à l'instance du contrôleur
+        Parent root = loader.load();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Liste des Commandes");
+        stage.show();
+    }
 }
 
 

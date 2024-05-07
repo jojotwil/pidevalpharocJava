@@ -4,10 +4,7 @@ import entities.Boutique;
 import entities.Produit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -20,6 +17,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.UUID;
 
 public class AjouterProduitController {
@@ -78,6 +76,7 @@ public class AjouterProduitController {
 
     @FXML
     void ajouterProduit(ActionEvent event) {
+        Produit produit = null;
         try {
             String titre = txtTitre.getText();
             String prixText = txtPrix.getText();
@@ -99,8 +98,28 @@ public class AjouterProduitController {
                 return; // Arrêter l'exécution de la méthode si le prix est négatif ou nul
             }
 
-            // Assurez-vous que imageName contient le chemin de l'image
-            Produit produit = new Produit(titre, prix, image, description, categorie, type, boutique.getId(), 1);
+
+            // Création de la boîte de dialogue Alert
+            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmationAlert.setTitle("Confirmation");
+            confirmationAlert.setHeaderText("Voulez-vous appliquer une remise de 10% ?");
+
+            // Ajout des boutons personnalisés pour Oui et Non
+            ButtonType ouiButton = new ButtonType("Oui");
+            ButtonType nonButton = new ButtonType("Non", ButtonBar.ButtonData.CANCEL_CLOSE);
+            confirmationAlert.getButtonTypes().setAll(ouiButton, nonButton);
+
+            // Affichage de la boîte de dialogue et attente de la réponse de l'utilisateur
+            Optional<ButtonType> result = confirmationAlert.showAndWait();
+            if (result.isPresent() && result.get() == ouiButton) {
+                // Si l'utilisateur choisit "Oui", appliquer une remise de 10%
+                float prixRemise = prix - (prix * 10 / 100);
+                // Utiliser le prix avec remise pour créer le produit
+                produit = new Produit(titre, prixRemise, image, description, categorie, type, boutique.getId(), 1);
+            } else {
+                // Sinon, utiliser le prix initial pour créer le produit
+                 produit = new Produit(titre, prix, image, description, categorie, type, boutique.getId(), 1);
+            }
 
             ProduitService produitService = new ProduitService();
             produitService.addEntity(produit);

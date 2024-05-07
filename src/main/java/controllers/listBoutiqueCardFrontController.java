@@ -117,6 +117,7 @@ public class listBoutiqueCardFrontController implements Initializable {
         stage.setTitle("Ajouter Produit");
         stage.setScene(new Scene(fxml));
         stage.showAndWait();
+
     }
 
 

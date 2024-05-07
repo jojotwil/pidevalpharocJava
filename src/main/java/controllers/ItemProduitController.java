@@ -40,6 +40,8 @@ public class ItemProduitController implements Initializable {
 
     @FXML
     private Label labelIdProduit;
+    @FXML
+    private ImageView imageItem;
 
 
 
@@ -58,6 +60,13 @@ public class ItemProduitController implements Initializable {
 
 
         String imagePath = "/uploads/" + prod.getImage();
+        try {
+            ImageView imageView = new ImageView(getClass().getResource(imagePath).toExternalForm());
+            imageItem.setImage(imageView.getImage());
+        } catch (Exception e) {
+            System.err.println("Error loading image: " + e.getMessage());
+
+        }
 
     }
 

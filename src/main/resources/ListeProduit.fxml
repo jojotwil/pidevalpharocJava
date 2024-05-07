@@ -34,7 +34,7 @@
             </LinearGradient>
          </textFill>
         </Label>
-        <Label layoutX="55.0" layoutY="88.0" prefHeight="19.0" prefWidth="782.0" text="Id            Titre         Prix            Description                      Type                     Catégorie" textFill="#6e6e6e">
+        <Label layoutX="55.0" layoutY="88.0" prefHeight="19.0" prefWidth="782.0" text="Id            Titre         Prix            Description             Type                        Catégorie         Image" textFill="#6e6e6e">
             <font>
                 <Font name="Cambria Bold" size="16.0" />
             </font>

@@ -149,20 +149,20 @@ public class BoutiqueService implements IBoutique<Boutique> {
     }
 
     public ObservableList<XYChart.Data<String, Integer>> chartBoutiqueStatistics() throws SQLException {
-        String query = "SELECT b.nom, COUNT(pa.id_boutique) as boutique_count " +
+        String requete = "SELECT b.nom, COUNT(b.id) as boutique_count " +
                 "FROM boutique b ";
-        PreparedStatement pstmt = MyConnexion.getInstance().getCnx().prepareStatement(query);
-        ResultSet resultSet = pstmt.executeQuery();
+        Statement st = MyConnexion.getInstance().getCnx().createStatement();
+        ResultSet rs = st.executeQuery(requete);
 
         ObservableList<XYChart.Data<String, Integer>> barChartData = FXCollections.observableArrayList();
-        while (resultSet.next()) {
-            String boutiqueNom = resultSet.getString("nom");
-            int boutiqueCount = resultSet.getInt("boutique_count");
-            barChartData.add(new XYChart.Data<>(boutiqueNom, boutiqueCount));
+        while (rs.next()) {
+            String boutiqueNom = rs.getString("nom");
+            int boutique_count = rs.getInt("boutique_count");
+            barChartData.add(new XYChart.Data<>(boutiqueNom, boutique_count));
         }
 
-        resultSet.close();
-        pstmt.close();
+        rs.close();
+        st.close();
 
         return barChartData;
     }

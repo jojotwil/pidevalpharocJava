@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.paint.Color?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.ListCommandeController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <children>
+        <Label layoutX="40.0" layoutY="20.0" prefHeight="50.0" prefWidth="292.0" text="| Liste Des Commandes">
+            <font>
+                <Font name="Cambria Bold" size="26.0" />
+            </font>
+            <textFill>
+                <LinearGradient cycleMethod="REFLECT" endX="0.5075757575757576" endY="0.3787878065398246" startX="0.4280302741310813" startY="0.4962120995377049">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.7052631378173828" green="0.07313840091228485" blue="0.4313424229621887" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Label>
+        <Label layoutX="21.0" layoutY="88.0" prefHeight="19.0" prefWidth="870.0" text="Id   " textFill="#6e6e6e">
+            <font>
+                <Font name="Cambria Bold" size="16.0" />
+            </font>
+        </Label>
+        <VBox fx:id="vBox" layoutX="16.0" layoutY="122.0" prefHeight="426.0" prefWidth="862.0" />
+
+
+
+
+    </children>
+
+</AnchorPane>

@@ -4,6 +4,7 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.jfoenix.controls.JFXButton;
 import entities.Boutique;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -69,7 +70,7 @@ public class itemBoutiqueController implements Initializable {
 
 
     @FXML
-    private Button imprimer_pdf;
+    private JFXButton imprimer_pdf;
 
 
     Boutique boutique;
@@ -297,6 +298,7 @@ public class itemBoutiqueController implements Initializable {
 
 
     }
+
 
 
 }

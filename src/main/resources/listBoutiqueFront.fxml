@@ -16,15 +16,32 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" fx:id="listBoutiqueFront" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="1097.0" styleClass="Pane_112" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.listBoutiqueFrontController">
    <children>
      
-      <BorderPane layoutX="-8.0" layoutY="-3.0" prefHeight="589.0" prefWidth="1104.0" AnchorPane.bottomAnchor="-2.6000000000000227" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="0.7999999999999545" AnchorPane.topAnchor="-3.0">
+      <BorderPane layoutX="40.0" layoutY="-4.0" prefHeight="589.0" prefWidth="1056.0" AnchorPane.bottomAnchor="-2.6000000000000227" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="0.7999999999999545" AnchorPane.topAnchor="-4.0">
          <top>
-            <AnchorPane prefHeight="65.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="66.0" prefWidth="1088.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                <children>
-                  <Pane prefHeight="34.0" prefWidth="931.0" styleClass="background" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Pane prefHeight="34.0" prefWidth="931.0" styleClass="background" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                  
+                         <JFXButton fx:id="refreshButton" ellipsisString="" graphicTextGap="0.0" layoutX="1051.0" layoutY="2.0" onAction="#refreshData" prefHeight="30.0" prefWidth="48.0" stylesheets="@style.css" text="" textFill="BLACK" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@refresh.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                  
+                        </JFXButton>
+                     </children></Pane>
                   <HBox layoutX="211.0" layoutY="-8.0" prefHeight="43.0" prefWidth="730.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
                      <children>
                         <Pane prefHeight="6.0" prefWidth="319.0" styleClass="Pane_11" stylesheets="@style.css" />
@@ -60,9 +77,9 @@
          <left>
             <AnchorPane fx:id="slider" prefHeight="200.0" prefWidth="200.0" styleClass="background" stylesheets="@style.css" BorderPane.alignment="CENTER">
                <children>
-                  <VBox layoutX="43.0" layoutY="41.0" prefHeight="253.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0">
+                  <VBox layoutX="4.0" layoutY="41.0" prefHeight="468.0" prefWidth="198.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0">
                      <children>
-                        <JFXButton fx:id="boutonBoutiques" onAction="#ouvrirAdminBoutiques" prefHeight="39.0" prefWidth="201.0" text="Boutiques" textFill="WHITE" translateY="50.0">
+                        <JFXButton fx:id="boutonBoutiques" onAction="#ouvrirAdminBoutiques" prefHeight="39.0" prefWidth="201.0" text="  Boutiques" textFill="WHITE" translateY="50.0">
 
                         <font>
                               <Font name="System Bold" size="15.0" />
@@ -82,7 +99,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton prefHeight="39.0" prefWidth="201.0" text="            Commande" textFill="WHITE" translateY="190.0">
+                  <JFXButton onAction="#ouvrirAdminCommande" prefHeight="39.0" prefWidth="201.0" text="            Commande" textFill="WHITE" translateY="190.0">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -133,15 +150,31 @@
                         </HBox>
                      </children>
                   </HBox>
-                  <Button fx:id="btnListeProd" layoutX="14.0" layoutY="14.0" onAction="#OuvrirListeProduit" prefHeight="32.0" prefWidth="149.0" styleClass="btn" stylesheets="@style.css" text="Les Produits" textFill="WHITE">
+                  <JFXButton fx:id="btnListeProd" layoutX="745.0" onAction="#OuvrirListeProduit" prefHeight="34.0" prefWidth="144.0" text="Les Produits" textFill="WHITE">
                      <font>
-                        <Font size="22.0" />
-                     </font></Button>
-                  <Button fx:id="btnAjouterBoutique1" layoutX="717.0" layoutY="14.0" onAction="#ouvrirAjouterBoutique" prefHeight="31.0" prefWidth="172.0" styleClass="btn" stylesheets="@style.css" text="Ajouter Une Boutique" textFill="WHITE">
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="btnListeProd:pressed" />
+                        <String fx:value="background" />
+                     </styleClass>
+                  </JFXButton>
+                  <Button fx:id="btnAjouterBoutique1" layoutX="347.0" layoutY="469.0" onAction="#ouvrirAjouterBoutique" prefHeight="23.0" prefWidth="176.0" stylesheets="@style.css" text="Ajouter Une Boutique" textFill="WHITE">
                      <font>
                         <Font size="22.0" />
                      </font>
+                     <styleClass>
+                        <String fx:value="btn2" />
+                        <String fx:value="btn2:pressed" />
+                     </styleClass>
                   </Button>
+                  <Text layoutX="334.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="~  Les Boutiques   ~" wrappingWidth="234.70816040039062">
+                     <font>
+                        <Font name="Garamond" size="24.0" />
+                     </font>
+                  </Text>
+
+
                </children>
             </Pane>
          </center>

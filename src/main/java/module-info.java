@@ -5,6 +5,9 @@ module javafx {
     requires java.sql;
     requires itextpdf;
     requires com.jfoenix;
+    requires stripe.java;
+    requires AnimateFX;
+
 
 
     opens controllers;

@@ -57,7 +57,7 @@ public class CommandeService implements IService<Commande> {
 
 
     @Override
-    public List<Commande> getAllData() {
+    public  List<Commande> getAllData() {
         List<Commande> data = new ArrayList<>();
         String requete = "SELECT * FROM commande";
         try {
@@ -74,4 +74,5 @@ public class CommandeService implements IService<Commande> {
 
         return data;
     }
+
 }

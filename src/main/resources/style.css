@@ -6,28 +6,102 @@
     -fx-effect: dropshadow(three-pass-box,#AAAAAA, 3 , 0 , 0 , 3);
 
 }
+.textme{
+    -fx-text-fill: linear-gradient(from 26.8939% 40.5303% to 38.3523% 100.0%, reflect, #000000 0.0%, #b70f60 100.0%);
+    -fx-effect: dropshadow(three-pass-box,#AAAAAA, 3 , 0 , 0 , 3);
+    -fx-font-weight: bold;
+    -fx-font-size: 200px;
+
+;
+
+}
+.root {
+    -fx-background-color: white;
+}
+.pay-button {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 7px;
+    -fx-background-color: linear-gradient(to right ,#FF007F ,#FF69B4);
+    -fx-effect: dropshadow(three-pass-box,#AAAAAA, 3 , 0 , 0 , 3);
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-padding: 10px 20px; /* Rembourrage (haut et bas, gauche et droite) */
+    -fx-border-color: transparent; /* Couleur de la bordure */
+
+}
+
+.pay-button:hover {
+    -fx-background-color: #FFC0CB; /* Couleur de fond au survol */
+}
+
+.pay-button:pressed {
+    -fx-background-color:#FFC0CB; /* Couleur de fond lorsqu'appuyé */
+}
+
+.text-style1 {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+.text-style {
+    -fx-text-fill: #FF0000;
+    -fx-alignment: top-left;
+    -fx-underline: true;
+    -fx-font-family: Arial
+}
+
+.fade-out {
+    -fx-opacity: 1;
+    -fx-transition: opacity 3s;
+}
+
+.fade-out.to-zero {
+    -fx-opacity: 0;
+}
+
 /* Style du bouton */
 .btn {
     -fx-background-color: linear-gradient(to right ,#FF007F ,#FF69B4);
       -fx-effect: dropshadow(three-pass-box,#AAAAAA, 3 , 0 , 0 , 3);
-    -fx-text-fill: white; /* Couleur du texte */
+    -fx-text-fill: white ; /* Couleur du texte */
     -fx-border-width: 2px 2px 2px 2px;
-    -fx-border-radius: 5px;
-    -fx-background-radius: 5px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 7px;
     -fx-border-style: solid;
     -fx-border-color:#C71585;
-    -fx-font-family: "Century Gothic";
-    -fx-font-size: 14px;
+    -fx-font-family: Bold;
+    -fx-font-size: 15px;
 }
 .btn:pressed, .btn:default:hover:pressed {
     -fx-background-color: 	#FFB6C1;
     -fx-text-fill: #1d1d1d;
 }
+.btn2{
+-fx-text-fill:#b11958;
+    -fx-border-radius: 8px;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-background-radius: 7px;
+    -fx-border-style: solid;
+    -fx-border-color:#C71585;
+    -fx-font-size: 15px;
 
+}
+.btn2:pressed, .btn2:default:hover:pressed {
+    -fx-background-color: white;
+
+}
+.txt3{
+    -fx-font-family:
+    Verdana;
+    -fx-font-size: 16px;
+
+}
 
 .text1 {
     -fx-font-family: "Century Gothic";
-    -fx-font-size: 14px; /* Adjust the font size as needed */
+    -fx-font-size: 20px; /* Adjust the font size as needed */
 }
 
 .bodyy{
@@ -43,16 +117,6 @@
 /* Style du label */
 .label {
     -fx-font-size: 14px; /* Taille de la police */
-}
-/* Style CSS */
-.hyperlink {
-    -fx-text-fill: blue; /* Couleur du texte */
-    -fx-font-size: 12px; /* Taille de la police */
-    -fx-underline: true; /* Activer le soulignement du lien */
-}
-
-.hyperlink:hover {
-    -fx-text-fill: #0066FF; /* Couleur du texte au survol */
 }
 
 #AnchorPane {
@@ -85,7 +149,7 @@
 .zina{
     -fx-text-fill : linear-gradient(from 26.8939% 33.3333% to 28.7879% 48.8636%, reflect, #000000 0.0%, #ff00c3 100.0%);
     -fx-effect: dropshadow(three-pass-box,#AAAAAA, 3 , 0 , 0 , 3);
-    -fx-font-size: 16px;
+    -fx-font-size: 20px;
 }
 
 .text-field2 {
@@ -100,6 +164,24 @@
 .text-field2:hover {
     -fx-background-color: #e0e0e0; /* Couleur de fond au survol */
 }
+.btnListeProd {
+    -fx-text-fill: #696969; /* Couleur du texte blanc */
+    -fx-font-size: 15px; /* Taille de la police */
+    -fx-font-weight: Arial ; /* Gras */
+    -fx-pref-width: 140px; /* Largeur préférée */
+    -fx-pref-height: 34px; /* Hauteur préférée */
+    -fx-border-radius: 200px; /* Rayon de la bordure */
+    -fx-border-color: #808080; /* Couleur de la bordure */
+    -fx-border-width: 2px; /* Largeur de la bordure */
+
+}
+.btnListeProd:pressed, .btnListeProd:default:hover:pressed {
+    -fx-background-color: white;
+
+}
+
+
+
 
 
 

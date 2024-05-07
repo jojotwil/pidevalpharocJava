@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.ItemCommandeController"
+            prefHeight="400.0" prefWidth="600.0">
+
+
+
+    <children>
+        <HBox layoutX="-8.0" layoutY="12.0" prefHeight="52.0" prefWidth="880.0">
+            <children>
+                <Pane prefHeight="52.0" prefWidth="11.0" />
+                <Label fx:id="labelIdCommande" prefHeight="26.0" prefWidth="70.0" styleClass="btn_conf" stylesheets="@style.css" text="Id">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+
+
+
+
+                <Pane prefHeight="52.0" prefWidth="16.0" />
+
+                <Pane prefHeight="52.0" prefWidth="16.0" />
+                <Pane prefHeight="9.0" prefWidth="61.0">
+
+                </Pane>
+
+            </children>
+        </HBox>
+
+    </children>
+
+
+
+
+
+</AnchorPane>

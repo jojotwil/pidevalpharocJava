@@ -1,6 +1,5 @@
 package services;
 
-import entities.Boutique;
 import tools.MyConnexion;
 import entities.Produit;
 
@@ -100,6 +99,21 @@ public static int xyz=0;
 
         return data;
     }
+    public String getTitreProduit(int idProduit) {
+        String titreProduit = null;
+        String requete = "SELECT titre FROM produit WHERE id = ?";
+        try {
+            PreparedStatement pst = MyConnexion.getInstance().getCnx().prepareStatement(requete);
+            pst.setInt(1, idProduit);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                titreProduit = rs.getString("titre");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return titreProduit;
+    }
 
     public Produit getProduitById(int id) {
 
@@ -146,5 +160,37 @@ public static int xyz=0;
         }
         System.out.println(nom);
         return nom;
+    }
+
+    public int countProductsInBoutique(int boutiqueId) {
+        int count = 0;
+        String query = "SELECT COUNT(*) AS count FROM produit WHERE boutique_id = ?";
+        try {
+            PreparedStatement pst = MyConnexion.getInstance().getCnx().prepareStatement(query);
+            pst.setInt(1, boutiqueId);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                count = rs.getInt("count");
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return count;
+    }
+
+    public int countProductsInBoutiques(int boutiqueId) {
+        int count = 0;
+        String query = "SELECT COUNT(*) AS count FROM produit WHERE boutique_id = ?";
+        try {
+            PreparedStatement pst = MyConnexion.getInstance().getCnx().prepareStatement(query);
+            pst.setInt(1, boutiqueId);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                count = rs.getInt("count");
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return count;
     }
 }

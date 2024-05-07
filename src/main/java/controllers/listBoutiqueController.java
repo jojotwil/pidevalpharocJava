@@ -8,11 +8,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import services.BoutiqueService;
 
 import java.io.IOException;
@@ -94,6 +97,23 @@ public class listBoutiqueController implements Initializable {
                 cardController.setData(f);
                 vBox.getChildren().add(cardBox);
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @FXML
+    void voirStat(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Boutique_statistics.fxml"));
+            Parent root = loader.load();
+            Stage newStage = new Stage();
+            newStage.initModality(Modality.APPLICATION_MODAL);
+            newStage.setTitle("Database Popup");
+            newStage.setScene(new Scene(root));
+            newStage.showAndWait();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -11,6 +11,23 @@ public class Produit {
     private int boutique_id ;
     private int commande_id ;
 
+
+
+    private final float remise = 10;
+    public float getRemise() {
+        return remise;
+    }
+
+
+    public float getPrixAvecRemise() {
+        float prix = getPrix();
+        if (getRemise() > 0) {
+            return prix - (prix * getRemise() / 100);
+        } else {
+            return prix;
+        }
+    }
+
     public Produit() {
     }
 
@@ -126,5 +143,8 @@ public class Produit {
                 ", boutique_id=" + boutique_id +
                 ", commande_id=" + commande_id +
                 '}';
+    }
+
+    public void setCommande(Commande commande) {
     }
 }
