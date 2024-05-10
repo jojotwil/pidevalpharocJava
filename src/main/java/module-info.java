@@ -5,17 +5,6 @@ module com.example.demo {
     requires java.net.http;
     requires org.knowm.xchart;
     requires java.mail;
-<<<<<<< Updated upstream
-
-=======
-    requires restfb;
-    requires org.json;
-    requires javafx.web;
-    requires org.apache.poi.poi;
-    requires org.apache.poi.ooxml;
-    requires java.prefs;
-
-=======
     requires java.prefs;
     requires jbcrypt;
     requires org.apache.poi.poi;
@@ -26,7 +15,21 @@ module com.example.demo {
     requires java.datatransfer;
     requires com.google.zxing.javase;
     requires com.google.zxing;
->>>>>>> Stashed changes
+    requires org.controlsfx.controls;
+    requires com.dlsc.formsfx;
+    requires net.synedra.validatorfx;
+    requires org.kordamp.ikonli.javafx;
+    requires org.kordamp.bootstrapfx.core;
+    requires org.apache.pdfbox;
+    requires freetts;
+    requires qrgen;
+    requires twilio;
+    requires itextpdf;
+    requires com.jfoenix;
+    exports App;
+    requires stripe.java;
+    requires AnimateFX;
+
 
     opens com.example.demo to javafx.fxml;
     exports com.example.demo;
@@ -36,4 +39,6 @@ module com.example.demo {
     // Exporter et ouvrir le package View à javafx.fxml
     exports View to javafx.fxml;
     opens View to javafx.fxml;
+    exports controllers;
+    opens controllers to javafx.fxml;
 }

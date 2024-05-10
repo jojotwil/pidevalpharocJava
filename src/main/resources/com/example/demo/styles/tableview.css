@@ -17,7 +17,7 @@
 
 /* Style pour le fond de la barre d'en-tête des colonnes */
 .table-view .column-header-background {
-    -fx-background-color:  linear-gradient(to bottom right, #098c53, #246861);
+    -fx-background-color:   linear-gradient(to bottom right, #2b6eda, #5599ff);
     -fx-background-radius: 14;
     -fx-background-insets: 0 0 10 0;
 }

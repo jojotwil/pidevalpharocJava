@@ -49,7 +49,7 @@
                                         <Insets top="8.0" />
                                     </HBox.margin>
                                 </Button>
-                                <Button layoutX="88.0" layoutY="20.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Boutique">
+                                <Button layoutX="88.0" layoutY="20.0" mnemonicParsing="false" onAction="#boutique" style="-fx-background-color: white;" text="Boutique">
                                     <font>
                                         <Font name="Symbol" size="14.0" />
                                     </font>
@@ -208,7 +208,7 @@
                                     </Label>
                                  </content>
                                         </ScrollPane>
-                              <Button fx:id="répondre" mnemonicParsing="false" onAction="#répondre" prefHeight="33.0" prefWidth="172.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="Répondre" textFill="WHITE">
+                              <Button fx:id="répondre" mnemonicParsing="false" onAction="#répondre" prefHeight="33.0" prefWidth="172.0" style="-fx-background-color: linear-gradient(to bottom right, #2b6eda, #5599ff); -fx-cursor: hand;" text="Répondre" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets left="15.0" top="20.0" />
                                  </VBox.margin>

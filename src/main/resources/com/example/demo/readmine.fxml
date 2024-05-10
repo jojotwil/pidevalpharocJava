@@ -49,7 +49,7 @@
                                         <Insets top="8.0" />
                                     </HBox.margin>
                                 </Button>
-                                <Button layoutX="88.0" layoutY="20.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Boutique">
+                                <Button layoutX="88.0" layoutY="20.0" mnemonicParsing="false" onAction="#boutique" style="-fx-background-color: white;" text="Boutique">
                                     <font>
                                         <Font name="Symbol" size="14.0" />
                                     </font>

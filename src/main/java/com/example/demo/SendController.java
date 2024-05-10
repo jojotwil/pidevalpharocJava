@@ -3,6 +3,7 @@ package com.example.demo;
 import Entities.Message;
 import Entities.PostTroc;
 import Entities.User;
+import Services.BadWordAPIService;
 import Services.MessageinService;
 import Services.UserService;
 import javafx.event.ActionEvent;
@@ -24,6 +25,75 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SendController implements Initializable {
+    public void boutique(ActionEvent event){
+        try {
+            // Charger la nouvelle interface dans un Node
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("listBoutiqueFront.fxml"));
+            Parent newContent = loader.load();
+
+            // Accéder au contrôleur de la vue "posttroccrud.fxml"
+
+
+            // Créer une nouvelle scène avec le nouveau contenu
+            Scene scene = new Scene(newContent);
+
+            // Obtenir la fenêtre principale (stage)
+            Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Obtenir les dimensions de l'écran
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+            // Obtenez les dimensions de l'écran
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getBounds().getWidth();
+            double screenHeight = screen.getBounds().getHeight();
+
+// Définissez la taille de la fenêtre sur les dimensions de l'écran
+            mainStage.setWidth(screenWidth);
+            mainStage.setHeight(screenHeight);
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public void location(ActionEvent event) {
+        try {
+            // Charger la nouvelle interface dans un Node
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/frontvl.fxml"));
+            Parent newContent = loader.load();
+
+
+
+            // Créer une nouvelle scène avec le nouveau contenu
+            Scene scene = new Scene(newContent);
+
+            // Obtenir la fenêtre principale (stage)
+            Stage mainStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Obtenir les dimensions de l'écran
+            Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+
+            // Obtenez les dimensions de l'écran
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getBounds().getWidth();
+            double screenHeight = screen.getBounds().getHeight();
+
+// Définissez la taille de la fenêtre sur les dimensions de l'écran
+            mainStage.setWidth(screenWidth);
+            mainStage.setHeight(screenHeight);
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            mainStage.setScene(scene);
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void event(ActionEvent event) {
         try {
             // Charger la nouvelle interface dans un Node
@@ -199,7 +269,7 @@ public class SendController implements Initializable {
     public void setRecipientuser(int recipientuser) {
         this.recipientuser = recipientuser;
     }
-
+    private BadWordAPIService badWordAPIService = new BadWordAPIService();
     @FXML
     public void sendmessage(ActionEvent event){
         if (validateFields()) {
@@ -229,6 +299,10 @@ public class SendController implements Initializable {
         if (message.getText().isEmpty()) {
             isValid = false;
             errorMessage.append("Le champ 'Message' ne peut pas être vide.\n");
+
+        }
+        if (badWordAPIService.containsBadWord(message.getText())) {
+            errorMessage.append("Le 'Message' contient ne peut pas des mots inappropriés.\n");
         }
 
         // Retourner le message d'erreur

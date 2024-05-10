@@ -109,12 +109,12 @@
                               </HBox>
                               <HBox layoutX="10.0" layoutY="144.0" prefHeight="27.0" prefWidth="443.0">
                                   <children>
-                                      <Button fx:id="Accepter" mnemonicParsing="false" onAction="#accepterDemande" prefHeight="31.0" prefWidth="146.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Accepter">
+                                      <Button fx:id="Accepter" mnemonicParsing="false" onAction="#accepterDemande" prefHeight="31.0" prefWidth="146.0" style="-fx-background-color: linear-gradient(to bottom right, #2b6eda, #5599ff); -fx-text-fill: #fff; -fx-cursor: hand;" text="Accepter">
                                           <HBox.margin>
                                               <Insets left="45.0" />
                                           </HBox.margin>
                                       </Button>
-                                      <Button fx:id="Refuser" mnemonicParsing="false" onAction="#RefuserDemande" prefHeight="31.0" prefWidth="137.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Refuser">
+                                      <Button fx:id="Refuser" mnemonicParsing="false" onAction="#RefuserDemande" prefHeight="31.0" prefWidth="137.0" style="-fx-background-color: linear-gradient(to bottom right, #2b6eda, #5599ff); -fx-text-fill: #fff; -fx-cursor: hand;" text="Refuser">
                                           <HBox.margin>
                                               <Insets left="55.0" />
                                           </HBox.margin>

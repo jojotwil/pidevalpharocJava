@@ -43,7 +43,7 @@
                                         <Font name="Symbol" size="14.0" />
                                     </font>
                                 </Button>
-                                <Button layoutX="25.0" layoutY="18.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Services">
+                                <Button layoutX="25.0" layoutY="18.0" mnemonicParsing="false" onAction="#service" style="-fx-background-color: white;" text="Services">
                                     <font>
                                         <Font name="Symbol" size="14.0" />
                                     </font>
@@ -51,7 +51,7 @@
                                         <Insets top="8.0" />
                                     </HBox.margin>
                                 </Button>
-                                <Button layoutX="88.0" layoutY="20.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Boutique">
+                                <Button layoutX="88.0" layoutY="20.0" mnemonicParsing="false" onAction="#boutique" style="-fx-background-color: white;" text="Boutique">
                                     <font>
                                         <Font name="Symbol" size="14.0" />
                                     </font>
@@ -75,7 +75,7 @@
                                         <Insets top="8.0" />
                                     </HBox.margin>
                                 </Button>
-                                <Button layoutX="280.0" layoutY="20.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Location">
+                                <Button layoutX="280.0" layoutY="20.0" mnemonicParsing="false" onAction="#location" style="-fx-background-color: white;" text="Location">
                                     <font>
                                         <Font name="Symbol" size="14.0" />
                                     </font>
@@ -167,11 +167,19 @@
                                                 <Insets top="11.0" />
                                             </VBox.margin>
                                         </MenuButton>
+                              <Button fx:id="servicerepp" layoutX="10.0" layoutY="221.0" mnemonicParsing="false" onAction="#addserviceinprofil" prefHeight="35.0" prefWidth="215.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5)); -fx-text-fill: #fff; -fx-cursor: hand;" text="Ajouter un Service" textFill="WHITE">
+                                 <font>
+                                    <Font name="Symbol" size="16.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="9.0" />
+                                 </VBox.margin>
+                              </Button>
                                     </children>
                                 </VBox>
                             </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="225.0" layoutY="20.0" prefHeight="266.0" prefWidth="296.0" style="-fx-background-color: white; -fx-background-radius: 30px;" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="103.0" AnchorPane.topAnchor="20.0">
+                        <AnchorPane layoutX="225.0" layoutY="20.0" prefHeight="266.0" prefWidth="296.0" style="-fx-background-color: white; -fx-background-radius: 30px;" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
                             <children>
                                 <ScrollPane layoutX="12.0" layoutY="21.0" prefHeight="329.0" prefWidth="448.0" style="-fx-background-radius: 10px;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                                     <content>

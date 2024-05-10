@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="394.0" prefWidth="1315.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ItemServicerep">
+
+    <children>
+        <HBox layoutX="8.0" layoutY="14.0" prefHeight="47.0" prefWidth="1298.0">
+            <children>
+                <Pane prefHeight="52.0" prefWidth="11.0" />
+                <Label fx:id="labelIdServ" prefHeight="32.0" prefWidth="32.0" styleClass="btn_conf" text="ID">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="11.0" />
+                <Label fx:id="labelNomServ" prefHeight="32.0" prefWidth="143.0" styleClass="btn_conf" text="Nom de Service">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="22.0" />
+                <Pane prefHeight="52.0" prefWidth="22.0" />
+                <Label fx:id="labelTypeServ" prefHeight="32.0" prefWidth="145.0" styleClass="btn_conf" text="Type de Service">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="11.0" />
+                <Label fx:id="labelTypeVehicule" prefHeight="32.0" prefWidth="129.0" styleClass="btn_conf" text="Type Vehicule">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="11.0" />
+                <Pane prefHeight="52.0" prefWidth="11.0" />
+                <Pane prefHeight="52.0" prefWidth="24.0" />
+                <Label fx:id="labelStatut" prefHeight="32.0" prefWidth="97.0" styleClass="btn_conf" text="statut">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+            <Pane prefHeight="52.0" prefWidth="24.0" />
+                <Label fx:id="labelraisonderefus" prefHeight="32.0" prefWidth="133.0" styleClass="btn_conf" text="raison de refus">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="11.0" />
+                <Pane prefHeight="52.0" prefWidth="24.0" />
+                <Label fx:id="labelLike" prefHeight="31.0" prefWidth="45.0" styleClass="btn_conf" text="like">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="24.0" />
+                <Label fx:id="labelDislike" prefHeight="31.0" prefWidth="63.0" styleClass="btn_conf" text="dislike">
+                    <font>
+                        <Font name="Cambria" size="18.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets top="15.0" />
+                    </HBox.margin>
+                </Label>
+                <Pane prefHeight="52.0" prefWidth="24.0" />
+                <Pane prefHeight="47.0" prefWidth="43.0">
+                    <children>
+                        <ImageView fx:id="imageItem" fitHeight="36.0" fitWidth="66.0" layoutX="-19.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
+                    </children></Pane>
+                <Button fx:id="btnModifierServicerep" mnemonicParsing="false" onAction="#open_UpdateServicerep" prefHeight="32.0" prefWidth="44.0" styleClass="btn-update">
+                    <HBox.margin>
+                        <Insets top="9.0" />
+                    </HBox.margin>
+                    <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/edit.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Pane prefHeight="52.0" prefWidth="16.0" />
+                <Button fx:id="btnSupprimerServicerep" mnemonicParsing="false" onAction="#supprimerServicerep" prefHeight="32.0" prefWidth="44.0" styleClass="btn-delete">
+                    <HBox.margin>
+                        <Insets top="9.0" />
+                    </HBox.margin>
+                    <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/delete.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Pane prefHeight="52.0" prefWidth="16.0" />
+                <Button fx:id="btndetaills" mnemonicParsing="false" onAction="#Details" prefHeight="32.0" prefWidth="44.0" styleClass="btn-add-panier">
+                    <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/details.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <HBox.margin>
+                        <Insets top="9.0" />
+                    </HBox.margin>
+                </Button>
+            <Pane prefHeight="52.0" prefWidth="24.0" />
+                <Button fx:id="GOTOBACKPARTENAIRE" mnemonicParsing="false" onAction="#gotobackpartenaire" prefHeight="32.0" prefWidth="93.0" styleClass="btn-add-panier" text="les demandes">
+                    <HBox.margin>
+                        <Insets top="9.0" />
+                    </HBox.margin>
+                </Button>
+                <Pane prefHeight="52.0" prefWidth="24.0" />
+
+            </children>
+        </HBox>
+    </children>
+
+</AnchorPane>

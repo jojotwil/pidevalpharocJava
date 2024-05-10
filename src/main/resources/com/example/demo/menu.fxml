@@ -66,12 +66,12 @@
                   </HBox>
                   <HBox prefHeight="74.0" prefWidth="231.0">
                      <children>
-                        <Button fx:id="demande" mnemonicParsing="false" onAction="#demande" prefHeight="33.0" prefWidth="92.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Demande">
+                        <Button fx:id="demande" mnemonicParsing="false" onAction="#demande" prefHeight="33.0" prefWidth="92.0" style="-fx-background-color: linear-gradient(to bottom right, #2b6eda, #5599ff)linear-gradient(to bottom right, #2b6eda, #5599ff); -fx-text-fill: #fff; -fx-cursor: hand;" text="Demande">
                            <HBox.margin>
                               <Insets bottom="5.0" left="15.0" top="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="demande1" layoutX="25.0" layoutY="20.0" mnemonicParsing="false" onAction="#setDetails" prefHeight="33.0" prefWidth="92.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-text-fill: #fff; -fx-cursor: hand;" text="Details">
+                        <Button fx:id="demande1" layoutX="25.0" layoutY="20.0" mnemonicParsing="false" onAction="#setDetails" prefHeight="33.0" prefWidth="92.0" style="-fx-background-color: linear-gradient(to bottom right, #2b6eda, #5599ff); -fx-text-fill: #fff; -fx-cursor: hand;" text="Details">
                            <HBox.margin>
                               <Insets left="15.0" top="10.0" />
                            </HBox.margin>

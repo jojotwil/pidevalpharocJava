@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739.0" prefWidth="1071.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.DemandeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="742.0" prefWidth="842.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.DemandeController">
 
 
     <children>
@@ -55,7 +55,7 @@
                                         <Insets top="8.0" />
                                     </HBox.margin>
                                 </Button>
-                                <Button layoutX="88.0" layoutY="20.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Boutique">
+                                <Button layoutX="88.0" layoutY="20.0" mnemonicParsing="false" onAction="#boutique" style="-fx-background-color: white;" text="Boutique">
                                     <font>
                                         <Font name="Symbol" size="14.0" />
                                     </font>
@@ -123,7 +123,7 @@
                      <content>
                               <AnchorPane fx:id="menu_form" prefHeight="664.0" prefWidth="799.0" style="-fx-background-radius: 10px; -fx-background-color: white;">
                                   <children>
-                                      <AnchorPane layoutX="137.0" prefHeight="664.0" prefWidth="1071.0" style="-fx-background-color: white; -fx-background-radius: 30px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="137.0" AnchorPane.rightAnchor="-409.0" AnchorPane.topAnchor="0.0">
+                                      <AnchorPane layoutX="137.0" prefHeight="664.0" prefWidth="1071.0" style="-fx-background-color: white; -fx-background-radius: 30px;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                                           <children>
                                               <GridPane layoutX="65.0" layoutY="76.0" prefHeight="461.0" prefWidth="336.0">
                                                   <columnConstraints>
@@ -164,7 +164,7 @@
                                                 <Image url="@images/voituretroc3.png" />
                                              </image>
                                           </ImageView>
-                                          <Button fx:id="btnimage" mnemonicParsing="false" onAction="#browseImage" prefHeight="33.0" prefWidth="112.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="+ photo" textFill="#f2eeee" GridPane.halignment="RIGHT" GridPane.rowIndex="9" />
+                                          <Button fx:id="btnimage" mnemonicParsing="false" onAction="#browseImage" prefHeight="33.0" prefWidth="112.0" style="-fx-background-color: linear-gradient(to bottom right, #2b6eda, #5599ff); -fx-cursor: hand;" text="+ photo" textFill="#f2eeee" GridPane.halignment="RIGHT" GridPane.rowIndex="9" />
                                                   </children>
                                               </GridPane>
                                               <GridPane layoutX="270.0" layoutY="77.0" prefHeight="459.0" prefWidth="333.0" AnchorPane.leftAnchor="420.0">
@@ -204,7 +204,7 @@
                                           <DatePicker fx:id="daterdv" prefHeight="31.0" prefWidth="339.0" GridPane.rowIndex="13" />
                                                   </children>
                                               </GridPane>
-                                              <Button fx:id="btnsave" layoutX="316.0" layoutY="561.0" mnemonicParsing="false" onAction="#adddemande" prefHeight="51.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom right,#098c53,#246861); -fx-cursor: hand;" text="Envoyer" textFill="#f2eeee" />
+                                              <Button fx:id="btnsave" layoutX="316.0" layoutY="561.0" mnemonicParsing="false" onAction="#adddemande" prefHeight="51.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom right, #2b6eda, #5599ff); -fx-cursor: hand;" text="Envoyer" textFill="#f2eeee" />
                                               <Label layoutX="222.0" layoutY="27.0" prefHeight="49.0" prefWidth="397.0" text="    Demande un troc" AnchorPane.bottomAnchor="570.0" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="165.0" AnchorPane.topAnchor="0.0">
                                                   <font>
                                                       <Font name="System Bold" size="33.0" />

@@ -12,6 +12,29 @@ public class User {
     private String image;
     private boolean isVerified;
     private boolean isBlocked;
+    private String role;
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public User(int id, String email, String password, String nom, String prenom, String image, boolean isVerified, boolean isBlocked, String role, List<Message> sentMessages, List<Message> receivedMessages) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.image = image;
+        this.isVerified = isVerified;
+        this.isBlocked = isBlocked;
+        this.role = role;
+        this.sentMessages = sentMessages;
+        this.receivedMessages = receivedMessages;
+    }
 
     // Constructors
     public User() {

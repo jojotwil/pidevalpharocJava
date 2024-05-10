@@ -95,7 +95,7 @@
                 </VBox>
             </children>
         </AnchorPane>
-      <VBox layoutX="25.0" layoutY="224.0" prefHeight="338.0" prefWidth="208.0">
+      <VBox layoutX="6.0" layoutY="181.0" prefHeight="338.0" prefWidth="208.0">
          <children>
             <Button fx:id="amoi" mnemonicParsing="false" onAction="#trocs" prefHeight="37.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));; -fx-text-fill: #fff; -fx-cursor: hand;" text="Liste des trocs">
                <font>
@@ -119,6 +119,30 @@
                </VBox.margin>
             </Button>
             <Button layoutX="10.0" layoutY="102.0" mnemonicParsing="false" onAction="#event" prefHeight="37.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));; -fx-text-fill: #fff; -fx-cursor: hand;" text="Event">
+               <font>
+                  <Font name="Candara Bold" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="9.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#location" prefHeight="37.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));; -fx-text-fill: #fff; -fx-cursor: hand;" text="Vehicule à louer">
+               <font>
+                  <Font name="Candara Bold" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="9.0" />
+               </VBox.margin>
+            </Button>
+            <Button layoutX="10.0" layoutY="194.0" mnemonicParsing="false" onAction="#servicerep" prefHeight="37.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));; -fx-text-fill: #fff; -fx-cursor: hand;" text="Service reparation">
+               <font>
+                  <Font name="Candara Bold" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="9.0" />
+               </VBox.margin>
+            </Button>
+            <Button layoutX="10.0" layoutY="231.0" mnemonicParsing="false" onAction="#demandeserv" prefHeight="37.0" prefWidth="208.0" style="-fx-background-color: linear-gradient(to bottom right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));; -fx-text-fill: #fff; -fx-cursor: hand;" text="Demande de service ">
                <font>
                   <Font name="Candara Bold" size="15.0" />
                </font>
